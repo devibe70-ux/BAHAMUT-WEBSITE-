@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
       totalAmount
     } = body;
 
-    const keySecret = process.env.RAZORPAY_KEY_SECRET || 'pl9ZhXYXhxp6FygjfHcV13IE';
+    const keySecret = process.env.RAZORPAY_KEY_SECRET;
 
     if (!keySecret) {
       return NextResponse.json(
@@ -24,14 +24,14 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 5.2 Payment Verification Security (HMAC SHA256)
+    // 5.2 Payment Verification Security (Strict HMAC SHA256)
     const verificationBody = razorpay_order_id + '|' + razorpay_payment_id;
     const expectedSignature = crypto
       .createHmac('sha256', keySecret)
       .update(verificationBody.toString())
       .digest('hex');
 
-    const isVerified = razorpay_signature === expectedSignature || razorpay_signature === 'live_verified_signature';
+    const isVerified = razorpay_signature === expectedSignature;
 
     if (!isVerified) {
       return NextResponse.json(
@@ -73,7 +73,8 @@ export async function POST(req: NextRequest) {
       order: finalOrder,
       message: 'Payment verified and shipment queued for dispatch.'
     });
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message || 'Verification failed' }, { status: 500 });
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : 'Verification failed';
+    return NextResponse.json({ error: errorMsg }, { status: 500 });
   }
 }

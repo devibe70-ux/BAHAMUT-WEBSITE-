@@ -5,31 +5,39 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { totalAmount, paymentType, customerDetails, cartItems } = body;
 
-    if (!totalAmount || !paymentType) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    if (!totalAmount || !customerDetails) {
+      return NextResponse.json({ error: 'Missing required order details' }, { status: 400 });
     }
 
-    // Determine advance deposit vs full payment
-    // Partial COD charges fixed ₹200 deposit
-    const isPartialCod = paymentType === 'PARTIAL_COD';
-    const amountToChargeInRupees = isPartialCod ? 200 : totalAmount;
-    const amountInPaise = Math.round(amountToChargeInRupees * 100);
+    const keyId = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
+    const keySecret = process.env.RAZORPAY_KEY_SECRET;
 
-    const razorpayOrderId = `order_${Math.random().toString(36).substring(2, 12)}_${Date.now()}`;
+    if (!keyId || !keySecret) {
+      return NextResponse.json(
+        { error: 'SERVER SECURITY ERROR: Razorpay API environment variables are missing' },
+        { status: 500 }
+      );
+    }
+
+    const isPartialCod = paymentType === 'PARTIAL_COD';
+    const advanceDeposit = isPartialCod ? 200 : totalAmount;
+    const amountInPaise = Math.round(advanceDeposit * 100);
+
+    const razorpayOrderId = `order_${Math.random().toString(36).substring(2, 15)}`;
     const orderNumber = `BM-2026-${Math.floor(1000 + Math.random() * 9000)}`;
 
     return NextResponse.json({
       success: true,
       razorpay_order_id: razorpayOrderId,
-      order_number: orderNumber,
       amount: amountInPaise,
       currency: 'INR',
+      order_number: orderNumber,
       payment_type: paymentType,
-      advance_amount: amountToChargeInRupees,
-      cod_balance_due: isPartialCod ? totalAmount - 200 : 0,
-      key_id: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_live_key_id_here'
+      advance_deposit: advanceDeposit,
+      cod_balance_due: isPartialCod ? totalAmount - 200 : 0
     });
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message || 'Razorpay order creation failed' }, { status: 500 });
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : 'Order initialization failed';
+    return NextResponse.json({ error: errorMsg }, { status: 500 });
   }
 }
