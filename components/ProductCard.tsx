@@ -1,0 +1,152 @@
+'use client';
+
+import React, { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { ShoppingBag, Sparkles, Shield, Check, Flame } from 'lucide-react';
+import { Product, Size } from '@/lib/types';
+import { useCart } from '@/lib/cartContext';
+
+interface ProductCardProps {
+  product: Product;
+}
+
+export default function ProductCard({ product }: ProductCardProps) {
+  const { addToCart } = useCart();
+  const safeSizes: Size[] = (product.sizes && product.sizes.length > 0) ? product.sizes : ['S', 'M', 'L', 'XL'];
+  const safeImages: string[] = (product.images && product.images.length > 0)
+    ? product.images
+    : ['https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=800&q=80'];
+
+  const [selectedSize, setSelectedSize] = useState<Size>(safeSizes[0] || 'M');
+  const [added, setAdded] = useState(false);
+
+  const price = product.price || 1299;
+  const originalMrp = product.original_mrp || Math.round(price * 1.8);
+  const discountPercent = Math.max(0, Math.round(((originalMrp - price) / originalMrp) * 100));
+
+  const handleQuickAdd = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    addToCart(product, selectedSize, 1);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
+  };
+
+  return (
+    <div className="group card-clean rounded-3xl overflow-hidden transition-all duration-300 flex flex-col font-sans relative">
+      {/* Product Image & Badges */}
+      <Link href={`/product/${product.slug}`} className="relative block aspect-[4/5] bg-slate-100 overflow-hidden">
+        <Image
+          src={safeImages[0]}
+          alt={product.title || 'BahaMut Shirt'}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+        />
+
+        {/* Top Badges */}
+        <div className="absolute top-3.5 left-3.5 flex flex-col gap-1.5 z-10">
+          {product.target_demographic === 'YOUTH' ? (
+            <span className="bg-blue-600 text-white text-[10px] font-black px-3 py-1 rounded-full shadow-md flex items-center gap-1 uppercase tracking-wider">
+              <Sparkles className="w-3 h-3" /> YOUTH (13–25)
+            </span>
+          ) : (
+            <span className="bg-emerald-700 text-white text-[10px] font-black px-3 py-1 rounded-full shadow-md flex items-center gap-1 uppercase tracking-wider">
+              <Shield className="w-3 h-3 text-amber-300" /> CLASSIC (26–65)
+            </span>
+          )}
+
+          <span className="bg-white/90 backdrop-blur-sm text-slate-800 text-[10px] font-extrabold px-2.5 py-0.5 rounded-md border border-slate-300 shadow-sm w-fit">
+            100% Woven Cotton
+          </span>
+        </div>
+
+        {/* Discount Tag */}
+        {discountPercent > 0 && (
+          <div className="absolute top-3.5 right-3.5 bg-levis-red text-white text-xs font-black px-2.5 py-1 rounded-lg shadow-md border border-red-400">
+            -{discountPercent}% OFF
+          </div>
+        )}
+      </Link>
+
+      {/* Details Container */}
+      <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+        <div>
+          <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-1">
+            {product.pattern || product.fabric_details || '100% Breathable Woven Cotton'}
+          </div>
+
+          <Link href={`/product/${product.slug}`}>
+            <h3 className="text-base font-extrabold text-slate-900 group-hover:text-levis-red transition-colors line-clamp-2 leading-snug">
+              {product.title}
+            </h3>
+          </Link>
+
+          {/* Pricing */}
+          <div className="flex items-baseline gap-2.5 mt-3">
+            <span className="text-2xl font-black text-slate-900">
+              ₹{price.toLocaleString('en-IN')}
+            </span>
+            <span className="text-sm font-semibold text-slate-400 line-through">
+              ₹{originalMrp.toLocaleString('en-IN')}
+            </span>
+            <span className="text-[11px] font-black text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+              Save ₹{(originalMrp - price).toLocaleString('en-IN')}
+            </span>
+          </div>
+
+          {/* Partial COD Callout */}
+          <div className="mt-2.5 text-[11px] font-bold text-slate-700 bg-blue-50 px-3 py-1.5 rounded-xl border border-blue-200 flex items-center justify-between">
+            <span>Partial COD Deposit:</span>
+            <span className="font-black text-blue-700">₹200 Advance</span>
+          </div>
+        </div>
+
+        {/* Size Selection Row */}
+        <div>
+          <div className="flex items-center justify-between text-[11px] font-extrabold text-slate-700 uppercase tracking-wider mb-2">
+            <span>Select Size:</span>
+            <span className="text-[10px] text-slate-500 font-semibold">Standard Fit</span>
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            {safeSizes.map(size => (
+              <button
+                key={size}
+                type="button"
+                onClick={() => setSelectedSize(size)}
+                className={`min-w-[44px] min-h-[44px] text-xs font-black rounded-xl border flex items-center justify-center transition-all ${
+                  selectedSize === size
+                    ? 'border-slate-900 bg-slate-900 text-white shadow-md scale-105'
+                    : 'border-slate-300 bg-slate-50 text-slate-800 hover:border-slate-400'
+                }`}
+              >
+                {size}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Quick Add Button */}
+        <button
+          onClick={handleQuickAdd}
+          className={`w-full min-h-[48px] px-4 py-3 rounded-2xl font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-md active:scale-95 ${
+            added
+              ? 'bg-emerald-600 text-white'
+              : 'bg-slate-900 hover:bg-slate-800 text-white'
+          }`}
+        >
+          {added ? (
+            <>
+              <Check className="w-4 h-4" /> Added ({selectedSize})
+            </>
+          ) : (
+            <>
+              <ShoppingBag className="w-4 h-4" /> Quick Add ({selectedSize})
+            </>
+          )}
+        </button>
+      </div>
+    </div>
+  );
+}
