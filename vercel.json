@@ -1,9 +1,5 @@
 {
   "version": 2,
-  "projectId": "prj_sgttwssNnwzWc6eGsSMmNiVQBJbv",
-  "buildCommand": "next build",
-  "devCommand": "next dev",
-  "installCommand": "npm install",
   "framework": "nextjs",
   "headers": [
     {
