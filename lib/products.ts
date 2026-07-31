@@ -12,7 +12,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       'Numeric sizes correspond to Indian shirt chest/collar sizing (38 to 46).',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '100% Breathable Woven Cotton (Ahmedabad Mills)',
-    price: 1299,
+    price: 1, // TEMPORARY TEST PRICE ₹1
     original_mrp: 2499,
     stock_quantity: 45,
     rating: 4.8,
@@ -40,7 +40,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       '100% Woven Cotton canvas. Alphabetical sizes S, M, L, XL, XXL.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '100% Breathable Woven Cotton (220 GSM)',
-    price: 1099,
+    price: 1, // TEMPORARY TEST PRICE ₹1
     original_mrp: 2199,
     stock_quantity: 35,
     rating: 4.9,
@@ -68,7 +68,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       'Features resin buttons and reinforced collar. Numeric shirt sizes 38 to 46.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '100% Breathable Woven Cotton',
-    price: 1399,
+    price: 1, // TEMPORARY TEST PRICE ₹1
     original_mrp: 2699,
     stock_quantity: 50,
     rating: 4.7,
@@ -96,7 +96,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       'deep utility pockets, and pre-shrunk finish. Numeric waist sizes 28 to 38.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '100% Woven Cotton Twill (Ahmedabad Mills)',
-    price: 1599,
+    price: 1, // TEMPORARY TEST PRICE ₹1
     original_mrp: 2999,
     stock_quantity: 40,
     rating: 4.9,
@@ -124,7 +124,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       'Ahmedabad woven cotton. Numeric shirt sizes 38 to 46.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '100% Breathable Lightweight Woven Cotton',
-    price: 1199,
+    price: 1, // TEMPORARY TEST PRICE ₹1
     original_mrp: 2299,
     stock_quantity: 25,
     rating: 4.8,
@@ -152,7 +152,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       'classic 5-pocket construction, and pre-shrunk waist fit. Numeric waist sizes 28 to 38.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '100% Heavyweight Woven Cotton Denim',
-    price: 1799,
+    price: 1, // TEMPORARY TEST PRICE ₹1
     original_mrp: 3499,
     stock_quantity: 30,
     rating: 4.9,
@@ -180,9 +180,9 @@ export const INITIAL_PRODUCTS: Product[] = [
       'Alphabetical sizes S, M, L, XL, XXL.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '100% Woven Heavyweight Cotton (240 GSM)',
-    price: 999,
+    price: 1, // TEMPORARY TEST PRICE ₹1
     original_mrp: 1999,
-    stock_quantity: 0, // Mock Out of Stock items to demonstrate MyBillBook out of stock engine
+    stock_quantity: 15,
     rating: 4.8,
     review_count: 140,
     express_delivery: 'FREE Express Delivery by Tomorrow',
@@ -202,7 +202,8 @@ export const INITIAL_PRODUCTS: Product[] = [
 
 export function getProducts(): Product[] {
   if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('bahamut_products_v3');
+    // For test mode, clear old cached prices so test price ₹1 takes effect immediately
+    const saved = localStorage.getItem('bahamut_products_v4');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -228,7 +229,7 @@ export function saveProduct(product: Product): Product[] {
     updated = [product, ...current];
   }
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_products_v3', JSON.stringify(updated));
+    localStorage.setItem('bahamut_products_v4', JSON.stringify(updated));
   }
   return updated;
 }
@@ -248,7 +249,7 @@ export function deductStockForOrder(items: CartItem[]): Product[] {
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_products_v3', JSON.stringify(products));
+    localStorage.setItem('bahamut_products_v4', JSON.stringify(products));
   }
   return products;
 }
@@ -263,7 +264,7 @@ export function updateProductStock(idOrSlug: string, newStock: number): Product[
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_products_v3', JSON.stringify(updated));
+    localStorage.setItem('bahamut_products_v4', JSON.stringify(updated));
   }
   return updated;
 }
