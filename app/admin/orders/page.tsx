@@ -5,13 +5,17 @@ import Link from 'next/link';
 import { getOrders, saveOrder } from '@/lib/orders';
 import { getRtoBlacklist, addCustomerToRtoBlacklist } from '@/lib/rtoBlacklist';
 import { Order, RtoBlacklistItem } from '@/lib/types';
-import { Package, Truck, Download, ShieldCheck, RefreshCw, AlertTriangle, UserX, CheckCircle2, ShieldAlert } from 'lucide-react';
+import { generateMyBillBookCsv } from '@/lib/mybillbook';
+import GSTInvoiceModal from '@/components/GSTInvoiceModal';
+import { Package, Truck, Download, ShieldCheck, RefreshCw, AlertTriangle, UserX, CheckCircle2, ShieldAlert, FileSpreadsheet, Printer } from 'lucide-react';
 
 export default function AdminOrdersPage() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [rtoBlacklist, setRtoBlacklist] = useState<RtoBlacklistItem[]>([]);
   const [activeTab, setActiveTab] = useState<'ORDERS' | 'RTO_BLACKLIST'>('ORDERS');
   const [selectedRtoOrder, setSelectedRtoOrder] = useState<Order | null>(null);
+  const [selectedInvoiceOrder, setSelectedInvoiceOrder] = useState<Order | null>(null);
+  const [isInvoiceModalOpen, setIsInvoiceModalOpen] = useState(false);
   const [rtoReason, setRtoReason] = useState('Customer refused delivery / Fake address at doorstep');
 
   useEffect(() => {
@@ -23,10 +27,14 @@ export default function AdminOrdersPage() {
     setSelectedRtoOrder(order);
   };
 
+  const handleOpenGstInvoice = (order: Order) => {
+    setSelectedInvoiceOrder(order);
+    setIsInvoiceModalOpen(true);
+  };
+
   const confirmRtoReturn = () => {
     if (!selectedRtoOrder) return;
 
-    // 1. Update Order Fulfillment Status to RTO_RETURNED
     const updatedOrder: Order = {
       ...selectedRtoOrder,
       fulfillment_status: 'RTO_RETURNED',
@@ -37,7 +45,6 @@ export default function AdminOrdersPage() {
     const newOrders = saveOrder(updatedOrder);
     setOrders(newOrders);
 
-    // 2. Add customer phone and email to persistent RTO Blacklist
     const newBlacklist = addCustomerToRtoBlacklist({
       phone: selectedRtoOrder.customer_phone,
       email: selectedRtoOrder.customer_email,
@@ -51,58 +58,16 @@ export default function AdminOrdersPage() {
     alert(`Order ${selectedRtoOrder.order_number} marked as RTO RETURNED. Customer (${selectedRtoOrder.customer_phone}) is now restricted to Full Prepaid Option Only on future orders.`);
   };
 
-  const handleDownloadInvoice = (order: Order) => {
-    const invoiceContent = `
-================================================================================
-                    DE VIBE - TAX INVOICE & FULFILLMENT SLIP
-                    BahaMut Apparel (Marketed & Fulfilled by De Vibe)
-                    Address: Revdi Bazar, Kalupur, Ahmedabad, Gujarat
-================================================================================
-Invoice No: INV-${order.order_number}
-Date: ${new Date(order.created_at).toLocaleString('en-IN')}
-Order ID: ${order.order_number}
-AWB Number: ${order.awb_number || 'N/A'}
-Courier: ${order.courier_provider || 'Shipyaari / Delhivery'}
-
-CUSTOMER BILLING & SHIPPING DETAILS:
---------------------------------------------------------------------------------
-Name: ${order.customer_name}
-Phone: ${order.customer_phone}
-Email: ${order.customer_email}
-Address: ${order.shipping_address.street}, ${order.shipping_address.city}, ${order.shipping_address.state} - ${order.shipping_address.pincode}
-
-ORDER PAYMENT & FINANCIAL SUMMARY:
---------------------------------------------------------------------------------
-Payment Type: ${order.payment_type}
-Advance Deposit Paid via Razorpay: ₹${order.advance_amount.toLocaleString('en-IN')}
-Remaining Cash Balance Due at Doorstep: ₹${order.cod_balance_due.toLocaleString('en-IN')}
-Total Invoice Value: ₹${order.total_amount.toLocaleString('en-IN')}
-
-ITEMS PURCHASED:
---------------------------------------------------------------------------------
-${order.items
-  .map(
-    (item, idx) =>
-      `${idx + 1}. ${item.product.title} | Size: ${item.selectedSize} | Qty: ${item.quantity} | ₹${(
-        item.product.price * item.quantity
-      ).toLocaleString('en-IN')}`
-  )
-  .join('\n')}
-
-================================================================================
-Legal Disclaimer:
-© 2026 BahaMut Apparel. Marketed, billed, and fulfilled by De Vibe.
-Revdi Bazar, Kalupur, Ahmedabad, Gujarat.
-================================================================================
-    `;
-
-    const blob = new Blob([invoiceContent], { type: 'text/plain;charset=utf-8' });
+  const handleDownloadMyBillBookBulkCsv = () => {
+    const csvContent = generateMyBillBookCsv(orders);
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `Invoice_${order.order_number}.txt`;
+    a.download = `MyBillBook_Bulk_Sales_Import_${Date.now()}.csv`;
+    document.body.appendChild(a);
     a.click();
-    URL.revokeObjectURL(url);
+    document.body.removeChild(a);
   };
 
   return (
@@ -116,13 +81,20 @@ Revdi Bazar, Kalupur, Ahmedabad, Gujarat.
             </span>
             <span className="text-xs font-bold text-slate-500">Revdi Bazar, Kalupur, Ahmedabad</span>
           </div>
-          <h1 className="text-3xl font-black text-slate-900 mt-1">Order Fulfillment & RTO Blacklist Registry</h1>
+          <h1 className="text-3xl font-black text-slate-900 mt-1">Order Fulfillment & MyBillBook Invoicing</h1>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            onClick={handleDownloadMyBillBookBulkCsv}
+            className="min-h-[48px] px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs rounded-xl shadow-md uppercase tracking-wider flex items-center gap-2 transition-all active:scale-95"
+          >
+            <FileSpreadsheet className="w-4 h-4" /> Download MyBillBook Import (.csv)
+          </button>
+
           <Link
             href="/admin/products/new"
-            className="min-h-[48px] px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-black text-xs rounded-xl shadow-md uppercase tracking-wider flex items-center gap-2"
+            className="min-h-[48px] px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-black text-xs rounded-xl shadow-md uppercase tracking-wider flex items-center gap-2 transition-all active:scale-95"
           >
             + AI Catalog Publisher
           </Link>
@@ -191,6 +163,13 @@ Revdi Bazar, Kalupur, Ahmedabad, Gujarat.
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2">
+                  <button
+                    onClick={() => handleOpenGstInvoice(order)}
+                    className="min-h-[40px] px-3.5 py-1.5 text-xs font-black text-white bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-xl flex items-center gap-1.5 transition-all shadow-sm"
+                  >
+                    <Printer className="w-4 h-4 text-emerald-400" /> Print GST Invoice / Sync
+                  </button>
+
                   {order.fulfillment_status !== 'RTO_RETURNED' && (
                     <button
                       onClick={() => handleMarkAsRto(order)}
@@ -199,13 +178,6 @@ Revdi Bazar, Kalupur, Ahmedabad, Gujarat.
                       <UserX className="w-4 h-4 text-rose-600" /> Record RTO Return
                     </button>
                   )}
-
-                  <button
-                    onClick={() => handleDownloadInvoice(order)}
-                    className="min-h-[40px] px-3.5 py-1.5 text-xs font-black text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-xl flex items-center gap-1.5 transition-all"
-                  >
-                    <Download className="w-4 h-4 text-blue-600" /> Download GST Invoice
-                  </button>
                 </div>
               </div>
 
@@ -301,6 +273,13 @@ Revdi Bazar, Kalupur, Ahmedabad, Gujarat.
           </div>
         </div>
       )}
+
+      {/* GST Tax Invoice & MyBillBook Sync Modal */}
+      <GSTInvoiceModal
+        order={selectedInvoiceOrder}
+        isOpen={isInvoiceModalOpen}
+        onClose={() => setIsInvoiceModalOpen(false)}
+      />
 
       {/* RTO Return Confirmation Modal */}
       {selectedRtoOrder && (
