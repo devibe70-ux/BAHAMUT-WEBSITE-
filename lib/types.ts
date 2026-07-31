@@ -1,5 +1,10 @@
 export type Demographic = 'UNIFIED_13_65' | 'YOUTH' | 'CLASSIC';
-export type Size = 'S' | 'M' | 'L' | 'XL' | 'XXL';
+export type ProductCategory = 'SHIRT' | 'BOTTOMWEAR' | 'TEE';
+
+export type NumericSize = '28' | '30' | '32' | '34' | '36' | '38' | '40' | '42' | '44' | '46';
+export type AlphabeticalSize = 'S' | 'M' | 'L' | 'XL' | 'XXL' | '3XL';
+export type Size = NumericSize | AlphabeticalSize | string;
+
 export type PaymentStatus = 'DEPOSIT_PAID' | 'FULLY_PAID' | 'FAILED' | 'REFUNDED';
 export type PaymentType = 'PARTIAL_COD' | 'PREPAID';
 export type FulfillmentStatus = 'UNFULFILLED' | 'DISPATCHED' | 'OUT_FOR_DELIVERY' | 'DELIVERED' | 'RTO_RETURNED' | 'CANCELLED';
@@ -8,6 +13,7 @@ export interface Product {
   id: string;
   slug: string;
   title: string;
+  category?: ProductCategory; // SHIRT (Numeric), BOTTOMWEAR (Numeric), TEE (Alphabetical)
   description: string;
   target_demographic: Demographic;
   fabric_details: string;

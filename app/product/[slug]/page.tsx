@@ -18,7 +18,7 @@ export default function ProductDetailPage() {
 
   const [product, setProduct] = useState<Product | null>(null);
   const [selectedImage, setSelectedImage] = useState<string>('');
-  const [selectedSize, setSelectedSize] = useState<Size>('M');
+  const [selectedSize, setSelectedSize] = useState<Size>('40');
   const [isSizeModalOpen, setIsSizeModalOpen] = useState(false);
   const [added, setAdded] = useState(false);
   const [notFound, setNotFound] = useState(false);
@@ -66,7 +66,12 @@ export default function ProductDetailPage() {
     );
   }
 
-  const safeSizes: Size[] = (product.sizes && product.sizes.length > 0) ? product.sizes : ['S', 'M', 'L', 'XL'];
+  const isNumericCategory = product.category === 'SHIRT' || product.category === 'BOTTOMWEAR';
+  const defaultSizes: Size[] = isNumericCategory
+    ? (product.category === 'BOTTOMWEAR' ? ['28', '30', '32', '34', '36', '38'] : ['38', '40', '42', '44', '46'])
+    : ['S', 'M', 'L', 'XL', 'XXL'];
+
+  const safeSizes: Size[] = (product.sizes && product.sizes.length > 0) ? product.sizes : defaultSizes;
   const safeImages: string[] = (product.images && product.images.length > 0)
     ? product.images
     : ['https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=800&q=80'];
@@ -103,7 +108,7 @@ export default function ProductDetailPage() {
           <div className="relative aspect-[4/5] bg-slate-100 rounded-3xl overflow-hidden shadow-xl border border-slate-200">
             <Image
               src={selectedImage || safeImages[0]}
-              alt={product.title || 'BahaMut Shirt'}
+              alt={product.title || 'BahaMut Apparel'}
               fill
               priority
               className="object-cover object-top"
@@ -144,15 +149,10 @@ export default function ProductDetailPage() {
         <div className="lg:col-span-5 space-y-6">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              {product.target_demographic === 'YOUTH' ? (
-                <span className="bg-blue-50 text-blue-700 text-xs font-black px-3 py-1 rounded-full border border-blue-200 flex items-center gap-1">
-                  <Sparkles className="w-3.5 h-3.5" /> Youth Prints Track (13–25)
-                </span>
-              ) : (
-                <span className="bg-emerald-50 text-emerald-800 text-xs font-black px-3 py-1 rounded-full border border-emerald-200 flex items-center gap-1">
-                  <ShieldCheck className="w-3.5 h-3.5" /> Classic Woven Solids (26–65)
-                </span>
-              )}
+              <span className="bg-slate-900 text-white text-xs font-black px-3 py-1 rounded-full flex items-center gap-1">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                {isNumericCategory ? (product.category === 'BOTTOMWEAR' ? 'Numeric Bottomwear (28–38)' : 'Numeric Shirt (38–46)') : 'Alphabetical Tee (S–XXL)'}
+              </span>
               <span className="text-xs font-bold text-slate-500">• In Stock</span>
             </div>
 
@@ -194,14 +194,14 @@ export default function ProductDetailPage() {
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <label className="text-xs font-black text-slate-700 uppercase tracking-widest">
-                Select Size (Levi's Fit Standard)
+                {isNumericCategory ? (product.category === 'BOTTOMWEAR' ? 'Numeric Waist Size (28–38):' : 'Numeric Shirt Size (38–46):') : 'Alphabetical Tee Size (S–XXL):'}
               </label>
               <button
                 type="button"
                 onClick={() => setIsSizeModalOpen(true)}
                 className="text-xs font-black text-blue-700 hover:underline flex items-center gap-1"
               >
-                <Ruler className="w-4 h-4" /> Size Assistant Modal
+                <Ruler className="w-4 h-4" /> Size Assistant Guide
               </button>
             </div>
 
@@ -233,11 +233,11 @@ export default function ProductDetailPage() {
             >
               {added ? (
                 <>
-                  <Check className="w-4 h-4" /> Added ({selectedSize})
+                  <Check className="w-4 h-4" /> Added Size ({selectedSize})
                 </>
               ) : (
                 <>
-                  <ShoppingBag className="w-4 h-4" /> Add to Bag
+                  <ShoppingBag className="w-4 h-4" /> Add to Bag ({selectedSize})
                 </>
               )}
             </button>
@@ -267,8 +267,10 @@ export default function ProductDetailPage() {
                 <span className="font-black text-slate-900">{product.pattern || 'Structured Woven'}</span>
               </div>
               <div className="flex justify-between">
-                <span className="font-semibold text-slate-500">Silhouette Fit:</span>
-                <span className="font-black text-slate-900">{product.fit || 'Pre-Shrunk Standard'}</span>
+                <span className="font-semibold text-slate-500">Sizing Metric:</span>
+                <span className="font-black text-slate-900">
+                  {isNumericCategory ? (product.category === 'BOTTOMWEAR' ? 'Numeric Waist (28-38)' : 'Numeric Shirt Collar/Chest (38-46)') : 'Alphabetical Standard (S-XXL)'}
+                </span>
               </div>
               <div className="flex justify-between">
                 <span className="font-semibold text-slate-500">Fulfillment Entity:</span>
