@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { X, Ruler, CheckCircle2, Shield } from 'lucide-react';
+import { X, Ruler, CheckCircle2, ShieldAlert } from 'lucide-react';
 import { ProductCategory } from '@/lib/types';
 
 interface SizeGuideModalProps {
@@ -19,6 +19,19 @@ export default function SizeGuideModal({ isOpen, onClose, initialCategory }: Siz
     }
   }, [initialCategory, isOpen]);
 
+  // Lock body scroll when modal is open to prevent underlying page scroll bugs
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
+  // Escape key handler
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isOpen) {
@@ -31,72 +44,90 @@ export default function SizeGuideModal({ isOpen, onClose, initialCategory }: Siz
 
   if (!isOpen) return null;
 
+  const handleClose = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    onClose();
+  };
+
   return (
     <div
-      onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm animate-fade-in font-sans"
+      onClick={handleClose}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-slate-950/80 backdrop-blur-md animate-fade-in font-sans touch-none overflow-hidden"
     >
+      {/* Modal Container */}
       <div
         onClick={e => e.stopPropagation()}
-        className="bg-white w-full max-w-2xl rounded-3xl border border-slate-200 shadow-2xl overflow-hidden space-y-6 max-h-[90vh] overflow-y-auto"
+        className="bg-white w-full max-w-2xl rounded-3xl border border-slate-300 shadow-2xl overflow-hidden space-y-0 max-h-[85vh] flex flex-col relative"
       >
-        {/* Header */}
-        <div className="p-6 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800 sticky top-0 z-10">
-          <div className="flex items-center gap-2.5">
-            <div className="p-2 bg-levis-red text-white rounded-xl">
+        {/* Sticky Header with Red Close Button */}
+        <div className="p-4 sm:p-6 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800 shrink-0">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-levis-red text-white rounded-xl flex-shrink-0">
               <Ruler className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-lg font-black tracking-tight">Official De Vibe Fit & Size Assistant</h2>
-              <p className="text-xs text-slate-400 font-semibold">
-                Numeric sizing for Shirts & Bottomwear • Alphabetical sizing for Tees
+              <h2 className="text-base sm:text-lg font-black tracking-tight text-white">
+                Official De Vibe Fit & Size Assistant
+              </h2>
+              <p className="text-[11px] text-slate-400 font-semibold hidden sm:block">
+                Numeric Shirt (38–46) • Numeric Bottomwear (28–38) • Tees (S–XXL)
               </p>
             </div>
           </div>
+
+          {/* Prominent Red Close Button */}
           <button
-            onClick={onClose}
-            className="min-h-[44px] min-w-[44px] flex items-center justify-center text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-full transition-all border border-slate-700"
-            aria-label="Close size guide"
+            onClick={handleClose}
+            type="button"
+            className="min-h-[48px] px-4 bg-levis-red hover:bg-rose-700 text-white font-black text-xs rounded-2xl shadow-lg flex items-center gap-2 transition-all active:scale-95 border border-red-400"
+            aria-label="Close size guide modal"
           >
             <X className="w-5 h-5" />
+            <span className="hidden sm:inline uppercase tracking-wider">Close</span>
           </button>
         </div>
 
-        {/* Content Body */}
-        <div className="px-6 pb-6 space-y-6">
+        {/* Scrollable Content Body */}
+        <div className="p-4 sm:p-6 space-y-6 overflow-y-auto flex-1">
           {/* Tab Selector */}
-          <div className="grid grid-cols-3 gap-2 bg-slate-100 p-1.5 rounded-2xl border border-slate-200">
+          <div className="grid grid-cols-3 gap-1.5 bg-slate-100 p-1.5 rounded-2xl border border-slate-200">
             <button
+              type="button"
               onClick={() => setTab('SHIRT')}
-              className={`py-2.5 px-3 text-xs font-black rounded-xl transition-all ${
+              className={`py-3 px-2 text-[11px] sm:text-xs font-black rounded-xl transition-all ${
                 tab === 'SHIRT'
                   ? 'bg-slate-900 text-white shadow-md'
                   : 'text-slate-700 hover:text-slate-900'
               }`}
             >
-              Shirts (Numeric 38–46)
+              Shirts (38–46)
             </button>
 
             <button
+              type="button"
               onClick={() => setTab('BOTTOMWEAR')}
-              className={`py-2.5 px-3 text-xs font-black rounded-xl transition-all ${
+              className={`py-3 px-2 text-[11px] sm:text-xs font-black rounded-xl transition-all ${
                 tab === 'BOTTOMWEAR'
                   ? 'bg-slate-900 text-white shadow-md'
                   : 'text-slate-700 hover:text-slate-900'
               }`}
             >
-              Bottomwear (Numeric 28–38)
+              Bottomwear (28–38)
             </button>
 
             <button
+              type="button"
               onClick={() => setTab('TEE')}
-              className={`py-2.5 px-3 text-xs font-black rounded-xl transition-all ${
+              className={`py-3 px-2 text-[11px] sm:text-xs font-black rounded-xl transition-all ${
                 tab === 'TEE'
                   ? 'bg-slate-900 text-white shadow-md'
                   : 'text-slate-700 hover:text-slate-900'
               }`}
             >
-              T-Shirts (Alphabetical S–XXL)
+              T-Shirts (S–XXL)
             </button>
           </div>
 
@@ -121,6 +152,7 @@ export default function SizeGuideModal({ isOpen, onClose, initialCategory }: Siz
                     <tr><td className="px-4 py-3 font-black text-slate-900">38</td><td className="px-4 py-3">38" - 39"</td><td className="px-4 py-3">15.0"</td><td className="px-4 py-3">17.5"</td></tr>
                     <tr><td className="px-4 py-3 font-black text-slate-900">40</td><td className="px-4 py-3">40" - 41"</td><td className="px-4 py-3">15.5"</td><td className="px-4 py-3">18.0"</td></tr>
                     <tr><td className="px-4 py-3 font-black text-slate-900">42</td><td className="px-4 py-3">42" - 43"</td><td className="px-4 py-3">16.0"</td><td className="px-4 py-3">18.5"</td></tr>
+                    <tr><td className="px-4 py-3 font-black text-slate-900">44</td><td className="px-4 py-3">44" - 45"</td><td className="px-4 py-3">16.5"</td><td className="px-4 py-3">19.0"</td></tr>
                     <tr><td className="px-4 py-3 font-black text-slate-900">46</td><td className="px-4 py-3">46" - 47"</td><td className="px-4 py-3">17.0"</td><td className="px-4 py-3">19.5"</td></tr>
                   </tbody>
                 </table>
@@ -186,18 +218,19 @@ export default function SizeGuideModal({ isOpen, onClose, initialCategory }: Siz
           )}
 
           {/* Guarantee Note */}
-          <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex items-center justify-between gap-3 text-xs text-slate-700 font-semibold">
+          <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-700 font-semibold">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
               <span>Pre-shrunk at Ahmedabad mills to ensure 100% size retention after washing.</span>
             </div>
 
-            {/* Bottom Close Button */}
+            {/* Bottom Full-Width Close Button for Mobile & Desktop */}
             <button
-              onClick={onClose}
-              className="min-h-[40px] px-5 bg-slate-900 hover:bg-slate-800 text-white font-black text-xs rounded-xl shadow-md uppercase tracking-wider flex items-center gap-1.5 transition-all flex-shrink-0"
+              onClick={handleClose}
+              type="button"
+              className="w-full sm:w-auto min-h-[48px] px-6 bg-slate-900 hover:bg-slate-800 text-white font-black text-xs rounded-xl shadow-md uppercase tracking-wider flex items-center justify-center gap-2 transition-all flex-shrink-0 active:scale-95"
             >
-              <X className="w-4 h-4" /> Close Guide
+              <X className="w-4 h-4 text-rose-400" /> Close Size Assistant
             </button>
           </div>
         </div>
