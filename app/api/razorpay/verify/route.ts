@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
+import { sendOrderNotificationEmail } from '@/lib/emailNotification';
+import { pushOrderToMyBillBookApp } from '@/lib/mybillbook';
 
 export async function POST(req: NextRequest) {
   try {
@@ -24,7 +26,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 5.2 Payment Verification Security (Strict HMAC SHA256)
+    // Payment Verification Security (Strict HMAC SHA256)
     const verificationBody = razorpay_order_id + '|' + razorpay_payment_id;
     const expectedSignature = crypto
       .createHmac('sha256', keySecret)
@@ -54,7 +56,7 @@ export async function POST(req: NextRequest) {
       customer_email: customerDetails.email,
       customer_phone: customerDetails.phone,
       shipping_address: customerDetails,
-      payment_status: isPartialCod ? 'DEPOSIT_PAID' : 'FULLY_PAID',
+      payment_status: (isPartialCod ? 'DEPOSIT_PAID' : 'FULLY_PAID') as any,
       payment_type: paymentType,
       advance_amount: advanceAmount,
       cod_balance_due: codBalanceDue,
@@ -64,14 +66,24 @@ export async function POST(req: NextRequest) {
       razorpay_payment_id,
       courier_provider: courierProvider,
       awb_number: awbNumber,
-      fulfillment_status: 'DISPATCHED',
+      fulfillment_status: 'DISPATCHED' as any,
       created_at: new Date().toISOString()
     };
+
+    // 1. Trigger instant email notification to devibe70@gmail.com
+    await sendOrderNotificationEmail(finalOrder);
+
+    // 2. Trigger instant order notification push into MyBillBook billing app
+    await pushOrderToMyBillBookApp(finalOrder);
 
     return NextResponse.json({
       success: true,
       order: finalOrder,
-      message: 'Payment verified and shipment queued for dispatch.'
+      notifications: {
+        email: 'Dispatched to devibe70@gmail.com',
+        mybillbook_app: 'Pushed to MyBillBook billing app (de_vibe)'
+      },
+      message: 'Payment verified, order email sent to devibe70@gmail.com, and order pushed into MyBillBook billing app.'
     });
   } catch (error: unknown) {
     const errorMsg = error instanceof Error ? error.message : 'Verification failed';

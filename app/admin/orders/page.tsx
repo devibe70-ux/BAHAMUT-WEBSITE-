@@ -132,6 +132,22 @@ export default function AdminOrdersPage() {
         </div>
       </div>
 
+      {/* Domain Forwarding & Email Notification Status Banner */}
+      <div className="mb-6 bg-slate-900 text-white p-5 rounded-3xl shadow-md border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="space-y-1">
+          <div className="flex items-center gap-2 text-xs font-black text-emerald-400 uppercase tracking-wider">
+            <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Primary Custom Domain & Notification Engine Active
+          </div>
+          <p className="text-xs text-slate-300 font-semibold">
+            All customer traffic is directed to primary domain: <strong className="text-white underline">https://bahamut.in</strong>
+          </p>
+        </div>
+
+        <div className="bg-slate-800 px-4 py-2 rounded-2xl border border-slate-700 text-xs font-bold text-slate-200">
+          Order Notification Recipient: <strong className="text-emerald-400 font-black">devibe70@gmail.com</strong>
+        </div>
+      </div>
+
       {savedStockMsg && (
         <div className="mb-6 bg-emerald-50 border border-emerald-200 p-4 rounded-2xl text-xs font-bold text-emerald-800 flex items-center gap-2 shadow-sm animate-fade-in">
           <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
