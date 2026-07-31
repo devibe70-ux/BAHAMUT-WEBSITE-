@@ -1,4 +1,4 @@
-import { Product } from './types';
+import { Product, CartItem } from './types';
 
 export const INITIAL_PRODUCTS: Product[] = [
   {
@@ -22,7 +22,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=80'
     ],
-    sizes: ['38', '40', '42', '44', '46'], // Numeric sizes for Shirts
+    sizes: ['38', '40', '42', '44', '46'],
     pattern: 'Solid Woven',
     fit: 'Numeric Standard Fit (38-46)',
     sleeve: 'Full Sleeve',
@@ -50,7 +50,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=800&q=80'
     ],
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'], // Alphabetical sizes for Tees
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     pattern: 'Graphic Kinetic Print',
     fit: 'Alphabetical Comfort Fit',
     sleeve: 'Half Sleeve',
@@ -78,7 +78,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=800&q=80'
     ],
-    sizes: ['38', '40', '42', '44', '46'], // Numeric sizes for Shirts
+    sizes: ['38', '40', '42', '44', '46'],
     pattern: 'Oxford Solid',
     fit: 'Numeric Structured Fit (38-46)',
     sleeve: 'Full Sleeve',
@@ -106,7 +106,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80'
     ],
-    sizes: ['28', '30', '32', '34', '36', '38'], // Numeric sizes for Bottomwear
+    sizes: ['28', '30', '32', '34', '36', '38'],
     pattern: 'Solid Chino',
     fit: 'Numeric Tailored Fit (28-38)',
     sleeve: 'N/A',
@@ -134,7 +134,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=800&q=80'
     ],
-    sizes: ['38', '40', '42', '44', '46'], // Numeric sizes for Shirts
+    sizes: ['38', '40', '42', '44', '46'],
     pattern: 'Botanical Print',
     fit: 'Numeric Cuban Fit (38-46)',
     sleeve: 'Half Sleeve',
@@ -162,7 +162,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80'
     ],
-    sizes: ['28', '30', '32', '34', '36', '38'], // Numeric sizes for Bottomwear
+    sizes: ['28', '30', '32', '34', '36', '38'],
     pattern: 'Raw Denim Solid',
     fit: 'Numeric Straight Fit (28-38)',
     sleeve: 'N/A',
@@ -182,7 +182,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     fabric_details: '100% Woven Heavyweight Cotton (240 GSM)',
     price: 999,
     original_mrp: 1999,
-    stock_quantity: 45,
+    stock_quantity: 0, // Mock Out of Stock items to demonstrate MyBillBook out of stock engine
     rating: 4.8,
     review_count: 140,
     express_delivery: 'FREE Express Delivery by Tomorrow',
@@ -190,7 +190,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=800&q=80'
     ],
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'], // Alphabetical sizes for Tees
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     pattern: 'Typography Print',
     fit: 'Alphabetical Boxy Fit',
     sleeve: 'Half Sleeve',
@@ -202,7 +202,7 @@ export const INITIAL_PRODUCTS: Product[] = [
 
 export function getProducts(): Product[] {
   if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('bahamut_products_v2');
+    const saved = localStorage.getItem('bahamut_products_v3');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -228,7 +228,42 @@ export function saveProduct(product: Product): Product[] {
     updated = [product, ...current];
   }
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_products_v2', JSON.stringify(updated));
+    localStorage.setItem('bahamut_products_v3', JSON.stringify(updated));
+  }
+  return updated;
+}
+
+export function deductStockForOrder(items: CartItem[]): Product[] {
+  let products = getProducts();
+  items.forEach(cartItem => {
+    const index = products.findIndex(p => p.id === cartItem.product.id || p.slug === cartItem.product.slug);
+    if (index >= 0) {
+      const currentStock = products[index].stock_quantity || 0;
+      const newStock = Math.max(0, currentStock - cartItem.quantity);
+      products[index] = {
+        ...products[index],
+        stock_quantity: newStock
+      };
+    }
+  });
+
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('bahamut_products_v3', JSON.stringify(products));
+  }
+  return products;
+}
+
+export function updateProductStock(idOrSlug: string, newStock: number): Product[] {
+  const products = getProducts();
+  const updated = products.map(p => {
+    if (p.id === idOrSlug || p.slug === idOrSlug) {
+      return { ...p, stock_quantity: Math.max(0, newStock) };
+    }
+    return p;
+  });
+
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('bahamut_products_v3', JSON.stringify(updated));
   }
   return updated;
 }

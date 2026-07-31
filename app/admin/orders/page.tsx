@@ -4,23 +4,35 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { getOrders, saveOrder } from '@/lib/orders';
 import { getRtoBlacklist, addCustomerToRtoBlacklist } from '@/lib/rtoBlacklist';
-import { Order, RtoBlacklistItem } from '@/lib/types';
+import { getProducts, updateProductStock } from '@/lib/products';
+import { Order, RtoBlacklistItem, Product } from '@/lib/types';
 import { generateMyBillBookCsv } from '@/lib/mybillbook';
 import GSTInvoiceModal from '@/components/GSTInvoiceModal';
-import { Package, Truck, Download, ShieldCheck, RefreshCw, AlertTriangle, UserX, CheckCircle2, ShieldAlert, FileSpreadsheet, Printer } from 'lucide-react';
+import { Package, Truck, Download, ShieldCheck, RefreshCw, AlertTriangle, UserX, CheckCircle2, ShieldAlert, FileSpreadsheet, Printer, Boxes, Check, AlertCircle } from 'lucide-react';
 
 export default function AdminOrdersPage() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [rtoBlacklist, setRtoBlacklist] = useState<RtoBlacklistItem[]>([]);
-  const [activeTab, setActiveTab] = useState<'ORDERS' | 'RTO_BLACKLIST'>('ORDERS');
+  const [products, setProducts] = useState<Product[]>([]);
+  const [activeTab, setActiveTab] = useState<'ORDERS' | 'INVENTORY' | 'RTO_BLACKLIST'>('ORDERS');
   const [selectedRtoOrder, setSelectedRtoOrder] = useState<Order | null>(null);
   const [selectedInvoiceOrder, setSelectedInvoiceOrder] = useState<Order | null>(null);
   const [isInvoiceModalOpen, setIsInvoiceModalOpen] = useState(false);
   const [rtoReason, setRtoReason] = useState('Customer refused delivery / Fake address at doorstep');
+  const [stockEdits, setStockEdits] = useState<Record<string, number>>({});
+  const [savedStockMsg, setSavedStockMsg] = useState('');
 
   useEffect(() => {
     setOrders(getOrders());
     setRtoBlacklist(getRtoBlacklist());
+    const loadedProducts = getProducts();
+    setProducts(loadedProducts);
+
+    const initialEdits: Record<string, number> = {};
+    loadedProducts.forEach(p => {
+      initialEdits[p.id] = p.stock_quantity ?? 0;
+    });
+    setStockEdits(initialEdits);
   }, []);
 
   const handleMarkAsRto = (order: Order) => {
@@ -70,6 +82,14 @@ export default function AdminOrdersPage() {
     document.body.removeChild(a);
   };
 
+  const handleSaveStock = (productId: string) => {
+    const newQty = stockEdits[productId] ?? 0;
+    const updated = updateProductStock(productId, newQty);
+    setProducts(updated);
+    setSavedStockMsg(`Stock updated successfully. Product is now ${newQty === 0 ? 'OUT OF STOCK' : 'IN STOCK (' + newQty + ' units)'}.`);
+    setTimeout(() => setSavedStockMsg(''), 3000);
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 font-sans">
       {/* Header */}
@@ -81,7 +101,7 @@ export default function AdminOrdersPage() {
             </span>
             <span className="text-xs font-bold text-slate-500">Revdi Bazar, Kalupur, Ahmedabad</span>
           </div>
-          <h1 className="text-3xl font-black text-slate-900 mt-1">Order Fulfillment & MyBillBook Invoicing</h1>
+          <h1 className="text-3xl font-black text-slate-900 mt-1">Order Fulfillment & MyBillBook Inventory Sync</h1>
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
@@ -101,8 +121,15 @@ export default function AdminOrdersPage() {
         </div>
       </div>
 
+      {savedStockMsg && (
+        <div className="mb-6 bg-emerald-50 border border-emerald-200 p-4 rounded-2xl text-xs font-bold text-emerald-800 flex items-center gap-2 shadow-sm animate-fade-in">
+          <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+          <span>{savedStockMsg}</span>
+        </div>
+      )}
+
       {/* Navigation Tabs */}
-      <div className="flex bg-slate-100 p-1.5 rounded-2xl border border-slate-200 mb-8 w-fit">
+      <div className="flex flex-wrap bg-slate-100 p-1.5 rounded-2xl border border-slate-200 mb-8 w-fit gap-1">
         <button
           onClick={() => setActiveTab('ORDERS')}
           className={`min-h-[44px] px-6 text-xs font-black rounded-xl transition-all ${
@@ -113,6 +140,18 @@ export default function AdminOrdersPage() {
         >
           Customer Orders ({orders.length})
         </button>
+
+        <button
+          onClick={() => setActiveTab('INVENTORY')}
+          className={`min-h-[44px] px-6 text-xs font-black rounded-xl transition-all flex items-center gap-2 ${
+            activeTab === 'INVENTORY'
+              ? 'bg-blue-700 text-white shadow-md'
+              : 'text-slate-600 hover:text-slate-900'
+          }`}
+        >
+          <Boxes className="w-4 h-4" /> MyBillBook Stock Control ({products.length} Items)
+        </button>
+
         <button
           onClick={() => setActiveTab('RTO_BLACKLIST')}
           className={`min-h-[44px] px-6 text-xs font-black rounded-xl transition-all flex items-center gap-2 ${
@@ -227,7 +266,107 @@ export default function AdminOrdersPage() {
         </div>
       )}
 
-      {/* Tab 2: RTO Blacklist Registry */}
+      {/* Tab 2: MyBillBook Inventory Control */}
+      {activeTab === 'INVENTORY' && (
+        <div className="space-y-6">
+          <div className="bg-blue-50 border border-blue-200 p-5 rounded-3xl space-y-2 text-blue-950">
+            <div className="flex items-center justify-between">
+              <h3 className="text-base font-black flex items-center gap-2 text-blue-900">
+                <Boxes className="w-5 h-5 text-blue-700" /> MyBillBook Local Inventory Sync Engine
+              </h3>
+              <span className="bg-blue-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">
+                REALTIME OUT-OF-STOCK TOGGLE
+              </span>
+            </div>
+            <p className="text-xs font-semibold leading-relaxed">
+              When an item's stock reaches <strong>0 units</strong> in MyBillBook, it is automatically marked <strong>OUT OF STOCK</strong> on your website storefront, disabling size selection and preventing new orders.
+            </p>
+            <p className="text-[11px] text-blue-800 font-mono pt-1">
+              API Webhook Endpoint: <strong>https://bahamut.in/api/admin/mybillbook/sync</strong>
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs">
+                <thead className="bg-slate-900 text-white uppercase text-[10px] font-black tracking-widest">
+                  <tr>
+                    <th className="py-4 px-5">Product Title</th>
+                    <th className="py-4 px-5">Category & Sizing</th>
+                    <th className="py-4 px-5">Price (INR)</th>
+                    <th className="py-4 px-5">Current Stock Quantity</th>
+                    <th className="py-4 px-5">Storefront Status</th>
+                    <th className="py-4 px-5">Action</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {products.map(p => {
+                    const currentQty = stockEdits[p.id] ?? p.stock_quantity ?? 0;
+                    const isZero = currentQty === 0;
+
+                    return (
+                      <tr key={p.id} className="hover:bg-slate-50 transition-colors font-medium">
+                        <td className="py-4 px-5">
+                          <span className="font-black text-slate-900 block text-sm">{p.title}</span>
+                          <span className="text-[10px] text-slate-500 font-mono">ID: {p.id} | Slug: {p.slug}</span>
+                        </td>
+
+                        <td className="py-4 px-5">
+                          <span className="font-bold text-slate-800 block">
+                            {p.category === 'BOTTOMWEAR' ? 'Bottomwear (Numeric 28-38)' : p.category === 'SHIRT' ? 'Shirt (Numeric 38-46)' : 'Tee (Alphabetical S-XXL)'}
+                          </span>
+                          <span className="text-[10px] text-slate-500 font-medium">Sizes: {p.sizes?.join(', ')}</span>
+                        </td>
+
+                        <td className="py-4 px-5 font-black text-slate-900">
+                          ₹{p.price.toLocaleString('en-IN')}
+                        </td>
+
+                        <td className="py-4 px-5">
+                          <input
+                            type="number"
+                            min="0"
+                            value={currentQty}
+                            onChange={e => setStockEdits({ ...stockEdits, [p.id]: Math.max(0, parseInt(e.target.value) || 0) })}
+                            className={`w-24 px-3 py-1.5 text-xs font-black border rounded-xl focus:ring-2 ${
+                              isZero
+                                ? 'border-red-400 bg-red-50 text-red-700 focus:ring-red-500'
+                                : 'border-slate-300 bg-white text-slate-900 focus:ring-slate-900'
+                            }`}
+                          />
+                        </td>
+
+                        <td className="py-4 px-5">
+                          {isZero ? (
+                            <span className="bg-red-600 text-white text-[10px] font-black px-2.5 py-1 rounded-md uppercase tracking-wider flex items-center gap-1 w-fit shadow-sm">
+                              <AlertCircle className="w-3 h-3" /> OUT OF STOCK
+                            </span>
+                          ) : (
+                            <span className="bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px] font-black px-2.5 py-1 rounded-md uppercase tracking-wider flex items-center gap-1 w-fit">
+                              <CheckCircle2 className="w-3 h-3 text-emerald-600" /> IN STOCK ({currentQty} UNITS)
+                            </span>
+                          )}
+                        </td>
+
+                        <td className="py-4 px-5">
+                          <button
+                            onClick={() => handleSaveStock(p.id)}
+                            className="px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-black rounded-xl shadow-sm uppercase tracking-wider transition-all"
+                          >
+                            Save Stock
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Tab 3: RTO Blacklist Registry */}
       {activeTab === 'RTO_BLACKLIST' && (
         <div className="space-y-6">
           <div className="bg-rose-50 border border-rose-200 p-5 rounded-3xl space-y-2 text-rose-950">

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Script from 'next/script';
 import { useCart } from '@/lib/cartContext';
 import { saveOrder } from '@/lib/orders';
+import { deductStockForOrder } from '@/lib/products';
 import { PaymentType, ShippingAddress } from '@/lib/types';
 import { checkRtoRisk } from '@/lib/rtoBlacklist';
 import { ShieldCheck, Lock, AlertCircle, CheckCircle2, MapPin, ShieldAlert, CreditCard, Flame } from 'lucide-react';
@@ -203,6 +204,7 @@ export default function CheckoutPage() {
         }
 
         saveOrder(verifyData.order);
+        deductStockForOrder(cart);
         clearCart();
         router.push(`/track/${verifyData.order.order_number}`);
       };
