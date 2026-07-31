@@ -4,22 +4,20 @@ import React, { useState, useEffect, useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Filter, SlidersHorizontal, Search, RotateCcw, Sparkles, Shield, Ruler } from 'lucide-react';
 import { getProducts } from '@/lib/products';
-import { Product, Demographic, Size } from '@/lib/types';
+import { Product, Size } from '@/lib/types';
 import ProductCard from '@/components/ProductCard';
 import SizeGuideModal from '@/components/SizeGuideModal';
 
 function CatalogContent() {
   const searchParams = useSearchParams();
-  const initialDemographic = searchParams.get('demographic') as Demographic | null;
   const initialSleeve = searchParams.get('sleeve');
 
   const [products, setProducts] = useState<Product[]>([]);
-  const [selectedDemographic, setSelectedDemographic] = useState<string>(initialDemographic || 'ALL');
   const [selectedSizes, setSelectedSizes] = useState<Size[]>([]);
   const [selectedSleeve, setSelectedSleeve] = useState<string>(initialSleeve || 'ALL');
   const [selectedPattern, setSelectedPattern] = useState<string>('ALL');
   const [searchQuery, setSearchQuery] = useState('');
-  const [sortBy, setSortBy] = useState<'NEWEST' | 'PRICE_LOW' | 'PRICE_HIGH'>('NEWEST');
+  const [sortBy, setSortBy] = useState<'NEWEST' | 'PRICE_LOW' | 'PRICE_HIGH' | 'RATING'>('NEWEST');
   const [maxPrice, setMaxPrice] = useState<number>(3000);
   const [isSizeModalOpen, setIsSizeModalOpen] = useState(false);
 
@@ -34,7 +32,6 @@ function CatalogContent() {
   };
 
   const resetFilters = () => {
-    setSelectedDemographic('ALL');
     setSelectedSizes([]);
     setSelectedSleeve('ALL');
     setSelectedPattern('ALL');
@@ -46,11 +43,8 @@ function CatalogContent() {
   const filteredProducts = useMemo(() => {
     return products
       .filter(product => {
-        if (selectedDemographic !== 'ALL' && product.target_demographic !== selectedDemographic) {
-          return false;
-        }
         if (selectedSizes.length > 0) {
-          const hasMatchingSize = selectedSizes.some(s => product.sizes.includes(s));
+          const hasMatchingSize = selectedSizes.some(s => product.sizes?.includes(s));
           if (!hasMatchingSize) return false;
         }
         if (selectedSleeve !== 'ALL' && product.sleeve !== selectedSleeve) {
@@ -74,17 +68,21 @@ function CatalogContent() {
       .sort((a, b) => {
         if (sortBy === 'PRICE_LOW') return a.price - b.price;
         if (sortBy === 'PRICE_HIGH') return b.price - a.price;
+        if (sortBy === 'RATING') return (b.rating || 0) - (a.rating || 0);
         return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
       });
-  }, [products, selectedDemographic, selectedSizes, selectedSleeve, selectedPattern, maxPrice, searchQuery, sortBy]);
+  }, [products, selectedSizes, selectedSleeve, selectedPattern, maxPrice, searchQuery, sortBy]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 font-sans">
       {/* Page Header */}
       <div className="border-b border-slate-200 pb-6 mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
+          <span className="bg-slate-900 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">
+            UNIFIED COLLECTION (AGES 13–65)
+          </span>
           <h1 className="text-3xl sm:text-4xl font-black text-slate-900">
-            BahaMut Apparel Catalog
+            BahaMut Woven Cotton Catalog
           </h1>
           <p className="text-sm text-slate-600 mt-1 font-semibold">
             Direct-from-manufacturer 100% Breathable Woven Cotton shirts from Ahmedabad textile hub.
@@ -132,36 +130,10 @@ function CatalogContent() {
             </div>
           </div>
 
-          {/* Demographic Track Filter */}
-          <div>
-            <label className="block text-[11px] font-black text-slate-700 uppercase tracking-widest mb-2">
-              Demographic Track
-            </label>
-            <div className="space-y-2">
-              {[
-                { id: 'ALL', label: 'All Segments (13–65)' },
-                { id: 'YOUTH', label: 'Youth Prints (13–25)' },
-                { id: 'CLASSIC', label: 'Classic Solids (26–65)' }
-              ].map(opt => (
-                <button
-                  key={opt.id}
-                  onClick={() => setSelectedDemographic(opt.id)}
-                  className={`w-full min-h-[44px] text-left px-3.5 py-2.5 text-xs font-black rounded-xl border transition-all ${
-                    selectedDemographic === opt.id
-                      ? 'border-slate-900 bg-slate-900 text-white shadow-md'
-                      : 'border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100'
-                  }`}
-                >
-                  {opt.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
           {/* Size Filter */}
           <div>
             <label className="block text-[11px] font-black text-slate-700 uppercase tracking-widest mb-2">
-              Filter by Size
+              Filter by Size (Ages 13–65)
             </label>
             <div className="flex flex-wrap gap-2">
               {(['S', 'M', 'L', 'XL', 'XXL'] as Size[]).map(size => (
@@ -219,7 +191,7 @@ function CatalogContent() {
           {/* Top Bar Sort & Count */}
           <div className="flex flex-wrap items-center justify-between bg-white p-4 rounded-2xl border border-slate-200 shadow-sm gap-4">
             <span className="text-xs font-extrabold text-slate-700">
-              Showing <span className="text-blue-600 font-black">{filteredProducts.length}</span> apparel items
+              Showing <span className="text-blue-600 font-black">{filteredProducts.length}</span> items (Ages 13–65)
             </span>
 
             <div className="flex items-center gap-2">
@@ -230,6 +202,7 @@ function CatalogContent() {
                 className="text-xs font-black py-2 px-3 bg-white text-slate-900 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-600"
               >
                 <option value="NEWEST">Newest Arrivals</option>
+                <option value="RATING">Highest Rated ★</option>
                 <option value="PRICE_LOW">Price: Low to High</option>
                 <option value="PRICE_HIGH">Price: High to Low</option>
               </select>
@@ -248,7 +221,7 @@ function CatalogContent() {
               <SlidersHorizontal className="w-12 h-12 text-slate-400 mx-auto" />
               <h3 className="text-lg font-black text-slate-900">No matching products found</h3>
               <p className="text-xs text-slate-500 max-w-md mx-auto font-medium">
-                Try loosening your filters or resetting the demographic selection.
+                Try loosening your filters or resetting the search query.
               </p>
               <button
                 onClick={resetFilters}

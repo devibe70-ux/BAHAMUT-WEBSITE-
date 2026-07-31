@@ -1,4 +1,4 @@
-export type Demographic = 'YOUTH' | 'CLASSIC';
+export type Demographic = 'UNIFIED_13_65' | 'YOUTH' | 'CLASSIC';
 export type Size = 'S' | 'M' | 'L' | 'XL' | 'XXL';
 export type PaymentStatus = 'DEPOSIT_PAID' | 'FULLY_PAID' | 'FAILED' | 'REFUNDED';
 export type PaymentType = 'PARTIAL_COD' | 'PREPAID';
@@ -14,6 +14,9 @@ export interface Product {
   price: number;
   original_mrp: number;
   stock_quantity: number;
+  rating?: number;
+  review_count?: number;
+  express_delivery?: string;
   images: string[];
   sizes: Size[];
   pattern?: string;

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Sparkles, Shield, ArrowRight, CheckCircle2, Ruler, Truck, ShieldCheck, Flame, ChevronRight, ChevronLeft, Zap } from 'lucide-react';
+import { Sparkles, Shield, ArrowRight, CheckCircle2, Ruler, Truck, ShieldCheck, Flame, Star, ChevronRight, ChevronLeft, Zap } from 'lucide-react';
 import { getProducts } from '@/lib/products';
 import { Product } from '@/lib/types';
 import ProductCard from '@/components/ProductCard';
@@ -11,37 +11,39 @@ import SizeGuideModal from '@/components/SizeGuideModal';
 
 export default function DynamicHomepage() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [activeDemographic, setActiveDemographic] = useState<'ALL' | 'YOUTH' | 'CLASSIC'>('ALL');
   const [isSizeModalOpen, setIsSizeModalOpen] = useState(false);
   const [heroIndex, setHeroIndex] = useState(0);
 
   const heroSlides = [
     {
-      title: 'Pure Woven Cotton. Unmatched Quality.',
+      title: 'Pure Woven Cotton. Unified Ages 13–65.',
       subtitle: 'Direct-from-manufacturer 100% Breathable Woven Cotton apparel from Ahmedabad textile hub.',
       tag: 'LIVE IN BAHAMUT • AHMEDABAD MILLS',
       img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=1200&q=80',
       itemTitle: 'De Vibe Classic Woven Chambray',
       itemPrice: '₹1,299',
-      demographic: 'CLASSIC'
+      rating: 4.9,
+      reviews: 148
     },
     {
-      title: 'Youth Kinetic Streetwear Prints.',
-      subtitle: 'High-density reactive graphic prints, oversized boxy drape, 220 GSM woven cotton built for mobility.',
-      tag: 'YOUTH STREETWEAR LINE (13–25)',
+      title: 'Vanguard Streetwear & Kinetic Prints.',
+      subtitle: 'High-density reactive graphic prints, comfortable drape, 220 GSM woven cotton built for mobility.',
+      tag: 'UNIFIED 13–65 APPAREL LINE',
       img: 'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=1200&q=80',
       itemTitle: 'BahaMut Kinetic Graphic Print',
       itemPrice: '₹1,499',
-      demographic: 'YOUTH'
+      rating: 4.9,
+      reviews: 210
     },
     {
       title: 'Executive Oxford Woven Solids.',
-      subtitle: 'Refined long-staple cotton weave, structured collar stays, and superior breathability for year-round distinction.',
-      tag: 'CLASSIC EXECUTIVE LINE (26–65)',
+      subtitle: 'Refined long-staple cotton weave, structured collar stays, and superior breathability for all-age distinction.',
+      tag: 'UNIFIED 13–65 APPAREL LINE',
       img: 'https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=1200&q=80',
       itemTitle: 'De Vibe Executive Oxford Cotton',
       itemPrice: '₹1,399',
-      demographic: 'CLASSIC'
+      rating: 4.8,
+      reviews: 124
     }
   ];
 
@@ -49,18 +51,12 @@ export default function DynamicHomepage() {
     setProducts(getProducts());
   }, []);
 
-  // Autoplay hero slider every 6 seconds
   useEffect(() => {
     const timer = setInterval(() => {
       setHeroIndex(prev => (prev + 1) % heroSlides.length);
     }, 6000);
     return () => clearInterval(timer);
   }, [heroSlides.length]);
-
-  const filteredProducts = products.filter(p => {
-    if (activeDemographic === 'ALL') return true;
-    return p.target_demographic === activeDemographic;
-  });
 
   const currentHero = heroSlides[heroIndex];
 
@@ -82,33 +78,44 @@ export default function DynamicHomepage() {
               {currentHero.subtitle}
             </p>
 
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <Link
-                href="/catalog?demographic=YOUTH"
-                className="w-full sm:w-auto min-h-[56px] px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-black text-xs uppercase tracking-widest rounded-2xl shadow-xl flex items-center justify-center gap-2 transition-all active:scale-95"
-              >
-                <Sparkles className="w-4 h-4" /> Shop Youth Prints (13–25)
-              </Link>
-              <Link
-                href="/catalog?demographic=CLASSIC"
-                className="w-full sm:w-auto min-h-[56px] px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs uppercase tracking-widest rounded-2xl shadow-xl flex items-center justify-center gap-2 transition-all active:scale-95"
-              >
-                <Shield className="w-4 h-4 text-amber-300" /> Shop Classic Solids (26–65)
-              </Link>
+            {/* Amazon-style Verified Rating Social Proof */}
+            <div className="flex items-center justify-center lg:justify-start gap-3 bg-slate-800/80 backdrop-blur-md px-4 py-2.5 rounded-2xl w-fit border border-slate-700 mx-auto lg:mx-0">
+              <div className="flex items-center text-amber-400">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                ))}
+              </div>
+              <span className="text-xs font-black text-white">4.9/5 Rating</span>
+              <span className="text-xs text-slate-400 font-semibold">• 2,400+ Verified Orders</span>
             </div>
 
-            {/* Quick Guarantees & Slider Controls */}
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <Link
+                href="/catalog"
+                className="w-full sm:w-auto min-h-[56px] px-8 py-4 bg-levis-red hover:bg-rose-700 text-white font-black text-xs uppercase tracking-widest rounded-2xl shadow-xl flex items-center justify-center gap-2 transition-all active:scale-95"
+              >
+                <Sparkles className="w-4 h-4" /> Shop All Apparel (Ages 13–65)
+              </Link>
+              <button
+                onClick={() => setIsSizeModalOpen(true)}
+                className="w-full sm:w-auto min-h-[56px] px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white font-black text-xs uppercase tracking-widest rounded-2xl border border-slate-700 flex items-center justify-center gap-2 transition-all"
+              >
+                <Ruler className="w-4 h-4 text-blue-400" /> Fit Assistant Guide
+              </button>
+            </div>
+
+            {/* Quick Guarantees */}
             <div className="pt-6 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-300 font-extrabold">
               <div className="flex flex-wrap items-center gap-6">
                 <span className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" /> 100% Breathable Fabric
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" /> 100% Breathable Woven Cotton
                 </span>
                 <span className="flex items-center gap-2">
                   <Truck className="w-4 h-4 text-blue-400" /> ₹200 Partial COD Deposit
                 </span>
               </div>
 
-              {/* Slide Nav Dots */}
+              {/* Slider Dots */}
               <div className="flex items-center gap-2 mx-auto sm:mx-0">
                 {heroSlides.map((_, idx) => (
                   <button
@@ -138,13 +145,12 @@ export default function DynamicHomepage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
               <div className="absolute bottom-0 inset-x-0 p-6 text-white space-y-1.5">
                 <span className="bg-levis-red text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">
-                  Campaign Hero Piece
+                  Featured Bestseller
                 </span>
                 <h3 className="text-xl font-black">{currentHero.itemTitle}</h3>
                 <p className="text-xs text-slate-300 font-bold">{currentHero.itemPrice} • ₹200 Advance Deposit COD</p>
               </div>
 
-              {/* Next/Prev Buttons */}
               <button
                 onClick={() => setHeroIndex((heroIndex - 1 + heroSlides.length) % heroSlides.length)}
                 className="absolute left-3 top-1/2 -translate-y-1/2 min-w-[40px] min-h-[40px] bg-black/60 hover:bg-black/80 backdrop-blur-sm text-white rounded-full flex items-center justify-center p-2 opacity-80 hover:opacity-100 transition-all"
@@ -164,113 +170,97 @@ export default function DynamicHomepage() {
         </div>
       </section>
 
-      {/* Benetton Style Color-Blocked Category Section */}
+      {/* Amazon-style Category Feature Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-2">
-          <span className="text-xs font-black uppercase tracking-widest text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200">
-            UNITED COLORS OF BAHAMUT
+          <span className="text-xs font-black uppercase tracking-widest text-slate-900 bg-slate-100 px-3.5 py-1.5 rounded-full border border-slate-300">
+            BAHAMUT APPAREL CATEGORIES
           </span>
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-900">Tailored For Your Style Segment</h2>
+          <h2 className="text-3xl sm:text-4xl font-black text-slate-900">Explore Collection Highlights</h2>
           <p className="text-xs text-slate-600 font-semibold">
-            Select your demographic age track to view specialized 100% Breathable Woven Cotton lines.
+            Unified 100% Breathable Woven Cotton shirts tailored for every occasion (Ages 13–65).
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Youth Card (Benetton Vibrant Blue Block) */}
-          <div className="ucb-block-blue text-white p-8 sm:p-10 rounded-3xl relative overflow-hidden shadow-2xl flex flex-col justify-between group">
-            <div className="space-y-4 relative z-10">
-              <span className="bg-white text-blue-900 text-xs font-black px-3.5 py-1.5 rounded-full uppercase tracking-wider inline-flex items-center gap-1.5 shadow-md">
-                <Sparkles className="w-3.5 h-3.5 text-blue-600" /> Demographic Segment: 13–25
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all space-y-4 flex flex-col justify-between group">
+            <div className="space-y-3">
+              <span className="bg-blue-50 text-blue-700 text-xs font-black px-3 py-1 rounded-full uppercase border border-blue-200">
+                STREETWEAR & PRINTS
               </span>
-              <h3 className="text-3xl sm:text-4xl font-black text-white">Youth Prints & Urban Streetwear</h3>
-              <p className="text-sm text-blue-100 leading-relaxed font-medium">
-                High-density reactive graphic prints, relaxed boxy silhouettes, kinetic patterns, and 220 GSM woven cotton built for street mobility.
+              <h3 className="text-2xl font-black text-slate-900">Kinetic Street Prints</h3>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                High-density reactive graphic prints on 220 GSM woven cotton built for comfort and style across all ages.
               </p>
             </div>
-            <div className="pt-8 relative z-10">
-              <Link
-                href="/catalog?demographic=YOUTH"
-                className="min-h-[48px] inline-flex items-center gap-2 px-6 py-3.5 bg-white text-blue-950 font-black rounded-2xl text-xs uppercase tracking-wider transition-all shadow-lg group-hover:translate-x-1"
-              >
-                Shop Youth Streetwear <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+            <Link
+              href="/catalog"
+              className="inline-flex items-center gap-2 text-xs font-black text-slate-900 group-hover:text-levis-red uppercase tracking-wider pt-4"
+            >
+              Explore Streetwear <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
 
-          {/* Classic Card (Benetton Vibrant Emerald Block) */}
-          <div className="ucb-block-green text-white p-8 sm:p-10 rounded-3xl relative overflow-hidden shadow-2xl flex flex-col justify-between group">
-            <div className="space-y-4 relative z-10">
-              <span className="bg-white text-emerald-950 text-xs font-black px-3.5 py-1.5 rounded-full uppercase tracking-wider inline-flex items-center gap-1.5 shadow-md">
-                <Shield className="w-3.5 h-3.5 text-emerald-600" /> Demographic Segment: 26–65
+          <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all space-y-4 flex flex-col justify-between group">
+            <div className="space-y-3">
+              <span className="bg-emerald-50 text-emerald-800 text-xs font-black px-3 py-1 rounded-full uppercase border border-emerald-200">
+                STRUCTURED EXECUTIVE
               </span>
-              <h3 className="text-3xl sm:text-4xl font-black text-white">Classic Structured Woven Solids</h3>
-              <p className="text-sm text-emerald-100 leading-relaxed font-medium">
-                High thread-density Oxfords, crisp micro-checks, structured collars, and breathable long-staple cotton for corporate distinction.
+              <h3 className="text-2xl font-black text-slate-900">Oxford Woven Solids</h3>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                Crisp high-density Oxford weave with reinforced collars and sweat-wicking thermal ventilation.
               </p>
             </div>
-            <div className="pt-8 relative z-10">
-              <Link
-                href="/catalog?demographic=CLASSIC"
-                className="min-h-[48px] inline-flex items-center gap-2 px-6 py-3.5 bg-white text-emerald-950 font-black rounded-2xl text-xs uppercase tracking-wider transition-all shadow-lg group-hover:translate-x-1"
-              >
-                Shop Classic Solids <ArrowRight className="w-4 h-4" />
-              </Link>
+            <Link
+              href="/catalog"
+              className="inline-flex items-center gap-2 text-xs font-black text-slate-900 group-hover:text-levis-red uppercase tracking-wider pt-4"
+            >
+              Explore Oxford Solids <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all space-y-4 flex flex-col justify-between group">
+            <div className="space-y-3">
+              <span className="bg-amber-50 text-amber-800 text-xs font-black px-3 py-1 rounded-full uppercase border border-amber-200">
+                RESORT & CASUAL
+              </span>
+              <h3 className="text-2xl font-black text-slate-900">Tropics Cuban Shirts</h3>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                Effortless Cuban collar designs with hand-cut botanical patterns for sunny outdoor occasions.
+              </p>
             </div>
+            <Link
+              href="/catalog"
+              className="inline-flex items-center gap-2 text-xs font-black text-slate-900 group-hover:text-levis-red uppercase tracking-wider pt-4"
+            >
+              Explore Cuban Shirts <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Featured Catalog Grid & Filters */}
+      {/* Main Catalog Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-10 border-b border-slate-200 pb-6">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between border-b border-slate-200 pb-6 mb-10 gap-4">
           <div>
             <h2 className="text-2xl sm:text-3xl font-black text-slate-900 flex items-center gap-2">
-              <Flame className="w-6 h-6 text-levis-red" /> Direct Mill Cotton Catalog
+              <Flame className="w-6 h-6 text-levis-red" /> Ahmedabad Mill Direct Collection (Ages 13–65)
             </h2>
             <p className="text-xs text-slate-600 mt-1 font-semibold">
               Explore 100% Breathable Woven Cotton apparel with ₹200 Partial COD deposit option.
             </p>
           </div>
 
-          {/* Demographic Tab Filters */}
-          <div className="flex bg-slate-100 p-1.5 rounded-2xl border border-slate-200">
-            <button
-              onClick={() => setActiveDemographic('ALL')}
-              className={`min-h-[44px] px-4 text-xs font-black rounded-xl transition-all ${
-                activeDemographic === 'ALL'
-                  ? 'bg-slate-900 text-white shadow-md'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              All Shirts ({products.length})
-            </button>
-            <button
-              onClick={() => setActiveDemographic('YOUTH')}
-              className={`min-h-[44px] px-4 text-xs font-black rounded-xl transition-all ${
-                activeDemographic === 'YOUTH'
-                  ? 'bg-blue-600 text-white shadow-md'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              Youth (13–25)
-            </button>
-            <button
-              onClick={() => setActiveDemographic('CLASSIC')}
-              className={`min-h-[44px] px-4 text-xs font-black rounded-xl transition-all ${
-                activeDemographic === 'CLASSIC'
-                  ? 'bg-emerald-600 text-white shadow-md'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              Classic (26–65)
-            </button>
-          </div>
+          <Link
+            href="/catalog"
+            className="min-h-[48px] px-6 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-md flex items-center gap-2 transition-all w-fit"
+          >
+            View Full Catalog ({products.length} items) <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
 
-        {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProducts.map(product => (
+          {products.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

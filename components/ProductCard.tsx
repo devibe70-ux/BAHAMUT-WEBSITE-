@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ShoppingBag, Sparkles, Shield, Check, Flame } from 'lucide-react';
+import { ShoppingBag, Star, Check, Flame, ShieldCheck, Truck, Zap } from 'lucide-react';
 import { Product, Size } from '@/lib/types';
 import { useCart } from '@/lib/cartContext';
 
@@ -13,7 +13,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
-  const safeSizes: Size[] = (product.sizes && product.sizes.length > 0) ? product.sizes : ['S', 'M', 'L', 'XL'];
+  const safeSizes: Size[] = (product.sizes && product.sizes.length > 0) ? product.sizes : ['S', 'M', 'L', 'XL', 'XXL'];
   const safeImages: string[] = (product.images && product.images.length > 0)
     ? product.images
     : ['https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=800&q=80'];
@@ -24,6 +24,8 @@ export default function ProductCard({ product }: ProductCardProps) {
   const price = product.price || 1299;
   const originalMrp = product.original_mrp || Math.round(price * 1.8);
   const discountPercent = Math.max(0, Math.round(((originalMrp - price) / originalMrp) * 100));
+  const rating = product.rating || 4.8;
+  const reviewCount = product.review_count || 148;
 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -34,8 +36,8 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <div className="group card-clean rounded-3xl overflow-hidden transition-all duration-300 flex flex-col font-sans relative">
-      {/* Product Image & Badges */}
+    <div className="group card-clean rounded-3xl overflow-hidden transition-all duration-300 flex flex-col font-sans relative border border-slate-200 shadow-sm hover:shadow-xl">
+      {/* Product Image & Levi's + Amazon Badges */}
       <Link href={`/product/${product.slug}`} className="relative block aspect-[4/5] bg-slate-100 overflow-hidden">
         <Image
           src={safeImages[0]}
@@ -47,17 +49,11 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {/* Top Badges */}
         <div className="absolute top-3.5 left-3.5 flex flex-col gap-1.5 z-10">
-          {product.target_demographic === 'YOUTH' ? (
-            <span className="bg-blue-600 text-white text-[10px] font-black px-3 py-1 rounded-full shadow-md flex items-center gap-1 uppercase tracking-wider">
-              <Sparkles className="w-3 h-3" /> YOUTH (13–25)
-            </span>
-          ) : (
-            <span className="bg-emerald-700 text-white text-[10px] font-black px-3 py-1 rounded-full shadow-md flex items-center gap-1 uppercase tracking-wider">
-              <Shield className="w-3 h-3 text-amber-300" /> CLASSIC (26–65)
-            </span>
-          )}
+          <span className="bg-slate-900 text-white text-[10px] font-black px-3 py-1 rounded-full shadow-md flex items-center gap-1 uppercase tracking-wider">
+            <ShieldCheck className="w-3 h-3 text-emerald-400" /> AGES 13–65 UNIFIED
+          </span>
 
-          <span className="bg-white/90 backdrop-blur-sm text-slate-800 text-[10px] font-extrabold px-2.5 py-0.5 rounded-md border border-slate-300 shadow-sm w-fit">
+          <span className="bg-white/95 backdrop-blur-sm text-slate-900 text-[10px] font-extrabold px-2.5 py-0.5 rounded-md border border-slate-300 shadow-sm w-fit">
             100% Woven Cotton
           </span>
         </div>
@@ -73,8 +69,15 @@ export default function ProductCard({ product }: ProductCardProps) {
       {/* Details Container */}
       <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
         <div>
-          <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-1">
-            {product.pattern || product.fabric_details || '100% Breathable Woven Cotton'}
+          {/* Amazon-style Rating Stars */}
+          <div className="flex items-center gap-1.5 mb-1.5">
+            <div className="flex items-center text-amber-500">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+              ))}
+            </div>
+            <span className="text-xs font-black text-slate-800">{rating}</span>
+            <span className="text-[11px] text-slate-500 font-semibold">({reviewCount})</span>
           </div>
 
           <Link href={`/product/${product.slug}`}>
@@ -83,7 +86,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             </h3>
           </Link>
 
-          {/* Pricing */}
+          {/* Pricing Row */}
           <div className="flex items-baseline gap-2.5 mt-3">
             <span className="text-2xl font-black text-slate-900">
               ₹{price.toLocaleString('en-IN')}
@@ -96,8 +99,14 @@ export default function ProductCard({ product }: ProductCardProps) {
             </span>
           </div>
 
+          {/* Amazon-style Delivery Callout */}
+          <div className="mt-2.5 text-[11px] font-extrabold text-emerald-800 bg-emerald-50/80 px-3 py-1.5 rounded-xl border border-emerald-200 flex items-center gap-1.5">
+            <Truck className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+            <span>FREE Express Delivery by Tomorrow</span>
+          </div>
+
           {/* Partial COD Callout */}
-          <div className="mt-2.5 text-[11px] font-bold text-slate-700 bg-blue-50 px-3 py-1.5 rounded-xl border border-blue-200 flex items-center justify-between">
+          <div className="mt-2 text-[11px] font-bold text-slate-700 bg-blue-50 px-3 py-1.5 rounded-xl border border-blue-200 flex items-center justify-between">
             <span>Partial COD Deposit:</span>
             <span className="font-black text-blue-700">₹200 Advance</span>
           </div>
@@ -106,7 +115,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         {/* Size Selection Row */}
         <div>
           <div className="flex items-center justify-between text-[11px] font-extrabold text-slate-700 uppercase tracking-wider mb-2">
-            <span>Select Size:</span>
+            <span>Select Size (13–65 Fit):</span>
             <span className="text-[10px] text-slate-500 font-semibold">Standard Fit</span>
           </div>
           <div className="flex flex-wrap gap-1.5">
