@@ -15,7 +15,7 @@ export const INITIAL_ORDERS: Order[] = [
       street: 'Flat 402, Navrangpura Heights, CG Road',
       city: 'Ahmedabad',
       state: 'Gujarat',
-      pincode: '380009'
+      pincode: '380015'
     },
     payment_status: 'DEPOSIT_PAID',
     payment_type: 'PARTIAL_COD',

@@ -95,7 +95,7 @@ export default function GSTInvoiceModal({ order, isOpen, onClose }: GSTInvoiceMo
                 <span className="text-xs font-extrabold bg-slate-100 px-2 py-0.5 rounded border border-slate-300">by De Vibe</span>
               </div>
               <p className="font-extrabold text-slate-800">De Vibe Apparel Fulfillment Hub</p>
-              <p className="text-slate-600">Revdi Bazar, Kalupur, Ahmedabad, Gujarat - 380002</p>
+              <p className="text-slate-600">Revdi Bazar, Kalupur, Ahmedabad, Gujarat - 380015</p>
               <p className="text-slate-600">GSTIN: <strong className="font-black text-slate-900">24AAAAA0000A1Z5</strong></p>
               <p className="text-slate-600">Support Email: support@devibe.in | Mobile: +91 98765 43210</p>
             </div>

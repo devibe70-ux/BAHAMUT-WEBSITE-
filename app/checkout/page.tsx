@@ -91,7 +91,7 @@ export default function CheckoutPage() {
     if (!cleanDigits) return { valid: false, msg: '6-digit Indian PIN code is required' };
     const pinRegex = /^[1-9][0-9]{5}$/;
     if (!pinRegex.test(cleanDigits)) {
-      return { valid: false, msg: 'Indian PIN code must be exactly 6 digits (e.g. 380009)' };
+      return { valid: false, msg: 'Indian PIN code must be exactly 6 digits (e.g. 380015)' };
     }
     return { valid: true, msg: 'Valid 6-digit PIN code' };
   };
@@ -484,7 +484,7 @@ export default function CheckoutPage() {
                   value={shippingAddress.pincode}
                   onChange={handleChange}
                   onBlur={() => handleBlur('pincode')}
-                  placeholder="380009"
+                  placeholder="380015"
                   className={`w-full min-h-[48px] px-3.5 text-xs font-semibold border rounded-xl focus:ring-2 ${
                     touched.pincode && !pinVal.valid
                       ? 'border-rose-400 bg-rose-50/50 focus:ring-rose-500'
