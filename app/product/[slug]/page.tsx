@@ -301,7 +301,11 @@ export default function ProductDetailPage() {
         </button>
       </div>
 
-      <SizeGuideModal isOpen={isSizeModalOpen} onClose={() => setIsSizeModalOpen(false)} />
+      <SizeGuideModal
+        isOpen={isSizeModalOpen}
+        onClose={() => setIsSizeModalOpen(false)}
+        initialCategory={product.category}
+      />
     </div>
   );
 }

@@ -3,9 +3,10 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ShoppingBag, Star, Check, ShieldCheck, Truck, AlertCircle } from 'lucide-react';
+import { ShoppingBag, Star, Check, ShieldCheck, Truck, AlertCircle, Ruler } from 'lucide-react';
 import { Product, Size } from '@/lib/types';
 import { useCart } from '@/lib/cartContext';
+import SizeGuideModal from '@/components/SizeGuideModal';
 
 interface ProductCardProps {
   product: Product;
@@ -13,6 +14,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
+  const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
 
   const isOutOfStock = product.stock_quantity === 0;
 
@@ -44,6 +46,12 @@ export default function ProductCard({ product }: ProductCardProps) {
     setTimeout(() => setAdded(false), 2000);
   };
 
+  const handleOpenSizeGuide = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsSizeGuideOpen(true);
+  };
+
   return (
     <div className={`group card-clean rounded-3xl overflow-hidden transition-all duration-300 flex flex-col font-sans relative border shadow-sm ${
       isOutOfStock ? 'border-red-200 bg-red-50/10 opacity-90' : 'border-slate-200 hover:shadow-xl'
@@ -64,7 +72,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="absolute top-3.5 left-3.5 flex flex-col gap-1.5 z-10">
           {isOutOfStock ? (
             <span className="bg-red-600 text-white text-[11px] font-black px-3.5 py-1 rounded-full shadow-lg flex items-center gap-1.5 uppercase tracking-wider animate-pulse">
-              <AlertCircle className="w-3.5 h-3.5" /> OUT OF STOCK (MYBILLBOOK SYNC)
+              <AlertCircle className="w-3.5 h-3.5" /> OUT OF STOCK
             </span>
           ) : (
             <span className="bg-slate-900 text-white text-[10px] font-black px-3 py-1 rounded-full shadow-md flex items-center gap-1 uppercase tracking-wider">
@@ -145,9 +153,13 @@ export default function ProductCard({ product }: ProductCardProps) {
             <span>
               {isNumericCategory ? (product.category === 'BOTTOMWEAR' ? 'Numeric Waist Size:' : 'Numeric Shirt Size:') : 'Alphabetical Size:'}
             </span>
-            <span className="text-[10px] text-blue-700 font-black">
-              {isNumericCategory ? 'Numeric Standard' : 'Alphabetical'}
-            </span>
+            <button
+              type="button"
+              onClick={handleOpenSizeGuide}
+              className="text-[11px] text-blue-700 hover:underline font-black flex items-center gap-1"
+            >
+              <Ruler className="w-3.5 h-3.5" /> Size Guide
+            </button>
           </div>
           <div className="flex flex-wrap gap-1.5">
             {safeSizes.map(size => (
@@ -197,6 +209,12 @@ export default function ProductCard({ product }: ProductCardProps) {
           )}
         </button>
       </div>
+
+      <SizeGuideModal
+        isOpen={isSizeGuideOpen}
+        onClose={() => setIsSizeGuideOpen(false)}
+        initialCategory={product.category}
+      />
     </div>
   );
 }

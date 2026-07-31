@@ -1,23 +1,47 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Ruler, CheckCircle2, Shield } from 'lucide-react';
+import { ProductCategory } from '@/lib/types';
 
 interface SizeGuideModalProps {
   isOpen: boolean;
   onClose: () => void;
+  initialCategory?: ProductCategory;
 }
 
-export default function SizeGuideModal({ isOpen, onClose }: SizeGuideModalProps) {
+export default function SizeGuideModal({ isOpen, onClose, initialCategory }: SizeGuideModalProps) {
   const [tab, setTab] = useState<'SHIRT' | 'BOTTOMWEAR' | 'TEE'>('SHIRT');
+
+  useEffect(() => {
+    if (initialCategory) {
+      setTab(initialCategory);
+    }
+  }, [initialCategory, isOpen]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm animate-fade-in font-sans">
-      <div className="bg-white w-full max-w-2xl rounded-3xl border border-slate-200 shadow-2xl overflow-hidden space-y-6">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm animate-fade-in font-sans"
+    >
+      <div
+        onClick={e => e.stopPropagation()}
+        className="bg-white w-full max-w-2xl rounded-3xl border border-slate-200 shadow-2xl overflow-hidden space-y-6 max-h-[90vh] overflow-y-auto"
+      >
         {/* Header */}
-        <div className="p-6 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800">
+        <div className="p-6 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800 sticky top-0 z-10">
           <div className="flex items-center gap-2.5">
             <div className="p-2 bg-levis-red text-white rounded-xl">
               <Ruler className="w-5 h-5" />
@@ -31,7 +55,7 @@ export default function SizeGuideModal({ isOpen, onClose }: SizeGuideModalProps)
           </div>
           <button
             onClick={onClose}
-            className="p-2 text-slate-400 hover:text-white rounded-full hover:bg-slate-800 transition-all"
+            className="min-h-[44px] min-w-[44px] flex items-center justify-center text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-full transition-all border border-slate-700"
             aria-label="Close size guide"
           >
             <X className="w-5 h-5" />
@@ -97,7 +121,6 @@ export default function SizeGuideModal({ isOpen, onClose }: SizeGuideModalProps)
                     <tr><td className="px-4 py-3 font-black text-slate-900">38</td><td className="px-4 py-3">38" - 39"</td><td className="px-4 py-3">15.0"</td><td className="px-4 py-3">17.5"</td></tr>
                     <tr><td className="px-4 py-3 font-black text-slate-900">40</td><td className="px-4 py-3">40" - 41"</td><td className="px-4 py-3">15.5"</td><td className="px-4 py-3">18.0"</td></tr>
                     <tr><td className="px-4 py-3 font-black text-slate-900">42</td><td className="px-4 py-3">42" - 43"</td><td className="px-4 py-3">16.0"</td><td className="px-4 py-3">18.5"</td></tr>
-                    <tr><td className="px-4 py-3 font-black text-slate-900">44</td><td className="px-4 py-3">44" - 45"</td><td className="px-4 py-3">16.5"</td><td className="px-4 py-3">19.0"</td></tr>
                     <tr><td className="px-4 py-3 font-black text-slate-900">46</td><td className="px-4 py-3">46" - 47"</td><td className="px-4 py-3">17.0"</td><td className="px-4 py-3">19.5"</td></tr>
                   </tbody>
                 </table>
@@ -163,11 +186,19 @@ export default function SizeGuideModal({ isOpen, onClose }: SizeGuideModalProps)
           )}
 
           {/* Guarantee Note */}
-          <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex items-center gap-3 text-xs text-slate-700 font-semibold">
-            <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-            <span>
-              All BahaMut garments are pre-shrunk at Ahmedabad mills to ensure 100% size retention after washing.
-            </span>
+          <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex items-center justify-between gap-3 text-xs text-slate-700 font-semibold">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+              <span>Pre-shrunk at Ahmedabad mills to ensure 100% size retention after washing.</span>
+            </div>
+
+            {/* Bottom Close Button */}
+            <button
+              onClick={onClose}
+              className="min-h-[40px] px-5 bg-slate-900 hover:bg-slate-800 text-white font-black text-xs rounded-xl shadow-md uppercase tracking-wider flex items-center gap-1.5 transition-all flex-shrink-0"
+            >
+              <X className="w-4 h-4" /> Close Guide
+            </button>
           </div>
         </div>
       </div>
