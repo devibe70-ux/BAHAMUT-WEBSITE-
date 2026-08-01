@@ -4,7 +4,7 @@ export const INITIAL_PRODUCTS: Product[] = [
   {
     id: 'prod-001',
     slug: 'ahmedabad-woven-chambray-navy',
-    title: 'De Vibe Classic Chambray Shirt - Deep Navy (Ages 13–65)',
+    title: 'De Vibe Classic Chambray Shirt - Deep Navy',
     category: 'SHIRT',
     description:
       'Direct-from-manufacturer 100% Breathable Woven Cotton crafted in Ahmedabad. ' +
@@ -33,7 +33,7 @@ export const INITIAL_PRODUCTS: Product[] = [
   {
     id: 'prod-002',
     slug: 'cyber-street-graffiti-oversized-tee',
-    title: 'BahaMut Kinetic Graphic Oversized Tee - Acid Black (Ages 13–65)',
+    title: 'BahaMut Kinetic Graphic Oversized Tee - Acid Black',
     category: 'TEE',
     description:
       'Expressive kinetic print graphic tee featuring high-density reactive printing on premium ' +
@@ -61,7 +61,7 @@ export const INITIAL_PRODUCTS: Product[] = [
   {
     id: 'prod-003',
     slug: 'textured-oxford-solid-khaki',
-    title: 'De Vibe Executive Oxford Cotton Shirt - Pure Khaki (Ages 13–65)',
+    title: 'De Vibe Executive Oxford Cotton Shirt - Pure Khaki',
     category: 'SHIRT',
     description:
       'Refined weave with high thread density. Tailored for comfort across hot and humid climates. ' +
@@ -89,7 +89,7 @@ export const INITIAL_PRODUCTS: Product[] = [
   {
     id: 'prod-004',
     slug: 'woven-cotton-trousers-chino-olive',
-    title: 'De Vibe Ahmedabad Woven Cotton Chino Trousers - Olive Green (Ages 13–65)',
+    title: 'De Vibe Ahmedabad Woven Cotton Chino Trousers - Olive Green',
     category: 'BOTTOMWEAR',
     description:
       'Direct-from-mill 100% Woven Cotton Chino Trousers. Durable stretch waistband, ' +
@@ -117,7 +117,7 @@ export const INITIAL_PRODUCTS: Product[] = [
   {
     id: 'prod-005',
     slug: 'neo-tokyo-botanical-cuban-shirt',
-    title: 'BahaMut Tropics Resort Cuban Shirt - Emerald Wave (Ages 13–65)',
+    title: 'BahaMut Tropics Resort Cuban Shirt - Emerald Wave',
     category: 'SHIRT',
     description:
       'Cuban collar relaxed style with hand-cut botanical prints on pure breathable ' +
@@ -145,7 +145,7 @@ export const INITIAL_PRODUCTS: Product[] = [
   {
     id: 'prod-006',
     slug: 'woven-cotton-denim-jeans-indigo',
-    title: 'De Vibe Raw Indigo Woven Denim Jeans - Classic Straight (Ages 13–65)',
+    title: 'De Vibe Raw Indigo Woven Denim Jeans - Classic Straight',
     category: 'BOTTOMWEAR',
     description:
       'Heavyweight 100% Woven Cotton Raw Indigo Denim Jeans. Reinforced rivets, ' +
@@ -173,7 +173,7 @@ export const INITIAL_PRODUCTS: Product[] = [
   {
     id: 'prod-007',
     slug: 'vanguard-streetwear-oversized-tee-slate',
-    title: 'BahaMut Monolith Heavyweight Graphic Tee - Slate Charcoal (Ages 13–65)',
+    title: 'BahaMut Monolith Heavyweight Graphic Tee - Slate Charcoal',
     category: 'TEE',
     description:
       'Heavyweight 240 GSM organic cotton tee with minimalist high-density chest typography. ' +
@@ -202,7 +202,7 @@ export const INITIAL_PRODUCTS: Product[] = [
 
 export function getProducts(): Product[] {
   if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('bahamut_products_v5');
+    const saved = localStorage.getItem('bahamut_products_v6');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -228,7 +228,7 @@ export function saveProduct(product: Product): Product[] {
     updated = [product, ...current];
   }
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_products_v5', JSON.stringify(updated));
+    localStorage.setItem('bahamut_products_v6', JSON.stringify(updated));
   }
   return updated;
 }
@@ -248,7 +248,7 @@ export function deductStockForOrder(items: CartItem[]): Product[] {
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_products_v5', JSON.stringify(products));
+    localStorage.setItem('bahamut_products_v6', JSON.stringify(products));
   }
   return products;
 }
@@ -263,7 +263,7 @@ export function updateProductStock(idOrSlug: string, newStock: number): Product[
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_products_v5', JSON.stringify(products));
+    localStorage.setItem('bahamut_products_v6', JSON.stringify(updated));
   }
   return updated;
 }

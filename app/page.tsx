@@ -16,7 +16,7 @@ export default function DynamicHomepage() {
 
   const heroSlides = [
     {
-      title: 'Pure Woven Cotton. Unified Ages 13–65.',
+      title: 'Pure Woven Cotton.',
       subtitle: 'Direct-from-manufacturer 100% Breathable Woven Cotton apparel from Ahmedabad textile hub.',
       tag: 'LIVE IN BAHAMUT • AHMEDABAD MILLS',
       img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=1200&q=80',
@@ -28,7 +28,7 @@ export default function DynamicHomepage() {
     {
       title: 'Vanguard Streetwear & Kinetic Prints.',
       subtitle: 'High-density reactive graphic prints, comfortable drape, 220 GSM woven cotton built for mobility.',
-      tag: 'UNIFIED 13–65 APPAREL LINE',
+      tag: 'UNIFIED APPAREL LINE',
       img: 'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=1200&q=80',
       itemTitle: 'BahaMut Kinetic Graphic Print',
       itemPrice: '₹1,499',
@@ -38,7 +38,7 @@ export default function DynamicHomepage() {
     {
       title: 'Executive Oxford Woven Solids.',
       subtitle: 'Refined long-staple cotton weave, structured collar stays, and superior breathability for all-age distinction.',
-      tag: 'UNIFIED 13–65 APPAREL LINE',
+      tag: 'UNIFIED APPAREL LINE',
       img: 'https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=1200&q=80',
       itemTitle: 'De Vibe Executive Oxford Cotton',
       itemPrice: '₹1,399',
@@ -94,7 +94,7 @@ export default function DynamicHomepage() {
                 href="/catalog"
                 className="w-full sm:w-auto min-h-[56px] px-8 py-4 bg-levis-red hover:bg-rose-700 text-white font-black text-xs uppercase tracking-widest rounded-2xl shadow-xl flex items-center justify-center gap-2 transition-all active:scale-95"
               >
-                <Sparkles className="w-4 h-4" /> Shop All Apparel (Ages 13–65)
+                <Sparkles className="w-4 h-4" /> Shop All Apparel
               </Link>
               <button
                 onClick={() => setIsSizeModalOpen(true)}
@@ -178,7 +178,7 @@ export default function DynamicHomepage() {
           </span>
           <h2 className="text-3xl sm:text-4xl font-black text-slate-900">Explore Collection Highlights</h2>
           <p className="text-xs text-slate-600 font-semibold">
-            Unified 100% Breathable Woven Cotton shirts tailored for every occasion (Ages 13–65).
+            Unified 100% Breathable Woven Cotton shirts tailored for every occasion.
           </p>
         </div>
 
@@ -244,7 +244,7 @@ export default function DynamicHomepage() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between border-b border-slate-200 pb-6 mb-10 gap-4">
           <div>
             <h2 className="text-2xl sm:text-3xl font-black text-slate-900 flex items-center gap-2">
-              <Flame className="w-6 h-6 text-levis-red" /> Ahmedabad Mill Direct Collection (Ages 13–65)
+              <Flame className="w-6 h-6 text-levis-red" /> Ahmedabad Mill Direct Collection
             </h2>
             <p className="text-xs text-slate-600 mt-1 font-semibold">
               Explore 100% Breathable Woven Cotton apparel with ₹200 Partial COD deposit option.
