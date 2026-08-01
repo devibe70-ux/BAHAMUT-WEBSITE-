@@ -15,7 +15,7 @@ export default function TermsPage() {
           <ArrowLeft className="w-4 h-4" /> Back to Home
         </Link>
         <h1 className="text-3xl sm:text-4xl font-black text-slate-900 flex items-center gap-3">
-          <FileText className="w-8 h-8 text-levis-red" /> Terms & Conditions
+          <FileText className="w-8 h-8 text-devibe-red" /> Terms & Conditions
         </h1>
         <p className="text-xs text-slate-500 font-bold mt-2">
           Effective Date: August 1, 2026 | Legal Entity: De Vibe Apparel Hub, Ahmedabad, Gujarat

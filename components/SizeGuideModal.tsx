@@ -65,7 +65,7 @@ export default function SizeGuideModal({ isOpen, onClose, initialCategory }: Siz
         {/* Sticky Header with Red Close Button */}
         <div className="p-4 sm:p-6 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800 shrink-0">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-levis-red text-white rounded-xl flex-shrink-0">
+            <div className="p-2 bg-devibe-red text-white rounded-xl flex-shrink-0">
               <Ruler className="w-5 h-5" />
             </div>
             <div>
@@ -82,7 +82,7 @@ export default function SizeGuideModal({ isOpen, onClose, initialCategory }: Siz
           <button
             onClick={handleClose}
             type="button"
-            className="min-h-[48px] px-4 bg-levis-red hover:bg-rose-700 text-white font-black text-xs rounded-2xl shadow-lg flex items-center gap-2 transition-all active:scale-95 border border-red-400"
+            className="min-h-[48px] px-4 bg-devibe-red hover:bg-rose-700 text-white font-black text-xs rounded-2xl shadow-lg flex items-center gap-2 transition-all active:scale-95 border border-red-400"
             aria-label="Close size guide modal"
           >
             <X className="w-5 h-5" />

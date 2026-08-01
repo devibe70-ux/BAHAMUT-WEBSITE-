@@ -306,7 +306,7 @@ export default function CheckoutPage() {
         <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
           <div className="flex items-center justify-between border-b border-slate-100 pb-4">
             <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">
-              <MapPin className="w-5 h-5 text-levis-red" /> 1. Shipping & Customer Details
+              <MapPin className="w-5 h-5 text-devibe-red" /> 1. Shipping & Customer Details
             </h3>
             <span className="text-[11px] font-black text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
               Address Verification Active
@@ -520,7 +520,7 @@ export default function CheckoutPage() {
                 rtoRisk.isBlacklisted
                   ? 'border-slate-200 bg-slate-100/70 opacity-60 cursor-not-allowed'
                   : isPartialCod
-                  ? 'border-levis-red bg-rose-50/60 shadow-sm cursor-pointer'
+                  ? 'border-devibe-red bg-rose-50/60 shadow-sm cursor-pointer'
                   : 'border-slate-200 bg-slate-50 hover:border-slate-300 cursor-pointer'
               }`}
             >
@@ -532,14 +532,14 @@ export default function CheckoutPage() {
                     disabled={rtoRisk.isBlacklisted}
                     checked={isPartialCod && !rtoRisk.isBlacklisted}
                     onChange={() => setPaymentType('PARTIAL_COD')}
-                    className="accent-levis-red w-4 h-4"
+                    className="accent-devibe-red w-4 h-4"
                   />
                   <span className="font-black text-sm text-slate-900">Partial COD (₹200 Deposit)</span>
                 </div>
                 {rtoRisk.isBlacklisted ? (
                   <span className="bg-amber-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase">RESTRICTED</span>
                 ) : (
-                  <span className="bg-levis-red text-white text-[10px] font-black px-2 py-0.5 rounded uppercase">RECOMMENDED</span>
+                  <span className="bg-devibe-red text-white text-[10px] font-black px-2 py-0.5 rounded uppercase">RECOMMENDED</span>
                 )}
               </div>
               <p className="text-xs text-slate-600 mt-2 leading-relaxed pl-6 font-medium">
@@ -559,7 +559,7 @@ export default function CheckoutPage() {
               onClick={() => setPaymentType('PREPAID')}
               className={`p-4 rounded-2xl border-2 cursor-pointer transition-all ${
                 !isPartialCod || rtoRisk.isBlacklisted
-                  ? 'border-levis-red bg-rose-50/60 shadow-sm'
+                  ? 'border-devibe-red bg-rose-50/60 shadow-sm'
                   : 'border-slate-200 bg-slate-50 hover:border-slate-300'
               }`}
             >
@@ -570,7 +570,7 @@ export default function CheckoutPage() {
                     name="paymentType"
                     checked={!isPartialCod || rtoRisk.isBlacklisted}
                     onChange={() => setPaymentType('PREPAID')}
-                    className="accent-levis-red w-4 h-4"
+                    className="accent-devibe-red w-4 h-4"
                   />
                   <span className="font-black text-sm text-slate-900">Full Prepaid Option</span>
                 </div>
@@ -598,7 +598,7 @@ export default function CheckoutPage() {
             )}
             <div className="flex justify-between border-t border-slate-200 pt-2 font-bold text-sm text-slate-900">
               <span>Payable Now via Razorpay:</span>
-              <span className="text-levis-red font-black text-lg">
+              <span className="text-devibe-red font-black text-lg">
                 ₹{(rtoRisk.isBlacklisted ? totalAmount : advanceAmountToPay).toLocaleString('en-IN')}
               </span>
             </div>
@@ -611,7 +611,7 @@ export default function CheckoutPage() {
             className={`w-full min-h-[52px] font-black text-xs uppercase tracking-wider rounded-2xl shadow-xl flex items-center justify-center gap-2 transition-all ${
               loading || (touched.pincode && !isFormValid)
                 ? 'bg-slate-400 text-white cursor-not-allowed'
-                : 'bg-levis-red hover:bg-rose-700 text-white active:scale-95'
+                : 'bg-devibe-red hover:bg-rose-700 text-white active:scale-95'
             }`}
           >
             {loading ? (

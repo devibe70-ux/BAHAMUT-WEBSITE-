@@ -64,7 +64,7 @@ export default function CartPage() {
                   </div>
                   <button
                     onClick={() => removeFromCart(item.product.id, item.selectedSize)}
-                    className="min-w-[40px] min-h-[40px] text-slate-400 hover:text-levis-red p-2 rounded-xl flex items-center justify-center transition-colors"
+                    className="min-w-[40px] min-h-[40px] text-slate-400 hover:text-devibe-red p-2 rounded-xl flex items-center justify-center transition-colors"
                     title="Remove item"
                   >
                     <Trash2 className="w-5 h-5" />

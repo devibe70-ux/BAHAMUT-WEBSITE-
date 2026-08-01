@@ -69,7 +69,7 @@ export default function NewProductAiPage() {
         </div>
         <h1 className="text-3xl font-black text-white tracking-tight">AI Product Publisher</h1>
         <p className="text-xs text-slate-300 leading-relaxed font-medium">
-          Provide basic garment inputs. Our AI engine auto-generates Levi's & UCB style titles, fabric descriptions, size matrixes, and demographic badges tailored for BahaMut by De Vibe.
+          Provide basic garment inputs. Our AI engine auto-generates De Vibe master mill titles, fabric descriptions, size matrixes, and demographic badges tailored for BahaMut by De Vibe.
         </p>
       </div>
 

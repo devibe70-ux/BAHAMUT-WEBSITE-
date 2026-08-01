@@ -25,7 +25,7 @@ export default function ContactPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
           <div className="flex items-center gap-3 text-slate-900 font-black text-base border-b border-slate-100 pb-3">
-            <MapPin className="w-5 h-5 text-levis-red" /> Merchant Registered Physical Address
+            <MapPin className="w-5 h-5 text-devibe-red" /> Merchant Registered Physical Address
           </div>
           <div className="text-xs text-slate-600 space-y-1 font-medium">
             <p className="font-bold text-slate-900">De Vibe Apparel Fulfillment Hub</p>

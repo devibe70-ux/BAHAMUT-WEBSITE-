@@ -116,13 +116,13 @@ export default function ProductDetailPage() {
               priority
               className="object-cover object-top"
             />
-            {/* Flipkart Assured Style Tag */}
+            {/* De Vibe Assured Tag */}
             <div className="absolute top-4 left-4 bg-slate-900 text-white text-[10px] font-black px-3.5 py-1.5 rounded-full uppercase tracking-widest shadow-lg border border-slate-700 flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-emerald-400" /> DE VIBE ASSURED
             </div>
 
             {discountPercent > 0 && (
-              <span className="absolute top-4 right-4 bg-levis-red text-white text-xs font-black px-3 py-1.5 rounded-xl shadow-lg border border-red-400">
+              <span className="absolute top-4 right-4 bg-devibe-red text-white text-xs font-black px-3 py-1.5 rounded-xl shadow-lg border border-red-400">
                 {discountPercent}% OFF
               </span>
             )}
@@ -166,7 +166,7 @@ export default function ProductDetailPage() {
             </p>
           </div>
 
-          {/* Pricing Box (Amazon/Flipkart Style) */}
+          {/* Pricing Box */}
           <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
             <div className="flex items-baseline gap-3">
               <span className="text-3xl font-black text-slate-900">
@@ -180,7 +180,7 @@ export default function ProductDetailPage() {
               </span>
             </div>
 
-            {/* Flipkart Style Bank Offers & Perks */}
+            {/* Available Offers & Perks */}
             <div className="space-y-2 pt-2 border-t border-slate-200">
               <span className="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center gap-1">
                 <Tag className="w-4 h-4 text-emerald-600" /> Available Offers & Perks:
@@ -192,17 +192,17 @@ export default function ProductDetailPage() {
                 </p>
                 <p className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
-                  <strong>Instant Discount:</strong> Extra 5% Instant Off on Razorpay Full Prepaid checkout.
+                  <strong>Instant Discount:</strong> Extra 5% Instant Cashback on Razorpay UPI / All Bank Cards.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Amazon-Style Delivery Pincode Checker */}
+          {/* Delivery Pincode Checker */}
           <div className="bg-white p-5 rounded-3xl border border-slate-200 space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
-                <MapPin className="w-4 h-4 text-levis-red" /> Delivery & Service Availability:
+                <MapPin className="w-4 h-4 text-devibe-red" /> Delivery & Service Availability:
               </span>
               <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
                 Express Dispatch
@@ -293,13 +293,13 @@ export default function ProductDetailPage() {
 
             <button
               onClick={handleBuyNow}
-              className="min-h-[56px] px-6 py-4 bg-levis-red hover:bg-rose-700 text-white font-black text-xs uppercase tracking-wider rounded-2xl shadow-xl flex items-center justify-center gap-2 transition-all active:scale-95"
+              className="min-h-[56px] px-6 py-4 bg-devibe-red hover:bg-rose-700 text-white font-black text-xs uppercase tracking-wider rounded-2xl shadow-xl flex items-center justify-center gap-2 transition-all active:scale-95"
             >
               Buy Now (Partial COD)
             </button>
           </div>
 
-          {/* Product Specifications Table (Flipkart Style) */}
+          {/* Product Specifications Table */}
           <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
             <h4 className="font-black text-sm text-slate-900 border-b border-slate-100 pb-3">Product Specifications & Fabric Details</h4>
             <div className="grid grid-cols-2 gap-3 text-xs">

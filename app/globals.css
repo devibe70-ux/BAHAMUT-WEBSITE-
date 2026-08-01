@@ -19,8 +19,8 @@
   }
 }
 
-/* Levi's Red Tab Badge */
-.levis-tab {
+/* De Vibe Red Tab Badge */
+.devibe-tab, .levis-tab {
   background: #E11D48;
   color: #FFFFFF;
   font-weight: 900;
@@ -28,16 +28,16 @@
   box-shadow: 0 4px 14px rgba(225, 29, 72, 0.35);
 }
 
-/* Benetton Vivid Color Block Highlights */
-.ucb-block-blue {
+/* De Vibe Mill Vivid Color Block Highlights */
+.devibe-block-blue, .ucb-block-blue {
   background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
 }
 
-.ucb-block-green {
+.devibe-block-green, .ucb-block-green {
   background: linear-gradient(135deg, #065F46 0%, #10B981 100%);
 }
 
-.ucb-block-orange {
+.devibe-block-orange, .ucb-block-orange {
   background: linear-gradient(135deg, #9A3412 0%, #F97316 100%);
 }
 

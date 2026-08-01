@@ -67,29 +67,29 @@ export default function HomePage() {
 
   return (
     <div className="space-y-10 font-sans bg-slate-50/50 pb-20">
-      {/* Flipkart Style Quick Category Circles Strip */}
+      {/* De Vibe Quick Category Circles Strip */}
       <section className="bg-white border-b border-slate-200 py-4 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-4 overflow-x-auto pb-2 scrollbar-none">
             <Link href="/catalog" className="flex flex-col items-center gap-2 group flex-shrink-0">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-slate-100 border-2 border-slate-300 group-hover:border-levis-red group-hover:scale-105 transition-all p-1 overflow-hidden shadow-sm relative">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-slate-100 border-2 border-slate-300 group-hover:border-devibe-red group-hover:scale-105 transition-all p-1 overflow-hidden shadow-sm relative">
                 <Image src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=200&q=80" alt="Shirts" fill className="object-cover rounded-full" />
               </div>
-              <span className="text-xs font-black text-slate-800 group-hover:text-levis-red">Shirts (38–46)</span>
+              <span className="text-xs font-black text-slate-800 group-hover:text-devibe-red">Shirts (38–46)</span>
             </Link>
 
             <Link href="/catalog?cat=BOTTOMWEAR" className="flex flex-col items-center gap-2 group flex-shrink-0">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-slate-100 border-2 border-slate-300 group-hover:border-levis-red group-hover:scale-105 transition-all p-1 overflow-hidden shadow-sm relative">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-slate-100 border-2 border-slate-300 group-hover:border-devibe-red group-hover:scale-105 transition-all p-1 overflow-hidden shadow-sm relative">
                 <Image src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=200&q=80" alt="Bottomwear" fill className="object-cover rounded-full" />
               </div>
-              <span className="text-xs font-black text-slate-800 group-hover:text-levis-red">Bottomwear (28–38)</span>
+              <span className="text-xs font-black text-slate-800 group-hover:text-devibe-red">Bottomwear (28–38)</span>
             </Link>
 
             <Link href="/catalog?cat=TEE" className="flex flex-col items-center gap-2 group flex-shrink-0">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-slate-100 border-2 border-slate-300 group-hover:border-levis-red group-hover:scale-105 transition-all p-1 overflow-hidden shadow-sm relative">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-slate-100 border-2 border-slate-300 group-hover:border-devibe-red group-hover:scale-105 transition-all p-1 overflow-hidden shadow-sm relative">
                 <Image src="https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=200&q=80" alt="T-Shirts" fill className="object-cover rounded-full" />
               </div>
-              <span className="text-xs font-black text-slate-800 group-hover:text-levis-red">Tees (S–XXL)</span>
+              <span className="text-xs font-black text-slate-800 group-hover:text-devibe-red">Tees (S–XXL)</span>
             </Link>
 
             <button onClick={() => setIsSizeModalOpen(true)} className="flex flex-col items-center gap-2 group flex-shrink-0">
@@ -121,7 +121,7 @@ export default function HomePage() {
         <div className="bg-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border border-slate-800">
           {/* Left Hero Details */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left z-10">
-            <div className="inline-flex items-center gap-2 bg-levis-red text-white text-xs font-black px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow-md">
+            <div className="inline-flex items-center gap-2 bg-devibe-red text-white text-xs font-black px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow-md">
               <Sparkles className="w-4 h-4 text-yellow-300" /> {currentHero.tag}
             </div>
 
@@ -136,7 +136,7 @@ export default function HomePage() {
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <Link
                 href="/catalog"
-                className="w-full sm:w-auto min-h-[56px] px-8 py-4 bg-levis-red hover:bg-rose-700 text-white font-black text-xs uppercase tracking-widest rounded-2xl shadow-xl flex items-center justify-center gap-2 transition-all active:scale-95"
+                className="w-full sm:w-auto min-h-[56px] px-8 py-4 bg-devibe-red hover:bg-rose-700 text-white font-black text-xs uppercase tracking-widest rounded-2xl shadow-xl flex items-center justify-center gap-2 transition-all active:scale-95"
               >
                 <Sparkles className="w-4 h-4" /> Shop All Apparel
               </Link>
@@ -166,7 +166,7 @@ export default function HomePage() {
                     key={idx}
                     onClick={() => setHeroIndex(idx)}
                     className={`w-3 h-3 rounded-full transition-all ${
-                      heroIndex === idx ? 'bg-levis-red w-8 shadow-md' : 'bg-slate-700 hover:bg-slate-500'
+                      heroIndex === idx ? 'bg-devibe-red w-8 shadow-md' : 'bg-slate-700 hover:bg-slate-500'
                     }`}
                     aria-label={`Go to slide ${idx + 1}`}
                   />
@@ -188,7 +188,7 @@ export default function HomePage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
               <div className="absolute bottom-0 inset-x-0 p-6 text-white space-y-1.5">
-                <span className="bg-levis-red text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">
+                <span className="bg-devibe-red text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">
                   Featured Bestseller
                 </span>
                 <h3 className="text-xl font-black">{currentHero.itemTitle}</h3>
@@ -218,7 +218,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Amazon India Style Flash Sale / Deal of the Day Box */}
+      {/* BahaMut Launch Flash Sale / Deal of the Day Box */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-gradient-to-r from-red-600 via-rose-700 to-slate-900 rounded-3xl p-6 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-red-500">
           <div className="space-y-1 text-center md:text-left">
@@ -246,7 +246,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Flipkart Style Trust Badges Grid */}
+      {/* De Vibe Trust Badges Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-3">
@@ -302,7 +302,7 @@ export default function HomePage() {
               <span className="text-xs font-bold text-slate-500">Curated Ahmedabad Collection</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-slate-900 flex items-center gap-2 mt-1">
-              <Flame className="w-6 h-6 text-levis-red" /> BahaMut Bestsellers Collection
+              <Flame className="w-6 h-6 text-devibe-red" /> BahaMut Bestsellers Collection
             </h2>
           </div>
 

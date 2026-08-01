@@ -15,11 +15,11 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md font-sans border-b border-slate-200">
-      {/* Flipkart/Amazon Style Top Offer Banner */}
+      {/* Top Offer Banner */}
       <div className="bg-slate-900 text-white text-[11px] font-bold py-1.5 px-4 flex items-center justify-between border-b border-slate-800">
         <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="bg-levis-red text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider animate-pulse flex items-center gap-1">
+            <span className="bg-devibe-red text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider animate-pulse flex items-center gap-1">
               <Flame className="w-3 h-3 text-yellow-300" /> OFFICIAL LAUNCH
             </span>
             <span className="hidden sm:inline font-semibold">
@@ -53,11 +53,11 @@ export default function Header() {
             </button>
           </div>
 
-          {/* Amazon/Flipkart Style Logo Branding */}
+          {/* Logo Branding */}
           <div className="flex items-center gap-6">
             <Link href="/" className="flex flex-col group py-1">
               <div className="flex items-center gap-2">
-                <div className="levis-tab px-3 py-1 rounded-md flex items-center group-hover:scale-105 transition-transform shadow-md">
+                <div className="devibe-tab px-3 py-1 rounded-md flex items-center group-hover:scale-105 transition-transform shadow-md">
                   <span className="text-2xl sm:text-3xl font-black tracking-tighter">BahaMut</span>
                 </div>
                 <div className="flex flex-col">
@@ -73,7 +73,7 @@ export default function Header() {
 
             {/* Pincode Selector (Desktop) */}
             <div className="hidden lg:flex items-center gap-2 p-2 hover:bg-slate-50 rounded-xl border border-transparent hover:border-slate-200 cursor-pointer transition-all">
-              <MapPin className="w-5 h-5 text-levis-red shrink-0" />
+              <MapPin className="w-5 h-5 text-devibe-red shrink-0" />
               <div className="text-left text-xs leading-tight">
                 <span className="text-slate-400 block text-[10px] font-bold">Deliver to</span>
                 <span className="font-black text-slate-900">Ahmedabad 380015</span>
@@ -81,7 +81,7 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Amazon-Style Search Bar (Desktop & Tablet) */}
+          {/* Search Bar (Desktop & Tablet) */}
           <div className="hidden md:flex flex-1 max-w-xl mx-4">
             <div className="relative w-full flex items-center">
               <select
@@ -116,7 +116,7 @@ export default function Header() {
             {/* Fit Assistant Button */}
             <button
               onClick={() => setIsSizeModalOpen(true)}
-              className="hidden sm:flex min-h-[44px] px-3.5 py-2 rounded-xl text-xs font-black text-slate-800 hover:text-levis-red hover:bg-slate-100 items-center gap-1.5 transition-all border border-slate-200"
+              className="hidden sm:flex min-h-[44px] px-3.5 py-2 rounded-xl text-xs font-black text-slate-800 hover:text-devibe-red hover:bg-slate-100 items-center gap-1.5 transition-all border border-slate-200"
             >
               <Ruler className="w-4 h-4 text-blue-600" />
               <span>Fit Guide</span>
@@ -125,13 +125,13 @@ export default function Header() {
             {/* Shopping Bag Button with Badge */}
             <Link
               href="/cart"
-              className="min-w-[44px] min-h-[44px] px-3 py-2 relative text-slate-900 hover:text-levis-red rounded-xl hover:bg-slate-100 flex items-center gap-2 transition-all border border-slate-200"
+              className="min-w-[44px] min-h-[44px] px-3 py-2 relative text-slate-900 hover:text-devibe-red rounded-xl hover:bg-slate-100 flex items-center gap-2 transition-all border border-slate-200"
               aria-label="View Cart"
             >
               <div className="relative">
                 <ShoppingBag className="w-6 h-6" />
                 {itemCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-levis-red text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-md animate-bounce">
+                  <span className="absolute -top-2 -right-2 bg-devibe-red text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-md animate-bounce">
                     {itemCount}
                   </span>
                 )}
@@ -150,22 +150,22 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Secondary Sub-Header Navigation Bar (Flipkart Style) */}
+        {/* Secondary Sub-Header Navigation Bar */}
         <nav className="hidden md:flex items-center justify-between py-2.5 border-t border-slate-100 text-xs font-extrabold text-slate-800">
           <div className="flex items-center gap-6">
-            <Link href="/catalog" className="flex items-center gap-1.5 text-slate-900 hover:text-levis-red font-black">
+            <Link href="/catalog" className="flex items-center gap-1.5 text-slate-900 hover:text-devibe-red font-black">
               <Sparkles className="w-4 h-4 text-blue-600" /> All Categories
             </Link>
-            <Link href="/catalog?cat=SHIRT" className="hover:text-levis-red transition-colors">
+            <Link href="/catalog?cat=SHIRT" className="hover:text-devibe-red transition-colors">
               👔 Shirts (Numeric 38–46)
             </Link>
-            <Link href="/catalog?cat=BOTTOMWEAR" className="hover:text-levis-red transition-colors">
+            <Link href="/catalog?cat=BOTTOMWEAR" className="hover:text-devibe-red transition-colors">
               👖 Bottomwear (Numeric 28–38)
             </Link>
-            <Link href="/catalog?cat=TEE" className="hover:text-levis-red transition-colors">
+            <Link href="/catalog?cat=TEE" className="hover:text-devibe-red transition-colors">
               👕 T-Shirts (Alphabetical S–XXL)
             </Link>
-            <Link href="/track/BM-2026-1001" className="hover:text-levis-red transition-colors flex items-center gap-1">
+            <Link href="/track/BM-2026-1001" className="hover:text-devibe-red transition-colors flex items-center gap-1">
               🚚 Track Shipment
             </Link>
           </div>

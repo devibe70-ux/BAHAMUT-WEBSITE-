@@ -15,7 +15,7 @@ export default function ShippingPolicyPage() {
           <ArrowLeft className="w-4 h-4" /> Back to Home
         </Link>
         <h1 className="text-3xl sm:text-4xl font-black text-slate-900 flex items-center gap-3">
-          <Truck className="w-8 h-8 text-levis-red" /> Shipping & Delivery Policy
+          <Truck className="w-8 h-8 text-devibe-red" /> Shipping & Delivery Policy
         </h1>
         <p className="text-xs text-slate-500 font-bold mt-2">
           Effective Date: August 1, 2026 | De Vibe Ahmedabad Fulfillment Center

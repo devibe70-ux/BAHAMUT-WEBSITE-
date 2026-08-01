@@ -76,7 +76,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {discountPercent > 0 && (
           <div className="absolute top-3 right-3 z-10">
-            <span className="bg-levis-red text-white text-[11px] font-black px-2.5 py-1 rounded-xl shadow border border-red-400">
+            <span className="bg-devibe-red text-white text-[11px] font-black px-2.5 py-1 rounded-xl shadow border border-red-400">
               {discountPercent}% OFF
             </span>
           </div>
@@ -108,7 +108,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
           {/* Title */}
           <Link href={`/product/${encodeURIComponent(product.slug)}`}>
-            <h3 className="font-extrabold text-sm text-slate-900 line-clamp-2 hover:text-levis-red transition-colors">
+            <h3 className="font-extrabold text-sm text-slate-900 line-clamp-2 hover:text-devibe-red transition-colors">
               {product.title}
             </h3>
           </Link>
