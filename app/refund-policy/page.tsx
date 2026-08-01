@@ -34,90 +34,14 @@ export default function RefundPolicyPage() {
           </p>
         </div>
 
-        {/* User-Requested Exact Statutory Indian Legal Clauses Banner */}
-        <section className="bg-slate-950 text-white p-6 sm:p-8 rounded-3xl border-2 border-rose-600 space-y-5 shadow-2xl">
-          <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-            <Gavel className="w-8 h-8 text-rose-500 flex-shrink-0" />
-            <div>
-              <h2 className="text-lg sm:text-xl font-black text-white uppercase tracking-wide">
-                STATUTORY CRIMINAL CLAUSES & LEGAL PENALTIES (INDIAN PENAL LAW)
-              </h2>
-              <p className="text-xs text-rose-400 font-bold">
-                Explicit Statutory Warning for Return Fraud, Swapping & Used Apparel Theft
-              </p>
-            </div>
+        {/* Compact Statutory Legal Notice */}
+        <section className="bg-slate-900 text-white p-5 rounded-2xl border border-slate-800 space-y-2">
+          <div className="flex items-center gap-2 text-rose-400 font-black text-xs uppercase tracking-wider">
+            <Gavel className="w-4 h-4 text-rose-500" /> STATUTORY LEGAL NOTICE (INDIAN PENAL LAW)
           </div>
-
           <p className="text-xs text-slate-300 font-medium leading-relaxed">
-            De Vibe enforces zero tolerance against e-commerce return fraud. Any customer attempting to swap products, return used/washed apparel, return fake/counterfeit items, or claim fraudulent refunds will be prosecuted under the following statutory provisions of Indian Law:
+            De Vibe enforces zero tolerance against return theft, product swapping, or returning used/washed apparel. Any fraudulent refund claims or fake product returns will be prosecuted under <strong>BNS § 318 / IPC § 420 (Cheating)</strong>, <strong>BNS § 316 / IPC § 406 (Criminal Breach of Trust)</strong>, <strong>BNS § 349 (Counterfeit Goods)</strong>, and <strong>IT Act § 66D (Cyber Fraud)</strong>. All unboxing video footage (recorded under HD CCTV per Indian Evidence Act § 65B) will be submitted to the Cyber Crime Cell and local police authorities to file a formal FIR.
           </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-            {/* Clause 1: BNS Section 318 / IPC 420 */}
-            <div className="bg-slate-900 p-4 rounded-2xl border border-rose-900/50 space-y-1.5">
-              <span className="bg-rose-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase">
-                BNS § 318 / IPC § 420
-              </span>
-              <h3 className="font-black text-rose-300 text-sm">Cheating & Dishonest Inducement</h3>
-              <p className="text-slate-300 font-medium leading-normal">
-                Inducing De Vibe to process a refund by deceit, fake return, or product swap is a non-bailable cognizable offence.
-              </p>
-              <p className="text-amber-400 font-bold text-[11px]">
-                ⚖️ Penalty: Imprisonment up to 7 Years + Heavy Monetary Fine.
-              </p>
-            </div>
-
-            {/* Clause 2: BNS Section 316 / IPC 406 */}
-            <div className="bg-slate-900 p-4 rounded-2xl border border-rose-900/50 space-y-1.5">
-              <span className="bg-rose-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase">
-                BNS § 316 / IPC § 406
-              </span>
-              <h3 className="font-black text-rose-300 text-sm">Criminal Breach of Trust</h3>
-              <p className="text-slate-300 font-medium leading-normal">
-                Misappropriating or withholding original goods delivered for inspection and returning empty or fake packages.
-              </p>
-              <p className="text-amber-400 font-bold text-[11px]">
-                ⚖️ Penalty: Imprisonment up to 5 Years + Fine.
-              </p>
-            </div>
-
-            {/* Clause 3: BNS Section 349 */}
-            <div className="bg-slate-900 p-4 rounded-2xl border border-rose-900/50 space-y-1.5">
-              <span className="bg-rose-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase">
-                BNS § 349
-              </span>
-              <h3 className="font-black text-rose-300 text-sm">Selling / Swapping Counterfeit Goods</h3>
-              <p className="text-slate-300 font-medium leading-normal">
-                Returning counterfeit, fake, or non-De Vibe branded merchandise in place of original mill cotton items.
-              </p>
-              <p className="text-amber-400 font-bold text-[11px]">
-                ⚖️ Penalty: Imprisonment up to 3 Years + Fine.
-              </p>
-            </div>
-
-            {/* Clause 4: IT Act Section 66D */}
-            <div className="bg-slate-900 p-4 rounded-2xl border border-rose-900/50 space-y-1.5">
-              <span className="bg-rose-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase">
-                IT ACT § 66D
-              </span>
-              <h3 className="font-black text-rose-300 text-sm">Cyber Cheating by Personation</h3>
-              <p className="text-slate-300 font-medium leading-normal">
-                Using digital computer networks or online payment gateways to commit online return fraud or identity spoofing.
-              </p>
-              <p className="text-amber-400 font-bold text-[11px]">
-                ⚖️ Penalty: Imprisonment up to 3 Years + ₹1,00,000 Fine.
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-rose-950/80 p-4 rounded-2xl border border-rose-800 text-xs text-rose-200 space-y-2 font-medium">
-            <p className="flex items-center gap-1.5 font-bold text-rose-100 text-sm">
-              <Video className="w-4 h-4 text-rose-400" /> Digital Forensic Evidence Protocol (Indian Evidence Act § 65B):
-            </p>
-            <p>
-              Every returned parcel unboxing is recorded under HD CCTV with AWB tracking barcode matching. In cases of return theft or product swapping, unboxing video footage, IP addresses, phone records, and shipping manifests will be submitted directly to the <strong>National Cyber Crime Reporting Portal (cybercrime.gov.in)</strong> and the <strong>Ahmedabad Police Station</strong> to file a formal FIR.
-            </p>
-          </div>
         </section>
 
         <section className="space-y-2">
