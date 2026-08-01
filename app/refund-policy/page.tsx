@@ -1,10 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
-import { RefreshCw, ArrowLeft, CheckCircle2, ShieldAlert, AlertTriangle, Scale } from 'lucide-react';
+import { RefreshCw, ArrowLeft, CheckCircle2, ShieldAlert, AlertTriangle, Scale, Gavel, Video } from 'lucide-react';
 
 export const metadata = {
   title: 'Refund, Return & Cancellation Policy | BahaMut by De Vibe',
-  description: 'Refund, Return and Cancellation Policy including anti-fraud and anti-tampering terms for BahaMut by De Vibe.'
+  description: 'Refund, Return and Cancellation Policy including statutory Indian Criminal Law provisions (BNS 318, 316, 349 & IT Act 66D).'
 };
 
 export default function RefundPolicyPage() {
@@ -30,9 +30,95 @@ export default function RefundPolicyPage() {
             STRICT ZERO-TOLERANCE ANTI-FRAUD & RETURN INTEGRITY NOTICE
           </div>
           <p className="text-xs text-rose-900 font-bold leading-relaxed">
-            All returned parcels undergo 3-tier inspection and unboxing video verification at our central hub in Ahmedabad. Returning used items, altered garments, counterfeit products, or swapped items is strictly prohibited and constitutes criminal offence under Indian Law.
+            All returned parcels undergo mandatory 3-tier HD CCTV unboxing video recording at our central hub in Ahmedabad (`380015`). Returning used items, altered garments, counterfeit products, or swapped items is strictly prohibited and constitutes criminal offences under Indian Law.
           </p>
         </div>
+
+        {/* User-Requested Exact Statutory Indian Legal Clauses Banner */}
+        <section className="bg-slate-950 text-white p-6 sm:p-8 rounded-3xl border-2 border-rose-600 space-y-5 shadow-2xl">
+          <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+            <Gavel className="w-8 h-8 text-rose-500 flex-shrink-0" />
+            <div>
+              <h2 className="text-lg sm:text-xl font-black text-white uppercase tracking-wide">
+                STATUTORY CRIMINAL CLAUSES & LEGAL PENALTIES (INDIAN PENAL LAW)
+              </h2>
+              <p className="text-xs text-rose-400 font-bold">
+                Explicit Statutory Warning for Return Fraud, Swapping & Used Apparel Theft
+              </p>
+            </div>
+          </div>
+
+          <p className="text-xs text-slate-300 font-medium leading-relaxed">
+            De Vibe enforces zero tolerance against e-commerce return fraud. Any customer attempting to swap products, return used/washed apparel, return fake/counterfeit items, or claim fraudulent refunds will be prosecuted under the following statutory provisions of Indian Law:
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            {/* Clause 1: BNS Section 318 / IPC 420 */}
+            <div className="bg-slate-900 p-4 rounded-2xl border border-rose-900/50 space-y-1.5">
+              <span className="bg-rose-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase">
+                BNS § 318 / IPC § 420
+              </span>
+              <h3 className="font-black text-rose-300 text-sm">Cheating & Dishonest Inducement</h3>
+              <p className="text-slate-300 font-medium leading-normal">
+                Inducing De Vibe to process a refund by deceit, fake return, or product swap is a non-bailable cognizable offence.
+              </p>
+              <p className="text-amber-400 font-bold text-[11px]">
+                ⚖️ Penalty: Imprisonment up to 7 Years + Heavy Monetary Fine.
+              </p>
+            </div>
+
+            {/* Clause 2: BNS Section 316 / IPC 406 */}
+            <div className="bg-slate-900 p-4 rounded-2xl border border-rose-900/50 space-y-1.5">
+              <span className="bg-rose-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase">
+                BNS § 316 / IPC § 406
+              </span>
+              <h3 className="font-black text-rose-300 text-sm">Criminal Breach of Trust</h3>
+              <p className="text-slate-300 font-medium leading-normal">
+                Misappropriating or withholding original goods delivered for inspection and returning empty or fake packages.
+              </p>
+              <p className="text-amber-400 font-bold text-[11px]">
+                ⚖️ Penalty: Imprisonment up to 5 Years + Fine.
+              </p>
+            </div>
+
+            {/* Clause 3: BNS Section 349 */}
+            <div className="bg-slate-900 p-4 rounded-2xl border border-rose-900/50 space-y-1.5">
+              <span className="bg-rose-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase">
+                BNS § 349
+              </span>
+              <h3 className="font-black text-rose-300 text-sm">Selling / Swapping Counterfeit Goods</h3>
+              <p className="text-slate-300 font-medium leading-normal">
+                Returning counterfeit, fake, or non-De Vibe branded merchandise in place of original mill cotton items.
+              </p>
+              <p className="text-amber-400 font-bold text-[11px]">
+                ⚖️ Penalty: Imprisonment up to 3 Years + Fine.
+              </p>
+            </div>
+
+            {/* Clause 4: IT Act Section 66D */}
+            <div className="bg-slate-900 p-4 rounded-2xl border border-rose-900/50 space-y-1.5">
+              <span className="bg-rose-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase">
+                IT ACT § 66D
+              </span>
+              <h3 className="font-black text-rose-300 text-sm">Cyber Cheating by Personation</h3>
+              <p className="text-slate-300 font-medium leading-normal">
+                Using digital computer networks or online payment gateways to commit online return fraud or identity spoofing.
+              </p>
+              <p className="text-amber-400 font-bold text-[11px]">
+                ⚖️ Penalty: Imprisonment up to 3 Years + ₹1,00,000 Fine.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-rose-950/80 p-4 rounded-2xl border border-rose-800 text-xs text-rose-200 space-y-2 font-medium">
+            <p className="flex items-center gap-1.5 font-bold text-rose-100 text-sm">
+              <Video className="w-4 h-4 text-rose-400" /> Digital Forensic Evidence Protocol (Indian Evidence Act § 65B):
+            </p>
+            <p>
+              Every returned parcel unboxing is recorded under HD CCTV with AWB tracking barcode matching. In cases of return theft or product swapping, unboxing video footage, IP addresses, phone records, and shipping manifests will be submitted directly to the <strong>National Cyber Crime Reporting Portal (cybercrime.gov.in)</strong> and the <strong>Ahmedabad Police Station</strong> to file a formal FIR.
+            </p>
+          </div>
+        </section>
 
         <section className="space-y-2">
           <h2 className="text-lg font-black text-slate-900">1. 7-Day Return & Size Exchange Eligibility</h2>
@@ -49,34 +135,11 @@ export default function RefundPolicyPage() {
           </div>
         </section>
 
-        {/* User-Requested Used Product & Fake Product Terms */}
-        <section className="space-y-3 bg-slate-900 text-white p-6 rounded-3xl border border-slate-800">
-          <h2 className="text-lg font-black text-white flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5 text-amber-400" /> 2. Strict No-Refund Policy for Used & Fake Products
-          </h2>
-
-          <div className="space-y-3 text-xs text-slate-300 font-medium leading-relaxed">
-            <div className="bg-slate-800/80 p-4 rounded-2xl border border-slate-700">
-              <h3 className="font-black text-amber-300 text-sm mb-1">A. Used, Worn, or Damaged Items = NO REFUND</h3>
-              <p>
-                If an item returned by a customer shows any signs of wear, usage, washing, body odor, perfume scents, stains, fabric alteration, or removed brand tags during quality control inspection, <strong>STRICTLY NO REFUND OR EXCHANGE WILL BE ISSUED</strong>. The damaged/used item will be rejected and re-shipped back to the buyer at the buyer&apos;s expense.
-              </p>
-            </div>
-
-            <div className="bg-rose-950/80 p-4 rounded-2xl border border-rose-800/80">
-              <h3 className="font-black text-rose-300 text-sm mb-1 flex items-center gap-1.5">
-                <Scale className="w-4 h-4 text-rose-400" /> B. Counterfeit / Fake Product Swaps = NO REFUND & IMMEDIATE LEGAL ACTION
-              </h3>
-              <p className="text-rose-100">
-                Attempting to return a non-De Vibe product, fake product, counterfeit item, or empty parcel in place of the original purchased apparel is a punishable crime. If a customer attempts a fraudulent return or product swap:
-              </p>
-              <ul className="list-disc pl-5 space-y-1 mt-2 text-rose-200 font-bold">
-                <li>Zero refund will be issued under any circumstances.</li>
-                <li>The buyer&apos;s account, phone number, and delivery address will be permanently blacklisted across all Indian logistics networks.</li>
-                <li><strong>LEGAL PROSECUTION NOTICE:</strong> De Vibe will immediately file a criminal police complaint (FIR) under IPC Sections 415/420 (Cheating & Fraud) and Information Technology Act with the Cyber Crime Cell and local authorities against the perpetrator.</li>
-              </ul>
-            </div>
-          </div>
+        <section className="space-y-2">
+          <h2 className="text-lg font-black text-slate-900">2. Strictly No Refund for Used Products</h2>
+          <p className="text-slate-600 font-medium">
+            If an item returned shows any signs of wear, usage, washing, perfume scents, stains, fabric alteration, or removed brand tags during quality control inspection, <strong>STRICTLY NO REFUND OR EXCHANGE WILL BE ISSUED</strong>. The used item will be rejected and re-shipped back to the buyer at the buyer&apos;s expense.
+          </p>
         </section>
 
         <section className="space-y-2">
