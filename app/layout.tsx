@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Plus_Jakarta_Sans, Inter } from 'next/font/google';
+import { Plus_Jakarta_Sans, Cinzel, UnifrakturMaguntia } from 'next/font/google';
 import './globals.css';
 import { CartProvider } from '@/lib/cartContext';
 import AnnouncementBar from '@/components/AnnouncementBar';
@@ -8,41 +8,49 @@ import Footer from '@/components/Footer';
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['300', '400', '500', '600', '700', '800'],
   variable: '--font-plus-jakarta',
   display: 'swap',
 });
 
-const inter = Inter({
+const cinzel = Cinzel({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
-  variable: '--font-inter',
+  weight: ['600', '700', '900'],
+  variable: '--font-cinzel',
+  display: 'swap',
+});
+
+const unifraktur = UnifrakturMaguntia({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-unifraktur',
   display: 'swap',
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://bahamut.in'),
-  title: 'BahaMut by De Vibe | 100% Breathable Woven Cotton Apparel',
+  title: 'BAHAMUT | Operated by De Vibe — Darkness Tailored (Class 25)',
   description:
-    'Direct-from-manufacturer 100% Breathable Woven Cotton apparel from Ahmedabad textile hub. Shop Youth Prints (13-25) & Classic Solids (26-65). ₹200 Partial COD available.',
+    'Luxury streetwear engineered with premium heavy-gauge textiles and mythological gothic silhouettes. Direct-from-manufacturer 100% Breathable Woven Cotton apparel.',
   keywords: [
-    'BahaMut',
+    'BAHAMUT',
     'De Vibe',
+    'Class 25 E-Commerce',
+    'Obsidian Crimson Apparel',
     'Woven Cotton Shirts',
     'Ahmedabad Textile Mills',
     'Partial COD Apparel',
-    'Youth Prints',
-    'Classic Solids'
+    'Draconic Heavyweight'
   ],
   alternates: {
     canonical: 'https://bahamut.in',
   },
   openGraph: {
-    title: 'BahaMut by De Vibe - Woven Cotton Apparel',
+    title: 'BAHAMUT | Operated by De Vibe',
     description:
-      'Direct-from-manufacturer 100% Breathable Woven Cotton apparel from Ahmedabad textile hub.',
+      'Darkness Tailored. Luxury streetwear & 100% Woven Cotton apparel engineered at Ahmedabad mills.',
     url: 'https://bahamut.in',
-    siteName: 'BahaMut by De Vibe',
+    siteName: 'BAHAMUT | Operated by De Vibe',
     locale: 'en_IN',
     type: 'website',
   },
@@ -54,8 +62,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${plusJakarta.variable} ${inter.variable} h-full`}>
-      <body className="flex flex-col min-h-screen bg-[#F8FAFC] text-slate-900 font-sans antialiased selection:bg-red-600 selection:text-white">
+    <html lang="en" className={`${plusJakarta.variable} ${cinzel.variable} ${unifraktur.variable} h-full`}>
+      <body className="flex flex-col min-h-screen bg-[#0a0a0b] text-[#ececed] font-sans antialiased selection:bg-crimson selection:text-white">
         <CartProvider>
           <AnnouncementBar />
           <Header />

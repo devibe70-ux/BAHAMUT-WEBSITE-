@@ -2,70 +2,69 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { MapPin, ShieldCheck, Truck, RefreshCw, PhoneCall, Mail, Sparkles, Flame, FileText, Lock } from 'lucide-react';
+import { MapPin, ShieldCheck, Truck, RefreshCw, PhoneCall, Mail, FileText, Lock, Gavel } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#05080F] text-slate-300 border-t border-slate-800/80 pt-16 pb-12 font-sans relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Top Trust Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-slate-800/80 text-center sm:text-left">
+    <footer className="bg-[#050507] text-[#8b8b94] border-t border-[#26262c] pt-16 pb-12 font-sans relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+        {/* Trust Pillars */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-[#26262c] text-center sm:text-left">
           <div className="flex flex-col items-center sm:items-start space-y-2.5">
-            <div className="p-3 bg-blue-500/10 text-blue-400 rounded-2xl border border-blue-500/20 shadow-md">
+            <div className="p-3 bg-[#8b0018]/20 text-[#b3001f] rounded-[2px] border border-[#8b0018]/40 shadow-md">
               <ShieldCheck className="w-6 h-6" />
             </div>
-            <h4 className="font-extrabold text-base text-white">100% Breathable Woven Cotton</h4>
+            <h4 className="font-heading text-sm text-white uppercase tracking-wider">Class 25 Registered</h4>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Direct-from-manufacturer woven cotton yarns sourced directly from Ahmedabad mills.
+              BAHAMUT Trademarked Line engineered with heavy-gauge woven cotton textiles.
             </p>
           </div>
 
           <div className="flex flex-col items-center sm:items-start space-y-2.5">
-            <div className="p-3 bg-emerald-500/10 text-emerald-400 rounded-2xl border border-emerald-500/20 shadow-md">
+            <div className="p-3 bg-emerald-500/10 text-emerald-400 rounded-[2px] border border-emerald-500/20 shadow-md">
               <Truck className="w-6 h-6" />
             </div>
-            <h4 className="font-extrabold text-base text-white">Partial COD (₹200 Deposit)</h4>
+            <h4 className="font-heading text-sm text-white uppercase tracking-wider">Partial COD Available</h4>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Pay ₹200 advance deposit securely via Razorpay; pay remaining balance at your doorstep.
+              Pay ₹200 advance deposit online; pay remaining balance at your doorstep.
             </p>
           </div>
 
           <div className="flex flex-col items-center sm:items-start space-y-2.5">
-            <div className="p-3 bg-purple-500/10 text-purple-400 rounded-2xl border border-purple-500/20 shadow-md">
+            <div className="p-3 bg-purple-500/10 text-purple-400 rounded-[2px] border border-purple-500/20 shadow-md">
               <RefreshCw className="w-6 h-6" />
             </div>
-            <h4 className="font-extrabold text-base text-white">Pre-Shrunk Fit Guarantee</h4>
+            <h4 className="font-heading text-sm text-white uppercase tracking-wider">7-Day Fit Guarantee</h4>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Interactive size assistant guide ensures accurate chest measurement before ordering.
+              Numeric & Alphabetical size assistant guide ensures pre-shrunk precision fit.
             </p>
           </div>
 
           <div className="flex flex-col items-center sm:items-start space-y-2.5">
-            <div className="p-3 bg-amber-500/10 text-amber-400 rounded-2xl border border-amber-500/20 shadow-md">
+            <div className="p-3 bg-amber-500/10 text-amber-400 rounded-[2px] border border-amber-500/20 shadow-md">
               <MapPin className="w-6 h-6" />
             </div>
-            <h4 className="font-extrabold text-base text-white">Ahmedabad Fulfillment Hub</h4>
+            <h4 className="font-heading text-sm text-white uppercase tracking-wider">Operated by De Vibe</h4>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Marketed, billed, and dispatched from Revdi Bazar, Kalupur, Ahmedabad, Gujarat - 380015.
+              Marketed, billed, and dispatched from Revdi Bazar, Kalupur, Ahmedabad - 380015.
             </p>
           </div>
         </div>
 
-        {/* Main Footer Links */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 py-12 border-b border-slate-800/80">
+        {/* Footer Navigation Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-[#26262c]">
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <span className="text-2xl font-black tracking-tight text-white">BahaMut</span>
-              <span className="text-xs font-black text-amber-400 bg-amber-400/10 px-2.5 py-0.5 rounded-full border border-amber-400/30 uppercase">
-                by De Vibe
+              <span className="font-gothic text-3xl text-white tracking-wider">
+                Baha<span className="text-[#b3001f]">mut</span>
               </span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Pioneering direct-to-consumer structured woven cotton apparel, raw indigo denim, and streetwear tees.
+              Darkness Tailored. Mythological gothic streetwear & 100% Breathable Woven Cotton apparel from Ahmedabad mills.
             </p>
-            <div className="text-xs text-slate-400 space-y-1.5 font-medium">
+            <div className="text-xs text-slate-400 space-y-1 font-medium">
               <p className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" /> De Vibe, Revdi Bazar, Kalupur, Ahmedabad, Gujarat - 380015
+                <MapPin className="w-3.5 h-3.5 text-[#b3001f] flex-shrink-0" /> De Vibe Hub, Revdi Bazar, Kalupur, Ahmedabad - 380015
               </p>
               <p className="flex items-center gap-2">
                 <PhoneCall className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" /> +91 79 2213 4099 / devibe70@gmail.com
@@ -74,15 +73,15 @@ export default function Footer() {
           </div>
 
           <div>
-            <h5 className="font-extrabold text-xs text-slate-200 uppercase tracking-widest mb-4">Shop Collections</h5>
+            <h5 className="font-heading text-xs text-white uppercase tracking-widest mb-4">Class 25 Catalog</h5>
             <ul className="space-y-2.5 text-xs text-slate-400 font-medium">
               <li>
-                <Link href="/catalog?cat=SHIRT" className="hover:text-blue-400 transition-colors">
+                <Link href="/catalog?cat=SHIRT" className="hover:text-white transition-colors">
                   Woven Cotton Shirts (Numeric 38–46)
                 </Link>
               </li>
               <li>
-                <Link href="/catalog?cat=BOTTOMWEAR" className="hover:text-emerald-400 transition-colors">
+                <Link href="/catalog?cat=BOTTOMWEAR" className="hover:text-white transition-colors">
                   Chino Trousers & Denim (Numeric 28–38)
                 </Link>
               </li>
@@ -99,9 +98,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Razorpay Mandatory Compliance Links */}
+          {/* Legal Compliance */}
           <div>
-            <h5 className="font-extrabold text-xs text-amber-400 uppercase tracking-widest mb-4">Merchant & Legal Policies</h5>
+            <h5 className="font-heading text-xs text-amber-400 uppercase tracking-widest mb-4">Merchant & Legal Policies</h5>
             <ul className="space-y-2.5 text-xs text-slate-300 font-bold">
               <li>
                 <Link href="/terms-and-conditions" className="hover:text-white transition-colors flex items-center gap-1.5">
@@ -115,7 +114,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/refund-policy" className="hover:text-white transition-colors flex items-center gap-1.5">
-                  <RefreshCw className="w-3.5 h-3.5 text-amber-400" /> Refund, Return & Cancellation
+                  <RefreshCw className="w-3.5 h-3.5 text-amber-400" /> Refund & Return Policy
                 </Link>
               </li>
               <li>
@@ -125,35 +124,32 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/contact" className="hover:text-white transition-colors flex items-center gap-1.5">
-                  <PhoneCall className="w-3.5 h-3.5 text-purple-400" /> Contact Us & Registered Address
+                  <PhoneCall className="w-3.5 h-3.5 text-purple-400" /> Contact Us & Office Address
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h5 className="font-extrabold text-xs text-slate-200 uppercase tracking-widest mb-4">Payment & Logistics</h5>
+            <h5 className="font-heading text-xs text-white uppercase tracking-widest mb-4">Fulfillment Partners</h5>
             <p className="text-xs text-slate-400 mb-4 leading-relaxed">
-              Payments are securely processed via Razorpay (UPI, Cards, NetBanking). Orders are fulfilled directly via Shipyaari & Delhivery.
+              Razorpay Secured Gateway (UPI, Cards, NetBanking). Automated invoice sync to MyBillBook app & Shipyaari logistics.
             </p>
             <div className="flex flex-wrap gap-2 text-[10px] font-black text-slate-300">
-              <span className="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800 shadow-sm text-emerald-400">RAZORPAY VERIFIED</span>
-              <span className="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800 shadow-sm">SHIPYAARI</span>
-              <span className="bg-slate-900 px-3 py-1 rounded-lg border border-slate-800 shadow-sm">MYBILLBOOK SYNC</span>
+              <span className="bg-[#121215] px-3 py-1 rounded-[2px] border border-[#26262c] text-emerald-400">RAZORPAY VERIFIED</span>
+              <span className="bg-[#121215] px-3 py-1 rounded-[2px] border border-[#26262c]">SHIPYAARI</span>
+              <span className="bg-[#121215] px-3 py-1 rounded-[2px] border border-[#26262c]">MYBILLBOOK</span>
             </div>
           </div>
         </div>
 
-        {/* Legal Line Enforcement */}
-        <div className="pt-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs font-bold text-slate-300 tracking-wide">
-            © 2026 BahaMut Apparel. Marketed, billed, and fulfilled by De Vibe. All Rights Reserved.
+        {/* Legal & Operations Footer from HTML Template */}
+        <div className="text-center space-y-2 text-xs text-slate-400">
+          <p><strong className="text-white font-heading tracking-widest">BAHAMUT</strong> is a Registered Trademark (Class 25).</p>
+          <p>Exclusively Marketed, Manufactured & Operated by <strong className="text-white">De Vibe</strong>.</p>
+          <p className="text-[11px] text-slate-500 pt-2">
+            &copy; 2026 De Vibe. All Rights Reserved. Compliant with Indian Consumer Protection (E-Commerce) Rules.
           </p>
-          <div className="flex items-center gap-4 text-xs text-slate-400 font-medium">
-            <span>https://bahamut.in</span>
-            <span>•</span>
-            <span>Revdi Bazar, Kalupur, Ahmedabad - 380015</span>
-          </div>
         </div>
       </div>
     </footer>

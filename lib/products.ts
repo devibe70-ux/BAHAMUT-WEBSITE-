@@ -2,6 +2,88 @@ import { Product, CartItem } from './types';
 
 export const INITIAL_PRODUCTS: Product[] = [
   {
+    id: 'prod-008',
+    slug: 'bahamut-draconic-heavyweight-tee',
+    title: 'Bahamut Draconic Heavyweight Tee',
+    category: 'TEE',
+    description:
+      'Class 25 Registered Trademark Line. 240 GSM French Terry Woven Cotton in Obsidian Black. ' +
+      'Engineered with mythological gothic silhouettes and reinforced collar ribbing.',
+    target_demographic: 'UNIFIED_13_65',
+    fabric_details: '240 GSM French Terry Cotton (Obsidian Black)',
+    price: 2499,
+    original_mrp: 3999,
+    stock_quantity: 50,
+    rating: 4.9,
+    review_count: 240,
+    express_delivery: 'FREE Express Delivery by Tomorrow',
+    images: [
+      'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=800&q=80'
+    ],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    pattern: 'Draconic Gothic Print',
+    fit: 'Alphabetical Heavyweight Fit',
+    sleeve: 'Half Sleeve',
+    color: 'Obsidian Black',
+    is_active: true,
+    created_at: '2026-08-01T10:00:00Z'
+  },
+  {
+    id: 'prod-009',
+    slug: 'blood-flame-oversized-hoodie',
+    title: 'Blood Flame Oversized Hoodie',
+    category: 'TEE',
+    description:
+      '400 GSM Heavy Fleece Cotton featuring custom gothic ribbing, deep crimson embroidery, and heavy-gauge warmth for winter drops.',
+    target_demographic: 'UNIFIED_13_65',
+    fabric_details: '400 GSM Heavy Fleece Cotton',
+    price: 4999,
+    original_mrp: 7999,
+    stock_quantity: 35,
+    rating: 5.0,
+    review_count: 310,
+    express_delivery: 'FREE Express Delivery by Tomorrow',
+    images: [
+      'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=800&q=80'
+    ],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    pattern: 'Blood Flame Crimson',
+    fit: 'Alphabetical Oversized Fit',
+    sleeve: 'Full Sleeve',
+    color: 'Blood Crimson & Black',
+    is_active: true,
+    created_at: '2026-08-02T10:00:00Z'
+  },
+  {
+    id: 'prod-010',
+    slug: 'tactical-multi-pocket-cargo-trousers',
+    title: 'Tactical Multi-Pocket Cargo Trousers',
+    category: 'BOTTOMWEAR',
+    description:
+      'Ripstop Cotton Trousers featuring deep gunmetal utility hardware, pre-shrunk waist fit, and 6-pocket tactical construction. Numeric waist sizes 28 to 38.',
+    target_demographic: 'UNIFIED_13_65',
+    fabric_details: 'Ripstop Heavyweight Woven Cotton',
+    price: 3899,
+    original_mrp: 5999,
+    stock_quantity: 40,
+    rating: 4.9,
+    review_count: 195,
+    express_delivery: 'FREE Express Delivery by Tomorrow',
+    images: [
+      'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80'
+    ],
+    sizes: ['28', '30', '32', '34', '36', '38'],
+    pattern: 'Tactical Ripstop Solid',
+    fit: 'Numeric Tactical Fit (28-38)',
+    sleeve: 'N/A',
+    color: 'Gunmetal Charcoal',
+    is_active: true,
+    created_at: '2026-08-03T10:00:00Z'
+  },
+  {
     id: 'prod-001',
     slug: 'ahmedabad-woven-chambray-navy',
     title: 'De Vibe Classic Chambray Shirt - Deep Navy',
@@ -202,7 +284,7 @@ export const INITIAL_PRODUCTS: Product[] = [
 
 export function getProducts(): Product[] {
   if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('bahamut_products_v6');
+    const saved = localStorage.getItem('bahamut_products_v7');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -228,7 +310,7 @@ export function saveProduct(product: Product): Product[] {
     updated = [product, ...current];
   }
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_products_v6', JSON.stringify(updated));
+    localStorage.setItem('bahamut_products_v7', JSON.stringify(updated));
   }
   return updated;
 }
@@ -248,7 +330,7 @@ export function deductStockForOrder(items: CartItem[]): Product[] {
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_products_v6', JSON.stringify(products));
+    localStorage.setItem('bahamut_products_v7', JSON.stringify(products));
   }
   return products;
 }
@@ -263,7 +345,7 @@ export function updateProductStock(idOrSlug: string, newStock: number): Product[
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_products_v6', JSON.stringify(updated));
+    localStorage.setItem('bahamut_products_v7', JSON.stringify(updated));
   }
   return updated;
 }

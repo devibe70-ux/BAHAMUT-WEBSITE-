@@ -4,53 +4,69 @@
 
 @layer base {
   :root {
-    --brand-red: #E11D48;
-    --brand-navy: #0F172A;
+    --bhm-crimson: #8b0018;
+    --bhm-crimson-bright: #b3001f;
+    --bhm-crimson-dim: rgba(139, 0, 24, 0.18);
+    --bhm-obsidian: #0a0a0b;
+    --bhm-surface-1: #121215;
+    --bhm-surface-2: #1b1b20;
+    --bhm-border: #26262c;
+
+    --bhm-text-pure: #ffffff;
+    --bhm-text-bone: #ececed;
+    --bhm-text-muted: #8b8b94;
+
+    --brand-red: #8b0018;
+    --brand-navy: #0a0a0b;
     --brand-emerald: #059669;
     --brand-yellow: #F59E0B;
   }
 
   body {
-    @apply bg-[#F8FAFC] text-slate-900 antialiased font-sans selection:bg-red-600 selection:text-white min-h-screen flex flex-col;
+    background-color: var(--bhm-obsidian);
+    color: var(--bhm-text-bone);
+    font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-black tracking-tight text-slate-900;
+    font-family: var(--font-cinzel), Georgia, serif;
+    letter-spacing: 0.08em;
   }
 }
 
-/* De Vibe Red Tab Badge */
-.devibe-tab, .levis-tab {
-  background: #E11D48;
+.font-gothic {
+  font-family: var(--font-unifraktur), var(--font-cinzel), serif;
+}
+
+.font-heading {
+  font-family: var(--font-cinzel), Georgia, serif;
+}
+
+/* De Vibe Crimson Brand Badge */
+.devibe-tab {
+  background: var(--bhm-crimson);
   color: #FFFFFF;
   font-weight: 900;
   letter-spacing: 0.05em;
-  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.35);
+  box-shadow: 0 4px 14px rgba(139, 0, 24, 0.45);
 }
 
-/* De Vibe Mill Vivid Color Block Highlights */
-.devibe-block-blue, .ucb-block-blue {
-  background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
-}
-
-.devibe-block-green, .ucb-block-green {
-  background: linear-gradient(135deg, #065F46 0%, #10B981 100%);
-}
-
-.devibe-block-orange, .ucb-block-orange {
-  background: linear-gradient(135deg, #9A3412 0%, #F97316 100%);
+.glow-crimson {
+  box-shadow: 0 0 25px rgba(139, 0, 24, 0.55);
 }
 
 /* Clean Shadows & Cards */
 .card-clean {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  background: var(--bhm-surface-1);
+  border: 1px solid var(--bhm-border);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
 }
 
 .card-clean:hover {
-  border-color: #CBD5E1;
-  box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.1);
+  border-color: var(--bhm-crimson);
+  box-shadow: 0 0 20px rgba(139, 0, 24, 0.35);
 }
 
 /* Custom Scrollbar */
@@ -60,14 +76,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #F1F5F9;
+  background: #0a0a0b;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #94A3B8;
+  background: #26262c;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #64748B;
+  background: #8b0018;
 }
