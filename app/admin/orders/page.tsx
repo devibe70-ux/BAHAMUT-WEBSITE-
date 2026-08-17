@@ -110,7 +110,7 @@ export default function AdminOrdersPage() {
             <span className="bg-slate-900 text-white text-xs font-black px-3 py-1 rounded-md uppercase">
               De Vibe Seller Portal
             </span>
-            <span className="text-xs font-bold text-slate-500">Revdi Bazar, Kalupur, Ahmedabad</span>
+            <span className="text-xs font-bold text-slate-500">Ambawadi, Ahmedabad</span>
           </div>
           <h1 className="text-3xl font-black text-slate-900 mt-1">Order Fulfillment & MyBillBook Store Sync</h1>
         </div>

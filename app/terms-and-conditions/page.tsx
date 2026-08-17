@@ -46,8 +46,8 @@ export default function TermsAndConditionsPage() {
             </h2>
             <div className="bg-[#1b1b20] p-4 rounded-[2px] border border-[#26262c] text-slate-300">
               <p className="font-bold text-white">De Vibe Apparel Hub</p>
-              <p>69, Sindhi Cloth Market, Revdi Bazar, Kalupur</p>
-              <p>Ahmedabad, Gujarat, India — PIN Code: 380015</p>
+              <p>Ambawadi, Ahmedabad</p>
+              <p>Gujarat, India — PIN Code: 380015</p>
               <p className="mt-1 text-[11px] text-[#8b8b94]">Support Email: devibe70@gmail.com | Phone: +91 79 2213 4099</p>
             </div>
           </section>

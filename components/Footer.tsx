@@ -46,7 +46,7 @@ export default function Footer() {
             </div>
             <h4 className="font-heading text-sm text-white uppercase tracking-wider">Operated by De Vibe</h4>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Marketed, billed, and dispatched from 69, Sindhi Cloth Market, Revdi Bazar, Kalupur, Ahmedabad - 380015.
+              Marketed, billed, and dispatched from Ambawadi, Ahmedabad, Gujarat - 380015.
             </p>
           </div>
         </div>
@@ -64,7 +64,7 @@ export default function Footer() {
             </p>
             <div className="text-xs text-slate-400 space-y-1 font-medium">
               <p className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#b3001f] flex-shrink-0" /> De Vibe Hub, Revdi Bazar, Kalupur, Ahmedabad - 380015
+                <MapPin className="w-3.5 h-3.5 text-[#b3001f] flex-shrink-0" /> De Vibe Hub, Ambawadi, Ahmedabad - 380015
               </p>
               <p className="flex items-center gap-2">
                 <PhoneCall className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" /> +91 79 2213 4099 / devibe70@gmail.com

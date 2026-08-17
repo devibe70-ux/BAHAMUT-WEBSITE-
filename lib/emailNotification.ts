@@ -22,7 +22,7 @@ ORDER DETAILS:
 Order Number : ${order.order_number}
 Order Date   : ${new Date(order.created_at).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
 Target Site  : https://bahamut.in
-Fulfillment  : De Vibe (Revdi Bazar, Kalupur, Ahmedabad, Gujarat)
+Fulfillment  : De Vibe (Ambawadi, Ahmedabad, Gujarat)
 
 CUSTOMER SHIPPING ADDRESS:
 --------------------------------------------------------------------------------
