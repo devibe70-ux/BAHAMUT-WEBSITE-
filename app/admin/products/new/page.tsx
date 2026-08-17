@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { saveProduct } from '@/lib/products';
 import { Product, Demographic } from '@/lib/types';
-import { Sparkles, ArrowLeft, CheckCircle2, Shield, Wand2, RefreshCw } from 'lucide-react';
+import { Sparkles, ArrowLeft, CheckCircle2, Shield, Wand2, RefreshCw, Download, Store } from 'lucide-react';
 
 export default function NewProductAiPage() {
   const router = useRouter();
@@ -16,6 +16,7 @@ export default function NewProductAiPage() {
   const [targetPrice, setTargetPrice] = useState('1299');
 
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isSyncingGoogle, setIsSyncingGoogle] = useState(false);
   const [generatedProduct, setGeneratedProduct] = useState<Product | null>(null);
 
   const handleAiGenerate = async (e: React.FormEvent) => {
@@ -46,6 +47,31 @@ export default function NewProductAiPage() {
     }
   };
 
+  const handleGoogleMerchantSync = async () => {
+    setIsSyncingGoogle(true);
+    try {
+      const res = await fetch('/api/admin/google-merchant/sync', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          merchantEmail: 'bahamut.india@gmail.com',
+          brandName: 'BahaMut by De Vibe'
+        })
+      });
+
+      const data = await res.json();
+      if (res.ok && data.products) {
+        data.products.forEach((p: Product) => saveProduct(p));
+        alert(`Successfully imported & synced ${data.synced_count} products from Google Business / Merchant profile (bahamut.india@gmail.com)!`);
+        router.push('/catalog');
+      }
+    } catch (err) {
+      alert('Google Merchant sync failed');
+    } finally {
+      setIsSyncingGoogle(false);
+    }
+  };
+
   const handlePublishProduct = () => {
     if (generatedProduct) {
       saveProduct(generatedProduct);
@@ -55,107 +81,91 @@ export default function NewProductAiPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 font-sans space-y-8">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 font-sans space-y-8 bg-[#0a0a0b] text-[#ececed] min-h-screen">
       <button
         onClick={() => router.back()}
-        className="inline-flex items-center gap-2 text-xs font-black text-slate-400 hover:text-white min-h-[44px]"
+        className="inline-flex items-center gap-2 text-xs font-heading text-[#8b8b94] hover:text-white min-h-[44px]"
       >
-        <ArrowLeft className="w-4 h-4 text-blue-400" /> Back to Dashboard
+        <ArrowLeft className="w-4 h-4 text-[#b3001f]" /> Back to Seller Dashboard
       </button>
 
-      <div className="glass-panel p-8 rounded-3xl space-y-3 border border-slate-700/80">
-        <div className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-500/30 px-3.5 py-1 rounded-full text-xs font-black text-blue-400">
-          <Sparkles className="w-4 h-4 text-blue-400" /> AI CATALOGING SUITE (&lt;60 SECONDS)
+      {/* Top Banner with Google Merchant Sync Button */}
+      <div className="bg-[#121215] p-8 rounded-[2px] border border-[#26262c] space-y-4 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="space-y-2">
+          <div className="inline-flex items-center gap-2 bg-[#8b0018] text-white px-3.5 py-1 rounded-[2px] text-xs font-heading tracking-widest uppercase">
+            <Sparkles className="w-4 h-4" /> AI CATALOGING & GOOGLE MERCHANT SYNC
+          </div>
+          <h1 className="text-3xl font-heading text-white uppercase tracking-wider">AI Product Publisher & Importer</h1>
+          <p className="text-xs text-[#8b8b94] font-medium">
+            Sync products from Google Merchant / Business profile (<strong>bahamut.india@gmail.com</strong>) or auto-generate specs.
+          </p>
         </div>
-        <h1 className="text-3xl font-black text-white tracking-tight">AI Product Publisher</h1>
-        <p className="text-xs text-slate-300 leading-relaxed font-medium">
-          Provide basic garment inputs. Our AI engine auto-generates De Vibe master mill titles, fabric descriptions, size matrixes, and demographic badges tailored for BahaMut by De Vibe.
-        </p>
+
+        <button
+          onClick={handleGoogleMerchantSync}
+          disabled={isSyncingGoogle}
+          className="min-h-[52px] px-6 py-3 bg-emerald-950 hover:bg-emerald-900 text-emerald-300 font-heading text-xs uppercase tracking-widest rounded-[2px] border border-emerald-800 flex items-center justify-center gap-2 transition-all shadow-xl"
+        >
+          <Store className="w-4 h-4 text-emerald-400" />
+          {isSyncingGoogle ? 'Syncing Google Feed...' : 'Sync Google Business Feed'}
+        </button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
         {/* Questionnaire Form */}
-        <form onSubmit={handleAiGenerate} className="md:col-span-6 glass-card p-6 sm:p-8 rounded-3xl space-y-4">
-          <h3 className="font-black text-base text-white border-b border-slate-800 pb-3">
+        <form onSubmit={handleAiGenerate} className="md:col-span-6 bg-[#121215] p-6 sm:p-8 rounded-[2px] border border-[#26262c] space-y-4 shadow-xl">
+          <h3 className="font-heading text-base text-white border-b border-[#26262c] pb-3 uppercase">
             Garment Quick Questionnaire
           </h3>
 
           <div>
-            <label className="block text-[11px] font-black text-slate-300 uppercase tracking-widest mb-1">Title Hint / Style Name</label>
+            <label className="block text-[11px] font-heading text-[#8b8b94] uppercase tracking-widest mb-1">Title Hint / Style Name</label>
             <input
               type="text"
               required
               value={titleHint}
               onChange={e => setTitleHint(e.target.value)}
               placeholder="e.g. Oxford Micro-Check"
-              className="w-full min-h-[48px] px-3.5 text-xs font-semibold bg-slate-900 text-white border border-slate-700/80 rounded-xl focus:ring-2 focus:ring-blue-500"
+              className="w-full min-h-[48px] px-3.5 text-xs font-bold bg-[#1b1b20] text-white border border-[#26262c] rounded-[2px] focus:ring-1 focus:ring-[#8b0018]"
             />
           </div>
 
           <div>
-            <label className="block text-[11px] font-black text-slate-300 uppercase tracking-widest mb-1">Target Demographic Track</label>
-            <div className="grid grid-cols-2 gap-2">
-              <button
-                type="button"
-                onClick={() => setDemographic('YOUTH')}
-                className={`min-h-[44px] text-xs font-black rounded-xl border flex items-center justify-center gap-1 transition-all ${
-                  demographic === 'YOUTH'
-                    ? 'border-blue-500 bg-blue-600/20 text-blue-400'
-                    : 'border-slate-800 bg-slate-900 text-slate-300'
-                }`}
-              >
-                <Sparkles className="w-3.5 h-3.5" /> Youth (13–25)
-              </button>
-              <button
-                type="button"
-                onClick={() => setDemographic('CLASSIC')}
-                className={`min-h-[44px] text-xs font-black rounded-xl border flex items-center justify-center gap-1 transition-all ${
-                  demographic === 'CLASSIC'
-                    ? 'border-emerald-500 bg-emerald-600/20 text-emerald-400'
-                    : 'border-slate-800 bg-slate-900 text-slate-300'
-                }`}
-              >
-                <Shield className="w-3.5 h-3.5 text-emerald-400" /> Classic (26–65)
-              </button>
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-[11px] font-black text-slate-300 uppercase tracking-widest mb-1">Weave Pattern</label>
+            <label className="block text-[11px] font-heading text-[#8b8b94] uppercase tracking-widest mb-1">Weave Pattern</label>
             <input
               type="text"
               value={pattern}
               onChange={e => setPattern(e.target.value)}
               placeholder="Solid Woven, Street Graphic, Oxford..."
-              className="w-full min-h-[48px] px-3.5 text-xs font-semibold bg-slate-900 text-white border border-slate-700/80 rounded-xl focus:ring-2 focus:ring-blue-500"
+              className="w-full min-h-[48px] px-3.5 text-xs font-bold bg-[#1b1b20] text-white border border-[#26262c] rounded-[2px] focus:ring-1 focus:ring-[#8b0018]"
             />
           </div>
 
           <div>
-            <label className="block text-[11px] font-black text-slate-300 uppercase tracking-widest mb-1">Primary Color</label>
+            <label className="block text-[11px] font-heading text-[#8b8b94] uppercase tracking-widest mb-1">Primary Color</label>
             <input
               type="text"
               value={color}
               onChange={e => setColor(e.target.value)}
               placeholder="Deep Navy, Emerald Green..."
-              className="w-full min-h-[48px] px-3.5 text-xs font-semibold bg-slate-900 text-white border border-slate-700/80 rounded-xl focus:ring-2 focus:ring-blue-500"
+              className="w-full min-h-[48px] px-3.5 text-xs font-bold bg-[#1b1b20] text-white border border-[#26262c] rounded-[2px] focus:ring-1 focus:ring-[#8b0018]"
             />
           </div>
 
           <div>
-            <label className="block text-[11px] font-black text-slate-300 uppercase tracking-widest mb-1">Selling Price (₹)</label>
+            <label className="block text-[11px] font-heading text-[#8b8b94] uppercase tracking-widest mb-1">Selling Price (₹)</label>
             <input
               type="number"
               value={targetPrice}
               onChange={e => setTargetPrice(e.target.value)}
-              className="w-full min-h-[48px] px-3.5 text-xs font-semibold bg-slate-900 text-white border border-slate-700/80 rounded-xl focus:ring-2 focus:ring-blue-500"
+              className="w-full min-h-[48px] px-3.5 text-xs font-bold bg-[#1b1b20] text-white border border-[#26262c] rounded-[2px] focus:ring-1 focus:ring-[#8b0018]"
             />
           </div>
 
           <button
             type="submit"
             disabled={isGenerating}
-            className="w-full min-h-[52px] bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-black text-xs uppercase tracking-wider rounded-2xl shadow-xl flex items-center justify-center gap-2 transition-all disabled:opacity-50 glow-blue"
+            className="w-full min-h-[52px] bg-[#8b0018] hover:bg-[#b3001f] text-white font-heading text-xs uppercase tracking-widest rounded-[2px] shadow-xl flex items-center justify-center gap-2 transition-all disabled:opacity-50 glow-crimson"
           >
             {isGenerating ? (
               <span>Generating AI Catalog Entry...</span>
@@ -170,39 +180,38 @@ export default function NewProductAiPage() {
         {/* AI Preview Box */}
         <div className="md:col-span-6 space-y-4">
           {generatedProduct ? (
-            <div className="glass-card p-6 rounded-3xl space-y-4 animate-fade-in border border-slate-700">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                <span className="text-xs font-black text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/30 flex items-center gap-1">
+            <div className="bg-[#121215] p-6 rounded-[2px] space-y-4 border border-[#8b0018] shadow-2xl">
+              <div className="flex items-center justify-between border-b border-[#26262c] pb-3">
+                <span className="text-xs font-bold text-emerald-400 bg-emerald-950 px-3 py-1 rounded border border-emerald-800 flex items-center gap-1">
                   <CheckCircle2 className="w-4 h-4" /> AI Generated Preview
                 </span>
-                <span className="text-[11px] font-bold text-slate-400">Ready in 3 seconds</span>
               </div>
 
               <div>
-                <h4 className="text-lg font-black text-white">{generatedProduct.title}</h4>
-                <p className="text-xs text-blue-400 font-extrabold mt-0.5">
-                  Demographic: {generatedProduct.target_demographic} • ₹{generatedProduct.price} (MRP: ₹{generatedProduct.original_mrp})
+                <h4 className="text-lg font-heading text-white">{generatedProduct.title}</h4>
+                <p className="text-xs text-[#b3001f] font-bold mt-0.5">
+                  ₹{generatedProduct.price} (MRP: ₹{generatedProduct.original_mrp})
                 </p>
               </div>
 
-              <div className="bg-slate-900 p-4 rounded-2xl text-xs text-slate-300 leading-relaxed space-y-2 border border-slate-800 font-medium">
-                <p><strong>Description:</strong> {generatedProduct.description}</p>
-                <p><strong>Fabric:</strong> {generatedProduct.fabric_details}</p>
-                <p><strong>Sizes Matrix:</strong> {generatedProduct.sizes.join(', ')}</p>
+              <div className="bg-[#1b1b20] p-4 rounded-[2px] text-xs text-[#8b8b94] leading-relaxed space-y-2 border border-[#26262c]">
+                <p><strong className="text-white">Description:</strong> {generatedProduct.description}</p>
+                <p><strong className="text-white">Fabric:</strong> {generatedProduct.fabric_details}</p>
+                <p><strong className="text-white">Sizes Matrix:</strong> {generatedProduct.sizes.join(', ')}</p>
               </div>
 
               <button
                 onClick={handlePublishProduct}
-                className="w-full min-h-[52px] bg-blue-600 hover:bg-blue-500 text-white font-black text-xs uppercase tracking-wider rounded-2xl shadow-xl flex items-center justify-center gap-2 transition-all active:scale-95"
+                className="w-full min-h-[52px] bg-[#8b0018] hover:bg-[#b3001f] text-white font-heading text-xs uppercase tracking-widest rounded-[2px] shadow-xl flex items-center justify-center gap-2 transition-all active:scale-95 glow-crimson"
               >
                 Publish Live to bahamut.in Catalog
               </button>
             </div>
           ) : (
-            <div className="glass-card border-2 border-dashed border-slate-800 rounded-3xl p-12 text-center text-xs text-slate-400 space-y-2">
-              <Wand2 className="w-10 h-10 text-slate-600 mx-auto" />
-              <p className="font-black text-white text-sm">No Product Generated Yet</p>
-              <p className="font-medium">Fill in the questionnaire on the left and click "Auto-Generate Catalog Specs".</p>
+            <div className="bg-[#121215] border-2 border-dashed border-[#26262c] rounded-[2px] p-12 text-center text-xs text-[#8b8b94] space-y-2">
+              <Wand2 className="w-10 h-10 text-[#8b0018] mx-auto" />
+              <p className="font-heading text-white text-sm">Google Merchant & AI Importer Active</p>
+              <p className="font-medium">Click "Sync Google Business Feed" to pull listings from bahamut.india@gmail.com.</p>
             </div>
           )}
         </div>

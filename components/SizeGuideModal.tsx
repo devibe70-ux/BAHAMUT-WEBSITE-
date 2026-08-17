@@ -1,238 +1,197 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { X, Ruler, CheckCircle2, ShieldAlert } from 'lucide-react';
-import { ProductCategory } from '@/lib/types';
+import React, { useState } from 'react';
+import { X, Ruler, Check, ShieldCheck } from 'lucide-react';
+import { Category } from '@/lib/types';
 
 interface SizeGuideModalProps {
   isOpen: boolean;
   onClose: () => void;
-  initialCategory?: ProductCategory;
+  initialCategory?: Category;
 }
 
-export default function SizeGuideModal({ isOpen, onClose, initialCategory }: SizeGuideModalProps) {
-  const [tab, setTab] = useState<'SHIRT' | 'BOTTOMWEAR' | 'TEE'>('SHIRT');
-
-  useEffect(() => {
-    if (initialCategory) {
-      setTab(initialCategory);
-    }
-  }, [initialCategory, isOpen]);
-
-  // Lock body scroll when modal is open to prevent underlying page scroll bugs
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen]);
-
-  // Escape key handler
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
-        onClose();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, onClose]);
+export default function SizeGuideModal({
+  isOpen,
+  onClose,
+  initialCategory = 'SHIRT',
+}: SizeGuideModalProps) {
+  const [activeTab, setActiveTab] = useState<'SHIRT' | 'BOTTOMWEAR' | 'TEE'>(
+    initialCategory === 'BOTTOMWEAR'
+      ? 'BOTTOMWEAR'
+      : initialCategory === 'TEE'
+      ? 'TEE'
+      : 'SHIRT'
+  );
 
   if (!isOpen) return null;
 
-  const handleClose = (e?: React.MouseEvent) => {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    onClose();
-  };
-
   return (
     <div
-      onClick={handleClose}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-slate-950/80 backdrop-blur-md animate-fade-in font-sans touch-none overflow-hidden"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in"
+      onClick={onClose}
     >
-      {/* Modal Container */}
       <div
-        onClick={e => e.stopPropagation()}
-        className="bg-white w-full max-w-2xl rounded-3xl border border-slate-300 shadow-2xl overflow-hidden space-y-0 max-h-[85vh] flex flex-col relative"
+        className="bg-[#121215] w-full max-w-2xl rounded-[4px] border border-[#8b0018] shadow-2xl overflow-hidden space-y-0 max-h-[85vh] flex flex-col relative"
+        onClick={(e) => e.stopPropagation()}
       >
-        {/* Sticky Header with Red Close Button */}
-        <div className="p-4 sm:p-6 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800 shrink-0">
+        {/* Header */}
+        <div className="p-4 sm:p-6 bg-[#0a0a0b] text-white flex items-center justify-between border-b border-[#26262c] shrink-0">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-devibe-red text-white rounded-xl flex-shrink-0">
+            <div className="p-2 bg-[#8b0018] text-white rounded-[2px] flex-shrink-0 glow-crimson">
               <Ruler className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-base sm:text-lg font-black tracking-tight text-white">
-                Official De Vibe Fit & Size Assistant
-              </h2>
-              <p className="text-[11px] text-slate-400 font-semibold hidden sm:block">
-                Numeric Shirt (38–46) • Numeric Bottomwear (28–38) • Tees (S–XXL)
+              <div className="flex items-center gap-2">
+                <h3 className="font-heading text-lg text-white">Size Assistant Guide</h3>
+                <span className="bg-[#8b0018] text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-widest">
+                  Class 25 Standard
+                </span>
+              </div>
+              <p className="text-xs text-[#8b8b94]">
+                Pre-shrunk 100% Woven Cotton fit matrix engineered at Ahmedabad mills
               </p>
             </div>
           </div>
 
-          {/* Prominent Red Close Button */}
           <button
-            onClick={handleClose}
+            onClick={onClose}
             type="button"
-            className="min-h-[48px] px-4 bg-devibe-red hover:bg-rose-700 text-white font-black text-xs rounded-2xl shadow-lg flex items-center gap-2 transition-all active:scale-95 border border-red-400"
+            className="min-h-[44px] px-4 bg-[#8b0018] hover:bg-[#b3001f] text-white font-heading text-xs rounded-[2px] shadow-lg flex items-center gap-2 transition-all"
             aria-label="Close size guide modal"
           >
             <X className="w-5 h-5" />
-            <span className="hidden sm:inline uppercase tracking-wider">Close</span>
           </button>
         </div>
 
-        {/* Scrollable Content Body */}
-        <div className="p-4 sm:p-6 space-y-6 overflow-y-auto flex-1">
-          {/* Tab Selector */}
-          <div className="grid grid-cols-3 gap-1.5 bg-slate-100 p-1.5 rounded-2xl border border-slate-200">
-            <button
-              type="button"
-              onClick={() => setTab('SHIRT')}
-              className={`py-3 px-2 text-[11px] sm:text-xs font-black rounded-xl transition-all ${
-                tab === 'SHIRT'
-                  ? 'bg-slate-900 text-white shadow-md'
-                  : 'text-slate-700 hover:text-slate-900'
-              }`}
-            >
-              Shirts (38–46)
-            </button>
+        {/* Tab Switcher */}
+        <div className="flex border-b border-[#26262c] bg-[#0a0a0b] shrink-0">
+          <button
+            type="button"
+            onClick={() => setActiveTab('SHIRT')}
+            className={`flex-1 py-3 px-4 text-xs font-heading tracking-wider uppercase border-b-2 transition-all ${
+              activeTab === 'SHIRT'
+                ? 'border-[#8b0018] text-white bg-[#121215]'
+                : 'border-transparent text-[#8b8b94] hover:text-slate-200'
+            }`}
+          >
+            👔 Shirts (38–46)
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab('BOTTOMWEAR')}
+            className={`flex-1 py-3 px-4 text-xs font-heading tracking-wider uppercase border-b-2 transition-all ${
+              activeTab === 'BOTTOMWEAR'
+                ? 'border-[#8b0018] text-white bg-[#121215]'
+                : 'border-transparent text-[#8b8b94] hover:text-slate-200'
+            }`}
+          >
+            👖 Bottomwear (28–38)
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab('TEE')}
+            className={`flex-1 py-3 px-4 text-xs font-heading tracking-wider uppercase border-b-2 transition-all ${
+              activeTab === 'TEE'
+                ? 'border-[#8b0018] text-white bg-[#121215]'
+                : 'border-transparent text-[#8b8b94] hover:text-slate-200'
+            }`}
+          >
+            👕 Tees (S–XXL)
+          </button>
+        </div>
 
-            <button
-              type="button"
-              onClick={() => setTab('BOTTOMWEAR')}
-              className={`py-3 px-2 text-[11px] sm:text-xs font-black rounded-xl transition-all ${
-                tab === 'BOTTOMWEAR'
-                  ? 'bg-slate-900 text-white shadow-md'
-                  : 'text-slate-700 hover:text-slate-900'
-              }`}
-            >
-              Bottomwear (28–38)
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setTab('TEE')}
-              className={`py-3 px-2 text-[11px] sm:text-xs font-black rounded-xl transition-all ${
-                tab === 'TEE'
-                  ? 'bg-slate-900 text-white shadow-md'
-                  : 'text-slate-700 hover:text-slate-900'
-              }`}
-            >
-              T-Shirts (S–XXL)
-            </button>
-          </div>
-
-          {/* Sizing Tables */}
-          {tab === 'SHIRT' && (
-            <div className="space-y-3 animate-fade-in">
-              <div className="flex items-center justify-between text-xs font-bold text-slate-700">
-                <span>Numeric Shirt Sizing (Indian Standard Collar/Chest)</span>
-                <span className="text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-md font-black">100% Woven Cotton</span>
+        {/* Modal Body */}
+        <div className="p-4 sm:p-6 overflow-y-auto space-y-6 text-xs text-[#ececed]">
+          {activeTab === 'SHIRT' && (
+            <div className="space-y-4">
+              <div className="bg-[#1b1b20] p-4 rounded-[2px] border border-[#26262c] flex items-center justify-between">
+                <span className="font-bold text-white uppercase tracking-wider">Shirt Sizing Standard</span>
+                <span className="text-[11px] font-extrabold text-[#b3001f] bg-[#8b0018]/20 px-2 py-0.5 rounded border border-[#8b0018]/40">
+                  Indian Collar / Chest (38 to 46)
+                </span>
               </div>
-              <div className="overflow-x-auto rounded-2xl border border-slate-200">
-                <table className="w-full text-xs text-left text-slate-800">
-                  <thead className="bg-slate-50 text-slate-900 font-black uppercase text-[11px]">
-                    <tr>
-                      <th className="px-4 py-3">Numeric Size</th>
-                      <th className="px-4 py-3">Chest (Inches)</th>
-                      <th className="px-4 py-3">Collar (Inches)</th>
-                      <th className="px-4 py-3">Shoulder (Inches)</th>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="border-b border-[#26262c] text-white font-heading">
+                      <th className="py-2.5 px-3">Numeric Size</th>
+                      <th className="py-2.5 px-3">Collar (Inches)</th>
+                      <th className="py-2.5 px-3">Chest (Inches)</th>
+                      <th className="py-2.5 px-3">Shoulder (Inches)</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-100 font-medium">
-                    <tr><td className="px-4 py-3 font-black text-slate-900">38</td><td className="px-4 py-3">38" - 39"</td><td className="px-4 py-3">15.0"</td><td className="px-4 py-3">17.5"</td></tr>
-                    <tr><td className="px-4 py-3 font-black text-slate-900">40</td><td className="px-4 py-3">40" - 41"</td><td className="px-4 py-3">15.5"</td><td className="px-4 py-3">18.0"</td></tr>
-                    <tr><td className="px-4 py-3 font-black text-slate-900">42</td><td className="px-4 py-3">42" - 43"</td><td className="px-4 py-3">16.0"</td><td className="px-4 py-3">18.5"</td></tr>
-                    <tr><td className="px-4 py-3 font-black text-slate-900">44</td><td className="px-4 py-3">44" - 45"</td><td className="px-4 py-3">16.5"</td><td className="px-4 py-3">19.0"</td></tr>
-                    <tr><td className="px-4 py-3 font-black text-slate-900">46</td><td className="px-4 py-3">46" - 47"</td><td className="px-4 py-3">17.0"</td><td className="px-4 py-3">19.5"</td></tr>
+                  <tbody className="divide-y divide-[#26262c] text-[#8b8b94]">
+                    <tr><td className="py-2 px-3 font-bold text-white">38 (M)</td><td className="py-2 px-3">15.0"</td><td className="py-2 px-3">40.0"</td><td className="py-2 px-3">17.5"</td></tr>
+                    <tr><td className="py-2 px-3 font-bold text-white">40 (L)</td><td className="py-2 px-3">15.5"</td><td className="py-2 px-3">42.0"</td><td className="py-2 px-3">18.25"</td></tr>
+                    <tr><td className="py-2 px-3 font-bold text-white">42 (XL)</td><td className="py-2 px-3">16.0"</td><td className="py-2 px-3">44.0"</td><td className="py-2 px-3">19.0"</td></tr>
+                    <tr><td className="py-2 px-3 font-bold text-white">44 (XXL)</td><td className="py-2 px-3">16.5"</td><td className="py-2 px-3">46.0"</td><td className="py-2 px-3">19.75"</td></tr>
+                    <tr><td className="py-2 px-3 font-bold text-white">46 (3XL)</td><td className="py-2 px-3">17.0"</td><td className="py-2 px-3">48.0"</td><td className="py-2 px-3">20.5"</td></tr>
                   </tbody>
                 </table>
               </div>
             </div>
           )}
 
-          {tab === 'BOTTOMWEAR' && (
-            <div className="space-y-3 animate-fade-in">
-              <div className="flex items-center justify-between text-xs font-bold text-slate-700">
-                <span>Numeric Bottomwear Sizing (Chinos & Denim Waist)</span>
-                <span className="text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-md font-black">Pre-Shrunk Denim/Twill</span>
+          {activeTab === 'BOTTOMWEAR' && (
+            <div className="space-y-4">
+              <div className="bg-[#1b1b20] p-4 rounded-[2px] border border-[#26262c] flex items-center justify-between">
+                <span className="font-bold text-white uppercase tracking-wider">Bottomwear Waist Matrix</span>
+                <span className="text-[11px] font-extrabold text-[#b3001f] bg-[#8b0018]/20 px-2 py-0.5 rounded border border-[#8b0018]/40">
+                  Numeric Waist Size (28 to 38)
+                </span>
               </div>
-              <div className="overflow-x-auto rounded-2xl border border-slate-200">
-                <table className="w-full text-xs text-left text-slate-800">
-                  <thead className="bg-slate-50 text-slate-900 font-black uppercase text-[11px]">
-                    <tr>
-                      <th className="px-4 py-3">Waist Size</th>
-                      <th className="px-4 py-3">Waist (Inches)</th>
-                      <th className="px-4 py-3">Hip (Inches)</th>
-                      <th className="px-4 py-3">Inseam Length</th>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="border-b border-[#26262c] text-white font-heading">
+                      <th className="py-2.5 px-3">Numeric Waist</th>
+                      <th className="py-2.5 px-3">Waist (Inches)</th>
+                      <th className="py-2.5 px-3">Hip (Inches)</th>
+                      <th className="py-2.5 px-3">Length (Inches)</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-100 font-medium">
-                    <tr><td className="px-4 py-3 font-black text-slate-900">28</td><td className="px-4 py-3">28" - 29"</td><td className="px-4 py-3">36"</td><td className="px-4 py-3">32"</td></tr>
-                    <tr><td className="px-4 py-3 font-black text-slate-900">30</td><td className="px-4 py-3">30" - 31"</td><td className="px-4 py-3">38"</td><td className="px-4 py-3">32"</td></tr>
-                    <tr><td className="px-4 py-3 font-black text-slate-900">32</td><td className="px-4 py-3">32" - 33"</td><td className="px-4 py-3">40"</td><td className="px-4 py-3">32"</td></tr>
-                    <tr><td className="px-4 py-3 font-black text-slate-900">34</td><td className="px-4 py-3">34" - 35"</td><td className="px-4 py-3">42"</td><td className="px-4 py-3">32"</td></tr>
-                    <tr><td className="px-4 py-3 font-black text-slate-900">36</td><td className="px-4 py-3">36" - 37"</td><td className="px-4 py-3">44"</td><td className="px-4 py-3">32"</td></tr>
-                    <tr><td className="px-4 py-3 font-black text-slate-900">38</td><td className="px-4 py-3">38" - 39"</td><td className="px-4 py-3">46"</td><td className="px-4 py-3">32"</td></tr>
+                  <tbody className="divide-y divide-[#26262c] text-[#8b8b94]">
+                    <tr><td className="py-2 px-3 font-bold text-white">28</td><td className="py-2 px-3">28.0"</td><td className="py-2 px-3">36.0"</td><td className="py-2 px-3">41.0"</td></tr>
+                    <tr><td className="py-2 px-3 font-bold text-white">30</td><td className="py-2 px-3">30.0"</td><td className="py-2 px-3">38.0"</td><td className="py-2 px-3">41.5"</td></tr>
+                    <tr><td className="py-2 px-3 font-bold text-white">32</td><td className="py-2 px-3">32.0"</td><td className="py-2 px-3">40.0"</td><td className="py-2 px-3">42.0"</td></tr>
+                    <tr><td className="py-2 px-3 font-bold text-white">34</td><td className="py-2 px-3">34.0"</td><td className="py-2 px-3">42.0"</td><td className="py-2 px-3">42.5"</td></tr>
+                    <tr><td className="py-2 px-3 font-bold text-white">36</td><td className="py-2 px-3">36.0"</td><td className="py-2 px-3">44.0"</td><td className="py-2 px-3">43.0"</td></tr>
+                    <tr><td className="py-2 px-3 font-bold text-white">38</td><td className="py-2 px-3">38.0"</td><td className="py-2 px-3">46.0"</td><td className="py-2 px-3">43.5"</td></tr>
                   </tbody>
                 </table>
               </div>
             </div>
           )}
 
-          {tab === 'TEE' && (
-            <div className="space-y-3 animate-fade-in">
-              <div className="flex items-center justify-between text-xs font-bold text-slate-700">
-                <span>Alphabetical T-Shirt Sizing (S, M, L, XL, XXL)</span>
-                <span className="text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-md font-black">Heavyweight 220 GSM</span>
+          {activeTab === 'TEE' && (
+            <div className="space-y-4">
+              <div className="bg-[#1b1b20] p-4 rounded-[2px] border border-[#26262c] flex items-center justify-between">
+                <span className="font-bold text-white uppercase tracking-wider">Heavyweight Tee Fit Matrix</span>
+                <span className="text-[11px] font-extrabold text-[#b3001f] bg-[#8b0018]/20 px-2 py-0.5 rounded border border-[#8b0018]/40">
+                  Alphabetical Sizing (S to XXL)
+                </span>
               </div>
-              <div className="overflow-x-auto rounded-2xl border border-slate-200">
-                <table className="w-full text-xs text-left text-slate-800">
-                  <thead className="bg-slate-50 text-slate-900 font-black uppercase text-[11px]">
-                    <tr>
-                      <th className="px-4 py-3">Alphabetical Size</th>
-                      <th className="px-4 py-3">Chest (Inches)</th>
-                      <th className="px-4 py-3">Body Length</th>
-                      <th className="px-4 py-3">Sleeve Length</th>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="border-b border-[#26262c] text-white font-heading">
+                      <th className="py-2.5 px-3">Size Code</th>
+                      <th className="py-2.5 px-3">Chest (Inches)</th>
+                      <th className="py-2.5 px-3">Length (Inches)</th>
+                      <th className="py-2.5 px-3">Shoulder (Inches)</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-100 font-medium">
-                    <tr><td className="px-4 py-3 font-black text-slate-900">S</td><td className="px-4 py-3">36" - 38"</td><td className="px-4 py-3">27.0"</td><td className="px-4 py-3">8.5"</td></tr>
-                    <tr><td className="px-4 py-3 font-black text-slate-900">M</td><td className="px-4 py-3">38" - 40"</td><td className="px-4 py-3">28.0"</td><td className="px-4 py-3">9.0"</td></tr>
-                    <tr><td className="px-4 py-3 font-black text-slate-900">L</td><td className="px-4 py-3">40" - 42"</td><td className="px-4 py-3">29.0"</td><td className="px-4 py-3">9.5"</td></tr>
-                    <tr><td className="px-4 py-3 font-black text-slate-900">XL</td><td className="px-4 py-3">42" - 44"</td><td className="px-4 py-3">30.0"</td><td className="px-4 py-3">10.0"</td></tr>
-                    <tr><td className="px-4 py-3 font-black text-slate-900">XXL</td><td className="px-4 py-3">44" - 46"</td><td className="px-4 py-3">31.0"</td><td className="px-4 py-3">10.5"</td></tr>
+                  <tbody className="divide-y divide-[#26262c] text-[#8b8b94]">
+                    <tr><td className="py-2 px-3 font-bold text-white">S</td><td className="py-2 px-3">38.0"</td><td className="py-2 px-3">27.5"</td><td className="py-2 px-3">18.0"</td></tr>
+                    <tr><td className="py-2 px-3 font-bold text-white">M</td><td className="py-2 px-3">40.0"</td><td className="py-2 px-3">28.5"</td><td className="py-2 px-3">19.0"</td></tr>
+                    <tr><td className="py-2 px-3 font-bold text-white">L</td><td className="py-2 px-3">42.0"</td><td className="py-2 px-3">29.5"</td><td className="py-2 px-3">20.0"</td></tr>
+                    <tr><td className="py-2 px-3 font-bold text-white">XL</td><td className="py-2 px-3">44.0"</td><td className="py-2 px-3">30.5"</td><td className="py-2 px-3">21.0"</td></tr>
+                    <tr><td className="py-2 px-3 font-bold text-white">XXL</td><td className="py-2 px-3">46.0"</td><td className="py-2 px-3">31.5"</td><td className="py-2 px-3">22.0"</td></tr>
                   </tbody>
                 </table>
               </div>
             </div>
           )}
-
-          {/* Guarantee Note */}
-          <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-700 font-semibold">
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-              <span>Pre-shrunk at Ahmedabad mills to ensure 100% size retention after washing.</span>
-            </div>
-
-            {/* Bottom Full-Width Close Button for Mobile & Desktop */}
-            <button
-              onClick={handleClose}
-              type="button"
-              className="w-full sm:w-auto min-h-[48px] px-6 bg-slate-900 hover:bg-slate-800 text-white font-black text-xs rounded-xl shadow-md uppercase tracking-wider flex items-center justify-center gap-2 transition-all flex-shrink-0 active:scale-95"
-            >
-              <X className="w-4 h-4 text-rose-400" /> Close Size Assistant
-            </button>
-          </div>
         </div>
       </div>
     </div>

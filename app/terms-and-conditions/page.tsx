@@ -1,78 +1,75 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
-import { ShieldCheck, FileText, ArrowLeft } from 'lucide-react';
+import { ArrowLeft, FileText, ShieldCheck, MapPin, Gavel } from 'lucide-react';
 
-export const metadata = {
-  title: 'Terms & Conditions | BahaMut by De Vibe',
-  description: 'Terms and Conditions governing the use of BahaMut by De Vibe e-commerce website and services.'
-};
-
-export default function TermsPage() {
+export default function TermsAndConditionsPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12 font-sans space-y-8 text-slate-800">
-      <div className="border-b border-slate-200 pb-6">
-        <Link href="/" className="inline-flex items-center gap-1.5 text-xs font-black text-slate-600 hover:text-slate-900 mb-4">
-          <ArrowLeft className="w-4 h-4" /> Back to Home
+    <div className="bg-[#0a0a0b] text-[#ececed] min-h-screen pb-24 font-sans">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-8">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-xs font-bold text-[#8b8b94] hover:text-white transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" /> Back to Storefront
         </Link>
-        <h1 className="text-3xl sm:text-4xl font-black text-slate-900 flex items-center gap-3">
-          <FileText className="w-8 h-8 text-devibe-red" /> Terms & Conditions
-        </h1>
-        <p className="text-xs text-slate-500 font-bold mt-2">
-          Effective Date: August 1, 2026 | Legal Entity: De Vibe Apparel Hub, Ahmedabad, Gujarat
-        </p>
-      </div>
 
-      <div className="space-y-6 text-sm leading-relaxed">
-        <section className="space-y-2">
-          <h2 className="text-lg font-black text-slate-900">1. Acceptance of Terms</h2>
-          <p className="text-slate-600 font-medium">
-            Welcome to BahaMut by De Vibe (&quot;Website&quot;, &quot;bahamut.in&quot;). By accessing, browsing, or placing an order on this website, you agree to be legally bound by these Terms & Conditions. If you do not agree to these terms, please refrain from using our services.
-          </p>
-        </section>
-
-        <section className="space-y-2">
-          <h2 className="text-lg font-black text-slate-900">2. Business & Merchant Information</h2>
-          <p className="text-slate-600 font-medium">
-            This website is owned and operated by <strong>De Vibe</strong>, an Indian apparel manufacturer and retailer registered in Ahmedabad, Gujarat.
-          </p>
-          <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs font-semibold text-slate-700 space-y-1">
-            <p><strong>Merchant Name:</strong> De Vibe Apparel Fulfillment Hub</p>
-            <p><strong>Registered Address:</strong> Revdi Bazar, Kalupur, Ahmedabad, Gujarat - 380015</p>
-            <p><strong>Support Email:</strong> devibe70@gmail.com / support@devibe.in</p>
-            <p><strong>Contact Phone:</strong> +91 79 2213 4099</p>
+        <div className="border-b border-[#26262c] pb-6 space-y-2">
+          <div className="inline-flex items-center gap-2 bg-[#8b0018] text-white text-[10px] font-bold px-3 py-1 rounded-[2px] uppercase tracking-widest shadow">
+            <ShieldCheck className="w-3.5 h-3.5" /> TM NO. 5018168 • CLASS 25
           </div>
-        </section>
+          <h1 className="text-3xl sm:text-4xl font-heading text-white uppercase tracking-wider flex items-center gap-3">
+            <FileText className="w-8 h-8 text-[#b3001f]" /> Terms & Conditions
+          </h1>
+          <p className="text-xs text-[#8b8b94] font-medium">
+            Effective Date: August 1, 2026 | Proprietary Legal Disclosures: Pooja Textile (Proprietor: Mr. Akshay Alkeshbhai Shah)
+          </p>
+        </div>
 
-        <section className="space-y-2">
-          <h2 className="text-lg font-black text-slate-900">3. Products, Pricing & Availability</h2>
-          <p className="text-slate-600 font-medium">
-            All prices listed on bahamut.in are in Indian Rupees (INR ₹) and are inclusive of applicable GST taxes. We reserve the right to modify prices and product availability without prior notice. Products manufactured from 100% Woven Cotton are subject to standard fabric care instructions.
-          </p>
-        </section>
+        <div className="bg-[#121215] p-6 sm:p-8 rounded-[2px] border border-[#26262c] shadow-2xl space-y-6 text-xs text-[#8b8b94] leading-relaxed">
+          <section className="space-y-2">
+            <h2 className="font-heading text-sm text-white uppercase tracking-wider flex items-center gap-2">
+              1. Official Trademark & Business Disclosures
+            </h2>
+            <p>
+              Welcome to <strong>https://bahamut.in</strong>. This e-commerce website is operated by <strong>De Vibe</strong> under the registered proprietorship firm <strong>Pooja Textile</strong> (Proprietor: Mr. Akshay Alkeshbhai Shah).
+            </p>
+            <p>
+              <strong>BAHAMUT</strong> is a legally registered Trademark under the Trade Marks Act, 1999 (Government of India, Trade Mark No. <strong>5018168</strong>, Certificate No. <strong>2877734</strong>, J. No. 2009, Class 25 in respect of Readymade Garments).
+            </p>
+          </section>
 
-        <section className="space-y-2">
-          <h2 className="text-lg font-black text-slate-900">4. Payment Terms & Razorpay Payment Gateway</h2>
-          <p className="text-slate-600 font-medium">
-            We accept payments via <strong>Razorpay Payment Gateway</strong> including UPI (Google Pay, PhonePe, Paytm), Credit Cards, Debit Cards, Netbanking, and Partial COD (Cash on Delivery).
-          </p>
-          <p className="text-slate-600 font-medium">
-            For Partial COD orders, a fixed advance deposit of ₹200 is collected online via Razorpay at checkout to cover doorstep shipping validation. The remaining balance amount is collected in cash by the courier agent upon doorstep delivery.
-          </p>
-        </section>
+          <section className="space-y-2 border-t border-[#26262c] pt-4">
+            <h2 className="font-heading text-sm text-white uppercase tracking-wider">
+              2. Registered Address & Physical Operations Hub
+            </h2>
+            <div className="bg-[#1b1b20] p-4 rounded-[2px] border border-[#26262c] text-slate-300">
+              <p className="font-bold text-white">Pooja Textile / De Vibe Merchant Hub</p>
+              <p>69, Sindhi Cloth Market, Revdi Bazar, Kalupur</p>
+              <p>Ahmedabad, Gujarat, India — PIN Code: 380015 / 380002</p>
+              <p className="mt-1 text-[11px] text-[#8b8b94]">Support Email: devibe70@gmail.com | Phone: +91 79 2213 4099</p>
+            </div>
+          </section>
 
-        <section className="space-y-2">
-          <h2 className="text-lg font-black text-slate-900">5. Intellectual Property</h2>
-          <p className="text-slate-600 font-medium">
-            All content on bahamut.in including brand names, logos, product designs, imagery, and text are the intellectual property of De Vibe and may not be reproduced without written permission.
-          </p>
-        </section>
+          <section className="space-y-2 border-t border-[#26262c] pt-4">
+            <h2 className="font-heading text-sm text-white uppercase tracking-wider">
+              3. Orders & Payment Processing
+            </h2>
+            <p>
+              All online payments are securely processed through Razorpay Payments. We offer full prepaid checkout (with 5% instant discount) and Partial COD checkout (where a ₹200 advance deposit is paid online and the remaining balance is paid cash at doorstep).
+            </p>
+          </section>
 
-        <section className="space-y-2">
-          <h2 className="text-lg font-black text-slate-900">6. Governing Law & Jurisdiction</h2>
-          <p className="text-slate-600 font-medium">
-            These Terms & Conditions are governed by and construed in accordance with the laws of India. Any disputes arising hereunder shall be subject to the exclusive jurisdiction of the courts in Ahmedabad, Gujarat.
-          </p>
-        </section>
+          <section className="space-y-2 border-t border-[#26262c] pt-4">
+            <h2 className="font-heading text-sm text-white uppercase tracking-wider">
+              4. Governing Law & Jurisdiction
+            </h2>
+            <p>
+              These Terms shall be governed by and construed in accordance with the laws of India. Any disputes arising out of or in connection with the use of this website shall be subject to the exclusive jurisdiction of the Courts at Ahmedabad, Gujarat.
+            </p>
+          </section>
+        </div>
       </div>
     </div>
   );

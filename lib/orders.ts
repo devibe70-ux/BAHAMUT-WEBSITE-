@@ -1,6 +1,7 @@
 import { Order } from './types';
 
-// Mock seed order for testing public tracking route /track/BM-2026-1001
+export type OrderDetails = any;
+
 export const INITIAL_ORDERS: Order[] = [
   {
     id: 'ord-1001',
@@ -29,7 +30,7 @@ export const INITIAL_ORDERS: Order[] = [
           slug: 'ahmedabad-woven-chambray-navy',
           title: 'De Vibe Classic Chambray Shirt - Deep Navy',
           description: 'Direct-from-manufacturer 100% Breathable Woven Cotton crafted in Ahmedabad.',
-          target_demographic: 'CLASSIC',
+          target_demographic: 'UNIFIED_13_65',
           fabric_details: '100% Breathable Woven Cotton (Ahmedabad Mills)',
           price: 1299,
           original_mrp: 2499,
@@ -37,11 +38,11 @@ export const INITIAL_ORDERS: Order[] = [
           images: [
             'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80'
           ],
-          sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+          sizes: ['38', '40', '42', '44', '46'],
           is_active: true,
           created_at: '2026-07-01T10:00:00Z'
         },
-        selectedSize: 'L',
+        selectedSize: '40',
         quantity: 1
       }
     ],
@@ -68,7 +69,7 @@ export function getOrders(): Order[] {
   return INITIAL_ORDERS;
 }
 
-export function saveOrder(order: Order): Order[] {
+export function saveOrder(order: any): Order[] {
   const current = getOrders();
   const index = current.findIndex(o => o.id === order.id || o.order_number === order.order_number);
   let updated: Order[];
@@ -82,6 +83,10 @@ export function saveOrder(order: Order): Order[] {
     localStorage.setItem('bahamut_orders', JSON.stringify(updated));
   }
   return updated;
+}
+
+export function saveOrderToMemory(order: any): Order[] {
+  return saveOrder(order);
 }
 
 export function getOrderByNumber(orderIdOrNumber: string): Order | undefined {

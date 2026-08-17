@@ -4,146 +4,164 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCart } from '@/lib/cartContext';
-import { ShoppingBag, Trash2, Plus, Minus, ArrowRight, ShieldCheck, Tag } from 'lucide-react';
+import { Trash2, ShoppingBag, ArrowRight, ShieldCheck, Tag, MapPin, Truck } from 'lucide-react';
 
 export default function CartPage() {
-  const { cart, updateQuantity, removeFromCart, totalAmount, itemCount } = useCart();
+  const { cart, removeFromCart, updateQuantity, cartTotal, itemCount } = useCart();
 
-  if (cart.length === 0) {
-    return (
-      <div className="max-w-4xl mx-auto px-4 py-20 text-center font-sans space-y-6">
-        <div className="p-4 bg-slate-100 rounded-3xl w-24 h-24 mx-auto flex items-center justify-center text-slate-400 border border-slate-200">
-          <ShoppingBag className="w-10 h-10" />
-        </div>
-        <h2 className="text-3xl font-black text-slate-900">Your Shopping Bag is Empty</h2>
-        <p className="text-xs text-slate-500 max-w-md mx-auto font-medium">
-          Explore our direct-from-manufacturer 100% Breathable Woven Cotton apparel collection.
-        </p>
-        <Link
-          href="/catalog"
-          className="inline-flex items-center gap-2 min-h-[52px] px-8 py-3.5 bg-slate-900 hover:bg-slate-800 text-white font-black rounded-2xl text-xs uppercase tracking-wider shadow-lg transition-all"
-        >
-          Explore Catalog Now <ArrowRight className="w-4 h-4" />
-        </Link>
-      </div>
-    );
-  }
+  const advanceAmount = Math.min(200, cartTotal);
+  const remainingCodBalance = Math.max(0, cartTotal - advanceAmount);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 font-sans">
-      <h1 className="text-3xl font-black text-slate-900 mb-8">
-        Shopping Bag ({itemCount} {itemCount === 1 ? 'item' : 'items'})
-      </h1>
-
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Cart Items List */}
-        <div className="lg:col-span-8 space-y-4">
-          {cart.map((item, idx) => (
-            <div
-              key={`${item.product.id}-${item.selectedSize}-${idx}`}
-              className="bg-white p-4 sm:p-6 rounded-3xl flex flex-col sm:flex-row items-center gap-4 sm:gap-6 border border-slate-200 shadow-sm"
-            >
-              <div className="relative w-24 h-32 bg-slate-100 rounded-2xl overflow-hidden flex-shrink-0">
-                <Image
-                  src={item.product.images[0]}
-                  alt={item.product.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-              <div className="flex-1 space-y-2 text-center sm:text-left w-full">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h3 className="font-black text-base text-slate-900 line-clamp-1">
-                      {item.product.title}
-                    </h3>
-                    <p className="text-xs text-slate-500 mt-0.5 font-semibold">
-                      Size: <span className="font-black text-blue-700">{item.selectedSize}</span> • {item.product.fabric_details}
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => removeFromCart(item.product.id, item.selectedSize)}
-                    className="min-w-[40px] min-h-[40px] text-slate-400 hover:text-devibe-red p-2 rounded-xl flex items-center justify-center transition-colors"
-                    title="Remove item"
-                  >
-                    <Trash2 className="w-5 h-5" />
-                  </button>
-                </div>
-
-                <div className="flex items-center justify-between pt-2">
-                  {/* Quantity Stepper */}
-                  <div className="flex items-center border border-slate-300 rounded-2xl overflow-hidden bg-slate-50">
-                    <button
-                      onClick={() => updateQuantity(item.product.id, item.selectedSize, item.quantity - 1)}
-                      className="min-w-[40px] min-h-[40px] p-2 text-slate-700 hover:bg-slate-200 flex items-center justify-center font-black"
-                    >
-                      <Minus className="w-4 h-4" />
-                    </button>
-                    <span className="px-4 text-sm font-black text-slate-900">{item.quantity}</span>
-                    <button
-                      onClick={() => updateQuantity(item.product.id, item.selectedSize, item.quantity + 1)}
-                      className="min-w-[40px] min-h-[40px] p-2 text-slate-700 hover:bg-slate-200 flex items-center justify-center font-black"
-                    >
-                      <Plus className="w-4 h-4" />
-                    </button>
-                  </div>
-
-                  <span className="text-xl font-black text-slate-900">
-                    ₹{(item.product.price * item.quantity).toLocaleString('en-IN')}
-                  </span>
-                </div>
-              </div>
+    <div className="bg-[#0a0a0b] text-[#ececed] min-h-screen pb-24 font-sans">
+      {/* Header Banner */}
+      <section className="bg-[#121215] border-b border-[#26262c] py-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <div className="inline-flex items-center gap-2 bg-[#8b0018] text-white text-[10px] font-bold px-3 py-1 rounded-[2px] uppercase tracking-widest mb-2 shadow">
+              <ShieldCheck className="w-3.5 h-3.5" /> TM NO. 5018168 • CLASS 25
             </div>
-          ))}
-        </div>
-
-        {/* Order Summary Sidebar */}
-        <div className="lg:col-span-4 bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
-          <h3 className="font-black text-lg text-slate-900 border-b border-slate-100 pb-4">
-            Order Summary
-          </h3>
-
-          <div className="space-y-3 text-xs font-medium">
-            <div className="flex justify-between text-slate-600">
-              <span>Subtotal ({itemCount} items):</span>
-              <span className="font-black text-slate-900">₹{totalAmount.toLocaleString('en-IN')}</span>
-            </div>
-            <div className="flex justify-between text-slate-600">
-              <span>Standard All-India Express:</span>
-              <span className="font-black text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">FREE</span>
-            </div>
-            <div className="flex justify-between text-slate-600 border-t border-slate-100 pt-3">
-              <span className="font-black text-sm text-slate-900">Grand Total:</span>
-              <span className="font-black text-xl text-slate-900">
-                ₹{totalAmount.toLocaleString('en-IN')}
-              </span>
-            </div>
-          </div>
-
-          {/* Partial COD Breakdown Callout */}
-          <div className="bg-blue-50/80 p-4 rounded-2xl border border-blue-200 space-y-2 text-xs">
-            <div className="flex items-center gap-1.5 text-blue-700 font-black">
-              <Tag className="w-4 h-4" /> Razorpay Partial COD Perk
-            </div>
-            <p className="text-slate-700 leading-relaxed font-medium">
-              Pay just <strong className="text-blue-700 font-black">₹200 advance deposit</strong> now via Razorpay. Pay remaining balance of{' '}
-              <strong className="text-slate-900 font-black">₹{(totalAmount - 200).toLocaleString('en-IN')}</strong> in cash upon doorstep delivery!
-            </p>
+            <h1 className="font-heading text-3xl text-white uppercase tracking-wider flex items-center gap-3">
+              <ShoppingBag className="w-7 h-7 text-[#b3001f]" /> Shopping Bag ({itemCount})
+            </h1>
           </div>
 
           <Link
-            href="/checkout"
-            className="w-full min-h-[52px] bg-slate-900 hover:bg-slate-800 text-white font-black text-xs uppercase tracking-wider rounded-2xl shadow-xl flex items-center justify-center gap-2 transition-all"
+            href="/catalog"
+            className="text-xs font-bold text-[#8b8b94] hover:text-white flex items-center gap-1 transition-colors"
           >
-            Proceed to Checkout <ArrowRight className="w-4 h-4" />
+            ← Continue Shopping
           </Link>
-
-          <div className="pt-2 text-center text-[11px] text-slate-500 font-bold flex items-center justify-center gap-1">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" /> 100% Encrypted & Secured Checkout
-          </div>
         </div>
-      </div>
+      </section>
+
+      {/* Main Cart Grid */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        {cart.length === 0 ? (
+          <div className="bg-[#121215] rounded-[2px] p-12 text-center border border-[#26262c] space-y-4 max-w-lg mx-auto shadow-2xl">
+            <ShoppingBag className="w-16 h-16 text-[#8b0018] mx-auto opacity-70" />
+            <h3 className="font-heading text-xl text-white uppercase">Your Bag is Empty</h3>
+            <p className="text-xs text-[#8b8b94]">Explore our Class 25 Trademarked Garments Drop.</p>
+            <Link
+              href="/catalog"
+              className="inline-block min-h-[48px] px-8 py-3 bg-[#8b0018] hover:bg-[#b3001f] text-white font-heading text-xs uppercase tracking-widest rounded-[2px] transition-all glow-crimson"
+            >
+              Explore Collection
+            </Link>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            {/* Left: Cart Items */}
+            <div className="lg:col-span-8 space-y-4">
+              {cart.map((item, idx) => {
+                const itemPrice = item.product.price || 1299;
+                const imageSrc = item.product.images?.[0] || 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=400&q=80';
+
+                return (
+                  <div
+                    key={`${item.product.id}-${item.selectedSize}-${idx}`}
+                    className="bg-[#121215] p-4 sm:p-6 rounded-[2px] flex flex-col sm:flex-row items-center gap-4 sm:gap-6 border border-[#26262c] shadow-lg"
+                  >
+                    <div className="relative w-24 h-32 rounded-[2px] overflow-hidden bg-black flex-shrink-0 border border-[#26262c]">
+                      <Image
+                        src={imageSrc}
+                        alt={item.product.title}
+                        fill
+                        className="object-cover object-top"
+                      />
+                    </div>
+
+                    <div className="flex-1 space-y-2 text-center sm:text-left">
+                      <h3 className="font-heading text-sm text-white">{item.product.title}</h3>
+                      <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-xs text-[#8b8b94]">
+                        <span>Fit Size: <strong className="text-white font-bold">{item.selectedSize}</strong></span>
+                        <span>•</span>
+                        <span>Fabric: <strong className="text-white">{item.product.fabric_details || '100% Woven Cotton'}</strong></span>
+                      </div>
+
+                      <div className="text-sm font-heading text-[#b3001f] font-bold pt-1">
+                        ₹{(itemPrice * item.quantity).toLocaleString('en-IN')}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-4">
+                      <div className="flex items-center border border-[#26262c] rounded-[2px] bg-[#1b1b20]">
+                        <button
+                          onClick={() => updateQuantity(item.product.id, item.selectedSize, item.quantity - 1)}
+                          className="w-8 h-8 flex items-center justify-center text-slate-300 hover:text-white font-bold"
+                        >
+                          -
+                        </button>
+                        <span className="w-8 text-center text-xs font-bold text-white">{item.quantity}</span>
+                        <button
+                          onClick={() => updateQuantity(item.product.id, item.selectedSize, item.quantity + 1)}
+                          className="w-8 h-8 flex items-center justify-center text-slate-300 hover:text-white font-bold"
+                        >
+                          +
+                        </button>
+                      </div>
+
+                      <button
+                        onClick={() => removeFromCart(item.product.id, item.selectedSize)}
+                        className="p-2 text-slate-400 hover:text-[#b3001f] transition-colors"
+                        title="Remove item"
+                      >
+                        <Trash2 className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Right: Order Summary */}
+            <div className="lg:col-span-4 bg-[#121215] p-6 rounded-[2px] border border-[#26262c] shadow-xl space-y-6 h-fit">
+              <h3 className="font-heading text-sm text-white uppercase tracking-wider border-b border-[#26262c] pb-4">
+                Order Summary
+              </h3>
+
+              <div className="space-y-3 text-xs font-medium text-slate-300">
+                <div className="flex justify-between">
+                  <span>Bag Subtotal:</span>
+                  <span className="text-white font-bold">₹{cartTotal.toLocaleString('en-IN')}</span>
+                </div>
+                <div className="flex justify-between text-emerald-400">
+                  <span>Express Shipping:</span>
+                  <span className="font-bold">FREE</span>
+                </div>
+                <div className="flex justify-between border-t border-[#26262c] pt-3 text-sm text-white font-heading font-bold">
+                  <span>Total Payable:</span>
+                  <span>₹{cartTotal.toLocaleString('en-IN')}</span>
+                </div>
+              </div>
+
+              {/* Partial COD Breakdown Box */}
+              <div className="bg-[#1b1b20] p-4 rounded-[2px] border border-[#8b0018]/40 space-y-2">
+                <span className="text-[11px] font-heading text-[#b3001f] uppercase tracking-wider block">
+                  Partial COD Payment Split:
+                </span>
+                <div className="text-xs space-y-1 text-slate-300">
+                  <div className="flex justify-between font-bold text-white">
+                    <span>Payable Now (Deposit):</span>
+                    <span className="text-[#b3001f]">₹{advanceAmount.toLocaleString('en-IN')}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Pay at Doorstep (Cash):</span>
+                    <span>₹{remainingCodBalance.toLocaleString('en-IN')}</span>
+                  </div>
+                </div>
+              </div>
+
+              <Link
+                href="/checkout"
+                className="w-full min-h-[52px] bg-[#8b0018] hover:bg-[#b3001f] text-white font-heading text-xs uppercase tracking-widest rounded-[2px] shadow-xl flex items-center justify-center gap-2 transition-all active:scale-95 glow-crimson"
+              >
+                Proceed to Checkout <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        )}
+      </main>
     </div>
   );
 }

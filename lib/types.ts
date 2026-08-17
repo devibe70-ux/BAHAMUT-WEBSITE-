@@ -1,5 +1,6 @@
 export type Demographic = 'UNIFIED_13_65' | 'YOUTH' | 'CLASSIC';
 export type ProductCategory = 'SHIRT' | 'BOTTOMWEAR' | 'TEE';
+export type Category = ProductCategory;
 
 export type NumericSize = '28' | '30' | '32' | '34' | '36' | '38' | '40' | '42' | '44' | '46';
 export type AlphabeticalSize = 'S' | 'M' | 'L' | 'XL' | 'XXL' | '3XL';

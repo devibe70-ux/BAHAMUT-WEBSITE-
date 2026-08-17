@@ -10,6 +10,7 @@ interface CartContextType {
   updateQuantity: (productId: string, size: Size, quantity: number) => void;
   clearCart: () => void;
   totalAmount: number;
+  cartTotal: number;
   itemCount: number;
 }
 
@@ -25,7 +26,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       try {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed)) {
-          // Filter out corrupted cart entries safely
           const validCart = parsed.filter(
             item =>
               item &&
@@ -109,6 +109,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         updateQuantity,
         clearCart,
         totalAmount,
+        cartTotal: totalAmount,
         itemCount,
       }}
     >

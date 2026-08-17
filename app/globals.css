@@ -2,38 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --bhm-crimson: #8b0018;
-    --bhm-crimson-bright: #b3001f;
-    --bhm-crimson-dim: rgba(139, 0, 24, 0.18);
-    --bhm-obsidian: #0a0a0b;
-    --bhm-surface-1: #121215;
-    --bhm-surface-2: #1b1b20;
-    --bhm-border: #26262c;
+/* ==========================================================================
+   STRICT 5-COLOR TRADEMARK DESIGN SYSTEM (GOVERNMENT CERTIFICATE SPEC)
+   1. Obsidian Black (#0a0a0b / #121215 / #1b1b20)
+   2. Crimson Red (#8b0018 / #b3001f)
+   3. Pure White (#ffffff)
+   4. Slate Grey (#8b8b94 / #26262c)
+   5. Amber Gold (#f59e0b)
+   ========================================================================== */
 
-    --bhm-text-pure: #ffffff;
-    --bhm-text-bone: #ececed;
-    --bhm-text-muted: #8b8b94;
+:root {
+  --color-black: #0a0a0b;
+  --color-surface-1: #121215;
+  --color-surface-2: #1b1b20;
+  --color-[#26262c]: #26262c;
+  --color-[#8b0018]: #8b0018;
+  --color-[#b3001f]: #b3001f;
+  --color-white: #ffffff;
+  --color-grey: #8b8b94;
+  --color-[#f59e0b]: #f59e0b;
+}
 
-    --brand-red: #8b0018;
-    --brand-navy: #0a0a0b;
-    --brand-emerald: #059669;
-    --brand-yellow: #F59E0B;
-  }
+body {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
 
-  body {
-    background-color: var(--bhm-obsidian);
-    color: var(--bhm-text-bone);
-    font-family: var(--font-plus-jakarta), system-ui, sans-serif;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-cinzel), Georgia, serif;
-    letter-spacing: 0.08em;
-  }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-cinzel), Georgia, serif;
+  letter-spacing: 0.08em;
+  color: var(--color-white);
 }
 
 .font-gothic {
@@ -44,29 +45,8 @@
   font-family: var(--font-cinzel), Georgia, serif;
 }
 
-/* De Vibe Crimson Brand Badge */
-.devibe-tab {
-  background: var(--bhm-crimson);
-  color: #FFFFFF;
-  font-weight: 900;
-  letter-spacing: 0.05em;
-  box-shadow: 0 4px 14px rgba(139, 0, 24, 0.45);
-}
-
 .glow-crimson {
   box-shadow: 0 0 25px rgba(139, 0, 24, 0.55);
-}
-
-/* Clean Shadows & Cards */
-.card-clean {
-  background: var(--bhm-surface-1);
-  border: 1px solid var(--bhm-border);
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
-}
-
-.card-clean:hover {
-  border-color: var(--bhm-crimson);
-  box-shadow: 0 0 20px rgba(139, 0, 24, 0.35);
 }
 
 /* Custom Scrollbar */

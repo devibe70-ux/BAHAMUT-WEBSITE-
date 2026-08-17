@@ -1,69 +1,51 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
-import { Truck, ArrowLeft, Clock, MapPin } from 'lucide-react';
-
-export const metadata = {
-  title: 'Shipping & Delivery Policy | BahaMut by De Vibe',
-  description: 'Shipping and Delivery Policy detailing delivery timelines, partners, and charges for BahaMut by De Vibe orders.'
-};
+import { ArrowLeft, Truck, ShieldCheck } from 'lucide-react';
 
 export default function ShippingPolicyPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12 font-sans space-y-8 text-slate-800">
-      <div className="border-b border-slate-200 pb-6">
-        <Link href="/" className="inline-flex items-center gap-1.5 text-xs font-black text-slate-600 hover:text-slate-900 mb-4">
-          <ArrowLeft className="w-4 h-4" /> Back to Home
+    <div className="bg-[#0a0a0b] text-[#ececed] min-h-screen pb-24 font-sans">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-8">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-xs font-bold text-[#8b8b94] hover:text-white transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" /> Back to Storefront
         </Link>
-        <h1 className="text-3xl sm:text-4xl font-black text-slate-900 flex items-center gap-3">
-          <Truck className="w-8 h-8 text-devibe-red" /> Shipping & Delivery Policy
-        </h1>
-        <p className="text-xs text-slate-500 font-bold mt-2">
-          Effective Date: August 1, 2026 | De Vibe Ahmedabad Fulfillment Center
-        </p>
-      </div>
 
-      <div className="space-y-6 text-sm leading-relaxed">
-        <section className="space-y-2">
-          <h2 className="text-lg font-black text-slate-900">1. Delivery Timelines & Processing</h2>
-          <p className="text-slate-600 font-medium">
-            All orders placed on bahamut.in are processed and dispatched within <strong>24 hours</strong> from our central hub in Ahmedabad, Gujarat.
-          </p>
-          <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs font-semibold text-slate-700 space-y-2">
-            <p>• <strong>Local Delivery (Gujarat / Ahmedabad):</strong> Delivered in <strong>1 to 2 business days</strong>.</p>
-            <p>• <strong>All-India Express Shipping:</strong> Delivered in <strong>2 to 5 business days</strong> across major Indian cities and pincodes.</p>
+        <div className="border-b border-[#26262c] pb-6 space-y-2">
+          <div className="inline-flex items-center gap-2 bg-[#8b0018] text-white text-[10px] font-bold px-3 py-1 rounded-[2px] uppercase tracking-widest shadow">
+            <ShieldCheck className="w-3.5 h-3.5" /> TM NO. 5018168 • CLASS 25
           </div>
-        </section>
+          <h1 className="text-3xl sm:text-4xl font-heading text-white uppercase tracking-wider flex items-center gap-3">
+            <Truck className="w-8 h-8 text-[#b3001f]" /> Shipping & Delivery Policy
+          </h1>
+          <p className="text-xs text-[#8b8b94] font-medium">
+            Effective Date: August 1, 2026 | Fulfillment Hub: Pooja Textile / De Vibe, Ahmedabad - 380015
+          </p>
+        </div>
 
-        <section className="space-y-2">
-          <h2 className="text-lg font-black text-slate-900">2. Shipping Charges</h2>
-          <p className="text-slate-600 font-medium">
-            We offer <strong>FREE All-India Express Delivery</strong> on all orders. There are no hidden delivery or handling charges at checkout.
-          </p>
-        </section>
+        <div className="bg-[#121215] p-6 sm:p-8 rounded-[2px] border border-[#26262c] shadow-2xl space-y-6 text-xs text-[#8b8b94] leading-relaxed">
+          <section className="space-y-2">
+            <h2 className="font-heading text-sm text-white uppercase tracking-wider">
+              1. Order Dispatch & Delivery Timelines
+            </h2>
+            <p>
+              All orders placed on <strong>https://bahamut.in</strong> are dispatched within <strong>24 hours</strong> from our registered Ahmedabad hub. Delivery timelines across metro cities range between <strong>2 to 4 business days</strong>, and <strong>3 to 5 business days</strong> for rest of India.
+            </p>
+          </section>
 
-        <section className="space-y-2">
-          <h2 className="text-lg font-black text-slate-900">3. Order Tracking & Courier Partners</h2>
-          <p className="text-slate-600 font-medium">
-            Once your order is dispatched, you will receive an AWB tracking number via SMS and email. You can track your order live anytime on our website at <Link href="/track/BM-2026-1001" className="text-blue-700 font-bold underline">Track Shipment Page</Link>.
-          </p>
-          <p className="text-slate-600 font-medium">
-            Our official logistics partners include <strong>Shipyaari, Bluedart, Delhivery, and Xpressbees</strong>.
-          </p>
-        </section>
-
-        <section className="space-y-2">
-          <h2 className="text-lg font-black text-slate-900">4. Partial COD Deposit Shipping</h2>
-          <p className="text-slate-600 font-medium">
-            For Partial COD orders, paying the ₹200 advance deposit online validates your doorstep shipping address and ensures priority dispatch. The remaining balance amount is payable in cash to the courier agent upon doorstep delivery.
-          </p>
-        </section>
-
-        <section className="space-y-2">
-          <h2 className="text-lg font-black text-slate-900">5. Contact Shipping Team</h2>
-          <p className="text-slate-600 font-medium">
-            If you have questions regarding shipping or delivery status, please contact our logistics desk at <strong>devibe70@gmail.com</strong> or call <strong>+91 79 2213 4099</strong>.
-          </p>
-        </section>
+          <section className="space-y-2 border-t border-[#26262c] pt-4">
+            <h2 className="font-heading text-sm text-white uppercase tracking-wider">
+              2. Shipping Charges & Partial COD
+            </h2>
+            <p>
+              We offer <strong>FREE Express Shipping</strong> on all prepaid and Partial COD orders. For Partial COD, a ₹200 advance deposit is collected online, and the remaining balance is collected in cash by our logistics partner (Shipyaari / Blue Dart) at your doorstep.
+            </p>
+          </section>
+        </div>
       </div>
     </div>
   );
