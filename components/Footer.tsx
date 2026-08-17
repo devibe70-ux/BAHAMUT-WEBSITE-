@@ -16,7 +16,7 @@ export default function Footer() {
             </div>
             <h4 className="font-heading text-sm text-white uppercase tracking-wider">Class 25 Registered</h4>
             <p className="text-xs text-slate-400 leading-relaxed">
-              BAHAMUT Trademarked Line engineered with heavy-gauge woven cotton textiles.
+              BAHAMUT Trademarked Line (TM No. 5018168) engineered with heavy-gauge woven cotton textiles.
             </p>
           </div>
 
@@ -46,7 +46,7 @@ export default function Footer() {
             </div>
             <h4 className="font-heading text-sm text-white uppercase tracking-wider">Operated by De Vibe</h4>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Marketed, billed, and dispatched from Revdi Bazar, Kalupur, Ahmedabad - 380015.
+              Marketed, billed, and dispatched from 69, Sindhi Cloth Market, Revdi Bazar, Kalupur, Ahmedabad - 380015.
             </p>
           </div>
         </div>
@@ -143,9 +143,9 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Legal & Operations Footer from HTML Template */}
+        {/* Legal & Operations Footer */}
         <div className="text-center space-y-2 text-xs text-slate-400">
-          <p><strong className="text-white font-heading tracking-widest">BAHAMUT</strong> is a Registered Trademark (Class 25).</p>
+          <p><strong className="text-white font-heading tracking-widest">BAHAMUT</strong> is a Registered Trademark (TM No. 5018168, Class 25).</p>
           <p>Exclusively Marketed, Manufactured & Operated by <strong className="text-white">De Vibe</strong>.</p>
           <p className="text-[11px] text-slate-500 pt-2">
             &copy; 2026 De Vibe. All Rights Reserved. Compliant with Indian Consumer Protection (E-Commerce) Rules.

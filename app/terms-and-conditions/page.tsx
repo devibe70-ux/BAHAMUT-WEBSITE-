@@ -23,7 +23,7 @@ export default function TermsAndConditionsPage() {
             <FileText className="w-8 h-8 text-[#b3001f]" /> Terms & Conditions
           </h1>
           <p className="text-xs text-[#8b8b94] font-medium">
-            Effective Date: August 1, 2026 | Proprietary Legal Disclosures: Pooja Textile (Proprietor: Mr. Akshay Alkeshbhai Shah)
+            Effective Date: August 1, 2026 | Legal Operating Entity: De Vibe (Proprietor: Mr. Akshay Alkeshbhai Shah)
           </p>
         </div>
 
@@ -33,7 +33,7 @@ export default function TermsAndConditionsPage() {
               1. Official Trademark & Business Disclosures
             </h2>
             <p>
-              Welcome to <strong>https://bahamut.in</strong>. This e-commerce website is operated by <strong>De Vibe</strong> under the registered proprietorship firm <strong>Pooja Textile</strong> (Proprietor: Mr. Akshay Alkeshbhai Shah).
+              Welcome to <strong>https://bahamut.in</strong>. This e-commerce website is owned and operated by <strong>De Vibe</strong> (Proprietor: Mr. Akshay Alkeshbhai Shah).
             </p>
             <p>
               <strong>BAHAMUT</strong> is a legally registered Trademark under the Trade Marks Act, 1999 (Government of India, Trade Mark No. <strong>5018168</strong>, Certificate No. <strong>2877734</strong>, J. No. 2009, Class 25 in respect of Readymade Garments).
@@ -45,9 +45,9 @@ export default function TermsAndConditionsPage() {
               2. Registered Address & Physical Operations Hub
             </h2>
             <div className="bg-[#1b1b20] p-4 rounded-[2px] border border-[#26262c] text-slate-300">
-              <p className="font-bold text-white">Pooja Textile / De Vibe Merchant Hub</p>
+              <p className="font-bold text-white">De Vibe Apparel Hub</p>
               <p>69, Sindhi Cloth Market, Revdi Bazar, Kalupur</p>
-              <p>Ahmedabad, Gujarat, India — PIN Code: 380015 / 380002</p>
+              <p>Ahmedabad, Gujarat, India — PIN Code: 380015</p>
               <p className="mt-1 text-[11px] text-[#8b8b94]">Support Email: devibe70@gmail.com | Phone: +91 79 2213 4099</p>
             </div>
           </section>

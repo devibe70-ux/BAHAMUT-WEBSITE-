@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage() {
             <Lock className="w-8 h-8 text-[#b3001f]" /> Privacy Policy
           </h1>
           <p className="text-xs text-[#8b8b94] font-medium">
-            Effective Date: August 1, 2026 | Legal Entity: Pooja Textile / De Vibe Hub, Ahmedabad
+            Effective Date: August 1, 2026 | Legal Company Entity: De Vibe Hub, Ahmedabad - 380015
           </p>
         </div>
 
@@ -33,7 +33,7 @@ export default function PrivacyPolicyPage() {
               1. Information Collection & Usage
             </h2>
             <p>
-              At <strong>BAHAMUT</strong> (operated by De Vibe / Pooja Textile), we respect your privacy. When you place an order on <strong>https://bahamut.in</strong>, we collect your name, shipping address, mobile number, and email address solely for order fulfillment, shipment tracking, and customer service.
+              At <strong>BAHAMUT</strong> (operated by De Vibe), we respect your privacy. When you place an order on <strong>https://bahamut.in</strong>, we collect your name, shipping address, mobile number, and email address solely for order fulfillment, shipment tracking, and customer service.
             </p>
           </section>
 

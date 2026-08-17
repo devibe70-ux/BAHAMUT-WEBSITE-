@@ -23,7 +23,7 @@ export default function RefundPolicyPage() {
             <RefreshCw className="w-8 h-8 text-[#b3001f]" /> Refund & Return Policy
           </h1>
           <p className="text-xs text-[#8b8b94] font-medium">
-            Effective Date: August 1, 2026 | Legal Entity: Pooja Textile (Proprietor: Mr. Akshay Alkeshbhai Shah)
+            Effective Date: August 1, 2026 | Legal Entity: De Vibe (Proprietor: Mr. Akshay Alkeshbhai Shah)
           </p>
         </div>
 
@@ -52,7 +52,7 @@ export default function RefundPolicyPage() {
               <Gavel className="w-4 h-4 text-[#b3001f]" /> STATUTORY ANTI-FRAUD LEGAL NOTICE (INDIAN PENAL LAW)
             </div>
             <p className="text-[11px] text-slate-300 leading-relaxed font-medium">
-              Pooja Textile / De Vibe enforces zero tolerance against return theft, product swapping, or returning used/washed apparel. Any fraudulent refund claims or fake product returns will be prosecuted under <strong>BNS § 318 / IPC § 420 (Cheating)</strong>, <strong>BNS § 316 / IPC § 406 (Criminal Breach of Trust)</strong>, <strong>BNS § 349 (Counterfeit Goods)</strong>, and <strong>IT Act § 66D (Cyber Fraud)</strong>. All unboxing video footage (recorded under HD CCTV per Indian Evidence Act § 65B) will be submitted to the Cyber Crime Cell and local police authorities to file a formal FIR.
+              De Vibe enforces zero tolerance against return theft, product swapping, or returning used/washed apparel. Any fraudulent refund claims or fake product returns will be prosecuted under <strong>BNS § 318 / IPC § 420 (Cheating)</strong>, <strong>BNS § 316 / IPC § 406 (Criminal Breach of Trust)</strong>, <strong>BNS § 349 (Counterfeit Goods)</strong>, and <strong>IT Act § 66D (Cyber Fraud)</strong>. All unboxing video footage (recorded under HD CCTV per Indian Evidence Act § 65B) will be submitted to the Cyber Crime Cell and local police authorities to file a formal FIR.
             </p>
           </section>
         </div>

@@ -23,7 +23,7 @@ export default function ShippingPolicyPage() {
             <Truck className="w-8 h-8 text-[#b3001f]" /> Shipping & Delivery Policy
           </h1>
           <p className="text-xs text-[#8b8b94] font-medium">
-            Effective Date: August 1, 2026 | Fulfillment Hub: Pooja Textile / De Vibe, Ahmedabad - 380015
+            Effective Date: August 1, 2026 | Fulfillment Hub: De Vibe, Ahmedabad - 380015
           </p>
         </div>
 
