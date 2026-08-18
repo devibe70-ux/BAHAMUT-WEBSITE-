@@ -47,10 +47,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-neutral-800">
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <span className="bg-white text-[#111111] px-3 py-1 font-black text-lg uppercase tracking-wider">
-                BAHAMUT
+              <span className="font-gothic text-3xl font-normal text-white tracking-wider">
+                BahaMut
               </span>
-              <span className="text-xs font-bold text-white uppercase">
+              <span className="text-xs font-bold text-neutral-400 uppercase">
                 BY DE VIBE
               </span>
             </div>
@@ -140,7 +140,7 @@ export default function Footer() {
 
         {/* Legal & Operations Footer */}
         <div className="text-center space-y-1.5 text-xs text-neutral-400 font-medium">
-          <p><strong className="text-white font-bold tracking-wider">BAHAMUT</strong> is a Registered Trademark (TM No. 5018168, Class 25).</p>
+          <p><strong className="font-gothic text-base text-white font-normal">BahaMut</strong> is a Registered Trademark (TM No. 5018168, Class 25).</p>
           <p>Exclusively Marketed, Manufactured & Operated by <strong className="text-white">DE VIBE</strong>.</p>
           <p className="text-[11px] text-neutral-500 pt-2">
             &copy; 2026 DE VIBE. All Rights Reserved. Compliant with Indian Consumer Protection (E-Commerce) Rules.

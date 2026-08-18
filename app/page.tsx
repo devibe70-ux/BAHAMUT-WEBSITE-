@@ -76,7 +76,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Minimal Hero Showcase */}
+      {/* Minimal Hero Showcase with Trademark Blackletter Title */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white border border-[#E5E5E5] p-6 sm:p-12 relative overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left z-10">
@@ -84,8 +84,8 @@ export default function HomePage() {
               OFFICIAL LAUNCH COLLECTION
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-black text-[#111111] tracking-tight leading-tight">
-              BAHAMUT <span className="font-light text-[#666666]">by DE VIBE</span>
+            <h1 className="text-4xl sm:text-6xl text-[#111111] tracking-tight leading-tight">
+              <span className="font-gothic font-normal">BahaMut</span> <span className="font-sans font-light text-[#666666] text-3xl sm:text-4xl">by DE VIBE</span>
             </h1>
 
             <p className="text-[#666666] text-xs sm:text-sm max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
@@ -190,8 +190,8 @@ export default function HomePage() {
         <div className="flex items-center justify-between border-b border-[#E5E5E5] pb-4 mb-6">
           <div>
             <span className="text-xs font-bold text-[#666666]">Curated Ahmedabad Collection</span>
-            <h2 className="text-xl sm:text-2xl font-bold text-[#111111] uppercase tracking-wider mt-1">
-              BahaMut Bestsellers Collection
+            <h2 className="text-xl sm:text-2xl font-bold text-[#111111] tracking-wider mt-1">
+              <span className="font-gothic text-2xl sm:text-3xl font-normal">BahaMut</span> Bestsellers Collection
             </h2>
           </div>
 

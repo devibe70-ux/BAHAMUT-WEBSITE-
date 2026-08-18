@@ -53,11 +53,11 @@ export default function Header() {
             </button>
           </div>
 
-          {/* Logo Branding (Subtle Warm Cream Color, Understated) */}
+          {/* Logo Branding (Trademark Blackletter Word Mark in Subtle Warm Cream) */}
           <div className="flex items-center gap-6">
             <Link href="/" className="flex items-center gap-2 group py-1">
               <div className="bg-[#F5F5F0] border border-[#E5E5E0] text-[#222222] px-3.5 py-1.5 flex items-center transition-colors group-hover:bg-[#EFECE6]">
-                <span className="text-xl sm:text-2xl font-black tracking-widest uppercase">BAHAMUT</span>
+                <span className="font-gothic text-2xl sm:text-3xl font-normal tracking-wide">BahaMut</span>
               </div>
               <span className="text-[10px] font-bold text-[#666660] bg-[#F5F5F0] px-2 py-1 uppercase tracking-widest border border-[#E5E5E0]">
                 BY DE VIBE

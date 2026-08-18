@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Plus_Jakarta_Sans, Inter } from 'next/font/google';
+import { Plus_Jakarta_Sans, Inter, UnifrakturMaguntia } from 'next/font/google';
 import './globals.css';
 import { CartProvider } from '@/lib/cartContext';
 import AnnouncementBar from '@/components/AnnouncementBar';
@@ -20,18 +20,22 @@ const inter = Inter({
   display: 'swap',
 });
 
+const unifraktur = UnifrakturMaguntia({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-unifraktur',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://bahamut.in'),
-  title: 'BAHAMUT by DE VIBE | Minimal Woven Cotton Apparel',
+  title: 'BAHAMUT by DE VIBE | Woven Cotton Apparel',
   description:
     'Direct-from-manufacturer 100% Breathable Woven Cotton apparel from Ahmedabad textile hub. Official Registered Trademark (TM No. 5018168, Class 25). Ambawadi, Ahmedabad, Gujarat - 380015.',
   keywords: [
     'BAHAMUT',
     'DE VIBE',
     'Woven Cotton Shirts',
-    'Minimal Apparel',
-    'Ahmedabad Textile Mills',
-    'Partial COD Apparel',
     'Class 25 Garments',
     'Ambawadi Ahmedabad'
   ],
@@ -39,7 +43,7 @@ export const metadata: Metadata = {
     canonical: 'https://bahamut.in',
   },
   openGraph: {
-    title: 'BAHAMUT by DE VIBE - Minimal Apparel',
+    title: 'BAHAMUT by DE VIBE',
     description:
       'Direct-from-manufacturer 100% Breathable Woven Cotton apparel from Ahmedabad textile hub.',
     url: 'https://bahamut.in',
@@ -96,14 +100,6 @@ const jsonLdFaq = {
         text: 'Yes, BAHAMUT offers Partial COD checkout where customers pay a flat ₹200 advance deposit online and pay the remaining balance in cash at their doorstep upon delivery.',
       },
     },
-    {
-      '@type': 'Question',
-      name: 'What sizing standards do BAHAMUT shirts and bottomwear use?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'BAHAMUT uses Indian Numeric Sizing for Shirts (38, 40, 42, 44, 46) and Bottomwear (28, 30, 32, 34, 36, 38), and Alphabetical Sizing for Graphic Tees (S, M, L, XL, XXL).',
-      },
-    },
   ],
 };
 
@@ -113,7 +109,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${plusJakarta.variable} ${inter.variable} h-full`}>
+    <html lang="en" className={`${plusJakarta.variable} ${inter.variable} ${unifraktur.variable} h-full`}>
       <head>
         <script
           type="application/ld+json"

@@ -19,6 +19,11 @@
   }
 }
 
+/* Trademark Blackletter / Fantasy Gothic Display Font */
+.font-gothic {
+  font-family: var(--font-unifraktur), 'UnifrakturMaguntia', serif;
+}
+
 /* Minimal Brand Badge */
 .devibe-tab {
   background: #111111;
