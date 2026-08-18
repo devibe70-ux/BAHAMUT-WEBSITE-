@@ -26,7 +26,7 @@ export default function Header() {
       <div className="bg-[#111111] text-white text-[11px] font-semibold py-2 px-4 border-b border-neutral-800">
         <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="bg-white text-[#111111] text-[10px] font-black px-2 py-0.5 uppercase tracking-widest">
+            <span className="bg-[#F5F5F0] text-[#222222] text-[10px] font-black px-2 py-0.5 uppercase tracking-widest border border-[#E5E5E0]">
               TM NO. 5018168 (CLASS 25)
             </span>
             <span className="hidden sm:inline font-medium text-neutral-300">
@@ -60,13 +60,13 @@ export default function Header() {
             </button>
           </div>
 
-          {/* Logo Branding */}
+          {/* Logo Branding (Subtle Warm Cream Color, Understated) */}
           <div className="flex items-center gap-6">
             <Link href="/" className="flex items-center gap-2 group py-1">
-              <div className="bg-[#111111] text-white px-3.5 py-1.5 flex items-center">
+              <div className="bg-[#F5F5F0] border border-[#E5E5E0] text-[#222222] px-3.5 py-1.5 flex items-center transition-colors group-hover:bg-[#EFECE6]">
                 <span className="text-xl sm:text-2xl font-black tracking-widest uppercase">BAHAMUT</span>
               </div>
-              <span className="text-[10px] font-bold text-[#111111] bg-[#F0F0F2] px-2 py-1 uppercase tracking-widest border border-[#E5E5E5]">
+              <span className="text-[10px] font-bold text-[#666660] bg-[#F5F5F0] px-2 py-1 uppercase tracking-widest border border-[#E5E5E0]">
                 BY DE VIBE
               </span>
             </Link>
