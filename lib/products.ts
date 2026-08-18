@@ -279,12 +279,66 @@ export const INITIAL_PRODUCTS: Product[] = [
     color: 'Slate Charcoal',
     is_active: true,
     created_at: '2026-07-16T15:00:00Z'
+  },
+  {
+    id: 'prod-011',
+    slug: 'de-vibe-micro-check-formal-linen-shirt',
+    title: 'De Vibe Micro-Check Formal Cotton-Linen Shirt - Arctic White',
+    category: 'SHIRT',
+    description:
+      'Breathable micro-check weave crafted for formal corporate and festive wear. Numeric collar sizes 38 to 46.',
+    target_demographic: 'UNIFIED_13_65',
+    fabric_details: '100% Breathable Cotton Linen Blend',
+    price: 1499,
+    original_mrp: 2799,
+    stock_quantity: 42,
+    rating: 4.8,
+    review_count: 110,
+    express_delivery: 'FREE Express Delivery by Tomorrow',
+    images: [
+      'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80'
+    ],
+    sizes: ['38', '40', '42', '44', '46'],
+    pattern: 'Micro-Check Formal',
+    fit: 'Numeric Slim Fit (38-46)',
+    sleeve: 'Full Sleeve',
+    color: 'Arctic White',
+    is_active: true,
+    created_at: '2026-08-04T10:00:00Z'
+  },
+  {
+    id: 'prod-012',
+    slug: 'bahamut-gothic-dragon-heavy-hoodie-maroon',
+    title: 'BahaMut Dragon Crest Heavyweight Sweatshirt - Deep Maroon',
+    category: 'TEE',
+    description:
+      '380 GSM Heavy Woven Fleece Cotton with front dragon emblem embroidery. Alphabetical sizes S to XXL.',
+    target_demographic: 'UNIFIED_13_65',
+    fabric_details: '380 GSM Heavy Woven Fleece Cotton',
+    price: 3499,
+    original_mrp: 5499,
+    stock_quantity: 28,
+    rating: 4.9,
+    review_count: 165,
+    express_delivery: 'FREE Express Delivery by Tomorrow',
+    images: [
+      'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80'
+    ],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    pattern: 'Dragon Crest Gothic',
+    fit: 'Alphabetical Heavyweight Fit',
+    sleeve: 'Full Sleeve',
+    color: 'Deep Maroon',
+    is_active: true,
+    created_at: '2026-08-05T10:00:00Z'
   }
 ];
 
 export function getProducts(): Product[] {
   if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('bahamut_products_v7');
+    const saved = localStorage.getItem('bahamut_products_v8');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -310,7 +364,7 @@ export function saveProduct(product: Product): Product[] {
     updated = [product, ...current];
   }
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_products_v7', JSON.stringify(updated));
+    localStorage.setItem('bahamut_products_v8', JSON.stringify(updated));
   }
   return updated;
 }
@@ -330,7 +384,7 @@ export function deductStockForOrder(items: CartItem[]): Product[] {
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_products_v7', JSON.stringify(products));
+    localStorage.setItem('bahamut_products_v8', JSON.stringify(products));
   }
   return products;
 }
@@ -345,7 +399,7 @@ export function updateProductStock(idOrSlug: string, newStock: number): Product[
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_products_v7', JSON.stringify(updated));
+    localStorage.setItem('bahamut_products_v8', JSON.stringify(updated));
   }
   return updated;
 }
