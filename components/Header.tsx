@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ShoppingBag, Search, Menu, X, Shield, Sparkles, Flame, Ruler, MapPin, Truck } from 'lucide-react';
+import { ShoppingBag, Search, Menu, X, Shield, Ruler, MapPin, Truck } from 'lucide-react';
 import { useCart } from '@/lib/cartContext';
 import SizeGuideModal from '@/components/SizeGuideModal';
 
@@ -21,39 +21,39 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-md font-sans border-b border-slate-200">
-      {/* Top Offer Banner */}
-      <div className="bg-slate-900 text-white text-[11px] font-bold py-1.5 px-4 flex items-center justify-between border-b border-slate-800">
+    <header className="sticky top-0 z-50 bg-white border-b border-[#E5E5E5] font-sans">
+      {/* Top Announcement Bar */}
+      <div className="bg-[#111111] text-white text-[11px] font-semibold py-2 px-4 border-b border-neutral-800">
         <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="bg-devibe-red text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider animate-pulse flex items-center gap-1">
-              <Flame className="w-3 h-3 text-yellow-300" /> TM NO. 5018168 (CLASS 25)
+            <span className="bg-white text-[#111111] text-[10px] font-black px-2 py-0.5 uppercase tracking-widest">
+              TM NO. 5018168 (CLASS 25)
             </span>
-            <span className="hidden sm:inline font-semibold">
-              Direct-from-Mill 100% Breathable Woven Cotton • Pay just ₹200 Advance Deposit (Partial COD)
+            <span className="hidden sm:inline font-medium text-neutral-300">
+              Direct-from-Mill 100% Breathable Woven Cotton • Pay ₹200 Advance (Partial COD)
             </span>
           </div>
 
-          <div className="flex items-center gap-4 text-slate-300">
-            <span className="hidden md:flex items-center gap-1 text-[11px] font-bold text-emerald-400">
-              <MapPin className="w-3.5 h-3.5" /> Deliver to Ambawadi, Ahmedabad - 380015
+          <div className="flex items-center gap-4 text-neutral-400">
+            <span className="hidden md:flex items-center gap-1 text-[11px] font-medium text-neutral-300">
+              <MapPin className="w-3.5 h-3.5 text-white" /> Ambawadi, Ahmedabad - 380015
             </span>
-            <span className="hidden lg:inline text-slate-400">|</span>
-            <span className="flex items-center gap-1 text-slate-200 font-extrabold">
-              <Truck className="w-3.5 h-3.5 text-blue-400" /> FREE All-India Express Delivery
+            <span className="hidden lg:inline text-neutral-700">|</span>
+            <span className="flex items-center gap-1 text-white font-semibold">
+              <Truck className="w-3.5 h-3.5 text-neutral-300" /> FREE All-India Delivery
             </span>
           </div>
         </div>
       </div>
 
-      {/* Main Header Container */}
+      {/* Main Minimal Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 gap-4">
           {/* Mobile Menu Button */}
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="min-w-[44px] min-h-[44px] p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100 flex items-center justify-center transition-colors"
+              className="min-w-[44px] min-h-[44px] p-2 text-[#111111] hover:bg-[#F7F7F8] flex items-center justify-center transition-colors"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -62,39 +62,30 @@ export default function Header() {
 
           {/* Logo Branding */}
           <div className="flex items-center gap-6">
-            <Link href="/" className="flex flex-col group py-1">
-              <div className="flex items-center gap-2">
-                <div className="devibe-tab px-3 py-1 rounded-md flex items-center group-hover:scale-105 transition-transform shadow-md">
-                  <span className="text-2xl sm:text-3xl font-black tracking-tighter">BAHAMUT</span>
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[11px] font-black text-slate-900 bg-amber-300 px-2 py-0.5 rounded uppercase tracking-wider shadow-sm">
-                    by DE VIBE
-                  </span>
-                  <span className="text-[9px] font-black text-emerald-700 uppercase tracking-widest mt-0.5">
-                    ★ ASSURED QUALITY
-                  </span>
-                </div>
+            <Link href="/" className="flex items-center gap-2 group py-1">
+              <div className="bg-[#111111] text-white px-3.5 py-1.5 flex items-center">
+                <span className="text-xl sm:text-2xl font-black tracking-widest uppercase">BAHAMUT</span>
               </div>
+              <span className="text-[10px] font-bold text-[#111111] bg-[#F0F0F2] px-2 py-1 uppercase tracking-widest border border-[#E5E5E5]">
+                BY DE VIBE
+              </span>
             </Link>
 
-            {/* Pincode Selector (Desktop) */}
-            <div className="hidden lg:flex items-center gap-2 p-2 hover:bg-slate-50 rounded-xl border border-transparent hover:border-slate-200 cursor-pointer transition-all">
-              <MapPin className="w-5 h-5 text-devibe-red shrink-0" />
-              <div className="text-left text-xs leading-tight">
-                <span className="text-slate-400 block text-[10px] font-bold">Deliver to</span>
-                <span className="font-black text-slate-900">Ambawadi 380015</span>
-              </div>
+            {/* Pincode Indicator (Desktop) */}
+            <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 bg-[#F7F7F8] border border-[#E5E5E5] text-xs">
+              <MapPin className="w-3.5 h-3.5 text-[#111111]" />
+              <span className="text-[#666666]">Deliver to</span>
+              <span className="font-bold text-[#111111]">Ambawadi 380015</span>
             </div>
           </div>
 
-          {/* Search Bar (Desktop & Tablet) */}
-          <div className="hidden md:flex flex-1 max-w-xl mx-4">
+          {/* Search Bar (Desktop) */}
+          <div className="hidden md:flex flex-1 max-w-lg mx-6">
             <form onSubmit={handleSearch} className="relative w-full flex items-center">
               <select
                 value={searchCategory}
                 onChange={(e) => setSearchCategory(e.target.value)}
-                className="h-11 bg-slate-100 border border-r-0 border-slate-300 rounded-l-2xl px-3 text-xs font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-900"
+                className="h-10 bg-[#F7F7F8] border border-r-0 border-[#E5E5E5] px-3 text-xs font-semibold text-[#111111] focus:outline-none"
               >
                 <option value="ALL">All Categories</option>
                 <option value="SHIRT">Shirts (38–46)</option>
@@ -106,13 +97,13 @@ export default function Header() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search shirts, trousers, graphic tees..."
-                  className="w-full h-11 pl-4 pr-10 text-xs font-medium text-slate-900 bg-slate-50 border border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:bg-white"
+                  placeholder="Search woven cotton shirts, bottomwear, tees..."
+                  className="w-full h-10 pl-4 pr-10 text-xs font-medium text-[#111111] bg-white border border-[#E5E5E5] focus:outline-none focus:border-[#111111]"
                 />
               </div>
               <button
                 type="submit"
-                className="h-11 px-5 bg-slate-900 hover:bg-slate-800 text-white rounded-r-2xl font-bold flex items-center justify-center transition-all"
+                className="h-10 px-4 bg-[#111111] hover:bg-black text-white font-bold flex items-center justify-center transition-colors"
                 aria-label="Submit search"
               >
                 <Search className="w-4 h-4" />
@@ -120,85 +111,83 @@ export default function Header() {
             </form>
           </div>
 
-          {/* Action Icons */}
+          {/* Minimal Action Icons */}
           <div className="flex items-center gap-3">
-            {/* Fit Assistant Button */}
             <button
               onClick={() => setIsSizeModalOpen(true)}
-              className="hidden sm:flex min-h-[44px] px-3.5 py-2 rounded-xl text-xs font-black text-slate-800 hover:text-devibe-red hover:bg-slate-100 items-center gap-1.5 transition-all border border-slate-200"
+              className="hidden sm:flex min-h-[40px] px-3.5 py-1.5 text-xs font-bold text-[#111111] hover:bg-[#F7F7F8] items-center gap-1.5 transition-all border border-[#E5E5E5]"
             >
-              <Ruler className="w-4 h-4 text-blue-600" />
+              <Ruler className="w-4 h-4 text-[#666666]" />
               <span>Fit Guide</span>
             </button>
 
-            {/* Shopping Bag Button with Badge */}
             <Link
               href="/cart"
-              className="min-w-[44px] min-h-[44px] px-3 py-2 relative text-slate-900 hover:text-devibe-red rounded-xl hover:bg-slate-100 flex items-center gap-2 transition-all border border-slate-200"
+              className="min-w-[40px] min-h-[40px] px-3 py-1.5 relative text-[#111111] hover:bg-[#F7F7F8] flex items-center gap-2 transition-all border border-[#E5E5E5]"
               aria-label="View Cart"
             >
               <div className="relative">
-                <ShoppingBag className="w-6 h-6" />
+                <ShoppingBag className="w-5 h-5" />
                 {itemCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-devibe-red text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-md animate-bounce">
+                  <span className="absolute -top-2 -right-2 bg-[#111111] text-white text-[9px] font-black w-4 h-4 rounded-full flex items-center justify-center">
                     {itemCount}
                   </span>
                 )}
               </div>
-              <span className="hidden lg:inline text-xs font-extrabold">Bag</span>
+              <span className="hidden lg:inline text-xs font-bold">Bag</span>
             </Link>
 
             <Link
               href="/admin/login"
-              className="hidden lg:flex min-h-[44px] px-3.5 py-2 text-xs font-extrabold text-white bg-slate-900 hover:bg-slate-800 rounded-xl items-center gap-1.5 shadow-md transition-all"
+              className="hidden lg:flex min-h-[40px] px-3.5 py-1.5 text-xs font-bold text-white bg-[#111111] hover:bg-black items-center gap-1.5 transition-all"
             >
-              <Shield className="w-3.5 h-3.5 text-amber-400" />
+              <Shield className="w-3.5 h-3.5 text-neutral-400" />
               <span>Seller Portal</span>
             </Link>
           </div>
         </div>
 
-        {/* Secondary Sub-Header Navigation Bar */}
-        <nav className="hidden md:flex items-center justify-between py-2.5 border-t border-slate-100 text-xs font-extrabold text-slate-800">
-          <div className="flex items-center gap-6">
-            <Link href="/catalog" className="flex items-center gap-1.5 text-slate-900 hover:text-devibe-red font-black">
-              <Sparkles className="w-4 h-4 text-blue-600" /> All Categories
+        {/* Minimal Sub-Header Links */}
+        <nav className="hidden md:flex items-center justify-between py-2.5 border-t border-[#E5E5E5] text-xs font-bold text-[#666666]">
+          <div className="flex items-center gap-8">
+            <Link href="/catalog" className="text-[#111111] hover:text-black font-black uppercase tracking-wider">
+              All Apparel
             </Link>
-            <Link href="/catalog?cat=SHIRT" className="hover:text-devibe-red transition-colors">
-              👔 Shirts (Numeric 38–46)
+            <Link href="/catalog?cat=SHIRT" className="hover:text-[#111111] transition-colors">
+              Shirts (Numeric 38–46)
             </Link>
-            <Link href="/catalog?cat=BOTTOMWEAR" className="hover:text-devibe-red transition-colors">
-              👖 Bottomwear (Numeric 28–38)
+            <Link href="/catalog?cat=BOTTOMWEAR" className="hover:text-[#111111] transition-colors">
+              Bottomwear (Numeric 28–38)
             </Link>
-            <Link href="/catalog?cat=TEE" className="hover:text-devibe-red transition-colors">
-              👕 T-Shirts (Alphabetical S–XXL)
+            <Link href="/catalog?cat=TEE" className="hover:text-[#111111] transition-colors">
+              T-Shirts (Alphabetical S–XXL)
             </Link>
-            <Link href="/track/BM-2026-1001" className="hover:text-devibe-red transition-colors flex items-center gap-1">
-              🚚 Track Shipment
+            <Link href="/track/BM-2026-1001" className="hover:text-[#111111] transition-colors">
+              Track Order
             </Link>
           </div>
 
-          <div className="flex items-center gap-2 text-slate-500 font-bold text-[11px]">
+          <div className="flex items-center gap-2 text-[#666666] text-[11px]">
             <span>Need Help?</span>
-            <Link href="/contact" className="text-slate-900 underline hover:text-blue-600">
-              Contact DE VIBE Support
+            <Link href="/contact" className="text-[#111111] underline font-bold">
+              Contact DE VIBE
             </Link>
           </div>
         </nav>
       </div>
 
-      {/* Mobile Search Bar & Menu */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-xl animate-fade-in">
+        <div className="md:hidden bg-white border-b border-[#E5E5E5] px-4 pt-3 pb-6 space-y-3">
           <form onSubmit={handleSearch} className="flex items-center gap-2">
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search products..."
-              className="flex-1 h-10 px-3 text-xs bg-slate-100 border border-slate-300 rounded-xl"
+              className="flex-1 h-10 px-3 text-xs bg-[#F7F7F8] border border-[#E5E5E5]"
             />
-            <button type="submit" className="h-10 px-4 bg-slate-900 text-white rounded-xl font-bold text-xs">
+            <button type="submit" className="h-10 px-4 bg-[#111111] text-white font-bold text-xs">
               Search
             </button>
           </form>
@@ -207,44 +196,44 @@ export default function Header() {
             <Link
               href="/catalog"
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-xs font-bold text-slate-800 hover:bg-slate-100"
+              className="block px-3 py-2 text-xs font-bold text-[#111111] hover:bg-[#F7F7F8]"
             >
               All Categories
             </Link>
             <Link
               href="/catalog?cat=SHIRT"
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-xs font-bold text-slate-800 hover:bg-slate-100"
+              className="block px-3 py-2 text-xs font-bold text-[#111111] hover:bg-[#F7F7F8]"
             >
-              👔 Shirts (Numeric 38–46)
+              Shirts (Numeric 38–46)
             </Link>
             <Link
               href="/catalog?cat=BOTTOMWEAR"
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-xs font-bold text-slate-800 hover:bg-slate-100"
+              className="block px-3 py-2 text-xs font-bold text-[#111111] hover:bg-[#F7F7F8]"
             >
-              👖 Bottomwear (Numeric 28–38)
+              Bottomwear (Numeric 28–38)
             </Link>
             <Link
               href="/catalog?cat=TEE"
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-xs font-bold text-slate-800 hover:bg-slate-100"
+              className="block px-3 py-2 text-xs font-bold text-[#111111] hover:bg-[#F7F7F8]"
             >
-              👕 T-Shirts (Alphabetical S–XXL)
+              T-Shirts (Alphabetical S–XXL)
             </Link>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 setIsSizeModalOpen(true);
               }}
-              className="w-full text-left block px-3 py-2 rounded-lg text-xs font-bold text-blue-600 hover:bg-slate-100"
+              className="w-full text-left block px-3 py-2 text-xs font-bold text-[#111111] hover:bg-[#F7F7F8]"
             >
               Fit Assistant Guide
             </button>
             <Link
               href="/track/BM-2026-1001"
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-xs font-bold text-slate-800 hover:bg-slate-100"
+              className="block px-3 py-2 text-xs font-bold text-[#111111] hover:bg-[#F7F7F8]"
             >
               Track Order Status
             </Link>

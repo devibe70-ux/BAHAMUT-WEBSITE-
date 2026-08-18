@@ -22,13 +22,14 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://bahamut.in'),
-  title: 'BAHAMUT by DE VIBE | 100% Breathable Woven Cotton Apparel',
+  title: 'BAHAMUT by DE VIBE | Minimal Woven Cotton Apparel',
   description:
     'Direct-from-manufacturer 100% Breathable Woven Cotton apparel from Ahmedabad textile hub. Official Registered Trademark (TM No. 5018168, Class 25). Ambawadi, Ahmedabad, Gujarat - 380015.',
   keywords: [
     'BAHAMUT',
     'DE VIBE',
     'Woven Cotton Shirts',
+    'Minimal Apparel',
     'Ahmedabad Textile Mills',
     'Partial COD Apparel',
     'Class 25 Garments',
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     canonical: 'https://bahamut.in',
   },
   openGraph: {
-    title: 'BAHAMUT by DE VIBE - Woven Cotton Apparel',
+    title: 'BAHAMUT by DE VIBE - Minimal Apparel',
     description:
       'Direct-from-manufacturer 100% Breathable Woven Cotton apparel from Ahmedabad textile hub.',
     url: 'https://bahamut.in',
@@ -123,7 +124,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
         />
       </head>
-      <body className="flex flex-col min-h-screen bg-[#F8FAFC] text-slate-900 font-sans antialiased selection:bg-red-600 selection:text-white">
+      <body className="flex flex-col min-h-screen bg-[#F7F7F8] text-[#111111] font-sans antialiased selection:bg-black selection:text-white">
         <CartProvider>
           <AnnouncementBar />
           <Header />

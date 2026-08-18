@@ -4,57 +4,56 @@
 
 @layer base {
   :root {
-    --brand-red: #E11D48;
-    --brand-navy: #0F172A;
-    --brand-emerald: #059669;
-    --brand-yellow: #F59E0B;
+    --brand-black: #111111;
+    --brand-offwhite: #F7F7F8;
+    --brand-muted: #666666;
+    --brand-border: #E5E5E5;
   }
 
   body {
-    @apply bg-[#F8FAFC] text-slate-900 antialiased font-sans selection:bg-red-600 selection:text-white min-h-screen flex flex-col;
+    @apply bg-[#F7F7F8] text-[#111111] antialiased font-sans selection:bg-black selection:text-white min-h-screen flex flex-col;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-black tracking-tight text-slate-900;
+    @apply font-extrabold tracking-tight text-[#111111];
   }
 }
 
-/* DE VIBE Brand Tab Badge */
+/* Minimal Brand Badge */
 .devibe-tab {
-  background: #E11D48;
+  background: #111111;
   color: #FFFFFF;
-  font-weight: 900;
-  letter-spacing: 0.05em;
-  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.35);
+  font-weight: 800;
+  letter-spacing: 0.08em;
 }
 
-/* Clean Shadows & Cards */
+/* Minimal Clean Cards */
 .card-clean {
   background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid #E5E5E5;
+  transition: all 0.2s ease-in-out;
 }
 
 .card-clean:hover {
-  border-color: #CBD5E1;
-  box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.1);
+  border-color: #111111;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06);
 }
 
-/* Custom Scrollbar */
+/* Minimal Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F1F5F9;
+  background: #F7F7F8;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #94A3B8;
-  border-radius: 4px;
+  background: #CCCCCC;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #64748B;
+  background: #999999;
 }

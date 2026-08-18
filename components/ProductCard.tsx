@@ -43,9 +43,9 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <div className="group card-clean rounded-3xl overflow-hidden transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
+    <div className="group card-clean overflow-hidden transition-all duration-200 flex flex-col justify-between">
       {/* Product Image Container */}
-      <div className="relative aspect-[4/5] bg-slate-100 overflow-hidden">
+      <div className="relative aspect-[4/5] bg-[#F7F7F8] overflow-hidden">
         <Link href={`/product/${encodeURIComponent(product.slug)}`}>
           <Image
             src={mainImage}
@@ -67,74 +67,73 @@ export default function ProductCard({ product }: ProductCardProps) {
           )}
         </Link>
 
-        {/* Badges */}
-        <div className="absolute top-3 left-3 flex flex-col gap-1 z-10">
-          <span className="bg-slate-900 text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shadow flex items-center gap-1 border border-slate-700">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> DE VIBE ASSURED
+        {/* Minimal Badges */}
+        <div className="absolute top-3 left-3 z-10">
+          <span className="bg-[#111111] text-white text-[9px] font-black px-2 py-0.5 uppercase tracking-widest flex items-center gap-1">
+            <ShieldCheck className="w-3 h-3 text-neutral-300" /> DE VIBE ASSURED
           </span>
         </div>
 
         {discountPercent > 0 && (
           <div className="absolute top-3 right-3 z-10">
-            <span className="bg-devibe-red text-white text-[11px] font-black px-2.5 py-1 rounded-xl shadow border border-red-400">
-              {discountPercent}% OFF
+            <span className="bg-white text-[#111111] border border-[#E5E5E5] text-[10px] font-bold px-2 py-0.5">
+              -{discountPercent}%
             </span>
           </div>
         )}
 
         {isOutOfStock && (
-          <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-xs flex items-center justify-center p-4">
-            <span className="bg-red-600 text-white font-black text-xs px-3.5 py-1.5 rounded-xl uppercase tracking-wider shadow-lg">
-              OUT OF STOCK
+          <div className="absolute inset-0 bg-[#111111]/70 flex items-center justify-center p-4">
+            <span className="bg-white text-[#111111] font-bold text-xs px-3 py-1 uppercase tracking-wider">
+              SOLD OUT
             </span>
           </div>
         )}
       </div>
 
-      {/* Product Info */}
+      {/* Minimal Product Info */}
       <div className="p-4 sm:p-5 space-y-3 flex-1 flex flex-col justify-between">
         <div>
-          {/* Star Rating & Delivery Badge */}
-          <div className="flex items-center justify-between text-[11px] mb-1.5 font-bold">
-            <div className="flex items-center gap-1 text-amber-500">
-              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-              <span className="text-slate-900 font-black">{product.rating || 4.8}</span>
-              <span className="text-slate-400 font-semibold">({product.review_count || 148})</span>
+          <div className="flex items-center justify-between text-[11px] mb-1 font-medium text-[#666666]">
+            <div className="flex items-center gap-1 text-[#111111]">
+              <Star className="w-3.5 h-3.5 fill-[#111111] text-[#111111]" />
+              <span className="font-bold">{product.rating || 4.8}</span>
+              <span className="text-[#666666]">({product.review_count || 148})</span>
             </div>
-            <span className="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 text-[10px]">
-              FREE Express
+            <span className="text-[10px] font-semibold text-[#111111] uppercase">
+              100% Woven Cotton
             </span>
           </div>
 
           <Link href={`/product/${encodeURIComponent(product.slug)}`}>
-            <h3 className="font-extrabold text-sm text-slate-900 line-clamp-2 hover:text-devibe-red transition-colors">
+            <h3 className="font-bold text-sm text-[#111111] line-clamp-2 hover:underline">
               {product.title}
             </h3>
           </Link>
 
-          <p className="text-[11px] text-slate-500 mt-1 font-medium">
-            {product.fabric_details || '100% Breathable Woven Cotton • Ahmedabad Mills'}
+          <p className="text-[11px] text-[#666666] mt-1 line-clamp-1">
+            {product.fabric_details || '100% Woven Cotton • Ambawadi Ahmedabad'}
           </p>
 
           {/* Pricing Row */}
-          <div className="flex items-baseline gap-2 mt-2.5">
-            <span className="text-lg font-black text-slate-900">
+          <div className="flex items-baseline gap-2 mt-2">
+            <span className="text-base font-extrabold text-[#111111]">
               ₹{price.toLocaleString('en-IN')}
             </span>
-            <span className="text-xs text-slate-400 line-through font-semibold">
+            <span className="text-xs text-[#999999] line-through font-medium">
               ₹{originalMrp.toLocaleString('en-IN')}
             </span>
           </div>
         </div>
 
-        {/* Size Selection Chips */}
-        <div className="space-y-2 pt-2 border-t border-slate-100">
-          <div className="flex items-center justify-between text-[10px] font-extrabold text-slate-500">
+        {/* Minimal Size Selection */}
+        <div className="space-y-2 pt-2 border-t border-[#E5E5E5]">
+          <div className="flex items-center justify-between text-[10px] font-bold text-[#666666]">
             <span>SELECT FIT SIZE:</span>
             <button
               type="button"
               onClick={() => setIsSizeModalOpen(true)}
-              className="text-blue-600 font-bold hover:underline flex items-center gap-0.5"
+              className="text-[#111111] underline hover:text-black flex items-center gap-0.5"
             >
               <Ruler className="w-3 h-3" /> Size Guide
             </button>
@@ -147,10 +146,10 @@ export default function ProductCard({ product }: ProductCardProps) {
                 type="button"
                 onClick={() => setSelectedSize(size)}
                 disabled={isOutOfStock}
-                className={`min-w-[32px] h-7 text-[11px] font-bold rounded-lg border transition-all ${
+                className={`min-w-[32px] h-7 text-[11px] font-bold border transition-all ${
                   selectedSize === size
-                    ? 'border-slate-900 bg-slate-900 text-white shadow-sm'
-                    : 'border-slate-200 bg-slate-50 text-slate-700 hover:border-slate-400'
+                    ? 'border-[#111111] bg-[#111111] text-white'
+                    : 'border-[#E5E5E5] bg-[#F7F7F8] text-[#111111] hover:border-[#111111]'
                 }`}
               >
                 {size}
@@ -158,21 +157,21 @@ export default function ProductCard({ product }: ProductCardProps) {
             ))}
           </div>
 
-          {/* Add to Cart Button */}
+          {/* Minimal Add to Cart Button */}
           <button
             onClick={handleQuickAdd}
             disabled={isOutOfStock}
-            className={`w-full min-h-[42px] mt-2 rounded-2xl font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all active:scale-95 shadow-md ${
+            className={`w-full min-h-[40px] mt-2 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors ${
               isOutOfStock
-                ? 'bg-slate-200 text-slate-400 cursor-not-allowed border border-slate-300'
+                ? 'bg-[#E5E5E5] text-[#999999] cursor-not-allowed'
                 : added
-                ? 'bg-emerald-600 text-white'
-                : 'bg-devibe-red hover:bg-rose-700 text-white'
+                ? 'bg-neutral-800 text-white'
+                : 'bg-[#111111] hover:bg-black text-white'
             }`}
           >
             {added ? (
               <>
-                <Check className="w-4 h-4" /> Added to Bag ({selectedSize})
+                <Check className="w-4 h-4" /> Added ({selectedSize})
               </>
             ) : (
               <>
