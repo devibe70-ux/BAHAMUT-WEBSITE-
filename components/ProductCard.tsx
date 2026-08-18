@@ -43,9 +43,9 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <article className="group bg-[#121215] rounded-[2px] overflow-hidden border border-[#26262c] hover:border-[#8b0018] transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 shadow-xl">
-      {/* 4:5 Aspect Ratio Product Image Container */}
-      <div className="relative aspect-[4/5] bg-black overflow-hidden">
+    <div className="group card-clean rounded-3xl overflow-hidden transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
+      {/* Product Image Container */}
+      <div className="relative aspect-[4/5] bg-slate-100 overflow-hidden">
         <Link href={`/product/${encodeURIComponent(product.slug)}`}>
           <Image
             src={mainImage}
@@ -69,22 +69,22 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {/* Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-1 z-10">
-          <span className="bg-[#8b0018] text-white text-[9px] font-bold px-2.5 py-1 rounded-[2px] uppercase tracking-widest shadow flex items-center gap-1">
-            <ShieldCheck className="w-3 h-3 text-amber-300" /> CLASS 25
+          <span className="bg-slate-900 text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shadow flex items-center gap-1 border border-slate-700">
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> DE VIBE ASSURED
           </span>
         </div>
 
         {discountPercent > 0 && (
           <div className="absolute top-3 right-3 z-10">
-            <span className="bg-[#8b0018] text-white text-[10px] font-bold px-2 py-0.5 rounded-[2px] shadow border border-red-500">
+            <span className="bg-devibe-red text-white text-[11px] font-black px-2.5 py-1 rounded-xl shadow border border-red-400">
               {discountPercent}% OFF
             </span>
           </div>
         )}
 
         {isOutOfStock && (
-          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-            <span className="bg-[#8b0018] text-white font-heading text-xs px-4 py-2 rounded-[2px] uppercase tracking-widest shadow-xl">
+          <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-xs flex items-center justify-center p-4">
+            <span className="bg-red-600 text-white font-black text-xs px-3.5 py-1.5 rounded-xl uppercase tracking-wider shadow-lg">
               OUT OF STOCK
             </span>
           </div>
@@ -92,49 +92,49 @@ export default function ProductCard({ product }: ProductCardProps) {
       </div>
 
       {/* Product Info */}
-      <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
+      <div className="p-4 sm:p-5 space-y-3 flex-1 flex flex-col justify-between">
         <div>
           {/* Star Rating & Delivery Badge */}
           <div className="flex items-center justify-between text-[11px] mb-1.5 font-bold">
-            <div className="flex items-center gap-1 text-amber-400">
+            <div className="flex items-center gap-1 text-amber-500">
               <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-              <span className="text-white font-black">{product.rating || 4.8}</span>
-              <span className="text-slate-500 font-semibold">({product.review_count || 148})</span>
+              <span className="text-slate-900 font-black">{product.rating || 4.8}</span>
+              <span className="text-slate-400 font-semibold">({product.review_count || 148})</span>
             </div>
-            <span className="text-emerald-400 font-bold bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800 text-[10px]">
+            <span className="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 text-[10px]">
               FREE Express
             </span>
           </div>
 
           <Link href={`/product/${encodeURIComponent(product.slug)}`}>
-            <h3 className="font-semibold text-sm text-white line-clamp-2 hover:text-[#b3001f] transition-colors">
+            <h3 className="font-extrabold text-sm text-slate-900 line-clamp-2 hover:text-devibe-red transition-colors">
               {product.title}
             </h3>
           </Link>
 
-          <p className="text-[11px] text-[#8b8b94] mt-1 font-medium">
-            {product.fabric_details || '240 GSM Woven Cotton • De Vibe Mill'}
+          <p className="text-[11px] text-slate-500 mt-1 font-medium">
+            {product.fabric_details || '100% Breathable Woven Cotton • Ahmedabad Mills'}
           </p>
 
           {/* Pricing Row */}
-          <div className="flex items-baseline gap-2 mt-3">
-            <span className="text-lg font-bold text-white font-heading">
+          <div className="flex items-baseline gap-2 mt-2.5">
+            <span className="text-lg font-black text-slate-900">
               ₹{price.toLocaleString('en-IN')}
             </span>
-            <span className="text-xs text-slate-500 line-through">
+            <span className="text-xs text-slate-400 line-through font-semibold">
               ₹{originalMrp.toLocaleString('en-IN')}
             </span>
           </div>
         </div>
 
         {/* Size Selection Chips */}
-        <div className="space-y-2 pt-3 border-t border-[#26262c]">
-          <div className="flex items-center justify-between text-[10px] font-bold text-[#8b8b94]">
-            <span>FIT SIZE:</span>
+        <div className="space-y-2 pt-2 border-t border-slate-100">
+          <div className="flex items-center justify-between text-[10px] font-extrabold text-slate-500">
+            <span>SELECT FIT SIZE:</span>
             <button
               type="button"
               onClick={() => setIsSizeModalOpen(true)}
-              className="text-[#b3001f] font-bold hover:underline flex items-center gap-0.5"
+              className="text-blue-600 font-bold hover:underline flex items-center gap-0.5"
             >
               <Ruler className="w-3 h-3" /> Size Guide
             </button>
@@ -147,10 +147,10 @@ export default function ProductCard({ product }: ProductCardProps) {
                 type="button"
                 onClick={() => setSelectedSize(size)}
                 disabled={isOutOfStock}
-                className={`min-w-[32px] h-7 text-[11px] font-bold rounded-[2px] border transition-all ${
+                className={`min-w-[32px] h-7 text-[11px] font-bold rounded-lg border transition-all ${
                   selectedSize === size
-                    ? 'border-[#8b0018] bg-[#8b0018] text-white shadow-sm'
-                    : 'border-[#26262c] bg-[#1b1b20] text-slate-300 hover:border-slate-600'
+                    ? 'border-slate-900 bg-slate-900 text-white shadow-sm'
+                    : 'border-slate-200 bg-slate-50 text-slate-700 hover:border-slate-400'
                 }`}
               >
                 {size}
@@ -162,17 +162,17 @@ export default function ProductCard({ product }: ProductCardProps) {
           <button
             onClick={handleQuickAdd}
             disabled={isOutOfStock}
-            className={`w-full min-h-[42px] mt-2 rounded-[2px] font-heading text-xs uppercase tracking-widest flex items-center justify-center gap-2 transition-all active:scale-95 ${
+            className={`w-full min-h-[42px] mt-2 rounded-2xl font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all active:scale-95 shadow-md ${
               isOutOfStock
-                ? 'bg-slate-800 text-slate-500 cursor-not-allowed'
+                ? 'bg-slate-200 text-slate-400 cursor-not-allowed border border-slate-300'
                 : added
-                ? 'bg-emerald-700 text-white'
-                : 'bg-[#8b0018] hover:bg-[#b3001f] text-white glow-crimson'
+                ? 'bg-emerald-600 text-white'
+                : 'bg-devibe-red hover:bg-rose-700 text-white'
             }`}
           >
             {added ? (
               <>
-                <Check className="w-4 h-4" /> Added Bag ({selectedSize})
+                <Check className="w-4 h-4" /> Added to Bag ({selectedSize})
               </>
             ) : (
               <>
@@ -188,6 +188,6 @@ export default function ProductCard({ product }: ProductCardProps) {
         onClose={() => setIsSizeModalOpen(false)}
         initialCategory={product.category}
       />
-    </article>
+    </div>
   );
 }
