@@ -42,8 +42,7 @@ export default function ContactUsPage() {
             </div>
             <div className="text-xs text-[#8b8b94] space-y-1 font-medium">
               <p className="font-bold text-white">De Vibe Apparel Hub</p>
-              <p>Ambawadi, Ahmedabad</p>
-              <p>Gujarat, India — PIN: 380015</p>
+              <p>Ambawadi, Ahmedabad, Gujarat, India - 380015</p>
               <p className="text-[11px] text-amber-400 pt-1 font-bold">Trade Mark No: 5018168 (Class 25)</p>
             </div>
 

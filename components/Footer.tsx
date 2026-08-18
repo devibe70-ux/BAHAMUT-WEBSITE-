@@ -64,7 +64,7 @@ export default function Footer() {
             </p>
             <div className="text-xs text-slate-400 space-y-1 font-medium">
               <p className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#b3001f] flex-shrink-0" /> De Vibe Hub, Ambawadi, Ahmedabad - 380015
+                <MapPin className="w-3.5 h-3.5 text-[#b3001f] flex-shrink-0" /> De Vibe Hub, Ambawadi, Ahmedabad, Gujarat, India - 380015
               </p>
               <p className="flex items-center gap-2">
                 <PhoneCall className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" /> +91 79 2213 4099 / devibe70@gmail.com
