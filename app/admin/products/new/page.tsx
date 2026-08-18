@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { saveProduct } from '@/lib/products';
 import { Product, Demographic } from '@/lib/types';
-import { Sparkles, ArrowLeft, CheckCircle2, Shield, Wand2, RefreshCw, Download, Store } from 'lucide-react';
+import { Sparkles, ArrowLeft, CheckCircle2, Shield, Wand2, RefreshCw, Download, Store, FileSpreadsheet } from 'lucide-react';
 
 export default function NewProductAiPage() {
   const router = useRouter();
@@ -72,6 +72,10 @@ export default function NewProductAiPage() {
     }
   };
 
+  const handleDownloadCsv = () => {
+    window.open('/api/admin/products/export-csv', '_blank');
+  };
+
   const handlePublishProduct = () => {
     if (generatedProduct) {
       saveProduct(generatedProduct);
@@ -89,26 +93,36 @@ export default function NewProductAiPage() {
         <ArrowLeft className="w-4 h-4 text-[#b3001f]" /> Back to Seller Dashboard
       </button>
 
-      {/* Top Banner with Google Merchant Sync Button */}
+      {/* Top Banner with Google Merchant Sync & CSV Export Buttons */}
       <div className="bg-[#121215] p-8 rounded-[2px] border border-[#26262c] space-y-4 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 bg-[#8b0018] text-white px-3.5 py-1 rounded-[2px] text-xs font-heading tracking-widest uppercase">
-            <Sparkles className="w-4 h-4" /> AI CATALOGING & GOOGLE MERCHANT SYNC
+            <Sparkles className="w-4 h-4" /> GOOGLE MERCHANT & CSV FEED ENGINE
           </div>
-          <h1 className="text-3xl font-heading text-white uppercase tracking-wider">AI Product Publisher & Importer</h1>
+          <h1 className="text-3xl font-heading text-white uppercase tracking-wider">Manufacturer Feed Importer</h1>
           <p className="text-xs text-[#8b8b94] font-medium">
-            Sync products from Google Merchant / Business profile (<strong>bahamut.india@gmail.com</strong>) or auto-generate specs.
+            Sync products from Google Merchant / Business profile (<strong>bahamut.india@gmail.com</strong>) or export CSV.
           </p>
         </div>
 
-        <button
-          onClick={handleGoogleMerchantSync}
-          disabled={isSyncingGoogle}
-          className="min-h-[52px] px-6 py-3 bg-emerald-950 hover:bg-emerald-900 text-emerald-300 font-heading text-xs uppercase tracking-widest rounded-[2px] border border-emerald-800 flex items-center justify-center gap-2 transition-all shadow-xl"
-        >
-          <Store className="w-4 h-4 text-emerald-400" />
-          {isSyncingGoogle ? 'Syncing Google Feed...' : 'Sync Google Business Feed'}
-        </button>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <button
+            onClick={handleGoogleMerchantSync}
+            disabled={isSyncingGoogle}
+            className="min-h-[48px] px-5 py-2.5 bg-emerald-950 hover:bg-emerald-900 text-emerald-300 font-heading text-xs uppercase tracking-widest rounded-[2px] border border-emerald-800 flex items-center justify-center gap-2 transition-all shadow-xl"
+          >
+            <Store className="w-4 h-4 text-emerald-400" />
+            {isSyncingGoogle ? 'Syncing...' : 'Sync Google Feed'}
+          </button>
+
+          <button
+            onClick={handleDownloadCsv}
+            className="min-h-[48px] px-5 py-2.5 bg-blue-950 hover:bg-blue-900 text-blue-300 font-heading text-xs uppercase tracking-widest rounded-[2px] border border-blue-800 flex items-center justify-center gap-2 transition-all shadow-xl"
+          >
+            <FileSpreadsheet className="w-4 h-4 text-blue-400" />
+            Download Products CSV
+          </button>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
@@ -210,8 +224,8 @@ export default function NewProductAiPage() {
           ) : (
             <div className="bg-[#121215] border-2 border-dashed border-[#26262c] rounded-[2px] p-12 text-center text-xs text-[#8b8b94] space-y-2">
               <Wand2 className="w-10 h-10 text-[#8b0018] mx-auto" />
-              <p className="font-heading text-white text-sm">Google Merchant & AI Importer Active</p>
-              <p className="font-medium">Click "Sync Google Business Feed" to pull listings from bahamut.india@gmail.com.</p>
+              <p className="font-heading text-white text-sm">Google Merchant & CSV Importer Active</p>
+              <p className="font-medium">Sync listings from bahamut.india@gmail.com or download products.csv to local machine.</p>
             </div>
           )}
         </div>
