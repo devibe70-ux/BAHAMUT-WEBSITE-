@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ShoppingBag, Search, Menu, X, Shield, Ruler, MapPin, Truck } from 'lucide-react';
+import { ShoppingBag, Search, Menu, X, Shield, Ruler, Truck } from 'lucide-react';
 import { useCart } from '@/lib/cartContext';
 import SizeGuideModal from '@/components/SizeGuideModal';
 
@@ -22,25 +22,18 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-[#E5E5E5] font-sans">
-      {/* Top Announcement Bar */}
+      {/* Top Announcement Bar (Clean & Unobtrusive) */}
       <div className="bg-[#111111] text-white text-[11px] font-semibold py-2 px-4 border-b border-neutral-800">
         <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="bg-[#F5F5F0] text-[#222222] text-[10px] font-black px-2 py-0.5 uppercase tracking-widest border border-[#E5E5E0]">
-              TM NO. 5018168 (CLASS 25)
-            </span>
-            <span className="hidden sm:inline font-medium text-neutral-300">
+            <span className="font-medium text-neutral-300">
               Direct-from-Mill 100% Breathable Woven Cotton • Pay ₹200 Advance (Partial COD)
             </span>
           </div>
 
           <div className="flex items-center gap-4 text-neutral-400">
-            <span className="hidden md:flex items-center gap-1 text-[11px] font-medium text-neutral-300">
-              <MapPin className="w-3.5 h-3.5 text-white" /> Ambawadi, Ahmedabad - 380015
-            </span>
-            <span className="hidden lg:inline text-neutral-700">|</span>
             <span className="flex items-center gap-1 text-white font-semibold">
-              <Truck className="w-3.5 h-3.5 text-neutral-300" /> FREE All-India Delivery
+              <Truck className="w-3.5 h-3.5 text-neutral-300" /> FREE All-India Express Delivery
             </span>
           </div>
         </div>
@@ -70,13 +63,6 @@ export default function Header() {
                 BY DE VIBE
               </span>
             </Link>
-
-            {/* Pincode Indicator (Desktop) */}
-            <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 bg-[#F7F7F8] border border-[#E5E5E5] text-xs">
-              <MapPin className="w-3.5 h-3.5 text-[#111111]" />
-              <span className="text-[#666666]">Deliver to</span>
-              <span className="font-bold text-[#111111]">Ambawadi 380015</span>
-            </div>
           </div>
 
           {/* Search Bar (Desktop) */}
