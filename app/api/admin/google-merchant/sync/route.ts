@@ -91,34 +91,6 @@ export async function POST(req: Request) {
         created_at: new Date().toISOString()
       },
       {
-        id: 'gm-003',
-        slug: 'tactical-multi-pocket-cargo-trousers',
-        title: 'Tactical Multi-Pocket Cargo Trousers (Class 25)',
-        category: 'BOTTOMWEAR',
-        description: 'Amazon SmartBiz & Google Merchant Verified Listing (bahamut.smartbiz.in): Ripstop Cotton Trousers featuring deep gunmetal utility hardware, pre-shrunk waist fit, and 6-pocket tactical construction. Numeric waist sizes 28 to 38.',
-        target_demographic: 'UNIFIED_13_65',
-        fabric_details: 'Ripstop Heavyweight Woven Cotton',
-        price: 3899,
-        original_mrp: 5999,
-        stock_quantity: 40,
-        rating: 4.9,
-        review_count: 195,
-        express_delivery: 'FREE Express Shipping via Amazon SmartBiz & Google Merchant',
-        images: [
-          'https://m.media-amazon.com/images/X/bxr1/M/Bbxr1hx1PvWFWOv.png',
-          'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80'
-        ],
-        sizes: ['28', '30', '32', '34', '36', '38'],
-        pattern: 'Tactical Ripstop Solid',
-        fit: 'Numeric Tactical Fit (28-38)',
-        sleeve: 'N/A',
-        color: 'Gunmetal Charcoal',
-        gtin: '8901234501818',
-        mpn: 'BM-2026-CARGO-03',
-        is_active: true,
-        created_at: new Date().toISOString()
-      },
-      {
         id: 'gm-004',
         slug: 'ahmedabad-woven-chambray-navy',
         title: 'De Vibe Classic Chambray Shirt - Deep Navy',

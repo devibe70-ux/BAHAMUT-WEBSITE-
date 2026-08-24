@@ -91,35 +91,6 @@ export const INITIAL_PRODUCTS: Product[] = [
     created_at: '2026-08-02T10:00:00Z'
   },
   {
-    id: 'gm-003',
-    slug: 'tactical-multi-pocket-cargo-trousers',
-    title: 'Tactical Multi-Pocket Cargo Trousers (Class 25)',
-    category: 'BOTTOMWEAR',
-    description:
-      'Amazon SmartBiz & Google Merchant Verified Listing (bahamut.smartbiz.in): Ripstop Cotton Trousers featuring deep gunmetal utility hardware, pre-shrunk waist fit, and 6-pocket tactical construction. Numeric waist sizes 28 to 38.',
-    target_demographic: 'UNIFIED_13_65',
-    fabric_details: 'Ripstop Heavyweight Woven Cotton',
-    price: 3899,
-    original_mrp: 5999,
-    stock_quantity: 40,
-    rating: 4.9,
-    review_count: 195,
-    express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: [
-      'https://m.media-amazon.com/images/X/bxr1/M/Bbxr1hx1PvWFWOv.png',
-      'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80'
-    ],
-    sizes: ['28', '30', '32', '34', '36', '38'],
-    pattern: 'Tactical Ripstop Solid',
-    fit: 'Numeric Tactical Fit (28-38)',
-    sleeve: 'N/A',
-    color: 'Gunmetal Charcoal',
-    gtin: '8901234501818',
-    mpn: 'BM-2026-CARGO-03',
-    is_active: true,
-    created_at: '2026-08-03T10:00:00Z'
-  },
-  {
     id: 'gm-004',
     slug: 'ahmedabad-woven-chambray-navy',
     title: 'De Vibe Classic Chambray Shirt - Deep Navy',
@@ -241,7 +212,7 @@ export const INITIAL_PRODUCTS: Product[] = [
 
 export function getProducts(): Product[] {
   if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('bahamut_smartbiz_products_v12');
+    const saved = localStorage.getItem('bahamut_smartbiz_products_v14');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -267,7 +238,7 @@ export function saveProduct(product: Product): Product[] {
     updated = [product, ...current];
   }
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v12', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v14', JSON.stringify(updated));
   }
   return updated;
 }
@@ -287,7 +258,7 @@ export function deductStockForOrder(items: CartItem[]): Product[] {
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v12', JSON.stringify(products));
+    localStorage.setItem('bahamut_smartbiz_products_v14', JSON.stringify(products));
   }
   return products;
 }
@@ -302,7 +273,7 @@ export function updateProductStock(idOrSlug: string, newStock: number): Product[
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v12', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v14', JSON.stringify(updated));
   }
   return updated;
 }
