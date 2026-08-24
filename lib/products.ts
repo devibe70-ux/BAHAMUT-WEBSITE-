@@ -178,41 +178,12 @@ export const INITIAL_PRODUCTS: Product[] = [
     mpn: 'BM-2026-SHIRT-06',
     is_active: true,
     created_at: '2026-07-10T14:30:00Z'
-  },
-  {
-    id: 'gm-007',
-    slug: 'woven-cotton-trousers-chino-olive',
-    title: 'De Vibe Ahmedabad Woven Cotton Chino Trousers - Olive Green',
-    category: 'BOTTOMWEAR',
-    description:
-      'Amazon SmartBiz Verified Listing (bahamut.smartbiz.in): Direct-from-mill 100% Woven Cotton Chino Trousers. Durable stretch waistband, deep utility pockets, and pre-shrunk finish. Numeric waist sizes 28 to 38.',
-    target_demographic: 'UNIFIED_13_65',
-    fabric_details: '100% Woven Cotton Twill (Ahmedabad Mills)',
-    price: 1599,
-    original_mrp: 2999,
-    stock_quantity: 40,
-    rating: 4.9,
-    review_count: 185,
-    express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: [
-      'https://m.media-amazon.com/images/X/bxt1/M/ebxt1xT1xlyHVNb.png',
-      'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80'
-    ],
-    sizes: ['28', '30', '32', '34', '36', '38'],
-    pattern: 'Solid Chino',
-    fit: 'Numeric Tailored Fit (28-38)',
-    sleeve: 'N/A',
-    color: 'Olive Green',
-    gtin: '8901234501822',
-    mpn: 'BM-2026-PANT-07',
-    is_active: true,
-    created_at: '2026-07-11T10:00:00Z'
   }
 ];
 
 export function getProducts(): Product[] {
   if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('bahamut_smartbiz_products_v14');
+    const saved = localStorage.getItem('bahamut_smartbiz_products_v15');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -238,7 +209,7 @@ export function saveProduct(product: Product): Product[] {
     updated = [product, ...current];
   }
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v14', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v15', JSON.stringify(updated));
   }
   return updated;
 }
@@ -258,7 +229,7 @@ export function deductStockForOrder(items: CartItem[]): Product[] {
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v14', JSON.stringify(products));
+    localStorage.setItem('bahamut_smartbiz_products_v15', JSON.stringify(products));
   }
   return products;
 }
@@ -273,7 +244,7 @@ export function updateProductStock(idOrSlug: string, newStock: number): Product[
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v14', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v15', JSON.stringify(updated));
   }
   return updated;
 }

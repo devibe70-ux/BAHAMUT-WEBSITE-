@@ -173,34 +173,6 @@ export async function POST(req: Request) {
         mpn: 'BM-2026-SHIRT-06',
         is_active: true,
         created_at: new Date().toISOString()
-      },
-      {
-        id: 'gm-007',
-        slug: 'woven-cotton-trousers-chino-olive',
-        title: 'De Vibe Ahmedabad Woven Cotton Chino Trousers - Olive Green',
-        category: 'BOTTOMWEAR',
-        description: 'Amazon SmartBiz Verified Listing (bahamut.smartbiz.in): Direct-from-mill 100% Woven Cotton Chino Trousers. Durable stretch waistband, deep utility pockets, and pre-shrunk finish. Numeric waist sizes 28 to 38.',
-        target_demographic: 'UNIFIED_13_65',
-        fabric_details: '100% Woven Cotton Twill (Ahmedabad Mills)',
-        price: 1599,
-        original_mrp: 2999,
-        stock_quantity: 40,
-        rating: 4.9,
-        review_count: 185,
-        express_delivery: 'FREE Express Delivery by Tomorrow',
-        images: [
-          'https://m.media-amazon.com/images/X/bxt1/M/ebxt1xT1xlyHVNb.png',
-          'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80'
-        ],
-        sizes: ['28', '30', '32', '34', '36', '38'],
-        pattern: 'Solid Chino',
-        fit: 'Numeric Tailored Fit (28-38)',
-        sleeve: 'N/A',
-        color: 'Olive Green',
-        gtin: '8901234501822',
-        mpn: 'BM-2026-PANT-07',
-        is_active: true,
-        created_at: new Date().toISOString()
       }
     ];
 
