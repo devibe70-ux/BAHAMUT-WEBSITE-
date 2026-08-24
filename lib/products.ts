@@ -241,7 +241,7 @@ export const INITIAL_PRODUCTS: Product[] = [
 
 export function getProducts(): Product[] {
   if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('bahamut_smartbiz_products_v10');
+    const saved = localStorage.getItem('bahamut_smartbiz_products_v12');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -267,7 +267,7 @@ export function saveProduct(product: Product): Product[] {
     updated = [product, ...current];
   }
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v10', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v12', JSON.stringify(updated));
   }
   return updated;
 }
@@ -287,7 +287,7 @@ export function deductStockForOrder(items: CartItem[]): Product[] {
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v10', JSON.stringify(products));
+    localStorage.setItem('bahamut_smartbiz_products_v12', JSON.stringify(products));
   }
   return products;
 }
@@ -302,7 +302,7 @@ export function updateProductStock(idOrSlug: string, newStock: number): Product[
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v10', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v12', JSON.stringify(updated));
   }
   return updated;
 }
