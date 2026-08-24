@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
         customer_id: `CUST_${Date.now()}`,
         customer_name: customerDetails.fullName,
         customer_email: customerDetails.email || 'devibe70@gmail.com',
-        customer_phone: customerDetails.phone.replace(/\D/g, '').slice(-10) || '7922134099',
+        customer_phone: customerDetails.phone.replace(/\D/g, '').slice(-10) || '9727024519',
       },
       order_meta: {
         return_url: `${hostUrl}/api/cashfree/verify?order_id={order_id}&payment_type=${paymentType}&total_amount=${totalAmount}`,

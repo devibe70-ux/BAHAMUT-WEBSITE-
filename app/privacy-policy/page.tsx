@@ -51,7 +51,7 @@ export default function PrivacyPolicyPage() {
               3. Contact Privacy Officer
             </h2>
             <p>
-              For any questions regarding your personal data, contact us at <strong>devibe70@gmail.com</strong> or call <strong>+91 79 2213 4099</strong>.
+              For any questions regarding your personal data, contact us at <strong>devibe70@gmail.com</strong> or call <strong>+91 97270 24519</strong>.
             </p>
           </section>
         </div>

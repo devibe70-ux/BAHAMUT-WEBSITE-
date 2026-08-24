@@ -53,7 +53,7 @@ export default function ContactUsPage() {
               </div>
               <div className="flex items-center gap-2 text-slate-300">
                 <PhoneCall className="w-4 h-4 text-blue-400" />
-                <span>+91 79 2213 4099</span>
+                <span>+91 97270 24519</span>
               </div>
             </div>
           </div>

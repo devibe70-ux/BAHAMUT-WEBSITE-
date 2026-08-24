@@ -62,7 +62,7 @@ export default function Footer() {
                 <MapPin className="w-3.5 h-3.5 text-white flex-shrink-0" /> DE VIBE, Ambawadi, Ahmedabad, Gujarat - 380015
               </p>
               <p className="flex items-center gap-2">
-                <PhoneCall className="w-3.5 h-3.5 text-white flex-shrink-0" /> +91 79 2213 4099 / devibe70@gmail.com
+                <PhoneCall className="w-3.5 h-3.5 text-white flex-shrink-0" /> +91 97270 24519 / devibe70@gmail.com
               </p>
             </div>
           </div>

@@ -98,7 +98,7 @@ export default function GSTInvoiceModal({ order, isOpen, onClose }: GSTInvoiceMo
               <p className="font-extrabold text-slate-800">Authorized Merchant: DEVIBE</p>
               <p className="text-slate-600">Ambawadi, Ahmedabad, Gujarat, India - 380015 (State Code: 24)</p>
               <p className="text-slate-600">GSTIN: <strong className="font-black text-slate-900">24ASHPS9777R1ZE</strong></p>
-              <p className="text-slate-600">Support Email: devibe70@gmail.com | Phone: +91 79 2213 4099</p>
+              <p className="text-slate-600">Support Email: devibe70@gmail.com | Phone: +91 97270 24519</p>
             </div>
 
             <div className="text-right space-y-1">
