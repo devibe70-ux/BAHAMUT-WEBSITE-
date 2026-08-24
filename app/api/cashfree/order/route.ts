@@ -27,6 +27,12 @@ export async function POST(req: NextRequest) {
 
     const hostUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://bahamut.in';
 
+    // Format item details for MyBillBook inventory mapping & Cashfree order note
+    const mappedItemsSummary = (cartItems || []).map((item: any) => {
+      const p = item.product || {};
+      return `${p.title || 'Apparel'} (Size: ${item.selectedSize || 'Standard'}, MB_ID: ${p.mybillbook_item_id || p.id || 'N/A'}, Qty: ${item.quantity || 1})`;
+    }).join('; ');
+
     const requestBody = {
       order_id: orderNumber,
       order_amount: advanceDeposit,
@@ -40,7 +46,7 @@ export async function POST(req: NextRequest) {
       order_meta: {
         return_url: `${hostUrl}/api/cashfree/verify?order_id={order_id}&payment_type=${paymentType}&total_amount=${totalAmount}`,
       },
-      order_note: `BAHAMUT ${paymentType} Order - ${orderNumber}`
+      order_note: `BAHAMUT ${paymentType} Order - ${orderNumber} | Items: ${mappedItemsSummary.slice(0, 200)}`
     };
 
     const res = await fetch(`${cashfreeHost}/orders`, {

@@ -33,6 +33,7 @@ export interface Product {
   color?: string;
   gtin?: string;
   mpn?: string;
+  mybillbook_item_id?: string; // Explicit MyBillBook item mapping ID for order sync
   is_active: boolean;
   created_at: string;
 }

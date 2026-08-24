@@ -7,7 +7,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     title: 'BahaMut 21 (1) Cotton Apparel (Class 25)',
     category: 'SHIRT',
     description:
-      'Direct-from-manufacturer 100% Breathable Woven Cotton crafted at Ambawadi, Ahmedabad. ' +
+      'Direct-from-manufacturer 100% Breathable Woven Cotton shirt from Ambawadi, Ahmedabad. ' +
       'Features structured collar, pre-shrunk finish, and paired 5-size matrix.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '100% Breathable Woven Cotton (Ahmedabad Mills)',
@@ -22,6 +22,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     available_sizes: ['38', '40', '42', '44', '46'],
     gtin: '8901234501824',
     mpn: 'BM-2026-ART-21-1',
+    mybillbook_item_id: '1124702c74f631712060794',
     is_active: true,
     created_at: '2026-08-01T10:00:00Z'
   },
@@ -31,7 +32,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     title: 'BahaMut 21 (2) Cotton Apparel (Class 25)',
     category: 'SHIRT',
     description:
-      'Direct-from-manufacturer 100% Breathable Woven Cotton shirt from Ambawadi textile mills. High thread count, button-down collar, and paired 5-size matrix.',
+      'Direct-from-manufacturer 100% Breathable Woven Cotton shirt with paired 5-size matrix.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '100% Breathable Woven Cotton (Ahmedabad Mills)',
     price: 1299,
@@ -45,6 +46,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     available_sizes: ['38', '40', '42', '44', '46'],
     gtin: '8901234501825',
     mpn: 'BM-2026-ART-21-2',
+    mybillbook_item_id: '1124742c74f681712061497',
     is_active: true,
     created_at: '2026-08-01T10:00:00Z'
   },
@@ -54,7 +56,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     title: 'BahaMut 21 (3) Cotton Apparel (Class 25)',
     category: 'SHIRT',
     description:
-      'Direct-from-manufacturer 100% Woven Cotton shirt crafted for all-day comfort. Paired 5-size matrix numeric 38 to 46.',
+      'Direct-from-manufacturer 100% Woven Cotton shirt crafted for all-day comfort.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '100% Breathable Woven Cotton',
     price: 1299,
@@ -68,6 +70,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     available_sizes: ['38', '40', '42', '44', '46'],
     gtin: '8901234501826',
     mpn: 'BM-2026-ART-21-3',
+    mybillbook_item_id: '1124718c74f6a1712061725',
     is_active: true,
     created_at: '2026-08-01T10:00:00Z'
   },
@@ -77,7 +80,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     title: 'BahaMut 22 (1) SELVEDGE DENIM (Class 25)',
     category: 'BOTTOMWEAR',
     description:
-      'Authentic Heavyweight Red-Line Selvedge Denim Jeans. Crafted in Ambawadi mills with pre-shrunk numeric waist sizes 28 to 36.',
+      'Authentic Heavyweight Red-Line Selvedge Denim Jeans crafted in Ambawadi mills.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '100% Heavyweight Woven Cotton Selvedge Denim',
     price: 1499,
@@ -91,6 +94,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     available_sizes: ['28', '30', '32', '34', '36'],
     gtin: '8901234501827',
     mpn: 'BM-2026-SELVEDGE-22-1',
+    mybillbook_item_id: '112477ec755421712257777',
     is_active: true,
     created_at: '2026-08-01T10:00:00Z'
   },
@@ -114,6 +118,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     available_sizes: ['28', '30', '32', '34', '36'],
     gtin: '8901234501828',
     mpn: 'BM-2026-SELVEDGE-22-2',
+    mybillbook_item_id: '1124702c755461712258316',
     is_active: true,
     created_at: '2026-08-01T10:00:00Z'
   },
@@ -123,7 +128,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     title: 'BahaMut 23 SELVEDGE DENIM (Class 25)',
     category: 'BOTTOMWEAR',
     description:
-      'Direct-from-mill Heavyweight Woven Cotton Selvedge Denim in Deep Blue. Classic 5-pocket layout with 5-size matrix.',
+      'Direct-from-mill Heavyweight Woven Cotton Selvedge Denim in Deep Blue.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '100% Woven Cotton Selvedge Denim',
     price: 1599,
@@ -137,6 +142,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     available_sizes: ['28', '30', '32', '34', '36'],
     gtin: '8901234501829',
     mpn: 'BM-2026-SELVEDGE-23',
+    mybillbook_item_id: '11247a2c84b341720510327',
     is_active: true,
     created_at: '2026-08-02T10:00:00Z'
   },
@@ -146,7 +152,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     title: 'BahaMut 24 BLACK DENIM (Class 25)',
     category: 'BOTTOMWEAR',
     description:
-      'Heavyweight Jet Black Woven Cotton Denim. Durable reinforced stitching and pre-shrunk waist fit.',
+      'Heavyweight Jet Black Woven Cotton Denim with pre-shrunk waist fit.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '100% Woven Cotton Black Denim',
     price: 1599,
@@ -160,6 +166,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     available_sizes: ['28', '30', '32', '34'],
     gtin: '8901234501830',
     mpn: 'BM-2026-DENIM-24',
+    mybillbook_item_id: '11247e2c84b371720510811',
     is_active: true,
     created_at: '2026-08-02T10:00:00Z'
   },
@@ -169,7 +176,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     title: 'BahaMut 25 WHITE DENIM (Class 25)',
     category: 'BOTTOMWEAR',
     description:
-      'Pure White Woven Cotton Denim Trousers. Crisp structured weave engineered for tropical comfort.',
+      'Pure White Woven Cotton Denim Trousers engineered for tropical comfort.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '100% Woven Cotton White Denim',
     price: 1599,
@@ -183,6 +190,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     available_sizes: ['28', '30', '32', '34'],
     gtin: '8901234501831',
     mpn: 'BM-2026-DENIM-25',
+    mybillbook_item_id: '112476cc84b431720512288',
     is_active: true,
     created_at: '2026-08-03T10:00:00Z'
   },
@@ -192,7 +200,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     title: 'BahaMut 26 Raw Denim (Class 25)',
     category: 'BOTTOMWEAR',
     description:
-      'Raw Rigid Woven Cotton Denim. Authentic indigo wash finish with paired 5-size matrix.',
+      'Raw Rigid Woven Cotton Denim with authentic indigo wash finish.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '100% Woven Cotton Raw Denim',
     price: 1499,
@@ -206,6 +214,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     available_sizes: ['28', '30', '32', '34', '36'],
     gtin: '8901234501832',
     mpn: 'BM-2026-DENIM-26',
+    mybillbook_item_id: '112478ec8a7ff1723623935',
     is_active: true,
     created_at: '2026-08-03T10:00:00Z'
   },
@@ -215,7 +224,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     title: 'BahaMut 27 (1) Denim (Class 25)',
     category: 'BOTTOMWEAR',
     description:
-      'Classic Ahmedabad Woven Cotton Denim. Comfortable stretch waistband and utility pockets.',
+      'Classic Ahmedabad Woven Cotton Denim with utility pockets.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '100% Woven Cotton Denim',
     price: 1499,
@@ -229,6 +238,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     available_sizes: ['28', '30', '32', '34'],
     gtin: '8901234501833',
     mpn: 'BM-2026-DENIM-27-1',
+    mybillbook_item_id: '11247ecc862681721289006',
     is_active: true,
     created_at: '2026-08-04T10:00:00Z'
   },
@@ -238,7 +248,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     title: 'BahaMut 28 (1) Lycra Stretch Denim (Class 25)',
     category: 'BOTTOMWEAR',
     description:
-      'Flexible Woven Cotton Lycra Blend Denim. Maximum mobility and shape retention.',
+      'Flexible Woven Cotton Lycra Blend Denim for maximum mobility.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '98% Woven Cotton, 2% Lycra Stretch',
     price: 1699,
@@ -252,6 +262,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     available_sizes: ['28', '30', '32', '34', '36'],
     gtin: '8901234501834',
     mpn: 'BM-2026-LYCRA-28-1',
+    mybillbook_item_id: '11247d6c85fa21721195834',
     is_active: true,
     created_at: '2026-08-04T10:00:00Z'
   },
@@ -261,7 +272,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     title: 'BahaMut 28 (2) Lycra Stretch Denim (Class 25)',
     category: 'BOTTOMWEAR',
     description:
-      'Premium Woven Cotton Lycra Stretch Denim in Mid Indigo. Pre-shrunk fit with paired 5-size matrix.',
+      'Premium Woven Cotton Lycra Stretch Denim in Mid Indigo.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '98% Woven Cotton, 2% Lycra Stretch',
     price: 1699,
@@ -275,6 +286,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     available_sizes: ['28', '30', '32', '34', '36'],
     gtin: '8901234501835',
     mpn: 'BM-2026-LYCRA-28-2',
+    mybillbook_item_id: '11247b0c85fa41721196128',
     is_active: true,
     created_at: '2026-08-05T10:00:00Z'
   },
@@ -284,7 +296,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     title: 'BahaMut 31 (1) Woven Denim (Class 25)',
     category: 'BOTTOMWEAR',
     description:
-      'Heavyweight 100% Woven Cotton Denim Jeans. Engineered in Ahmedabad mills with paired 5-size matrix.',
+      'Heavyweight 100% Woven Cotton Denim Jeans engineered in Ahmedabad mills.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '100% Heavyweight Woven Cotton Denim',
     price: 1599,
@@ -298,6 +310,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     available_sizes: ['28', '30', '32', '34', '36'],
     gtin: '8901234501836',
     mpn: 'BM-2026-DENIM-31-1',
+    mybillbook_item_id: '11247eec8a8041723624638',
     is_active: true,
     created_at: '2026-08-05T10:00:00Z'
   },
@@ -307,7 +320,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     title: 'BahaMut 31 (2) Woven Denim (Class 25)',
     category: 'BOTTOMWEAR',
     description:
-      'Heavyweight 100% Woven Cotton Denim Jeans in Deep Vintage Wash. Paired 5-size matrix numeric 28 to 36.',
+      'Heavyweight 100% Woven Cotton Denim Jeans in Deep Vintage Wash.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '100% Heavyweight Woven Cotton Denim',
     price: 1599,
@@ -321,6 +334,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     available_sizes: ['28', '30', '32', '34', '36'],
     gtin: '8901234501837',
     mpn: 'BM-2026-DENIM-31-2',
+    mybillbook_item_id: '11247eec8a8061723624967',
     is_active: true,
     created_at: '2026-08-05T10:00:00Z'
   }
@@ -328,7 +342,7 @@ export const INITIAL_PRODUCTS: Product[] = [
 
 export function getProducts(): Product[] {
   if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('bahamut_smartbiz_products_v18');
+    const saved = localStorage.getItem('bahamut_smartbiz_products_v19');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -354,7 +368,7 @@ export function saveProduct(product: Product): Product[] {
     updated = [product, ...current];
   }
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v18', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v19', JSON.stringify(updated));
   }
   return updated;
 }
@@ -363,7 +377,7 @@ export function deleteProduct(idOrSlug: string): Product[] {
   const current = getProducts();
   const updated = current.filter(p => p.id !== idOrSlug && p.slug !== idOrSlug);
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v18', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v19', JSON.stringify(updated));
   }
   return updated;
 }
@@ -383,7 +397,7 @@ export function deductStockForOrder(items: CartItem[]): Product[] {
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v18', JSON.stringify(products));
+    localStorage.setItem('bahamut_smartbiz_products_v19', JSON.stringify(products));
   }
   return products;
 }
@@ -398,7 +412,7 @@ export function updateProductStock(idOrSlug: string, newStock: number): Product[
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v18', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v19', JSON.stringify(updated));
   }
   return updated;
 }
