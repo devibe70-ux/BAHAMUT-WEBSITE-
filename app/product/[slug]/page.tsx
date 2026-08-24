@@ -16,13 +16,8 @@ import {
   Check,
   ShieldCheck,
   Tag,
-  Star,
   MapPin,
-  ChevronRight,
-  Flame,
-  Clock,
-  Sparkles,
-  AlertCircle
+  ChevronRight
 } from 'lucide-react';
 
 export default function ProductDetailPage() {
@@ -265,7 +260,7 @@ export default function ProductDetailPage() {
                   </p>
                   <p className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
-                    <strong>Instant Discount:</strong> Extra 5% Instant Cashback on Razorpay / Cashfree UPI / All Bank Cards.
+                    <strong>Instant Discount:</strong> Extra 5% Instant Discount on Cashfree Payment Gateway (UPI, GPay, PhonePe, Cards, NetBanking).
                   </p>
                 </div>
               </div>

@@ -126,14 +126,14 @@ export default function Footer() {
           </div>
 
           <div>
-            <h5 className="font-bold text-xs text-white uppercase tracking-widest mb-4">Fulfillment Partners</h5>
+            <h5 className="font-bold text-xs text-white uppercase tracking-widest mb-4">Fulfillment & Payment Partners</h5>
             <p className="text-xs text-neutral-400 mb-4 leading-relaxed">
-              Razorpay Secured Gateway (UPI, Cards, NetBanking). Automated invoice sync to MyBillBook app & Shipyaari logistics.
+              Cashfree Payment Gateway (UPI, GPay, PhonePe, Cards, NetBanking). Direct invoice sync with MyBillBook inventory database.
             </p>
             <div className="flex flex-wrap gap-2 text-[10px] font-bold text-neutral-300">
-              <span className="bg-neutral-900 px-3 py-1 border border-neutral-800 text-white">RAZORPAY VERIFIED</span>
-              <span className="bg-neutral-900 px-3 py-1 border border-neutral-800">SHIPYAARI</span>
+              <span className="bg-neutral-900 px-3 py-1 border border-neutral-800 text-white">CASHFREE PAYMENTS</span>
               <span className="bg-neutral-900 px-3 py-1 border border-neutral-800">MYBILLBOOK</span>
+              <span className="bg-neutral-900 px-3 py-1 border border-neutral-800">PARTIAL COD</span>
             </div>
           </div>
         </div>

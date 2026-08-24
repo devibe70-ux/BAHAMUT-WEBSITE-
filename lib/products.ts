@@ -22,6 +22,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80'
     ],
     sizes: ['28', '30', '32', '34', '36', '38'],
+    available_sizes: ['28', '30', '32', '34', '36'],
     pattern: 'Selvedge Raw Denim',
     fit: 'Numeric Straight Fit (28-38)',
     sleeve: 'N/A',
@@ -52,6 +53,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80'
     ],
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    available_sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     pattern: 'Draconic Gothic Print',
     fit: 'Alphabetical Heavyweight Fit',
     sleeve: 'Half Sleeve',
@@ -81,6 +83,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80'
     ],
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    available_sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     pattern: 'Blood Flame Crimson',
     fit: 'Alphabetical Oversized Fit',
     sleeve: 'Full Sleeve',
@@ -112,6 +115,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80'
     ],
     sizes: ['38', '40', '42', '44', '46'],
+    available_sizes: ['38', '40', '42', '44', '46'],
     pattern: 'Solid Woven',
     fit: 'Numeric Standard Fit (38-46)',
     sleeve: 'Full Sleeve',
@@ -141,6 +145,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=800&q=80'
     ],
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    available_sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     pattern: 'Graphic Kinetic Print',
     fit: 'Alphabetical Comfort Fit',
     sleeve: 'Half Sleeve',
@@ -170,6 +175,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=800&q=80'
     ],
     sizes: ['38', '40', '42', '44', '46'],
+    available_sizes: ['38', '40', '42', '44', '46'],
     pattern: 'Oxford Solid',
     fit: 'Numeric Structured Fit (38-46)',
     sleeve: 'Full Sleeve',
@@ -183,7 +189,7 @@ export const INITIAL_PRODUCTS: Product[] = [
 
 export function getProducts(): Product[] {
   if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('bahamut_smartbiz_products_v16');
+    const saved = localStorage.getItem('bahamut_smartbiz_products_v17');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -209,7 +215,16 @@ export function saveProduct(product: Product): Product[] {
     updated = [product, ...current];
   }
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v16', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v17', JSON.stringify(updated));
+  }
+  return updated;
+}
+
+export function deleteProduct(idOrSlug: string): Product[] {
+  const current = getProducts();
+  const updated = current.filter(p => p.id !== idOrSlug && p.slug !== idOrSlug);
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('bahamut_smartbiz_products_v17', JSON.stringify(updated));
   }
   return updated;
 }
@@ -229,7 +244,7 @@ export function deductStockForOrder(items: CartItem[]): Product[] {
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v16', JSON.stringify(products));
+    localStorage.setItem('bahamut_smartbiz_products_v17', JSON.stringify(products));
   }
   return products;
 }
@@ -244,7 +259,7 @@ export function updateProductStock(idOrSlug: string, newStock: number): Product[
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v16', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v17', JSON.stringify(updated));
   }
   return updated;
 }

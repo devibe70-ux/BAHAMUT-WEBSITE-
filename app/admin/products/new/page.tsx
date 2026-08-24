@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { getProducts, saveProduct } from '@/lib/products';
+import { getProducts, saveProduct, deleteProduct } from '@/lib/products';
 import { Product, Size, ProductCategory } from '@/lib/types';
-import { Sparkles, ArrowLeft, CheckCircle2, Shield, Download, Store, FileSpreadsheet, Upload, FileCheck, PlusCircle, RefreshCw, Image as ImageIcon, Edit, Check } from 'lucide-react';
+import { Sparkles, ArrowLeft, CheckCircle2, Shield, Download, Store, FileSpreadsheet, Upload, FileCheck, PlusCircle, RefreshCw, Image as ImageIcon, Edit, Check, Trash2 } from 'lucide-react';
 
 export default function NewProductPage() {
   const router = useRouter();
@@ -79,6 +79,14 @@ export default function NewProductPage() {
     setProducts(updatedList);
     setEditingMasterId(null);
     alert(`✅ Updated Master Product "${product.title}" with new JPG image and size variations!`);
+  };
+
+  const handleDeleteMasterProduct = (p: Product) => {
+    if (window.confirm(`Are you sure you want to delete product "${p.title}" from the store catalog?`)) {
+      const updatedList = deleteProduct(p.id);
+      setProducts(updatedList);
+      alert(`🗑️ Product "${p.title}" deleted from store catalog.`);
+    }
   };
 
   const handleCreateProduct = (e: React.FormEvent) => {
@@ -178,11 +186,11 @@ export default function NewProductPage() {
       <div className="bg-white p-8 border border-[#E5E5E5] space-y-4 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 bg-[#111111] text-white px-3.5 py-1 text-xs font-bold tracking-widest uppercase">
-            <Sparkles className="w-4 h-4" /> MASTER PRODUCT & PAIRED SIZE VARIATIONS MANAGER
+            <Sparkles className="w-4 h-4" /> SELLER PORTAL CATALOG MANAGER
           </div>
-          <h1 className="text-3xl font-extrabold text-[#111111] uppercase tracking-wider">Master Product Catalog</h1>
+          <h1 className="text-3xl font-extrabold text-[#111111] uppercase tracking-wider">Product Catalog & Delete Manager</h1>
           <p className="text-xs text-[#666666] font-medium">
-            Paired size variations (5-size matrix) under each Master Product with custom JPG image upload.
+            Manage, edit, delete products, or upload product CSV files directly to store catalog.
           </p>
         </div>
 
@@ -198,7 +206,32 @@ export default function NewProductPage() {
         </div>
       </div>
 
-      {/* Table of Live Master Products with Paired Size Variations & JPG Image Editor */}
+      {/* 1-Click CSV Drag & Drop File Upload Box */}
+      <div className="bg-white p-6 sm:p-8 border border-[#E5E5E5] space-y-4">
+        <div className="flex items-center justify-between border-b border-[#E5E5E5] pb-3">
+          <h3 className="text-sm font-bold text-[#111111] uppercase tracking-wider flex items-center gap-2">
+            <Upload className="w-4 h-4 text-[#111111]" /> 1-Click Product CSV File Upload
+          </h3>
+          <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 border border-emerald-200 uppercase">
+            CSV Importer Active
+          </span>
+        </div>
+
+        <label className="border-2 border-dashed border-[#E5E5E5] hover:border-[#111111] p-8 text-center bg-[#F7F7F8] cursor-pointer block transition-colors space-y-2">
+          <FileCheck className="w-8 h-8 text-[#111111]" />
+          <span className="text-xs font-bold text-[#111111] block">Click or Drag & Drop Product CSV File</span>
+          <span className="text-[11px] text-[#666666] block font-medium">Upload MyBillBook or custom CSV catalog file to import all products</span>
+          <input
+            type="file"
+            accept=".csv,text/csv"
+            onChange={handleCsvFileUpload}
+            disabled={isUploadingCsv}
+            className="hidden"
+          />
+        </label>
+      </div>
+
+      {/* Table of Live Master Products with Delete & Edit Actions */}
       <div className="bg-white p-6 sm:p-8 border border-[#E5E5E5] space-y-6">
         <div className="flex items-center justify-between border-b border-[#E5E5E5] pb-4">
           <div>
@@ -239,13 +272,20 @@ export default function NewProductPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2">
                     <button
                       onClick={() => isEditing ? saveMasterProductUpdate(p) : startEditMaster(p)}
-                      className="min-h-[40px] px-4 bg-[#111111] hover:bg-black text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all"
+                      className="min-h-[40px] px-3.5 bg-[#111111] hover:bg-black text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all"
                     >
                       {isEditing ? <Check className="w-4 h-4 text-emerald-400" /> : <Edit className="w-4 h-4" />}
-                      {isEditing ? 'Save Master Product' : 'Attach Image & Sizes'}
+                      {isEditing ? 'Save' : 'Edit'}
+                    </button>
+
+                    <button
+                      onClick={() => handleDeleteMasterProduct(p)}
+                      className="min-h-[40px] px-3.5 bg-red-700 hover:bg-red-800 text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all"
+                    >
+                      <Trash2 className="w-4 h-4" /> Delete Product
                     </button>
                   </div>
                 </div>
