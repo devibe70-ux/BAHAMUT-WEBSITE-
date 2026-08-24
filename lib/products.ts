@@ -15,7 +15,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.9,
     review_count: 180,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="750" viewBox="0 0 600 750" fill="%23111111"><rect width="600" height="750" fill="%2318181b"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="%23ffffff" font-family="sans-serif" font-size="28" font-weight="900">BahaMut</text><text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="%23a1a1aa" font-family="sans-serif" font-size="16" font-weight="700">PHOTOSHOOT PENDING</text><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="%2371717a" font-family="sans-serif" font-size="12">100% Woven Cotton Denim • Ambawadi Ahmedabad</text></svg>'],
     sizes: ['28', '30', '32', '34', '36', '38'],
     available_sizes: ["30","32"],
     gtin: '593155135819',
@@ -222,7 +222,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.9,
     review_count: 180,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="750" viewBox="0 0 600 750" fill="%23111111"><rect width="600" height="750" fill="%2318181b"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="%23ffffff" font-family="sans-serif" font-size="28" font-weight="900">BahaMut</text><text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="%23a1a1aa" font-family="sans-serif" font-size="16" font-weight="700">PHOTOSHOOT PENDING</text><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="%2371717a" font-family="sans-serif" font-size="12">100% Woven Cotton Denim • Ambawadi Ahmedabad</text></svg>'],
     sizes: ['28', '30', '32', '34', '36', '38'],
     available_sizes: ["28","30","32","34"],
     gtin: '619608930438',
@@ -268,7 +268,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.9,
     review_count: 180,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="750" viewBox="0 0 600 750" fill="%23111111"><rect width="600" height="750" fill="%2318181b"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="%23ffffff" font-family="sans-serif" font-size="28" font-weight="900">BahaMut</text><text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="%23a1a1aa" font-family="sans-serif" font-size="16" font-weight="700">PHOTOSHOOT PENDING</text><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="%2371717a" font-family="sans-serif" font-size="12">100% Woven Cotton Denim • Ambawadi Ahmedabad</text></svg>'],
     sizes: ['28', '30', '32', '34', '36', '38'],
     available_sizes: ["30"],
     gtin: '459425143389',
@@ -291,7 +291,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.9,
     review_count: 180,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="750" viewBox="0 0 600 750" fill="%23111111"><rect width="600" height="750" fill="%2318181b"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="%23ffffff" font-family="sans-serif" font-size="28" font-weight="900">BahaMut</text><text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="%23a1a1aa" font-family="sans-serif" font-size="16" font-weight="700">PHOTOSHOOT PENDING</text><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="%2371717a" font-family="sans-serif" font-size="12">100% Woven Cotton Denim • Ambawadi Ahmedabad</text></svg>'],
     sizes: ['28', '30', '32', '34', '36', '38'],
     available_sizes: ["28","30"],
     gtin: '152206584283',
@@ -314,7 +314,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.9,
     review_count: 180,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="750" viewBox="0 0 600 750" fill="%23111111"><rect width="600" height="750" fill="%2318181b"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="%23ffffff" font-family="sans-serif" font-size="28" font-weight="900">BahaMut</text><text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="%23a1a1aa" font-family="sans-serif" font-size="16" font-weight="700">PHOTOSHOOT PENDING</text><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="%2371717a" font-family="sans-serif" font-size="12">100% Woven Cotton Denim • Ambawadi Ahmedabad</text></svg>'],
     sizes: ['28', '30', '32', '34', '36', '38'],
     available_sizes: ["32","38"],
     gtin: '531906085732',
@@ -383,7 +383,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.9,
     review_count: 180,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="750" viewBox="0 0 600 750" fill="%23111111"><rect width="600" height="750" fill="%2318181b"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="%23ffffff" font-family="sans-serif" font-size="28" font-weight="900">BahaMut</text><text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="%23a1a1aa" font-family="sans-serif" font-size="16" font-weight="700">PHOTOSHOOT PENDING</text><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="%2371717a" font-family="sans-serif" font-size="12">100% Woven Cotton Denim • Ambawadi Ahmedabad</text></svg>'],
     sizes: ['28', '30', '32', '34', '36', '38'],
     available_sizes: ["28","30","32","34","36"],
     gtin: '643468307270',
@@ -406,7 +406,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.9,
     review_count: 180,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="750" viewBox="0 0 600 750" fill="%23111111"><rect width="600" height="750" fill="%2318181b"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="%23ffffff" font-family="sans-serif" font-size="28" font-weight="900">BahaMut</text><text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="%23a1a1aa" font-family="sans-serif" font-size="16" font-weight="700">PHOTOSHOOT PENDING</text><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="%2371717a" font-family="sans-serif" font-size="12">100% Woven Cotton Denim • Ambawadi Ahmedabad</text></svg>'],
     sizes: ['28', '30', '32', '34', '36', '38'],
     available_sizes: ["28","30","32","34","36"],
     gtin: '193071487211',
@@ -429,7 +429,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.9,
     review_count: 180,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="750" viewBox="0 0 600 750" fill="%23111111"><rect width="600" height="750" fill="%2318181b"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="%23ffffff" font-family="sans-serif" font-size="28" font-weight="900">BahaMut</text><text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="%23a1a1aa" font-family="sans-serif" font-size="16" font-weight="700">PHOTOSHOOT PENDING</text><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="%2371717a" font-family="sans-serif" font-size="12">100% Woven Cotton Denim • Ambawadi Ahmedabad</text></svg>'],
     sizes: ['28', '30', '32', '34', '36', '38'],
     available_sizes: ["30","32","34","36"],
     gtin: '894373059885',
@@ -452,7 +452,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.9,
     review_count: 180,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="750" viewBox="0 0 600 750" fill="%23111111"><rect width="600" height="750" fill="%2318181b"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="%23ffffff" font-family="sans-serif" font-size="28" font-weight="900">BahaMut</text><text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="%23a1a1aa" font-family="sans-serif" font-size="16" font-weight="700">PHOTOSHOOT PENDING</text><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="%2371717a" font-family="sans-serif" font-size="12">100% Woven Cotton Denim • Ambawadi Ahmedabad</text></svg>'],
     sizes: ['28', '30', '32', '34', '36', '38'],
     available_sizes: ["30","32","34","36","38"],
     gtin: '471700028249',
@@ -475,7 +475,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.9,
     review_count: 180,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="750" viewBox="0 0 600 750" fill="%23111111"><rect width="600" height="750" fill="%2318181b"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="%23ffffff" font-family="sans-serif" font-size="28" font-weight="900">BahaMut</text><text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="%23a1a1aa" font-family="sans-serif" font-size="16" font-weight="700">PHOTOSHOOT PENDING</text><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="%2371717a" font-family="sans-serif" font-size="12">100% Woven Cotton Denim • Ambawadi Ahmedabad</text></svg>'],
     sizes: ['28', '30', '32', '34', '36', '38'],
     available_sizes: ["30","32","34","36","38"],
     gtin: '483596956691',
@@ -498,7 +498,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.9,
     review_count: 180,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="750" viewBox="0 0 600 750" fill="%23111111"><rect width="600" height="750" fill="%2318181b"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="%23ffffff" font-family="sans-serif" font-size="28" font-weight="900">BahaMut</text><text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fill="%23a1a1aa" font-family="sans-serif" font-size="16" font-weight="700">PHOTOSHOOT PENDING</text><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="%2371717a" font-family="sans-serif" font-size="12">100% Woven Cotton Denim • Ambawadi Ahmedabad</text></svg>'],
     sizes: ['28', '30', '32', '34', '36', '38'],
     available_sizes: ["28","30","32","34","36"],
     gtin: '612066059780',
@@ -511,7 +511,7 @@ export const INITIAL_PRODUCTS: Product[] = [
 
 export function getProducts(): Product[] {
   if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('bahamut_smartbiz_products_v21');
+    const saved = localStorage.getItem('bahamut_smartbiz_products_v22');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -537,7 +537,7 @@ export function saveProduct(product: Product): Product[] {
     updated = [product, ...current];
   }
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v21', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v22', JSON.stringify(updated));
   }
   return updated;
 }
@@ -546,7 +546,7 @@ export function deleteProduct(idOrSlug: string): Product[] {
   const current = getProducts();
   const updated = current.filter(p => p.id !== idOrSlug && p.slug !== idOrSlug);
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v21', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v22', JSON.stringify(updated));
   }
   return updated;
 }
@@ -566,7 +566,7 @@ export function deductStockForOrder(items: CartItem[]): Product[] {
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v21', JSON.stringify(products));
+    localStorage.setItem('bahamut_smartbiz_products_v22', JSON.stringify(products));
   }
   return products;
 }
@@ -581,7 +581,7 @@ export function updateProductStock(idOrSlug: string, newStock: number): Product[
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v21', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v22', JSON.stringify(products));
   }
   return updated;
 }
