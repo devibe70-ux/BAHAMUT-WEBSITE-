@@ -17,7 +17,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.9,
     review_count: 215,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['/images/products/bahamut-21-1.jpg'],
     sizes: ['38', '40', '42', '44', '46'],
     available_sizes: ['38', '40', '42', '44', '46'],
     gtin: '8901234501824',
@@ -41,7 +41,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.8,
     review_count: 180,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/ahmedabad-woven-chambray-navy-1.png'],
+    images: ['/images/products/bahamut-21-2.jpg'],
     sizes: ['38', '40', '42', '44', '46'],
     available_sizes: ['38', '40', '42', '44', '46'],
     gtin: '8901234501825',
@@ -65,7 +65,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.8,
     review_count: 155,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/textured-oxford-solid-khaki-1.png'],
+    images: ['/images/products/bahamut-21-3.jpg'],
     sizes: ['38', '40', '42', '44', '46'],
     available_sizes: ['38', '40', '42', '44', '46'],
     gtin: '8901234501826',
@@ -89,7 +89,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 5.0,
     review_count: 310,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['/images/products/bahamut-22-1-selvedge.jpg'],
     sizes: ['28', '30', '32', '34', '36'],
     available_sizes: ['28', '30', '32', '34', '36'],
     gtin: '8901234501827',
@@ -113,7 +113,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.9,
     review_count: 240,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['/images/products/bahamut-22-2-selvedge.jpg'],
     sizes: ['28', '30', '32', '34', '36'],
     available_sizes: ['28', '30', '32', '34', '36'],
     gtin: '8901234501828',
@@ -137,7 +137,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.8,
     review_count: 190,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['/images/products/bahamut-23-selvedge.jpg'],
     sizes: ['28', '30', '32', '34', '36'],
     available_sizes: ['28', '30', '32', '34', '36'],
     gtin: '8901234501829',
@@ -161,7 +161,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.9,
     review_count: 165,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/cyber-street-graffiti-oversized-tee-1.png'],
+    images: ['/images/products/bahamut-24-black-denim.jpg'],
     sizes: ['28', '30', '32', '34', '36'],
     available_sizes: ['28', '30', '32', '34'],
     gtin: '8901234501830',
@@ -185,7 +185,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.7,
     review_count: 140,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/textured-oxford-solid-khaki-1.png'],
+    images: ['/images/products/bahamut-25-white-denim.jpg'],
     sizes: ['28', '30', '32', '34', '36'],
     available_sizes: ['28', '30', '32', '34'],
     gtin: '8901234501831',
@@ -209,7 +209,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.8,
     review_count: 175,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['/images/products/bahamut-26-raw-denim.jpg'],
     sizes: ['28', '30', '32', '34', '36'],
     available_sizes: ['28', '30', '32', '34', '36'],
     gtin: '8901234501832',
@@ -233,7 +233,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.8,
     review_count: 160,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['/images/products/bahamut-27-1-denim.jpg'],
     sizes: ['28', '30', '32', '34', '36'],
     available_sizes: ['28', '30', '32', '34'],
     gtin: '8901234501833',
@@ -257,7 +257,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.9,
     review_count: 210,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['/images/products/bahamut-28-1-lycra.jpg'],
     sizes: ['28', '30', '32', '34', '36'],
     available_sizes: ['28', '30', '32', '34', '36'],
     gtin: '8901234501834',
@@ -281,7 +281,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.9,
     review_count: 195,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['/images/products/bahamut-28-2-lycra.jpg'],
     sizes: ['28', '30', '32', '34', '36'],
     available_sizes: ['28', '30', '32', '34', '36'],
     gtin: '8901234501835',
@@ -305,7 +305,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.8,
     review_count: 180,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['/images/products/bahamut-31-1-denim.jpg'],
     sizes: ['28', '30', '32', '34', '36'],
     available_sizes: ['28', '30', '32', '34', '36'],
     gtin: '8901234501836',
@@ -329,7 +329,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.8,
     review_count: 165,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    images: ['/images/products/bahamut-31-2-denim.jpg'],
     sizes: ['28', '30', '32', '34', '36'],
     available_sizes: ['28', '30', '32', '34', '36'],
     gtin: '8901234501837',
@@ -342,7 +342,7 @@ export const INITIAL_PRODUCTS: Product[] = [
 
 export function getProducts(): Product[] {
   if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('bahamut_smartbiz_products_v19');
+    const saved = localStorage.getItem('bahamut_smartbiz_products_v20');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -368,7 +368,7 @@ export function saveProduct(product: Product): Product[] {
     updated = [product, ...current];
   }
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v19', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v20', JSON.stringify(updated));
   }
   return updated;
 }
@@ -377,7 +377,7 @@ export function deleteProduct(idOrSlug: string): Product[] {
   const current = getProducts();
   const updated = current.filter(p => p.id !== idOrSlug && p.slug !== idOrSlug);
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v19', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v20', JSON.stringify(updated));
   }
   return updated;
 }
@@ -397,7 +397,7 @@ export function deductStockForOrder(items: CartItem[]): Product[] {
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v19', JSON.stringify(products));
+    localStorage.setItem('bahamut_smartbiz_products_v20', JSON.stringify(products));
   }
   return products;
 }
@@ -412,7 +412,7 @@ export function updateProductStock(idOrSlug: string, newStock: number): Product[
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v19', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v20', JSON.stringify(updated));
   }
   return updated;
 }
