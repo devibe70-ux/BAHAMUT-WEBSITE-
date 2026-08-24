@@ -14,7 +14,7 @@ export interface Product {
   id: string;
   slug: string;
   title: string;
-  category?: ProductCategory; // SHIRT (Numeric), BOTTOMWEAR (Numeric), TEE (Alphabetical)
+  category?: ProductCategory; // SHIRT (Numeric 38-46), BOTTOMWEAR (Numeric 28-36), TEE (Alphabetical S-XXL)
   description: string;
   target_demographic: Demographic;
   fabric_details: string;
@@ -25,7 +25,8 @@ export interface Product {
   review_count?: number;
   express_delivery?: string;
   images: string[];
-  sizes: Size[];
+  sizes: Size[]; // Full 5-size matrix
+  available_sizes?: Size[]; // In-stock sizes out of the 5-size matrix (missing sizes will show as SOLD OUT)
   pattern?: string;
   fit?: string;
   sleeve?: string;
