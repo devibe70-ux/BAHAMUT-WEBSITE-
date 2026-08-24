@@ -30,6 +30,8 @@ export interface Product {
   fit?: string;
   sleeve?: string;
   color?: string;
+  gtin?: string;
+  mpn?: string;
   is_active: boolean;
   created_at: string;
 }
