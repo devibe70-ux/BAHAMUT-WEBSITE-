@@ -6,7 +6,7 @@ import { MapPin, ShieldCheck, Truck, RefreshCw, PhoneCall, Mail, FileText, Lock 
 
 export default function Footer() {
   return (
-    <footer className="bg-[#111111] text-neutral-400 border-t border-neutral-800 pt-16 pb-12 font-sans relative overflow-hidden">
+    <footer className="bg-[#0A0A0A] text-neutral-400 border-t border-neutral-800 pt-16 pb-12 font-sans relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         {/* Trust Pillars */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-neutral-800 text-center sm:text-left">
@@ -14,7 +14,7 @@ export default function Footer() {
             <ShieldCheck className="w-6 h-6 text-white" />
             <h4 className="font-bold text-xs text-white uppercase tracking-wider">Class 25 Registered</h4>
             <p className="text-xs text-neutral-400 leading-relaxed">
-              BAHAMUT Trademarked Line (TM No. 5018168) engineered with woven cotton textiles.
+              BahaMut Trademarked Line (TM No. 5018168) engineered with woven cotton textiles.
             </p>
           </div>
 
@@ -36,9 +36,9 @@ export default function Footer() {
 
           <div className="flex flex-col items-center sm:items-start space-y-2">
             <MapPin className="w-6 h-6 text-white" />
-            <h4 className="font-bold text-xs text-white uppercase tracking-wider">Operated by DE VIBE</h4>
+            <h4 className="font-bold text-xs text-white uppercase tracking-wider">Billed by DEVIBE</h4>
             <p className="text-xs text-neutral-400 leading-relaxed">
-              Marketed, billed, and dispatched from Ambawadi, Ahmedabad, Gujarat, India - 380015.
+              GSTIN: 24ASHPS9777R1ZE. Dispatched from Ambawadi, Ahmedabad, Gujarat, India - 380015.
             </p>
           </div>
         </div>
@@ -51,7 +51,7 @@ export default function Footer() {
                 BahaMut
               </span>
               <span className="text-xs font-bold text-neutral-400 uppercase">
-                BY DE VIBE
+                BY DEVIBE
               </span>
             </div>
             <p className="text-xs text-neutral-400 leading-relaxed">
@@ -59,7 +59,7 @@ export default function Footer() {
             </p>
             <div className="text-xs text-neutral-300 space-y-1 font-medium">
               <p className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-white flex-shrink-0" /> DE VIBE Hub, Ambawadi, Ahmedabad, Gujarat, India - 380015
+                <MapPin className="w-3.5 h-3.5 text-white flex-shrink-0" /> DEVIBE Hub, Ambawadi, Ahmedabad, Gujarat - 380015
               </p>
               <p className="flex items-center gap-2">
                 <PhoneCall className="w-3.5 h-3.5 text-white flex-shrink-0" /> +91 79 2213 4099 / devibe70@gmail.com
@@ -77,7 +77,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/catalog?cat=BOTTOMWEAR" className="hover:text-white transition-colors">
-                  Chino Trousers & Denim (Numeric 28–38)
+                  Chino Trousers & Denim (Numeric 28–36)
                 </Link>
               </li>
               <li>
@@ -128,12 +128,12 @@ export default function Footer() {
           <div>
             <h5 className="font-bold text-xs text-white uppercase tracking-widest mb-4">Fulfillment & Payment Partners</h5>
             <p className="text-xs text-neutral-400 mb-4 leading-relaxed">
-              Cashfree Payment Gateway (UPI, GPay, PhonePe, Cards, NetBanking). Direct invoice sync with MyBillBook inventory database.
+              Cashfree Payment Gateway (UPI, GPay, PhonePe, Cards, NetBanking). Direct invoice sync with myBillBook inventory database under DEVIBE (GSTIN: 24ASHPS9777R1ZE).
             </p>
             <div className="flex flex-wrap gap-2 text-[10px] font-bold text-neutral-300">
               <span className="bg-neutral-900 px-3 py-1 border border-neutral-800 text-white">CASHFREE PAYMENTS</span>
-              <span className="bg-neutral-900 px-3 py-1 border border-neutral-800">MYBILLBOOK</span>
-              <span className="bg-neutral-900 px-3 py-1 border border-neutral-800">PARTIAL COD</span>
+              <span className="bg-neutral-900 px-3 py-1 border border-neutral-800">MYBILLBOOK DB</span>
+              <span className="bg-neutral-900 px-3 py-1 border border-neutral-800">5% STATUTORY GST</span>
             </div>
           </div>
         </div>
@@ -141,9 +141,9 @@ export default function Footer() {
         {/* Legal & Operations Footer */}
         <div className="text-center space-y-1.5 text-xs text-neutral-400 font-medium">
           <p><strong className="font-gothic text-base text-white font-normal">BahaMut</strong> is a Registered Trademark (TM No. 5018168, Class 25).</p>
-          <p>Exclusively Marketed, Manufactured & Operated by <strong className="text-white">DE VIBE</strong>.</p>
+          <p>Exclusively Marketed, Billed & Sold under authorization by <strong className="text-white">DEVIBE</strong> (GSTIN: 24ASHPS9777R1ZE).</p>
           <p className="text-[11px] text-neutral-500 pt-2">
-            &copy; 2026 DE VIBE. All Rights Reserved. Compliant with Indian Consumer Protection (E-Commerce) Rules.
+            &copy; 2026 DEVIBE. All Rights Reserved. Statutory 5% GST Apparel Compliance (HSN 6203 / 6109).
           </p>
         </div>
       </div>

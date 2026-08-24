@@ -3,7 +3,6 @@
 import React from 'react';
 import { X, Printer, Download, ShieldCheck, FileSpreadsheet } from 'lucide-react';
 import { Order } from '@/lib/types';
-import { getHsnCode, getGstRate } from '@/lib/mybillbook';
 
 interface GSTInvoiceModalProps {
   order: Order | null;
@@ -25,15 +24,17 @@ export default function GSTInvoiceModal({ order, isOpen, onClose }: GSTInvoiceMo
     window.print();
   };
 
+  const isGujarat = (order.shipping_address?.state || '').toLowerCase().includes('gujarat') || order.shipping_address?.pincode?.startsWith('38');
+  const gstRate = 5.0; // Statutory apparel GST rate
+
   const handleExportSingleMyBillBook = () => {
     const csvContent = [
       'Invoice Number,Invoice Date,Customer Name,Phone Number,Shipping Address,PIN Code,Item Name,HSN/SAC Code,Quantity,Unit Price,Taxable Value,GST Rate,Total Amount,Payment Mode,Advance Paid,Balance Due',
       ...order.items.map(item => {
         const p = item.product.price;
-        const gst = getGstRate(p);
-        const hsn = getHsnCode(item.product.category, p);
-        const taxable = Math.round((p * item.quantity / (1 + gst / 100)) * 100) / 100;
-        return `"${invoiceNumber}","${invoiceDate}","${order.customer_name}","${order.customer_phone}","${order.shipping_address.street}, ${order.shipping_address.city}","${order.shipping_address.pincode}","${item.product.title} (Size: ${item.selectedSize})","${hsn}",${item.quantity},${p},${taxable},${gst},${p * item.quantity},"${order.payment_type}",${order.advance_amount},${order.cod_balance_due}`;
+        const hsn = item.product.category === 'SHIRT' || item.product.category === 'BOTTOMWEAR' ? '6203' : '6109';
+        const taxable = Math.round((p * item.quantity / 1.05) * 100) / 100;
+        return `"${invoiceNumber}","${invoiceDate}","${order.customer_name}","${order.customer_phone}","${order.shipping_address.street}, ${order.shipping_address.city}","${order.shipping_address.pincode}","${item.product.title} (Size: ${item.selectedSize})","${hsn}",${item.quantity},${p},${taxable},5.00,${p * item.quantity},"${order.payment_type}",${order.advance_amount},${order.cod_balance_due}`;
       })
     ].join('\n');
 
@@ -56,7 +57,7 @@ export default function GSTInvoiceModal({ order, isOpen, onClose }: GSTInvoiceMo
               <FileSpreadsheet className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-base font-black">B2C GST Tax Invoice & MyBillBook Sync</h2>
+              <h2 className="text-base font-black">Statutory 5% GST Tax Invoice & myBillBook Sync</h2>
               <p className="text-xs text-slate-400 font-medium">Order #{order.order_number}</p>
             </div>
           </div>
@@ -66,7 +67,7 @@ export default function GSTInvoiceModal({ order, isOpen, onClose }: GSTInvoiceMo
               onClick={handleExportSingleMyBillBook}
               className="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black rounded-xl flex items-center gap-1.5 transition-all shadow-md"
             >
-              <Download className="w-4 h-4" /> MyBillBook CSV
+              <Download className="w-4 h-4" /> myBillBook CSV
             </button>
 
             <button
@@ -92,17 +93,17 @@ export default function GSTInvoiceModal({ order, isOpen, onClose }: GSTInvoiceMo
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-xl font-black tracking-tight text-slate-900">BahaMut</span>
-                <span className="text-xs font-extrabold bg-slate-100 px-2 py-0.5 rounded border border-slate-300">by De Vibe</span>
+                <span className="text-xs font-extrabold bg-slate-100 px-2 py-0.5 rounded border border-slate-300">by DEVIBE</span>
               </div>
-              <p className="font-extrabold text-slate-800">De Vibe Apparel Fulfillment Hub</p>
-              <p className="text-slate-600">Ambawadi, Ahmedabad, Gujarat - 380015</p>
-              <p className="text-slate-600">GSTIN: <strong className="font-black text-slate-900">24AAAAA0000A1Z5</strong></p>
-              <p className="text-slate-600">Support Email: support@devibe.in | Mobile: +91 98765 43210</p>
+              <p className="font-extrabold text-slate-800">Authorized Merchant: DEVIBE</p>
+              <p className="text-slate-600">Ambawadi, Ahmedabad, Gujarat, India - 380015 (State Code: 24)</p>
+              <p className="text-slate-600">GSTIN: <strong className="font-black text-slate-900">24ASHPS9777R1ZE</strong></p>
+              <p className="text-slate-600">Support Email: devibe70@gmail.com | Phone: +91 79 2213 4099</p>
             </div>
 
             <div className="text-right space-y-1">
               <span className="bg-slate-900 text-white text-[10px] font-black px-3 py-1 rounded uppercase tracking-wider inline-block">
-                TAX INVOICE
+                STATUTORY GST TAX INVOICE
               </span>
               <p className="font-black text-sm text-slate-900">Invoice #: {invoiceNumber}</p>
               <p className="text-slate-600">Date: {invoiceDate}</p>
@@ -121,11 +122,11 @@ export default function GSTInvoiceModal({ order, isOpen, onClose }: GSTInvoiceMo
             </div>
 
             <div className="text-right space-y-1">
-              <p className="text-[10px] font-black uppercase text-slate-500 tracking-wider">Payment Information:</p>
+              <p className="text-[10px] font-black uppercase text-slate-500 tracking-wider">Payment Details (Cashfree / COD):</p>
               <p className="font-bold text-slate-800">Mode: <span className="font-black text-blue-700">{order.payment_type}</span></p>
-              <p className="text-slate-700">Advance Paid (Razorpay): <strong className="text-emerald-700 font-black">₹{order.advance_amount}</strong></p>
+              <p className="text-slate-700">Advance Deposit Paid: <strong className="text-emerald-700 font-black">₹{order.advance_amount}</strong></p>
               <p className="text-slate-700">Doorstep COD Balance Due: <strong className="text-slate-900 font-black">₹{order.cod_balance_due}</strong></p>
-              <p className="text-[10px] text-slate-500 italic mt-2">Compatible with MyBillBook Billing App</p>
+              <p className="text-[10px] text-slate-500 italic mt-2">myBillBook Realtime Database Synced</p>
             </div>
           </div>
 
@@ -136,7 +137,7 @@ export default function GSTInvoiceModal({ order, isOpen, onClose }: GSTInvoiceMo
                 <tr>
                   <th className="p-3">#</th>
                   <th className="p-3">Item Description</th>
-                  <th className="p-3">HSN Code</th>
+                  <th className="p-3">HSN</th>
                   <th className="p-3 text-center">Qty</th>
                   <th className="p-3 text-right">Rate</th>
                   <th className="p-3 text-right">Taxable Val</th>
@@ -147,9 +148,8 @@ export default function GSTInvoiceModal({ order, isOpen, onClose }: GSTInvoiceMo
               <tbody className="divide-y divide-slate-200 font-medium text-slate-800">
                 {order.items.map((item, idx) => {
                   const p = item.product.price;
-                  const gst = getGstRate(p);
-                  const hsn = getHsnCode(item.product.category, p);
-                  const taxable = Math.round((p * item.quantity / (1 + gst / 100)) * 100) / 100;
+                  const hsn = item.product.category === 'SHIRT' || item.product.category === 'BOTTOMWEAR' ? '6203' : '6109';
+                  const taxable = Math.round((p * item.quantity / 1.05) * 100) / 100;
                   return (
                     <tr key={idx}>
                       <td className="p-3 font-bold">{idx + 1}</td>
@@ -158,7 +158,7 @@ export default function GSTInvoiceModal({ order, isOpen, onClose }: GSTInvoiceMo
                       <td className="p-3 text-center font-bold">{item.quantity}</td>
                       <td className="p-3 text-right">₹{p}</td>
                       <td className="p-3 text-right">₹{taxable}</td>
-                      <td className="p-3 text-right">{gst}%</td>
+                      <td className="p-3 text-right">5.00%</td>
                       <td className="p-3 text-right font-black">₹{p * item.quantity}</td>
                     </tr>
                   );
@@ -167,28 +167,37 @@ export default function GSTInvoiceModal({ order, isOpen, onClose }: GSTInvoiceMo
             </table>
           </div>
 
-          {/* Tax Summary & Total */}
+          {/* Tax Breakdown & Legal Attribution Footer */}
           <div className="flex justify-between items-start pt-2">
             <div className="max-w-md space-y-1 text-[11px] text-slate-600">
-              <p className="font-bold text-slate-800">Declaration & Terms:</p>
-              <p>1. Goods sold are manufactured from 100% Woven Cotton in Ahmedabad mills.</p>
-              <p>2. Pre-shrunk fabric. 7-day doorstep replacement policy applies.</p>
-              <p>3. This is a computer-generated tax invoice verified by De Vibe Billing Engine.</p>
+              <p className="font-bold text-slate-800">Legal Declaration & Statutory Compliance:</p>
+              <p>1. BahaMut is a registered trademark of Pooja Textile (TM No. 5018168, Class 25), marketed, billed & sold under authorization by DEVIBE (GSTIN: 24ASHPS9777R1ZE).</p>
+              <p>2. Goods crafted from 100% Woven Cotton at Ambawadi, Ahmedabad textile hub.</p>
+              <p>3. Pre-shrunk fit fabric. 7-day doorstep replacement policy applies.</p>
             </div>
 
             <div className="w-64 bg-slate-50 p-4 rounded-2xl border border-slate-300 space-y-2 text-right">
               <div className="flex justify-between text-slate-600 font-semibold">
-                <span>Subtotal:</span>
-                <span>₹{order.total_amount}</span>
+                <span>Total Taxable Value:</span>
+                <span>₹{(Math.round((order.total_amount / 1.05) * 100) / 100).toFixed(2)}</span>
               </div>
-              <div className="flex justify-between text-slate-600 font-semibold">
-                <span>CGST (2.5% / 6%):</span>
-                <span>Included</span>
-              </div>
-              <div className="flex justify-between text-slate-600 font-semibold">
-                <span>SGST (2.5% / 6%):</span>
-                <span>Included</span>
-              </div>
+              {isGujarat ? (
+                <>
+                  <div className="flex justify-between text-slate-600 font-semibold">
+                    <span>CGST (2.50%):</span>
+                    <span>₹{(Math.round((order.total_amount * 0.025 / 1.05) * 100) / 100).toFixed(2)}</span>
+                  </div>
+                  <div className="flex justify-between text-slate-600 font-semibold">
+                    <span>SGST (2.50%):</span>
+                    <span>₹{(Math.round((order.total_amount * 0.025 / 1.05) * 100) / 100).toFixed(2)}</span>
+                  </div>
+                </>
+              ) : (
+                <div className="flex justify-between text-slate-600 font-semibold">
+                  <span>IGST (5.00%):</span>
+                  <span>₹{(Math.round((order.total_amount * 0.05 / 1.05) * 100) / 100).toFixed(2)}</span>
+                </div>
+              )}
               <div className="border-t border-slate-300 pt-2 flex justify-between font-black text-sm text-slate-900">
                 <span>Total Invoice Value:</span>
                 <span>₹{order.total_amount}</span>
