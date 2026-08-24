@@ -9,7 +9,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 20, Wash 1). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 4,
     rating: 4.9,
@@ -32,7 +32,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 21, Wash 1). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 32,
     rating: 4.9,
@@ -55,7 +55,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 21, Wash 2). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 44,
     rating: 4.9,
@@ -78,7 +78,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 21, Wash 3). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 52,
     rating: 4.9,
@@ -101,7 +101,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 22, Wash 2). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 2,
     rating: 4.9,
@@ -124,7 +124,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 23, Wash 1). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 7,
     rating: 4.9,
@@ -147,7 +147,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 24, Wash 1). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 14,
     rating: 4.9,
@@ -170,7 +170,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 26, Wash 1). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 2,
     rating: 4.9,
@@ -193,7 +193,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 27, Wash 1). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 9,
     rating: 4.9,
@@ -216,7 +216,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 27, Wash 2). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 5,
     rating: 4.9,
@@ -239,7 +239,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 28, Wash 1). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 5,
     rating: 4.9,
@@ -262,7 +262,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 29, Wash 1). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 1,
     rating: 4.9,
@@ -285,7 +285,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 29, Wash 2). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 3,
     rating: 4.9,
@@ -308,7 +308,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 30, Wash 1). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 2,
     rating: 4.9,
@@ -331,7 +331,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 31, Wash 1). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 6,
     rating: 4.9,
@@ -354,7 +354,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 31, Wash 2). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 3,
     rating: 4.9,
@@ -377,7 +377,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 32, Wash 1). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 15,
     rating: 4.9,
@@ -400,7 +400,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 33, Wash 1). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 5,
     rating: 4.9,
@@ -423,7 +423,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 33, Wash 2). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 5,
     rating: 4.9,
@@ -446,7 +446,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 34, Wash 1). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 20,
     rating: 4.9,
@@ -469,7 +469,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 34, Wash 2). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 10,
     rating: 4.9,
@@ -492,7 +492,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     description: 'BahaMut Men Regular Fit Jeans (Art 35, Wash 1). Crafted from 100% Woven Cotton Denim at Ambawadi, Ahmedabad. Statutory 8-digit HSN 62034290. Billed by DEVIBE.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: 'Cotton Denim',
-    price: 1049,
+    price: 1499,
     original_mrp: 1999,
     stock_quantity: 38,
     rating: 4.9,
@@ -511,7 +511,7 @@ export const INITIAL_PRODUCTS: Product[] = [
 
 export function getProducts(): Product[] {
   if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('bahamut_smartbiz_products_v22');
+    const saved = localStorage.getItem('bahamut_smartbiz_products_v23');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -537,7 +537,7 @@ export function saveProduct(product: Product): Product[] {
     updated = [product, ...current];
   }
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v22', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v23', JSON.stringify(updated));
   }
   return updated;
 }
@@ -546,7 +546,7 @@ export function deleteProduct(idOrSlug: string): Product[] {
   const current = getProducts();
   const updated = current.filter(p => p.id !== idOrSlug && p.slug !== idOrSlug);
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v22', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v23', JSON.stringify(updated));
   }
   return updated;
 }
@@ -566,7 +566,7 @@ export function deductStockForOrder(items: CartItem[]): Product[] {
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v22', JSON.stringify(products));
+    localStorage.setItem('bahamut_smartbiz_products_v23', JSON.stringify(products));
   }
   return products;
 }
@@ -581,7 +581,7 @@ export function updateProductStock(idOrSlug: string, newStock: number): Product[
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v22', JSON.stringify(products));
+    localStorage.setItem('bahamut_smartbiz_products_v23', JSON.stringify(products));
   }
   return updated;
 }
