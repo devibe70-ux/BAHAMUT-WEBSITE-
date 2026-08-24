@@ -20,14 +20,31 @@ export interface MyBillBookInvoiceRow {
   balance_due: number;
 }
 
-export function getHsnCode(category?: string, price: number = 1299): string {
-  if (category === 'TEE') return '6109';
-  if (category === 'BOTTOMWEAR') return '6203';
-  return '6205';
+/**
+ * Statutory 8-Digit HSN Classification Engine (Chapter 62 & 61)
+ * Men's Cotton Jeans & Trousers: 62034290 / 62034200
+ * Men's Lycra / Blended Jeans: 62034300
+ * T-Shirts & Polos: 61091000
+ * Woven Cotton Shirts: 62052000
+ */
+export function getHsnCode(category?: string, price: number = 1299, fabric?: string): string {
+  const cat = (category || '').toUpperCase();
+  const fab = (fabric || '').toUpperCase();
+
+  if (cat === 'TEE') return '61091000';
+
+  if (cat === 'BOTTOMWEAR' || cat.includes('DENIM') || cat.includes('JEANS') || cat.includes('TROUSER')) {
+    if (fab.includes('LYCRA') || fab.includes('STRETCH') || fab.includes('SYNTHETIC')) {
+      return '62034300';
+    }
+    return '62034290';
+  }
+
+  return '62052000';
 }
 
 export function getGstRate(price: number): number {
-  return price <= 1000 ? 5 : 12;
+  return 5.0; // Locked statutory apparel rate for BahaMut Class 25
 }
 
 export function convertOrdersToMyBillBookRows(orders: Order[]): MyBillBookInvoiceRow[] {
@@ -44,11 +61,11 @@ export function convertOrdersToMyBillBookRows(orders: Order[]): MyBillBookInvoic
 
     order.items.forEach(item => {
       const price = item.product.price;
-      const gstRate = getGstRate(price);
-      const hsnCode = getHsnCode(item.product.category, price);
+      const gstRate = 5.0;
+      const hsnCode = getHsnCode(item.product.category, price, item.product.fabric_details);
       const qty = item.quantity;
       const totalAmount = price * qty;
-      const taxableValue = Math.round((totalAmount / (1 + gstRate / 100)) * 100) / 100;
+      const taxableValue = Math.round((totalAmount / 1.05) * 100) / 100;
 
       rows.push({
         invoice_number: order.order_number.replace('BM-2026-', 'INV-DEVIBE-'),
@@ -65,7 +82,7 @@ export function convertOrdersToMyBillBookRows(orders: Order[]): MyBillBookInvoic
         taxable_value: taxableValue,
         gst_rate: gstRate,
         total_item_amount: totalAmount,
-        payment_mode: order.payment_type === 'PARTIAL_COD' ? 'PARTIAL_COD (Razorpay + Cash)' : 'PREPAID',
+        payment_mode: order.payment_type === 'PARTIAL_COD' ? 'PARTIAL_COD (Cashfree + Doorstep COD)' : 'PREPAID',
         advance_collected: order.advance_amount,
         balance_due: order.cod_balance_due
       });
@@ -136,7 +153,9 @@ export async function pushOrderToMyBillBookApp(order: Order): Promise<{ success:
 
   const payload = {
     event: 'AUTOMATED_BACKGROUND_ORDER_SYNC',
-    store_slug: 'de_vibe',
+    seller_legal_name: 'DEVIBE',
+    seller_gstin: '24ASHPS9777R1ZE',
+    seller_state_code: '24',
     target_site: 'https://bahamut.in',
     order_number: order.order_number,
     invoice_number: order.order_number.replace('BM-2026-', 'INV-DEVIBE-'),
@@ -159,7 +178,6 @@ export async function pushOrderToMyBillBookApp(order: Order): Promise<{ success:
 
   console.log(`[AUTOMATED BACKGROUND MYBILLBOOK SYNC FOR ORDER #${order.order_number}]:`, JSON.stringify(payload, null, 2));
 
-  // 100% Automated Background API Dispatch to MyBillBook REST Endpoints
   const syncEndpoints = [
     'https://mybillbook.in/api/v1/online_store/orders',
     'https://api.mybillbook.in/v1/orders',
@@ -183,6 +201,6 @@ export async function pushOrderToMyBillBookApp(order: Order): Promise<{ success:
 
   return {
     success: true,
-    message: `Order #${order.order_number} synced automatically in background to MyBillBook`
+    message: `Order #${order.order_number} synced automatically in background to myBillBook`
   };
 }

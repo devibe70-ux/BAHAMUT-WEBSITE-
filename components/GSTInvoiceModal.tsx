@@ -3,6 +3,7 @@
 import React from 'react';
 import { X, Printer, Download, ShieldCheck, FileSpreadsheet } from 'lucide-react';
 import { Order } from '@/lib/types';
+import { getHsnCode } from '@/lib/mybillbook';
 
 interface GSTInvoiceModalProps {
   order: Order | null;
@@ -25,14 +26,13 @@ export default function GSTInvoiceModal({ order, isOpen, onClose }: GSTInvoiceMo
   };
 
   const isGujarat = (order.shipping_address?.state || '').toLowerCase().includes('gujarat') || order.shipping_address?.pincode?.startsWith('38');
-  const gstRate = 5.0; // Statutory apparel GST rate
 
   const handleExportSingleMyBillBook = () => {
     const csvContent = [
       'Invoice Number,Invoice Date,Customer Name,Phone Number,Shipping Address,PIN Code,Item Name,HSN/SAC Code,Quantity,Unit Price,Taxable Value,GST Rate,Total Amount,Payment Mode,Advance Paid,Balance Due',
       ...order.items.map(item => {
         const p = item.product.price;
-        const hsn = item.product.category === 'SHIRT' || item.product.category === 'BOTTOMWEAR' ? '6203' : '6109';
+        const hsn = getHsnCode(item.product.category, p, item.product.fabric_details);
         const taxable = Math.round((p * item.quantity / 1.05) * 100) / 100;
         return `"${invoiceNumber}","${invoiceDate}","${order.customer_name}","${order.customer_phone}","${order.shipping_address.street}, ${order.shipping_address.city}","${order.shipping_address.pincode}","${item.product.title} (Size: ${item.selectedSize})","${hsn}",${item.quantity},${p},${taxable},5.00,${p * item.quantity},"${order.payment_type}",${order.advance_amount},${order.cod_balance_due}`;
       })
@@ -137,7 +137,7 @@ export default function GSTInvoiceModal({ order, isOpen, onClose }: GSTInvoiceMo
                 <tr>
                   <th className="p-3">#</th>
                   <th className="p-3">Item Description</th>
-                  <th className="p-3">HSN</th>
+                  <th className="p-3">HSN Code</th>
                   <th className="p-3 text-center">Qty</th>
                   <th className="p-3 text-right">Rate</th>
                   <th className="p-3 text-right">Taxable Val</th>
@@ -148,13 +148,13 @@ export default function GSTInvoiceModal({ order, isOpen, onClose }: GSTInvoiceMo
               <tbody className="divide-y divide-slate-200 font-medium text-slate-800">
                 {order.items.map((item, idx) => {
                   const p = item.product.price;
-                  const hsn = item.product.category === 'SHIRT' || item.product.category === 'BOTTOMWEAR' ? '6203' : '6109';
+                  const hsn = getHsnCode(item.product.category, p, item.product.fabric_details);
                   const taxable = Math.round((p * item.quantity / 1.05) * 100) / 100;
                   return (
                     <tr key={idx}>
                       <td className="p-3 font-bold">{idx + 1}</td>
                       <td className="p-3 font-black text-slate-900">{item.product.title} (Size: {item.selectedSize})</td>
-                      <td className="p-3 font-mono">{hsn}</td>
+                      <td className="p-3 font-mono font-bold">{hsn}</td>
                       <td className="p-3 text-center font-bold">{item.quantity}</td>
                       <td className="p-3 text-right">₹{p}</td>
                       <td className="p-3 text-right">₹{taxable}</td>
@@ -172,7 +172,7 @@ export default function GSTInvoiceModal({ order, isOpen, onClose }: GSTInvoiceMo
             <div className="max-w-md space-y-1 text-[11px] text-slate-600">
               <p className="font-bold text-slate-800">Legal Declaration & Statutory Compliance:</p>
               <p>1. BahaMut is a registered trademark of Pooja Textile (TM No. 5018168, Class 25), marketed, billed & sold under authorization by DEVIBE (GSTIN: 24ASHPS9777R1ZE).</p>
-              <p>2. Goods crafted from 100% Woven Cotton at Ambawadi, Ahmedabad textile hub.</p>
+              <p>2. Denim & Jeans classified under Chapter 62 (HSN 62034290 / 62034300). 100% Woven Cotton crafted at Ambawadi, Ahmedabad.</p>
               <p>3. Pre-shrunk fit fabric. 7-day doorstep replacement policy applies.</p>
             </div>
 
