@@ -2,194 +2,333 @@ import { Product, CartItem } from './types';
 
 export const INITIAL_PRODUCTS: Product[] = [
   {
-    id: 'sb-001',
-    slug: 'bahamut-22-2-selvedge-denim',
-    title: 'BahaMut 22 (2) SELVEDGE DENIM (Class 25)',
-    category: 'BOTTOMWEAR',
+    id: '1124702c74f631712060794',
+    slug: 'bahamut-21-1-cotton-apparel',
+    title: 'BahaMut 21 (1) Cotton Apparel (Class 25)',
+    category: 'SHIRT',
     description:
-      'Amazon SmartBiz Store Verified Listing (bahamut.smartbiz.in): Premium Heavyweight Woven Cotton Selvedge Denim Jeans. ' +
-      'Features authentic red-line selvedge ID, pre-shrunk waist fit, and 5-pocket classic construction. Numeric waist sizes 28 to 38.',
+      'Direct-from-manufacturer 100% Breathable Woven Cotton crafted at Ambawadi, Ahmedabad. ' +
+      'Features structured collar, pre-shrunk finish, and paired 5-size matrix.',
     target_demographic: 'UNIFIED_13_65',
-    fabric_details: '100% Heavyweight Woven Cotton Selvedge Denim',
-    price: 1499,
-    original_mrp: 1999,
-    stock_quantity: 40,
+    fabric_details: '100% Breathable Woven Cotton (Ahmedabad Mills)',
+    price: 1299,
+    original_mrp: 2499,
+    stock_quantity: 50,
     rating: 4.9,
     review_count: 215,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: [
-      '/images/products/bahamut-22-2-selvedge-denim-1.jpg',
-      'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80'
-    ],
-    sizes: ['28', '30', '32', '34', '36', '38'],
-    available_sizes: ['28', '30', '32', '34', '36'],
-    pattern: 'Selvedge Raw Denim',
-    fit: 'Numeric Straight Fit (28-38)',
-    sleeve: 'N/A',
-    color: 'Deep Indigo Selvedge',
+    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    sizes: ['38', '40', '42', '44', '46'],
+    available_sizes: ['38', '40', '42', '44', '46'],
     gtin: '8901234501824',
-    mpn: 'BM-2026-SELVEDGE-01',
+    mpn: 'BM-2026-ART-21-1',
     is_active: true,
     created_at: '2026-08-01T10:00:00Z'
   },
   {
-    id: 'gm-001',
-    slug: 'bahamut-draconic-heavyweight-tee',
-    title: 'Bahamut Draconic Heavyweight Tee (Class 25)',
-    category: 'TEE',
-    description:
-      'Amazon SmartBiz & Google Merchant Verified Listing (bahamut.smartbiz.in): 240 GSM French Terry Woven Cotton in Obsidian Black. ' +
-      'Engineered with mythological gothic silhouettes and reinforced collar ribbing.',
-    target_demographic: 'UNIFIED_13_65',
-    fabric_details: '240 GSM French Terry Cotton (Obsidian Black)',
-    price: 2499,
-    original_mrp: 3999,
-    stock_quantity: 50,
-    rating: 4.9,
-    review_count: 240,
-    express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: [
-      '/images/products/bahamut-draconic-heavyweight-tee-1.png',
-      'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80'
-    ],
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    available_sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    pattern: 'Draconic Gothic Print',
-    fit: 'Alphabetical Heavyweight Fit',
-    sleeve: 'Half Sleeve',
-    color: 'Obsidian Black',
-    gtin: '8901234501816',
-    mpn: 'BM-2026-DRAC-01',
-    is_active: true,
-    created_at: '2026-08-01T10:00:00Z'
-  },
-  {
-    id: 'gm-002',
-    slug: 'blood-flame-oversized-hoodie',
-    title: 'Blood Flame Oversized Hoodie (Class 25)',
-    category: 'TEE',
-    description:
-      'Amazon SmartBiz & Google Merchant Verified Listing (bahamut.smartbiz.in): 400 GSM Heavy Fleece Cotton featuring custom gothic ribbing, deep crimson embroidery, and heavy-gauge warmth.',
-    target_demographic: 'UNIFIED_13_65',
-    fabric_details: '400 GSM Heavy Fleece Cotton',
-    price: 4999,
-    original_mrp: 7999,
-    stock_quantity: 35,
-    rating: 5.0,
-    review_count: 310,
-    express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: [
-      '/images/products/blood-flame-oversized-hoodie-1.png',
-      'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80'
-    ],
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    available_sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    pattern: 'Blood Flame Crimson',
-    fit: 'Alphabetical Oversized Fit',
-    sleeve: 'Full Sleeve',
-    color: 'Blood Crimson & Black',
-    gtin: '8901234501817',
-    mpn: 'BM-2026-HOOD-02',
-    is_active: true,
-    created_at: '2026-08-02T10:00:00Z'
-  },
-  {
-    id: 'gm-004',
-    slug: 'ahmedabad-woven-chambray-navy',
-    title: 'De Vibe Classic Chambray Shirt - Deep Navy',
+    id: '1124742c74f681712061497',
+    slug: 'bahamut-21-2-cotton-apparel',
+    title: 'BahaMut 21 (2) Cotton Apparel (Class 25)',
     category: 'SHIRT',
     description:
-      'Amazon SmartBiz Listed Item (bahamut.smartbiz.in): Direct-from-manufacturer 100% Breathable Woven Cotton crafted in Ambawadi, Ahmedabad. ' +
-      'Designed for structured elegance, superior ventilation, and wrinkle-resistant longevity. ' +
-      'Numeric sizes correspond to Indian shirt chest/collar sizing (38 to 46).',
+      'Direct-from-manufacturer 100% Breathable Woven Cotton shirt from Ambawadi textile mills. High thread count, button-down collar, and paired 5-size matrix.',
     target_demographic: 'UNIFIED_13_65',
     fabric_details: '100% Breathable Woven Cotton (Ahmedabad Mills)',
     price: 1299,
     original_mrp: 2499,
     stock_quantity: 45,
     rating: 4.8,
-    review_count: 148,
+    review_count: 180,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: [
-      '/images/products/ahmedabad-woven-chambray-navy-1.png',
-      'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80'
-    ],
+    images: ['/images/products/ahmedabad-woven-chambray-navy-1.png'],
     sizes: ['38', '40', '42', '44', '46'],
     available_sizes: ['38', '40', '42', '44', '46'],
-    pattern: 'Solid Woven',
-    fit: 'Numeric Standard Fit (38-46)',
-    sleeve: 'Full Sleeve',
-    color: 'Navy Blue',
-    gtin: '8901234501819',
-    mpn: 'BM-2026-SHIRT-04',
+    gtin: '8901234501825',
+    mpn: 'BM-2026-ART-21-2',
     is_active: true,
-    created_at: '2026-07-01T10:00:00Z'
+    created_at: '2026-08-01T10:00:00Z'
   },
   {
-    id: 'gm-005',
-    slug: 'cyber-street-graffiti-oversized-tee',
-    title: 'BahaMut Kinetic Graphic Oversized Tee - Acid Black',
-    category: 'TEE',
+    id: '1124718c74f6a1712061725',
+    slug: 'bahamut-21-3-cotton-apparel',
+    title: 'BahaMut 21 (3) Cotton Apparel (Class 25)',
+    category: 'SHIRT',
     description:
-      'Amazon SmartBiz Verified Listing (bahamut.smartbiz.in): Expressive kinetic print graphic tee featuring high-density reactive printing on premium 100% Woven Cotton canvas. Alphabetical sizes S, M, L, XL, XXL.',
+      'Direct-from-manufacturer 100% Woven Cotton shirt crafted for all-day comfort. Paired 5-size matrix numeric 38 to 46.',
     target_demographic: 'UNIFIED_13_65',
-    fabric_details: '100% Breathable Woven Cotton (220 GSM)',
-    price: 1099,
+    fabric_details: '100% Breathable Woven Cotton',
+    price: 1299,
+    original_mrp: 2499,
+    stock_quantity: 40,
+    rating: 4.8,
+    review_count: 155,
+    express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
+    images: ['/images/products/textured-oxford-solid-khaki-1.png'],
+    sizes: ['38', '40', '42', '44', '46'],
+    available_sizes: ['38', '40', '42', '44', '46'],
+    gtin: '8901234501826',
+    mpn: 'BM-2026-ART-21-3',
+    is_active: true,
+    created_at: '2026-08-01T10:00:00Z'
+  },
+  {
+    id: '112477ec755421712257777',
+    slug: 'bahamut-22-1-selvedge-denim',
+    title: 'BahaMut 22 (1) SELVEDGE DENIM (Class 25)',
+    category: 'BOTTOMWEAR',
+    description:
+      'Authentic Heavyweight Red-Line Selvedge Denim Jeans. Crafted in Ambawadi mills with pre-shrunk numeric waist sizes 28 to 36.',
+    target_demographic: 'UNIFIED_13_65',
+    fabric_details: '100% Heavyweight Woven Cotton Selvedge Denim',
+    price: 1499,
+    original_mrp: 1999,
+    stock_quantity: 50,
+    rating: 5.0,
+    review_count: 310,
+    express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
+    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    sizes: ['28', '30', '32', '34', '36'],
+    available_sizes: ['28', '30', '32', '34', '36'],
+    gtin: '8901234501827',
+    mpn: 'BM-2026-SELVEDGE-22-1',
+    is_active: true,
+    created_at: '2026-08-01T10:00:00Z'
+  },
+  {
+    id: '1124702c755461712258316',
+    slug: 'bahamut-22-2-selvedge-denim',
+    title: 'BahaMut 22 (2) SELVEDGE DENIM (Class 25)',
+    category: 'BOTTOMWEAR',
+    description:
+      'Premium Heavyweight Woven Cotton Selvedge Denim Jeans. Features authentic red-line selvedge ID, pre-shrunk waist fit, and 5-pocket classic construction.',
+    target_demographic: 'UNIFIED_13_65',
+    fabric_details: '100% Heavyweight Woven Cotton Selvedge Denim',
+    price: 1499,
+    original_mrp: 1999,
+    stock_quantity: 45,
+    rating: 4.9,
+    review_count: 240,
+    express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
+    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    sizes: ['28', '30', '32', '34', '36'],
+    available_sizes: ['28', '30', '32', '34', '36'],
+    gtin: '8901234501828',
+    mpn: 'BM-2026-SELVEDGE-22-2',
+    is_active: true,
+    created_at: '2026-08-01T10:00:00Z'
+  },
+  {
+    id: '11247a2c84b341720510327',
+    slug: 'bahamut-23-selvedge-denim',
+    title: 'BahaMut 23 SELVEDGE DENIM (Class 25)',
+    category: 'BOTTOMWEAR',
+    description:
+      'Direct-from-mill Heavyweight Woven Cotton Selvedge Denim in Deep Blue. Classic 5-pocket layout with 5-size matrix.',
+    target_demographic: 'UNIFIED_13_65',
+    fabric_details: '100% Woven Cotton Selvedge Denim',
+    price: 1599,
     original_mrp: 2199,
     stock_quantity: 35,
+    rating: 4.8,
+    review_count: 190,
+    express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
+    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    sizes: ['28', '30', '32', '34', '36'],
+    available_sizes: ['28', '30', '32', '34', '36'],
+    gtin: '8901234501829',
+    mpn: 'BM-2026-SELVEDGE-23',
+    is_active: true,
+    created_at: '2026-08-02T10:00:00Z'
+  },
+  {
+    id: '11247e2c84b371720510811',
+    slug: 'bahamut-24-black-denim',
+    title: 'BahaMut 24 BLACK DENIM (Class 25)',
+    category: 'BOTTOMWEAR',
+    description:
+      'Heavyweight Jet Black Woven Cotton Denim. Durable reinforced stitching and pre-shrunk waist fit.',
+    target_demographic: 'UNIFIED_13_65',
+    fabric_details: '100% Woven Cotton Black Denim',
+    price: 1599,
+    original_mrp: 2299,
+    stock_quantity: 30,
+    rating: 4.9,
+    review_count: 165,
+    express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
+    images: ['/images/products/cyber-street-graffiti-oversized-tee-1.png'],
+    sizes: ['28', '30', '32', '34', '36'],
+    available_sizes: ['28', '30', '32', '34'],
+    gtin: '8901234501830',
+    mpn: 'BM-2026-DENIM-24',
+    is_active: true,
+    created_at: '2026-08-02T10:00:00Z'
+  },
+  {
+    id: '112476cc84b431720512288',
+    slug: 'bahamut-25-white-denim',
+    title: 'BahaMut 25 WHITE DENIM (Class 25)',
+    category: 'BOTTOMWEAR',
+    description:
+      'Pure White Woven Cotton Denim Trousers. Crisp structured weave engineered for tropical comfort.',
+    target_demographic: 'UNIFIED_13_65',
+    fabric_details: '100% Woven Cotton White Denim',
+    price: 1599,
+    original_mrp: 2299,
+    stock_quantity: 30,
+    rating: 4.7,
+    review_count: 140,
+    express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
+    images: ['/images/products/textured-oxford-solid-khaki-1.png'],
+    sizes: ['28', '30', '32', '34', '36'],
+    available_sizes: ['28', '30', '32', '34'],
+    gtin: '8901234501831',
+    mpn: 'BM-2026-DENIM-25',
+    is_active: true,
+    created_at: '2026-08-03T10:00:00Z'
+  },
+  {
+    id: '112478ec8a7ff1723623935',
+    slug: 'bahamut-26-raw-denim',
+    title: 'BahaMut 26 Raw Denim (Class 25)',
+    category: 'BOTTOMWEAR',
+    description:
+      'Raw Rigid Woven Cotton Denim. Authentic indigo wash finish with paired 5-size matrix.',
+    target_demographic: 'UNIFIED_13_65',
+    fabric_details: '100% Woven Cotton Raw Denim',
+    price: 1499,
+    original_mrp: 2199,
+    stock_quantity: 40,
+    rating: 4.8,
+    review_count: 175,
+    express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
+    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    sizes: ['28', '30', '32', '34', '36'],
+    available_sizes: ['28', '30', '32', '34', '36'],
+    gtin: '8901234501832',
+    mpn: 'BM-2026-DENIM-26',
+    is_active: true,
+    created_at: '2026-08-03T10:00:00Z'
+  },
+  {
+    id: '11247ecc862681721289006',
+    slug: 'bahamut-27-1-denim',
+    title: 'BahaMut 27 (1) Denim (Class 25)',
+    category: 'BOTTOMWEAR',
+    description:
+      'Classic Ahmedabad Woven Cotton Denim. Comfortable stretch waistband and utility pockets.',
+    target_demographic: 'UNIFIED_13_65',
+    fabric_details: '100% Woven Cotton Denim',
+    price: 1499,
+    original_mrp: 2199,
+    stock_quantity: 35,
+    rating: 4.8,
+    review_count: 160,
+    express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
+    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    sizes: ['28', '30', '32', '34', '36'],
+    available_sizes: ['28', '30', '32', '34'],
+    gtin: '8901234501833',
+    mpn: 'BM-2026-DENIM-27-1',
+    is_active: true,
+    created_at: '2026-08-04T10:00:00Z'
+  },
+  {
+    id: '11247d6c85fa21721195834',
+    slug: 'bahamut-28-1-lycra-denim',
+    title: 'BahaMut 28 (1) Lycra Stretch Denim (Class 25)',
+    category: 'BOTTOMWEAR',
+    description:
+      'Flexible Woven Cotton Lycra Blend Denim. Maximum mobility and shape retention.',
+    target_demographic: 'UNIFIED_13_65',
+    fabric_details: '98% Woven Cotton, 2% Lycra Stretch',
+    price: 1699,
+    original_mrp: 2499,
+    stock_quantity: 45,
     rating: 4.9,
     review_count: 210,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: [
-      '/images/products/cyber-street-graffiti-oversized-tee-1.png',
-      'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=800&q=80'
-    ],
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    available_sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    pattern: 'Graphic Kinetic Print',
-    fit: 'Alphabetical Comfort Fit',
-    sleeve: 'Half Sleeve',
-    color: 'Acid Wash Black',
-    gtin: '8901234501820',
-    mpn: 'BM-2026-TEE-05',
+    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    sizes: ['28', '30', '32', '34', '36'],
+    available_sizes: ['28', '30', '32', '34', '36'],
+    gtin: '8901234501834',
+    mpn: 'BM-2026-LYCRA-28-1',
     is_active: true,
-    created_at: '2026-07-05T12:00:00Z'
+    created_at: '2026-08-04T10:00:00Z'
   },
   {
-    id: 'gm-006',
-    slug: 'textured-oxford-solid-khaki',
-    title: 'De Vibe Executive Oxford Cotton Shirt - Pure Khaki',
-    category: 'SHIRT',
+    id: '11247b0c85fa41721196128',
+    slug: 'bahamut-28-2-lycra-denim',
+    title: 'BahaMut 28 (2) Lycra Stretch Denim (Class 25)',
+    category: 'BOTTOMWEAR',
     description:
-      'Amazon SmartBiz Verified Listing (bahamut.smartbiz.in): Refined weave with high thread density. Tailored for comfort across hot and humid climates. Features resin buttons and reinforced collar. Numeric shirt sizes 38 to 46.',
+      'Premium Woven Cotton Lycra Stretch Denim in Mid Indigo. Pre-shrunk fit with paired 5-size matrix.',
     target_demographic: 'UNIFIED_13_65',
-    fabric_details: '100% Breathable Woven Cotton',
-    price: 1399,
-    original_mrp: 2699,
-    stock_quantity: 50,
-    rating: 4.7,
-    review_count: 124,
+    fabric_details: '98% Woven Cotton, 2% Lycra Stretch',
+    price: 1699,
+    original_mrp: 2499,
+    stock_quantity: 40,
+    rating: 4.9,
+    review_count: 195,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
-    images: [
-      '/images/products/textured-oxford-solid-khaki-1.png',
-      'https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=800&q=80'
-    ],
-    sizes: ['38', '40', '42', '44', '46'],
-    available_sizes: ['38', '40', '42', '44', '46'],
-    pattern: 'Oxford Solid',
-    fit: 'Numeric Structured Fit (38-46)',
-    sleeve: 'Full Sleeve',
-    color: 'Khaki Beige',
-    gtin: '8901234501821',
-    mpn: 'BM-2026-SHIRT-06',
+    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    sizes: ['28', '30', '32', '34', '36'],
+    available_sizes: ['28', '30', '32', '34', '36'],
+    gtin: '8901234501835',
+    mpn: 'BM-2026-LYCRA-28-2',
     is_active: true,
-    created_at: '2026-07-10T14:30:00Z'
+    created_at: '2026-08-05T10:00:00Z'
+  },
+  {
+    id: '11247eec8a8041723624638',
+    slug: 'bahamut-31-1-denim',
+    title: 'BahaMut 31 (1) Woven Denim (Class 25)',
+    category: 'BOTTOMWEAR',
+    description:
+      'Heavyweight 100% Woven Cotton Denim Jeans. Engineered in Ahmedabad mills with paired 5-size matrix.',
+    target_demographic: 'UNIFIED_13_65',
+    fabric_details: '100% Heavyweight Woven Cotton Denim',
+    price: 1599,
+    original_mrp: 2399,
+    stock_quantity: 45,
+    rating: 4.8,
+    review_count: 180,
+    express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
+    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    sizes: ['28', '30', '32', '34', '36'],
+    available_sizes: ['28', '30', '32', '34', '36'],
+    gtin: '8901234501836',
+    mpn: 'BM-2026-DENIM-31-1',
+    is_active: true,
+    created_at: '2026-08-05T10:00:00Z'
+  },
+  {
+    id: '11247eec8a8061723624967',
+    slug: 'bahamut-31-2-denim',
+    title: 'BahaMut 31 (2) Woven Denim (Class 25)',
+    category: 'BOTTOMWEAR',
+    description:
+      'Heavyweight 100% Woven Cotton Denim Jeans in Deep Vintage Wash. Paired 5-size matrix numeric 28 to 36.',
+    target_demographic: 'UNIFIED_13_65',
+    fabric_details: '100% Heavyweight Woven Cotton Denim',
+    price: 1599,
+    original_mrp: 2399,
+    stock_quantity: 40,
+    rating: 4.8,
+    review_count: 165,
+    express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
+    images: ['/images/products/bahamut-22-2-selvedge-denim-1.jpg'],
+    sizes: ['28', '30', '32', '34', '36'],
+    available_sizes: ['28', '30', '32', '34', '36'],
+    gtin: '8901234501837',
+    mpn: 'BM-2026-DENIM-31-2',
+    is_active: true,
+    created_at: '2026-08-05T10:00:00Z'
   }
 ];
 
 export function getProducts(): Product[] {
   if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('bahamut_smartbiz_products_v17');
+    const saved = localStorage.getItem('bahamut_smartbiz_products_v18');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -215,7 +354,7 @@ export function saveProduct(product: Product): Product[] {
     updated = [product, ...current];
   }
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v17', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v18', JSON.stringify(updated));
   }
   return updated;
 }
@@ -224,7 +363,7 @@ export function deleteProduct(idOrSlug: string): Product[] {
   const current = getProducts();
   const updated = current.filter(p => p.id !== idOrSlug && p.slug !== idOrSlug);
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v17', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v18', JSON.stringify(updated));
   }
   return updated;
 }
@@ -244,7 +383,7 @@ export function deductStockForOrder(items: CartItem[]): Product[] {
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v17', JSON.stringify(products));
+    localStorage.setItem('bahamut_smartbiz_products_v18', JSON.stringify(products));
   }
   return products;
 }
@@ -259,7 +398,7 @@ export function updateProductStock(idOrSlug: string, newStock: number): Product[
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v17', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v18', JSON.stringify(updated));
   }
   return updated;
 }
