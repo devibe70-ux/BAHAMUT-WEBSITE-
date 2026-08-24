@@ -29,7 +29,7 @@ export default function OrderTrackingPage() {
         <PackageCheck className="w-12 h-12 text-blue-400 mx-auto animate-bounce" />
         <h2 className="text-2xl font-black text-white">Order #{orderIdParam} Not Found</h2>
         <p className="text-xs text-slate-400 max-w-md mx-auto font-medium">
-          Please verify your order number or check your email confirmation sent by De Vibe.
+          Please verify your order number or check your email confirmation sent by DE VIBE.
         </p>
         <Link
           href="/"
@@ -42,8 +42,8 @@ export default function OrderTrackingPage() {
   }
 
   const milestones = [
-    { title: 'Order Placed', desc: 'Received at De Vibe Hub', completed: true },
-    { title: 'Razorpay Deposit Verified', desc: `₹${order.advance_amount} Deposit Received`, completed: order.payment_status === 'DEPOSIT_PAID' || order.payment_status === 'FULLY_PAID' },
+    { title: 'Order Placed', desc: 'Received at DE VIBE', completed: true },
+    { title: 'Deposit Verified', desc: `₹${order.advance_amount} Deposit Received`, completed: order.payment_status === 'DEPOSIT_PAID' || order.payment_status === 'FULLY_PAID' },
     { title: 'Courier Dispatched', desc: `${order.courier_provider || 'Shipyaari'} Waybill Generated`, completed: order.fulfillment_status === 'DISPATCHED' || order.fulfillment_status === 'DELIVERED' },
     { title: 'Out For Delivery', desc: 'Doorstep Courier Agent Assigned', completed: order.fulfillment_status === 'OUT_FOR_DELIVERY' || order.fulfillment_status === 'DELIVERED' },
     { title: 'Delivered & COD Collected', desc: order.cod_balance_due > 0 ? `Collect ₹${order.cod_balance_due} Cash` : 'Fully Paid', completed: order.fulfillment_status === 'DELIVERED' }
@@ -77,7 +77,7 @@ export default function OrderTrackingPage() {
             {order.cod_balance_due > 0 ? `₹${order.cod_balance_due.toLocaleString('en-IN')}` : 'FULLY PAID (₹0 DUE)'}
           </span>
           <span className="text-[10px] text-slate-400 block font-semibold">
-            ₹{order.advance_amount} Deposit Paid via Razorpay
+            ₹{order.advance_amount} Deposit Paid via Cashfree
           </span>
         </div>
       </div>
@@ -146,7 +146,7 @@ export default function OrderTrackingPage() {
 
       {/* Footer Legal Lockup Line */}
       <div className="pt-4 text-center text-xs text-slate-400 font-bold border-t border-slate-800">
-        © 2026 BahaMut Apparel. Marketed, billed, and fulfilled by De Vibe.
+        © 2026 BahaMut Apparel. Marketed, billed, and fulfilled by DE VIBE (GSTIN: 24ASHPS9777R1ZE).
       </div>
     </div>
   );

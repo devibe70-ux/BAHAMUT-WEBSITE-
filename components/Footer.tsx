@@ -55,11 +55,11 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-xs text-neutral-400 leading-relaxed">
-              Direct-from-manufacturer 100% Breathable Woven Cotton apparel from Ambawadi, Ahmedabad textile hub.
+              Direct-from-manufacturer 100% Breathable Woven Cotton apparel from Ambawadi, Ahmedabad.
             </p>
             <div className="text-xs text-neutral-300 space-y-1 font-medium">
               <p className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-white flex-shrink-0" /> DEVIBE Hub, Ambawadi, Ahmedabad, Gujarat - 380015
+                <MapPin className="w-3.5 h-3.5 text-white flex-shrink-0" /> DE VIBE, Ambawadi, Ahmedabad, Gujarat - 380015
               </p>
               <p className="flex items-center gap-2">
                 <PhoneCall className="w-3.5 h-3.5 text-white flex-shrink-0" /> +91 79 2213 4099 / devibe70@gmail.com

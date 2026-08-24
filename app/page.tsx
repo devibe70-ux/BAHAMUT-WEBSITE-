@@ -163,7 +163,7 @@ export default function HomePage() {
             <Truck className="w-6 h-6 text-[#111111] flex-shrink-0" />
             <div>
               <h4 className="font-bold text-xs sm:text-sm text-[#111111]">Free Express Shipping</h4>
-              <p className="text-[11px] text-[#666666]">Ambawadi Ahmedabad Hub</p>
+              <p className="text-[11px] text-[#666666]">Ambawadi, Ahmedabad</p>
             </div>
           </div>
 

@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage() {
             <Lock className="w-8 h-8 text-[#b3001f]" /> Privacy Policy
           </h1>
           <p className="text-xs text-[#8b8b94] font-medium">
-            Effective Date: August 1, 2026 | Legal Company Entity: De Vibe Hub, Ahmedabad - 380015
+            Effective Date: August 1, 2026 | Legal Company Entity: DE VIBE, Ambawadi, Ahmedabad - 380015
           </p>
         </div>
 
@@ -33,7 +33,7 @@ export default function PrivacyPolicyPage() {
               1. Information Collection & Usage
             </h2>
             <p>
-              At <strong>BAHAMUT</strong> (operated by De Vibe), we respect your privacy. When you place an order on <strong>https://bahamut.in</strong>, we collect your name, shipping address, mobile number, and email address solely for order fulfillment, shipment tracking, and customer service.
+              At <strong>BahaMut</strong> (marketed, billed & sold under authorization by DE VIBE, GSTIN: 24ASHPS9777R1ZE), we respect your privacy. When you place an order on <strong>https://bahamut.in</strong>, we collect your name, shipping address, mobile number, and email address solely for order fulfillment, shipment tracking, and customer service.
             </p>
           </section>
 
@@ -42,7 +42,7 @@ export default function PrivacyPolicyPage() {
               2. Data Protection & Payment Security
             </h2>
             <p>
-              We do not store or process your credit card, debit card, or UPI PIN details. All financial transactions are transmitted directly over 256-bit SSL encrypted channels to PCI-DSS compliant payment gateways (Razorpay).
+              We do not store or process your credit card, debit card, or UPI PIN details. All financial transactions are transmitted directly over 256-bit SSL encrypted channels to PCI-DSS compliant payment gateways (Cashfree Payments).
             </p>
           </section>
 

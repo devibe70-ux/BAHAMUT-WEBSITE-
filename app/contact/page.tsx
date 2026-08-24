@@ -30,7 +30,7 @@ export default function ContactUsPage() {
             <PhoneCall className="w-8 h-8 text-[#b3001f]" /> Contact Us
           </h1>
           <p className="text-xs text-[#8b8b94] font-medium">
-            Registered Legal Operating Entity: De Vibe (Proprietor: Mr. Akshay Alkeshbhai Shah)
+            Registered Legal Operating Entity: DE VIBE (Proprietor: Mr. Akshay Alkeshbhai Shah)
           </p>
         </div>
 
@@ -38,10 +38,10 @@ export default function ContactUsPage() {
           {/* Registered Address Box */}
           <div className="bg-[#121215] p-6 rounded-[2px] border border-[#26262c] shadow-xl space-y-4">
             <div className="flex items-center gap-3 text-white font-heading text-sm border-b border-[#26262c] pb-3 uppercase">
-              <MapPin className="w-5 h-5 text-[#b3001f]" /> Registered Address & Hub
+              <MapPin className="w-5 h-5 text-[#b3001f]" /> Registered Address
             </div>
             <div className="text-xs text-[#8b8b94] space-y-1 font-medium">
-              <p className="font-bold text-white">De Vibe Apparel Hub</p>
+              <p className="font-bold text-white">DE VIBE</p>
               <p>Ambawadi, Ahmedabad, Gujarat, India - 380015</p>
               <p className="text-[11px] text-amber-400 pt-1 font-bold">Trade Mark No: 5018168 (Class 25)</p>
             </div>
