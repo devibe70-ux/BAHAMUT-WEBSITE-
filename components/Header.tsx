@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ShoppingBag, Search, Menu, X, Shield, Ruler, Truck } from 'lucide-react';
+import { ShoppingBag, Search, Menu, X, Ruler, Truck } from 'lucide-react';
 import { useCart } from '@/lib/cartContext';
 import SizeGuideModal from '@/components/SizeGuideModal';
 
@@ -121,14 +121,6 @@ export default function Header() {
                 )}
               </div>
               <span className="hidden lg:inline text-xs font-bold">Bag</span>
-            </Link>
-
-            <Link
-              href="/admin/login"
-              className="hidden lg:flex min-h-[40px] px-3.5 py-1.5 text-xs font-bold text-white bg-[#111111] hover:bg-black items-center gap-1.5 transition-all"
-            >
-              <Shield className="w-3.5 h-3.5 text-neutral-400" />
-              <span>Seller Portal</span>
             </Link>
           </div>
         </div>
