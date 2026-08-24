@@ -7,7 +7,7 @@ import ProductCard from '@/components/ProductCard';
 import SizeGuideModal from '@/components/SizeGuideModal';
 import { getProducts } from '@/lib/products';
 import { Product } from '@/lib/types';
-import { Sparkles, ShieldCheck, Truck, ArrowRight, CheckCircle2, ChevronRight, Ruler, Tag, Clock, Zap } from 'lucide-react';
+import { ShieldCheck, Truck, ChevronRight, Ruler, Clock, Tag, CheckCircle2 } from 'lucide-react';
 
 export default function HomePage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -38,25 +38,25 @@ export default function HomePage() {
       <section className="bg-white border-b border-[#E5E5E5] py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-6 overflow-x-auto pb-2 scrollbar-none">
-            <Link href="/catalog" className="flex flex-col items-center gap-2 group flex-shrink-0">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#F7F7F8] border border-[#E5E5E5] group-hover:border-[#111111] transition-all p-1 relative overflow-hidden">
-                <Image src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=200&q=80" alt="Shirts" fill className="object-cover" />
-              </div>
-              <span className="text-xs font-bold text-[#111111]">Shirts (38–46)</span>
-            </Link>
-
             <Link href="/catalog?cat=BOTTOMWEAR" className="flex flex-col items-center gap-2 group flex-shrink-0">
               <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#F7F7F8] border border-[#E5E5E5] group-hover:border-[#111111] transition-all p-1 relative overflow-hidden">
-                <Image src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=200&q=80" alt="Bottomwear" fill className="object-cover" />
+                <Image src="https://m.media-amazon.com/images/X/bxt1/M/Vbxt1xFDXEjlWBe.jpg" alt="Selvedge Denim" fill className="object-cover" />
               </div>
-              <span className="text-xs font-bold text-[#111111]">Bottomwear (28–38)</span>
+              <span className="text-xs font-bold text-[#111111]">Selvedge Denim (28–38)</span>
+            </Link>
+
+            <Link href="/catalog?cat=SHIRT" className="flex flex-col items-center gap-2 group flex-shrink-0">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#F7F7F8] border border-[#E5E5E5] group-hover:border-[#111111] transition-all p-1 relative overflow-hidden">
+                <Image src="https://m.media-amazon.com/images/X/bxt1/M/sbxt1RP-UepvYiL.png" alt="Shirts" fill className="object-cover" />
+              </div>
+              <span className="text-xs font-bold text-[#111111]">Woven Shirts (38–46)</span>
             </Link>
 
             <Link href="/catalog?cat=TEE" className="flex flex-col items-center gap-2 group flex-shrink-0">
               <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#F7F7F8] border border-[#E5E5E5] group-hover:border-[#111111] transition-all p-1 relative overflow-hidden">
-                <Image src="https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=200&q=80" alt="T-Shirts" fill className="object-cover" />
+                <Image src="https://m.media-amazon.com/images/X/bxr1/M/qbxr1BFTrxlNxfw.png" alt="Heavyweight Tees" fill className="object-cover" />
               </div>
-              <span className="text-xs font-bold text-[#111111]">Tees (S–XXL)</span>
+              <span className="text-xs font-bold text-[#111111]">Graphic Tees (S–XXL)</span>
             </Link>
 
             <button onClick={() => setIsSizeModalOpen(true)} className="flex flex-col items-center gap-2 group flex-shrink-0">
@@ -76,12 +76,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Minimal Hero Showcase with Trademark Blackletter Title */}
+      {/* Minimal Hero Showcase with Trademark Blackletter Title & Amazon SmartBiz Product */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white border border-[#E5E5E5] p-6 sm:p-12 relative overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left z-10">
             <div className="inline-flex items-center gap-2 bg-[#111111] text-white text-xs font-bold px-3 py-1 uppercase tracking-widest">
-              OFFICIAL LAUNCH COLLECTION
+              OFFICIAL SMARTBIZ STORE LISTING
             </div>
 
             <h1 className="text-4xl sm:text-6xl text-[#111111] tracking-tight leading-tight">
@@ -89,7 +89,7 @@ export default function HomePage() {
             </h1>
 
             <p className="text-[#666666] text-xs sm:text-sm max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
-              Direct-from-manufacturer 100% Breathable Woven Cotton apparel engineered at Ambawadi, Ahmedabad mills. Official Registered Trademark (TM No. 5018168, Class 25).
+              Direct-from-manufacturer 100% Breathable Woven Cotton apparel & Authentic Selvedge Denim engineered at Ambawadi, Ahmedabad mills. Official Registered Trademark (TM No. 5018168, Class 25).
             </p>
 
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
@@ -108,23 +108,23 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="lg:col-span-5 relative h-80 sm:h-96 w-full bg-[#F7F7F8] border border-[#E5E5E5] overflow-hidden">
+          <Link href="/product/bahamut-22-2-selvedge-denim" className="lg:col-span-5 relative h-80 sm:h-96 w-full bg-[#F7F7F8] border border-[#E5E5E5] overflow-hidden group block">
             <Image
-              src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80"
-              alt="BAHAMUT Classic Collection"
+              src="https://m.media-amazon.com/images/X/bxt1/M/Vbxt1xFDXEjlWBe.jpg"
+              alt="BahaMut 22 (2) SELVEDGE DENIM"
               fill
               priority
-              className="object-cover object-top"
+              className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
             <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
               <span className="bg-white text-[#111111] text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider">
-                100% Woven Cotton
+                Amazon SmartBiz Verified
               </span>
-              <h3 className="text-base font-bold">De Vibe Classic Chambray Shirt</h3>
-              <p className="text-xs text-neutral-200 font-medium">₹1,299 (MRP: ₹2,499)</p>
+              <h3 className="text-base font-bold">BahaMut 22 (2) SELVEDGE DENIM</h3>
+              <p className="text-xs text-neutral-200 font-medium">₹1,499 (MRP: ₹1,999 — 25% Off)</p>
             </div>
-          </div>
+          </Link>
         </div>
       </section>
 
