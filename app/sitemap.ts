@@ -7,8 +7,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const productUrls = INITIAL_PRODUCTS.map((product) => ({
     url: `${baseUrl}/product/${encodeURIComponent(product.slug)}`,
     lastModified: new Date(product.created_at || Date.now()),
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
+    changeFrequency: 'daily' as const,
+    priority: 0.9,
   }));
 
   const staticPages = [
@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: 'daily' as const,
-    priority: route === '' ? 1.0 : 0.7,
+    priority: route === '' ? 1.0 : 0.8,
   }));
 
   return [...staticPages, ...productUrls];

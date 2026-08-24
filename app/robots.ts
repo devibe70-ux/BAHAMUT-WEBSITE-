@@ -9,10 +9,22 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/admin/', '/api/admin/'],
       },
       {
-        userAgent: ['GPTBot', 'Google-Extended', 'ClaudeBot', 'PerplexityBot', 'Bingbot'],
+        userAgent: [
+          'GPTBot',
+          'ChatGPT-User',
+          'Google-Extended',
+          'ClaudeBot',
+          'Claude-Web',
+          'PerplexityBot',
+          'Bingbot',
+          'Applebot-Extended',
+          'CCBot',
+          'Bytespider'
+        ],
         allow: '/',
       },
     ],
     sitemap: 'https://bahamut.in/sitemap.xml',
+    host: 'https://bahamut.in',
   };
 }

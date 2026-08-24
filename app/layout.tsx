@@ -29,27 +29,74 @@ const unifraktur = UnifrakturMaguntia({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://bahamut.in'),
-  title: 'BAHAMUT by DE VIBE | Woven Cotton Apparel',
+  title: {
+    default: 'BahaMut by DE VIBE | 100% Woven Cotton Denim Jeans & Apparel India',
+    template: '%s | BahaMut by DE VIBE'
+  },
   description:
-    'Direct-from-manufacturer 100% Breathable Woven Cotton apparel from Ahmedabad textile hub. Official Registered Trademark (TM No. 5018168, Class 25). Ambawadi, Ahmedabad, Gujarat - 380015.',
+    'Buy direct-from-manufacturer 100% Woven Cotton Denim Jeans & Apparel from Ambawadi, Ahmedabad. Trademark TM No. 5018168 (Class 25). Billed by DE VIBE (GSTIN: 24ASHPS9777R1ZE) with statutory 5% GST (HSN 62034290). All products ₹1,499 with Partial COD.',
   keywords: [
-    'BAHAMUT',
+    'BahaMut',
     'DE VIBE',
-    'Woven Cotton Shirts',
+    'BahaMut Jeans',
+    'BahaMut Denim',
+    'Men Denim Jeans India',
+    '100% Woven Cotton Denim',
+    'Heavyweight Denim Jeans',
+    'Ahmedabad Denim Mills',
+    'Ambawadi Ahmedabad Textiles',
+    'Selvedge Denim India',
     'Class 25 Garments',
-    'Ambawadi Ahmedabad'
+    'GSTIN 24ASHPS9777R1ZE',
+    'TM 5018168',
+    'Buy Jeans Online India',
+    'Partial COD Jeans'
   ],
+  authors: [{ name: 'DE VIBE', url: 'https://bahamut.in' }],
+  creator: 'DE VIBE',
+  publisher: 'DE VIBE',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   alternates: {
     canonical: 'https://bahamut.in',
   },
   openGraph: {
-    title: 'BAHAMUT by DE VIBE',
+    title: 'BahaMut by DE VIBE | 100% Woven Cotton Denim Jeans',
     description:
-      'Direct-from-manufacturer 100% Breathable Woven Cotton apparel from Ahmedabad textile hub.',
+      'Direct-from-manufacturer 100% Woven Cotton Denim Jeans & Apparel from Ambawadi, Ahmedabad. Registered TM No. 5018168 (Class 25). Billed by DE VIBE (GSTIN: 24ASHPS9777R1ZE). ₹1,499 with Partial COD.',
     url: 'https://bahamut.in',
-    siteName: 'BAHAMUT by DE VIBE',
+    siteName: 'BahaMut by DE VIBE',
     locale: 'en_IN',
     type: 'website',
+    images: [
+      {
+        url: 'https://bahamut.in/images/products/bm-art-21-1.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'BahaMut 100% Woven Cotton Denim Jeans',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'BahaMut by DE VIBE | 100% Woven Cotton Denim Jeans',
+    description:
+      'Direct-from-manufacturer 100% Woven Cotton Denim Jeans & Apparel from Ambawadi, Ahmedabad. TM No. 5018168. Billed by DE VIBE (GSTIN: 24ASHPS9777R1ZE).',
+    images: ['https://bahamut.in/images/products/bm-art-21-1.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
@@ -58,10 +105,15 @@ const jsonLdOrganization = {
   '@type': 'Organization',
   name: 'DE VIBE',
   legalName: 'DE VIBE',
-  brand: 'BAHAMUT',
+  brand: {
+    '@type': 'Brand',
+    name: 'BahaMut',
+    legalName: 'BahaMut (TM No. 5018168, Class 25)',
+  },
   url: 'https://bahamut.in',
-  logo: 'https://bahamut.in/logo.png',
-  foundingLocation: 'Ahmedabad, Gujarat, India',
+  logo: 'https://bahamut.in/images/products/bm-art-21-1.jpg',
+  taxID: '24ASHPS9777R1ZE',
+  foundingLocation: 'Ambawadi, Ahmedabad, Gujarat, India',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Ambawadi',
@@ -72,11 +124,23 @@ const jsonLdOrganization = {
   },
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+91-79-2213-4099',
-    contactType: 'customer service',
+    telephone: '+91 97270 24519',
+    contactType: 'customer service & sales',
     email: 'devibe70@gmail.com',
     areaServed: 'IN',
-    availableLanguage: ['en', 'hi', 'gu'],
+    availableLanguage: ['English', 'Hindi', 'Gujarati'],
+  },
+};
+
+const jsonLdWebSite = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'BahaMut by DE VIBE',
+  url: 'https://bahamut.in',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: 'https://bahamut.in/catalog?search={search_term_string}',
+    'query-input': 'required name=search_term_string',
   },
 };
 
@@ -86,18 +150,34 @@ const jsonLdFaq = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'Where is BAHAMUT by DE VIBE manufactured?',
+      name: 'What is BahaMut by DE VIBE and where is it manufactured?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'BAHAMUT apparel is direct-from-manufacturer 100% Breathable Woven Cotton engineered at textile mills in Ambawadi, Ahmedabad, Gujarat - 380015.',
+        text: 'BahaMut is a registered Trademark (TM No. 5018168, Class 25 Readymade Garments). All apparel is crafted from 100% Breathable Woven Cotton Denim directly at textile mills in Ambawadi, Ahmedabad, Gujarat - 380015, and marketed, billed & sold under authorization by DE VIBE (GSTIN: 24ASHPS9777R1ZE).',
       },
     },
     {
       '@type': 'Question',
-      name: 'Is Partial Cash on Delivery (COD) available on BAHAMUT.in?',
+      name: 'What is the price of BahaMut Denim Jeans and are taxes included?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes, BAHAMUT offers Partial COD checkout where customers pay a flat ₹200 advance deposit online and pay the remaining balance in cash at their doorstep upon delivery.',
+        text: 'All BahaMut Master Products are priced at ₹1,499 flat, which is fully inclusive of statutory 5% GST (Intra-state Gujarat: 2.5% CGST + 2.5% SGST under HSN 62034290; Inter-state: 5% IGST).',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is Partial Cash on Delivery (COD) available on BahaMut.in?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes! BahaMut offers Partial COD checkout where you pay a flat ₹200 advance deposit online via Cashfree Payments Gateway and pay the remaining balance in cash at your doorstep upon delivery.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What sizes are available in BahaMut Denim Jeans?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'BahaMut denim jeans feature numeric waist sizes ranging from 28, 30, 32, 34, 36, to 38 in a pre-shrunk precision fit.',
       },
     },
   ],
@@ -114,6 +194,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }}
         />
         <script
           type="application/ld+json"
