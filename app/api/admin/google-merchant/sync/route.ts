@@ -21,7 +21,7 @@ export async function POST(req: Request) {
         review_count: 215,
         express_delivery: 'FREE Express Shipping via Amazon SmartBiz & Google Merchant',
         images: [
-          'https://m.media-amazon.com/images/X/bxt1/M/Vbxt1xFDXEjlWBe.jpg',
+          '/images/products/bahamut-22-2-selvedge-denim-1.jpg',
           'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80'
         ],
         sizes: ['28', '30', '32', '34', '36', '38'],
@@ -49,7 +49,7 @@ export async function POST(req: Request) {
         review_count: 240,
         express_delivery: 'FREE Express Shipping via Amazon SmartBiz & Google Merchant',
         images: [
-          'https://m.media-amazon.com/images/X/bxr1/M/qbxr1BFTrxlNxfw.png',
+          '/images/products/bahamut-draconic-heavyweight-tee-1.png',
           'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80'
         ],
         sizes: ['S', 'M', 'L', 'XL', 'XXL'],
@@ -77,7 +77,7 @@ export async function POST(req: Request) {
         review_count: 310,
         express_delivery: 'FREE Express Shipping via Amazon SmartBiz & Google Merchant',
         images: [
-          'https://m.media-amazon.com/images/X/bxt1/M/Ubxt1x80pnvjc39.png',
+          '/images/products/blood-flame-oversized-hoodie-1.png',
           'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80'
         ],
         sizes: ['S', 'M', 'L', 'XL', 'XXL'],
@@ -105,7 +105,7 @@ export async function POST(req: Request) {
         review_count: 148,
         express_delivery: 'FREE Express Delivery by Tomorrow',
         images: [
-          'https://m.media-amazon.com/images/X/bxt1/M/sbxt1RP-UepvYiL.png',
+          '/images/products/ahmedabad-woven-chambray-navy-1.png',
           'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80'
         ],
         sizes: ['38', '40', '42', '44', '46'],
@@ -133,7 +133,7 @@ export async function POST(req: Request) {
         review_count: 210,
         express_delivery: 'FREE Express Delivery by Tomorrow',
         images: [
-          'https://m.media-amazon.com/images/X/bxt1/M/Bbxt1B3FxSrjYxn.png',
+          '/images/products/cyber-street-graffiti-oversized-tee-1.png',
           'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=800&q=80'
         ],
         sizes: ['S', 'M', 'L', 'XL', 'XXL'],
@@ -161,7 +161,7 @@ export async function POST(req: Request) {
         review_count: 124,
         express_delivery: 'FREE Express Delivery by Tomorrow',
         images: [
-          'https://m.media-amazon.com/images/X/bxr1/M/Zbxr1huj0kqNi8k.png',
+          '/images/products/textured-oxford-solid-khaki-1.png',
           'https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=800&q=80'
         ],
         sizes: ['38', '40', '42', '44', '46'],

@@ -18,7 +18,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     review_count: 215,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
     images: [
-      'https://m.media-amazon.com/images/X/bxt1/M/Vbxt1xFDXEjlWBe.jpg',
+      '/images/products/bahamut-22-2-selvedge-denim-1.jpg',
       'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80'
     ],
     sizes: ['28', '30', '32', '34', '36', '38'],
@@ -48,7 +48,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     review_count: 240,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
     images: [
-      'https://m.media-amazon.com/images/X/bxr1/M/qbxr1BFTrxlNxfw.png',
+      '/images/products/bahamut-draconic-heavyweight-tee-1.png',
       'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80'
     ],
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
@@ -77,7 +77,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     review_count: 310,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
     images: [
-      'https://m.media-amazon.com/images/X/bxt1/M/Ubxt1x80pnvjc39.png',
+      '/images/products/blood-flame-oversized-hoodie-1.png',
       'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80'
     ],
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
@@ -108,7 +108,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     review_count: 148,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
     images: [
-      'https://m.media-amazon.com/images/X/bxt1/M/sbxt1RP-UepvYiL.png',
+      '/images/products/ahmedabad-woven-chambray-navy-1.png',
       'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80'
     ],
     sizes: ['38', '40', '42', '44', '46'],
@@ -137,7 +137,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     review_count: 210,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
     images: [
-      'https://m.media-amazon.com/images/X/bxt1/M/Bbxt1B3FxSrjYxn.png',
+      '/images/products/cyber-street-graffiti-oversized-tee-1.png',
       'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=800&q=80'
     ],
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
@@ -166,7 +166,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     review_count: 124,
     express_delivery: 'FREE Express Delivery from Ambawadi, Ahmedabad',
     images: [
-      'https://m.media-amazon.com/images/X/bxr1/M/Zbxr1huj0kqNi8k.png',
+      '/images/products/textured-oxford-solid-khaki-1.png',
       'https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=800&q=80'
     ],
     sizes: ['38', '40', '42', '44', '46'],
@@ -183,7 +183,7 @@ export const INITIAL_PRODUCTS: Product[] = [
 
 export function getProducts(): Product[] {
   if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('bahamut_smartbiz_products_v15');
+    const saved = localStorage.getItem('bahamut_smartbiz_products_v16');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -209,7 +209,7 @@ export function saveProduct(product: Product): Product[] {
     updated = [product, ...current];
   }
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v15', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v16', JSON.stringify(updated));
   }
   return updated;
 }
@@ -229,7 +229,7 @@ export function deductStockForOrder(items: CartItem[]): Product[] {
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v15', JSON.stringify(products));
+    localStorage.setItem('bahamut_smartbiz_products_v16', JSON.stringify(products));
   }
   return products;
 }
@@ -244,7 +244,7 @@ export function updateProductStock(idOrSlug: string, newStock: number): Product[
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v15', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v16', JSON.stringify(updated));
   }
   return updated;
 }
