@@ -19,9 +19,14 @@
   }
 }
 
+/* Trademark Bauhaus 93 Display Font for BahaMut */
+.font-bauhaus {
+  font-family: 'Bauhaus 93', 'Bauhaus Standard', 'ITC Bauhaus', 'Century Gothic', 'Arial Black', sans-serif;
+}
+
 /* Trademark Blackletter / Fantasy Gothic Display Font */
 .font-gothic {
-  font-family: var(--font-unifraktur), 'UnifrakturMaguntia', serif;
+  font-family: 'Bauhaus 93', var(--font-unifraktur), 'UnifrakturMaguntia', serif;
 }
 
 /* Minimal Brand Badge */
