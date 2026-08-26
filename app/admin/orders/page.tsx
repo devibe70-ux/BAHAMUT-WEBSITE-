@@ -275,7 +275,7 @@ export default function AdminOrdersPage() {
                 <div className="space-y-2 bg-slate-50 p-4 rounded-2xl border border-slate-200">
                   <span className="font-black text-slate-900 block uppercase tracking-widest text-[11px]">Financial Balance:</span>
                   <div className="flex justify-between text-slate-600 font-medium">
-                    <span>Advance Razorpay Deposit:</span>
+                    <span>Advance Cashfree Deposit:</span>
                     <span className="font-black text-emerald-700">₹{order.advance_amount.toLocaleString('en-IN')}</span>
                   </div>
                   <div className="flex justify-between text-slate-600 font-medium">

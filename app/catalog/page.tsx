@@ -4,7 +4,7 @@ import React, { useState, useEffect, useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import ProductCard from '@/components/ProductCard';
 import SizeGuideModal from '@/components/SizeGuideModal';
-import { getProducts } from '@/lib/products';
+import { getProducts, INITIAL_PRODUCTS } from '@/lib/products';
 import { Product } from '@/lib/types';
 import { SlidersHorizontal, ArrowUpDown, Filter, RefreshCw, Ruler, ShieldCheck } from 'lucide-react';
 
@@ -12,7 +12,8 @@ function CatalogContent() {
   const searchParams = useSearchParams();
   const catParam = searchParams ? searchParams.get('cat') : null;
 
-  const [products, setProducts] = useState<Product[]>([]);
+  // Pre-populate with INITIAL_PRODUCTS to guarantee SSR renders catalog immediately
+  const [products, setProducts] = useState<Product[]>(INITIAL_PRODUCTS);
   const [selectedCategory, setSelectedCategory] = useState<string>(catParam || 'ALL');
   const [selectedSizeFilter, setSelectedSizeFilter] = useState<string>('ALL');
   const [selectedColor, setSelectedColor] = useState<string>('ALL');
@@ -65,27 +66,27 @@ function CatalogContent() {
   };
 
   return (
-    <div className="bg-[#0a0a0b] text-[#ececed] min-h-screen pb-24 font-sans">
+    <div className="bg-[#F7F7F8] text-[#111111] min-h-screen pb-24 font-sans">
       {/* Header Banner */}
-      <section className="bg-[#121215] border-b border-[#26262c] py-12 px-4 sm:px-6 lg:px-8">
+      <section className="bg-white border-b border-[#E5E5E5] py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 bg-[#8b0018] text-white text-[10px] font-bold px-3 py-1 rounded-[2px] uppercase tracking-widest mb-2 shadow">
-              <ShieldCheck className="w-3.5 h-3.5" /> TM NO. 5018168 • CLASS 25
+            <div className="inline-flex items-center gap-2 bg-[#111111] text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest mb-2 shadow">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> TM NO. 5018168 • CLASS 25
             </div>
-            <h1 className="font-heading text-3xl sm:text-4xl text-white uppercase tracking-wider">
-              Complete Catalog Drop
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111111] uppercase tracking-wider">
+              BahaMut Master Catalog
             </h1>
-            <p className="text-xs text-[#8b8b94] font-medium mt-1">
-              Direct-from-manufacturer 100% Breathable Woven Cotton apparel engineered at Ahmedabad mills.
+            <p className="text-xs text-[#666666] font-medium mt-1">
+              Direct-from-manufacturer 100% Breathable Woven Cotton apparel engineered at Ahmedabad textile mills.
             </p>
           </div>
 
           <button
             onClick={() => setIsSizeModalOpen(true)}
-            className="min-h-[44px] px-6 py-2.5 bg-[#8b0018] hover:bg-[#b3001f] text-white font-heading text-xs uppercase tracking-widest rounded-[2px] shadow-lg flex items-center gap-2 transition-all w-fit glow-crimson"
+            className="min-h-[44px] px-6 py-2.5 bg-[#111111] hover:bg-black text-white font-bold text-xs uppercase tracking-widest flex items-center gap-2 transition-all w-fit shadow-md"
           >
-            <Ruler className="w-4 h-4" /> Size Assistant Matrix
+            <Ruler className="w-4 h-4 text-emerald-400" /> Size Assistant Matrix
           </button>
         </div>
       </section>
@@ -94,14 +95,14 @@ function CatalogContent() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Sidebar Filter Controls */}
-          <aside className="lg:col-span-3 bg-[#121215] p-6 rounded-[2px] border border-[#26262c] shadow-xl space-y-6 h-fit">
-            <div className="flex items-center justify-between border-b border-[#26262c] pb-4">
-              <h3 className="font-heading text-sm text-white uppercase tracking-wider flex items-center gap-2">
-                <SlidersHorizontal className="w-4 h-4 text-[#b3001f]" /> Filter Catalog
+          <aside className="lg:col-span-3 bg-white p-6 border border-[#E5E5E5] shadow-sm space-y-6 h-fit">
+            <div className="flex items-center justify-between border-b border-[#E5E5E5] pb-4">
+              <h3 className="font-bold text-xs text-[#111111] uppercase tracking-wider flex items-center gap-2">
+                <SlidersHorizontal className="w-4 h-4 text-[#111111]" /> Filter Catalog
               </h3>
               <button
                 onClick={resetFilters}
-                className="text-[11px] font-bold text-[#8b8b94] hover:text-white flex items-center gap-1 transition-colors"
+                className="text-[11px] font-bold text-[#666666] hover:text-[#111111] flex items-center gap-1 transition-colors"
               >
                 <RefreshCw className="w-3 h-3" /> Reset
               </button>
@@ -109,23 +110,23 @@ function CatalogContent() {
 
             {/* Category Filter */}
             <div className="space-y-2">
-              <label className="text-xs font-heading text-[#8b8b94] uppercase tracking-wider block">
+              <label className="text-xs font-bold text-[#111111] uppercase tracking-wider block">
                 Category
               </label>
               <div className="space-y-1 text-xs">
                 {[
-                  { id: 'ALL', label: 'All Items' },
-                  { id: 'SHIRT', label: '👔 Shirts (Numeric 38–46)' },
-                  { id: 'BOTTOMWEAR', label: '👖 Bottomwear (Numeric 28–38)' },
-                  { id: 'TEE', label: '👕 Tees (Alphabetical S–XXL)' },
+                  { id: 'ALL', label: 'All Apparel' },
+                  { id: 'BOTTOMWEAR', label: '👖 Jeans — Waist 28–38' },
+                  { id: 'SHIRT', label: '👔 Shirts — Collar 38–46 cm' },
+                  { id: 'TEE', label: '👕 T-Shirts — Chest S–XXL' },
                 ].map((cat) => (
                   <button
                     key={cat.id}
                     onClick={() => setSelectedCategory(cat.id)}
-                    className={`w-full text-left px-3 py-2 rounded-[2px] transition-all font-semibold ${
+                    className={`w-full text-left px-3 py-2 transition-all font-semibold text-xs ${
                       selectedCategory === cat.id
-                        ? 'bg-[#8b0018] text-white font-bold'
-                        : 'text-slate-300 hover:bg-[#1b1b20]'
+                        ? 'bg-[#111111] text-white font-bold'
+                        : 'text-[#666666] hover:bg-[#F7F7F8] hover:text-[#111111]'
                     }`}
                   >
                     {cat.label}
@@ -136,19 +137,19 @@ function CatalogContent() {
 
             {/* Size Filter */}
             <div className="space-y-2">
-              <label className="text-xs font-heading text-[#8b8b94] uppercase tracking-wider block">
+              <label className="text-xs font-bold text-[#111111] uppercase tracking-wider block">
                 Filter By Size
               </label>
               <div className="flex flex-wrap gap-1.5">
-                {['ALL', '38', '40', '42', '44', '46', '28', '30', '32', '34', '36', 'S', 'M', 'L', 'XL', 'XXL'].map(
+                {['ALL', '28', '30', '32', '34', '36', '38', '40', '42', '44', '46', 'S', 'M', 'L', 'XL', 'XXL'].map(
                   (sz) => (
                     <button
                       key={sz}
                       onClick={() => setSelectedSizeFilter(sz)}
-                      className={`min-w-[32px] h-8 text-[11px] font-bold rounded-[2px] border transition-all ${
+                      className={`min-w-[32px] h-8 text-[11px] font-bold border transition-all ${
                         selectedSizeFilter === sz
-                          ? 'border-[#8b0018] bg-[#8b0018] text-white shadow'
-                          : 'border-[#26262c] bg-[#1b1b20] text-slate-300 hover:border-slate-600'
+                          ? 'border-[#111111] bg-[#111111] text-white shadow'
+                          : 'border-[#E5E5E5] bg-[#F7F7F8] text-[#111111] hover:border-[#111111]'
                       }`}
                     >
                       {sz}
@@ -161,13 +162,13 @@ function CatalogContent() {
             {/* Color Filter */}
             {availableColors.length > 0 && (
               <div className="space-y-2">
-                <label className="text-xs font-heading text-[#8b8b94] uppercase tracking-wider block">
+                <label className="text-xs font-bold text-[#111111] uppercase tracking-wider block">
                   Colorway
                 </label>
                 <select
                   value={selectedColor}
                   onChange={(e) => setSelectedColor(e.target.value)}
-                  className="w-full text-xs font-bold py-2 px-3 bg-[#1b1b20] text-white border border-[#26262c] rounded-[2px] focus:ring-1 focus:ring-[#8b0018]"
+                  className="w-full text-xs font-bold py-2 px-3 bg-[#F7F7F8] text-[#111111] border border-[#E5E5E5] focus:outline-none focus:border-[#111111]"
                 >
                   <option value="ALL">All Colors</option>
                   {availableColors.map((clr) => (
@@ -183,18 +184,18 @@ function CatalogContent() {
           {/* Catalog Product Grid */}
           <main className="lg:col-span-9 space-y-6">
             {/* Top Toolbar */}
-            <div className="flex flex-wrap items-center justify-between bg-[#121215] p-4 rounded-[2px] border border-[#26262c] shadow-md gap-4">
-              <span className="text-xs text-[#8b8b94] font-bold uppercase tracking-wider">
-                Showing <strong className="text-white font-heading">{filteredProducts.length}</strong> Products
+            <div className="flex flex-wrap items-center justify-between bg-white p-4 border border-[#E5E5E5] shadow-sm gap-4">
+              <span className="text-xs text-[#666666] font-bold uppercase tracking-wider">
+                Showing <strong className="text-[#111111]">{filteredProducts.length}</strong> Master Garments
               </span>
 
               <div className="flex items-center gap-2">
-                <ArrowUpDown className="w-4 h-4 text-[#b3001f]" />
-                <span className="text-xs font-heading text-[#8b8b94] uppercase">Sort By:</span>
+                <ArrowUpDown className="w-4 h-4 text-[#111111]" />
+                <span className="text-xs font-bold text-[#111111] uppercase">Sort By:</span>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
-                  className="text-xs font-bold py-2 px-3 bg-[#1b1b20] text-white border border-[#26262c] rounded-[2px] focus:ring-1 focus:ring-[#8b0018]"
+                  className="text-xs font-bold py-2 px-3 bg-[#F7F7F8] text-[#111111] border border-[#E5E5E5] focus:outline-none"
                 >
                   <option value="featured">Featured Drops</option>
                   <option value="price_low">Price: Low to High</option>
@@ -212,13 +213,13 @@ function CatalogContent() {
                 ))}
               </div>
             ) : (
-              <div className="bg-[#121215] rounded-[2px] p-12 text-center border border-[#26262c] space-y-4">
-                <Filter className="w-12 h-12 text-[#8b0018] mx-auto opacity-70" />
-                <h3 className="font-heading text-lg text-white uppercase">No Matching Items Found</h3>
-                <p className="text-xs text-[#8b8b94]">Try resetting your size or category filter.</p>
+              <div className="bg-white p-12 text-center border border-[#E5E5E5] space-y-4">
+                <Filter className="w-12 h-12 text-[#111111] mx-auto opacity-70" />
+                <h3 className="font-bold text-lg text-[#111111] uppercase">No Matching Items Found</h3>
+                <p className="text-xs text-[#666666]">Try resetting your size or category filter.</p>
                 <button
                   onClick={resetFilters}
-                  className="min-h-[44px] px-6 py-2 bg-[#8b0018] hover:bg-[#b3001f] text-white font-heading text-xs uppercase tracking-widest rounded-[2px] transition-all"
+                  className="min-h-[44px] px-6 py-2 bg-[#111111] hover:bg-black text-white font-bold text-xs uppercase tracking-widest transition-all"
                 >
                   Reset All Filters
                 </button>
@@ -235,7 +236,7 @@ function CatalogContent() {
 
 export default function CatalogPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#0a0a0b] flex items-center justify-center text-white font-heading">Loading Catalog Drop...</div>}>
+    <Suspense fallback={<div className="min-h-screen bg-[#F7F7F8] flex items-center justify-center text-[#111111] font-bold text-xs">Loading Catalog Drop...</div>}>
       <CatalogContent />
     </Suspense>
   );

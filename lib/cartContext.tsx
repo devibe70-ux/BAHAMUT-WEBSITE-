@@ -60,9 +60,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       );
       if (existingIndex >= 0) {
         const updated = [...prev];
-        updated[existingIndex].quantity += quantity;
+        const newQty = updated[existingIndex].quantity + quantity;
+        if (newQty <= 0) {
+          return prev.filter((_, i) => i !== existingIndex);
+        }
+        updated[existingIndex] = { ...updated[existingIndex], quantity: newQty };
         return updated;
       }
+      if (quantity <= 0) return prev;
       return [...prev, { product, selectedSize: safeSize, quantity }];
     });
   };

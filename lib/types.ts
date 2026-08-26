@@ -67,8 +67,8 @@ export interface Order {
   cod_balance_due: number;
   total_amount: number;
   items: CartItem[];
-  razorpay_order_id?: string;
-  razorpay_payment_id?: string;
+  cashfree_order_id?: string;
+  cashfree_payment_id?: string;
   courier_provider?: string;
   awb_number?: string;
   fulfillment_status: FulfillmentStatus;

@@ -22,12 +22,12 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-[#E5E5E5] font-sans">
-      {/* Top Announcement Bar (Clean & Unobtrusive) */}
+      {/* Top Announcement Bar */}
       <div className="bg-[#111111] text-white text-[11px] font-semibold py-2 px-4 border-b border-neutral-800">
         <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="font-medium text-neutral-300">
-              Direct-from-Mill 100% Breathable Woven Cotton • Pay ₹200 Advance (Partial COD)
+              Direct-from-Manufacturer 100% Breathable Woven Cotton • Pay ₹200 Advance (Partial COD)
             </span>
           </div>
 
@@ -53,7 +53,7 @@ export default function Header() {
             </button>
           </div>
 
-          {/* Logo Branding with Bauhaus 93 Font for BahaMut */}
+          {/* Logo Branding */}
           <div className="flex items-center gap-6">
             <Link href="/" className="flex items-center gap-2 group py-1">
               <div className="bg-[#F5F5F0] border border-[#E5E5E0] text-[#222222] px-3.5 py-1.5 flex items-center transition-colors group-hover:bg-[#EFECE6]">
@@ -74,16 +74,16 @@ export default function Header() {
                 className="h-10 bg-[#F7F7F8] border border-r-0 border-[#E5E5E5] px-3 text-xs font-semibold text-[#111111] focus:outline-none"
               >
                 <option value="ALL">All Categories</option>
-                <option value="SHIRT">Shirts (38–46)</option>
-                <option value="BOTTOMWEAR">Bottomwear (28–38)</option>
-                <option value="TEE">Tees (S–XXL)</option>
+                <option value="SHIRT">Shirts — Collar 38–46 cm</option>
+                <option value="BOTTOMWEAR">Jeans — Waist 28–38</option>
+                <option value="TEE">T-Shirts — Chest S–XXL</option>
               </select>
               <div className="relative flex-1">
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search woven cotton shirts, bottomwear, tees..."
+                  placeholder="Search woven cotton jeans, shirts, tees..."
                   className="w-full h-10 pl-4 pr-10 text-xs font-medium text-[#111111] bg-white border border-[#E5E5E5] focus:outline-none focus:border-[#111111]"
                 />
               </div>
@@ -139,14 +139,14 @@ export default function Header() {
             <Link href="/catalog" className="text-[#111111] hover:text-black font-black uppercase tracking-wider">
               All Apparel
             </Link>
-            <Link href="/catalog?cat=SHIRT" className="hover:text-[#111111] transition-colors">
-              Shirts (Numeric 38–46)
-            </Link>
             <Link href="/catalog?cat=BOTTOMWEAR" className="hover:text-[#111111] transition-colors">
-              Bottomwear (Numeric 28–38)
+              Jeans — Waist 28–38
+            </Link>
+            <Link href="/catalog?cat=SHIRT" className="hover:text-[#111111] transition-colors">
+              Shirts — Collar 38–46 cm
             </Link>
             <Link href="/catalog?cat=TEE" className="hover:text-[#111111] transition-colors">
-              T-Shirts (Alphabetical S–XXL)
+              T-Shirts — Chest S–XXL
             </Link>
             <Link href="/track/BM-2026-1001" className="hover:text-[#111111] transition-colors">
               Track Order
@@ -187,25 +187,25 @@ export default function Header() {
               All Categories
             </Link>
             <Link
-              href="/catalog?cat=SHIRT"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 text-xs font-bold text-[#111111] hover:bg-[#F7F7F8]"
-            >
-              Shirts (Numeric 38–46)
-            </Link>
-            <Link
               href="/catalog?cat=BOTTOMWEAR"
               onClick={() => setMobileMenuOpen(false)}
               className="block px-3 py-2 text-xs font-bold text-[#111111] hover:bg-[#F7F7F8]"
             >
-              Bottomwear (Numeric 28–38)
+              Jeans — Waist 28–38
+            </Link>
+            <Link
+              href="/catalog?cat=SHIRT"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-3 py-2 text-xs font-bold text-[#111111] hover:bg-[#F7F7F8]"
+            >
+              Shirts — Collar 38–46 cm
             </Link>
             <Link
               href="/catalog?cat=TEE"
               onClick={() => setMobileMenuOpen(false)}
               className="block px-3 py-2 text-xs font-bold text-[#111111] hover:bg-[#F7F7F8]"
             >
-              T-Shirts (Alphabetical S–XXL)
+              T-Shirts — Chest S–XXL
             </Link>
             <button
               onClick={() => {

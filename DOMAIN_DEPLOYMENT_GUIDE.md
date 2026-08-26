@@ -1,6 +1,6 @@
 # Custom Domain Deployment Guide for `https://bahamut.in`
 
-This document details the exact steps required to deploy the **BahaMut by De Vibe** e-commerce website to Vercel and bind your custom domain **`https://bahamut.in`**.
+This document details the exact steps required to deploy the **BahaMut by DE VIBE** e-commerce website to Vercel and bind your custom domain **`https://bahamut.in`**.
 
 ---
 
@@ -9,13 +9,14 @@ This document details the exact steps required to deploy the **BahaMut by De Vib
 1. Open **[Vercel Dashboard](https://vercel.com/new)** and log in.
 2. Select **"Import Repository"** and select `BAHAMUT WEBSITE SOURCE CODE`.
 3. Set **Framework Preset**: `Next.js`.
-4. Under **Environment Variables**, add the following 4 production variables:
+4. Under **Environment Variables**, add the following production variables:
 
 | Key | Value | Description |
 |---|---|---|
 | `NEXT_PUBLIC_APP_URL` | `https://bahamut.in` | Production App Canonical Origin |
-| `NEXT_PUBLIC_RAZORPAY_KEY_ID` | `rzp_live_THqZNN253oUslA` | Live Razorpay Key ID |
-| `RAZORPAY_KEY_SECRET` | `pl9ZhXYXhxp6FygjfHcV13IE` | Live Razorpay Key Secret |
+| `CASHFREE_APP_ID` | `cf_live_app_id_here` | Live Cashfree Client App ID |
+| `CASHFREE_SECRET_KEY` | `cf_live_secret_key_here` | Live Cashfree Client Secret Key |
+| `CASHFREE_ENV` | `PRODUCTION` | Cashfree Gateway Environment Mode |
 | `SHIPYAARI_API_KEY` | `sy_live_8849102_key` | Shipyaari Primary API Key |
 
 5. Click **Deploy**. Vercel will build and assign a production URL (e.g. `bahamut.vercel.app`).
@@ -48,14 +49,14 @@ In your Domain Registrar DNS Management Console (GoDaddy / Hostinger / Cloudflar
 
 ---
 
-## 4. Live Razorpay Webhook Origin
+## 4. Live Cashfree Webhook Origin
 
 Once `https://bahamut.in` is active and SSL is issued by Vercel (takes ~2 minutes):
 
-1. Log into **[Razorpay Dashboard](https://dashboard.razorpay.com/)**.
-2. Navigate to **Settings** -> **Webhooks** -> **Add New Webhook**.
-3. Set **Webhook URL**: `https://bahamut.in/api/razorpay/verify`.
-4. Active Events: `order.paid`, `payment.authorized`, `payment.failed`.
+1. Log into **[Cashfree Merchant Dashboard](https://merchant.cashfree.com/)**.
+2. Navigate to **Developers** -> **Webhooks** -> **Add Webhook**.
+3. Set **Webhook URL**: `https://bahamut.in/api/cashfree/verify`.
+4. Active Events: `PAYMENT_SUCCESS`, `PAYMENT_FAILED`, `ORDER_PAID`.
 
 ---
 
@@ -63,6 +64,6 @@ Once `https://bahamut.in` is active and SSL is issued by Vercel (takes ~2 minute
 
 - [x] Canonical metadataBase configured as `https://bahamut.in`.
 - [x] OpenGraph URLs set to `https://bahamut.in`.
-- [x] Razorpay live credentials (`rzp_live_THqZNN253oUslA`) bound to environment.
+- [x] Cashfree live credentials (`CASHFREE_APP_ID`, `CASHFREE_SECRET_KEY`) bound to environment.
 - [x] Indian RTO-Proof validation engine active on checkout.
 - [x] Partial COD deposit system active.

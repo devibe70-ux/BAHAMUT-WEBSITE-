@@ -27,27 +27,27 @@ export const INITIAL_ORDERS: Order[] = [
       {
         product: {
           id: 'prod-001',
-          slug: 'ahmedabad-woven-chambray-navy',
-          title: 'De Vibe Classic Chambray Shirt - Deep Navy',
+          slug: 'bm-art-21-1',
+          title: 'BahaMut Men Regular Fit Jeans - Art 21',
           description: 'Direct-from-manufacturer 100% Breathable Woven Cotton crafted in Ahmedabad.',
           target_demographic: 'UNIFIED_13_65',
           fabric_details: '100% Breathable Woven Cotton (Ahmedabad Mills)',
-          price: 1299,
-          original_mrp: 2499,
+          price: 1499,
+          original_mrp: 1999,
           stock_quantity: 45,
           images: [
-            'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80'
+            '/images/products/bm-art-21-1.jpg'
           ],
-          sizes: ['38', '40', '42', '44', '46'],
+          sizes: ['28', '30', '32', '34', '36', '38'],
           is_active: true,
           created_at: '2026-07-01T10:00:00Z'
         },
-        selectedSize: '40',
+        selectedSize: '32',
         quantity: 1
       }
     ],
-    razorpay_order_id: 'order_N3x9P2qL01z88',
-    razorpay_payment_id: 'pay_N3x9Z9yW4310a',
+    cashfree_order_id: 'cf_ord_N3x9P2qL01z88',
+    cashfree_payment_id: 'cf_pay_N3x9Z9yW4310a',
     courier_provider: 'Shipyaari',
     awb_number: 'SY-BM-8849102',
     fulfillment_status: 'DISPATCHED',

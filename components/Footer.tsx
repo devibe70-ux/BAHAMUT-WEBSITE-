@@ -14,7 +14,7 @@ export default function Footer() {
             <ShieldCheck className="w-6 h-6 text-white" />
             <h4 className="font-bold text-xs text-white uppercase tracking-wider">Class 25 Registered</h4>
             <p className="text-xs text-neutral-400 leading-relaxed">
-              BahaMut Trademarked Line (TM No. 5018168) engineered with woven cotton textiles.
+              BahaMut Trademarked Line (TM No. 5018168, Class 25) engineered with woven cotton textiles.
             </p>
           </div>
 
@@ -22,7 +22,7 @@ export default function Footer() {
             <Truck className="w-6 h-6 text-white" />
             <h4 className="font-bold text-xs text-white uppercase tracking-wider">Partial COD Available</h4>
             <p className="text-xs text-neutral-400 leading-relaxed">
-              Pay ₹200 advance deposit online; pay remaining balance at your doorstep.
+              Pay ₹200 advance deposit online; pay remaining balance at your doorstep upon delivery.
             </p>
           </div>
 
@@ -36,9 +36,9 @@ export default function Footer() {
 
           <div className="flex flex-col items-center sm:items-start space-y-2">
             <MapPin className="w-6 h-6 text-white" />
-            <h4 className="font-bold text-xs text-white uppercase tracking-wider">Billed by DEVIBE</h4>
+            <h4 className="font-bold text-xs text-white uppercase tracking-wider">Billed by DE VIBE</h4>
             <p className="text-xs text-neutral-400 leading-relaxed">
-              GSTIN: 24ASHPS9777R1ZE. Dispatched from Ambawadi, Ahmedabad, Gujarat, India - 380015.
+              GSTIN: 24ASHPS9777R1ZE. Billed, marketed & fulfilled by DE VIBE, Ambawadi, Ahmedabad, Gujarat - 380015.
             </p>
           </div>
         </div>
@@ -51,15 +51,15 @@ export default function Footer() {
                 BahaMut
               </span>
               <span className="text-xs font-bold text-neutral-400 uppercase">
-                BY DEVIBE
+                BY DE VIBE
               </span>
             </div>
             <p className="text-xs text-neutral-400 leading-relaxed">
-              Direct-from-manufacturer 100% Breathable Woven Cotton apparel from Ambawadi, Ahmedabad.
+              Direct-from-manufacturer 100% Breathable Woven Cotton apparel engineered at Ahmedabad textile mills.
             </p>
             <div className="text-xs text-neutral-300 space-y-1 font-medium">
               <p className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-white flex-shrink-0" /> DE VIBE, Ambawadi, Ahmedabad, Gujarat - 380015
+                <MapPin className="w-3.5 h-3.5 text-white flex-shrink-0" /> Registered Business Office: DE VIBE, Ambawadi, Ahmedabad, Gujarat - 380015
               </p>
               <p className="flex items-center gap-2">
                 <PhoneCall className="w-3.5 h-3.5 text-white flex-shrink-0" /> +91 97270 24519 / devibe70@gmail.com
@@ -71,23 +71,23 @@ export default function Footer() {
             <h5 className="font-bold text-xs text-white uppercase tracking-widest mb-4">Class 25 Catalog</h5>
             <ul className="space-y-2.5 text-xs text-neutral-400 font-medium">
               <li>
-                <Link href="/catalog?cat=SHIRT" className="hover:text-white transition-colors">
-                  Woven Cotton Shirts (Numeric 38–46)
+                <Link href="/catalog?cat=BOTTOMWEAR" className="hover:text-white transition-colors">
+                  Jeans — Waist 28–38
                 </Link>
               </li>
               <li>
-                <Link href="/catalog?cat=BOTTOMWEAR" className="hover:text-white transition-colors">
-                  Chino Trousers & Denim (Numeric 28–36)
+                <Link href="/catalog?cat=SHIRT" className="hover:text-white transition-colors">
+                  Woven Cotton Shirts — Collar 38–46 cm
                 </Link>
               </li>
               <li>
                 <Link href="/catalog?cat=TEE" className="hover:text-white transition-colors">
-                  Heavyweight Graphic Tees (S–XXL)
+                  Heavyweight T-Shirts — Chest S–XXL
                 </Link>
               </li>
               <li>
                 <Link href="/catalog" className="hover:text-white transition-colors">
-                  All Ahmedabad Mill Products
+                  All Ahmedabad Mill Apparel
                 </Link>
               </li>
             </ul>
@@ -119,7 +119,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/contact" className="hover:text-white transition-colors flex items-center gap-1.5">
-                  <PhoneCall className="w-3.5 h-3.5" /> Contact Us & Office Address
+                  <PhoneCall className="w-3.5 h-3.5" /> Contact Us & Grievance Office
                 </Link>
               </li>
             </ul>
@@ -128,22 +128,22 @@ export default function Footer() {
           <div>
             <h5 className="font-bold text-xs text-white uppercase tracking-widest mb-4">Fulfillment & Payment Partners</h5>
             <p className="text-xs text-neutral-400 mb-4 leading-relaxed">
-              Cashfree Payment Gateway (UPI, GPay, PhonePe, Cards, NetBanking). Direct invoice sync with myBillBook inventory database under DEVIBE (GSTIN: 24ASHPS9777R1ZE).
+              Cashfree Payment Gateway (UPI Intent, GPay, PhonePe, Cards, NetBanking). Direct invoice sync under DE VIBE (GSTIN: 24ASHPS9777R1ZE).
             </p>
             <div className="flex flex-wrap gap-2 text-[10px] font-bold text-neutral-300">
               <span className="bg-neutral-900 px-3 py-1 border border-neutral-800 text-white">CASHFREE PAYMENTS</span>
               <span className="bg-neutral-900 px-3 py-1 border border-neutral-800">MYBILLBOOK DB</span>
-              <span className="bg-neutral-900 px-3 py-1 border border-neutral-800">5% STATUTORY GST</span>
+              <span className="bg-neutral-900 px-3 py-1 border border-neutral-800">5% STATUTORY GST INCLUDED</span>
             </div>
           </div>
         </div>
 
         {/* Legal & Operations Footer */}
         <div className="text-center space-y-1.5 text-xs text-neutral-400 font-medium">
-          <p><strong className="font-gothic text-base text-white font-normal">BahaMut</strong> is a Registered Trademark (TM No. 5018168, Class 25).</p>
-          <p>Exclusively Marketed, Billed & Sold under authorization by <strong className="text-white">DEVIBE</strong> (GSTIN: 24ASHPS9777R1ZE).</p>
+          <p><strong className="font-gothic text-base text-white font-normal">BahaMut</strong> is a Registered Trademark (TM No. 5018168, Class 25 Readymade Garments).</p>
+          <p>Exclusively Marketed, Billed & Fulfilled by <strong className="text-white">DE VIBE</strong> (GSTIN: 24ASHPS9777R1ZE), Ambawadi, Ahmedabad, Gujarat - 380015.</p>
           <p className="text-[11px] text-neutral-500 pt-2">
-            &copy; 2026 DEVIBE. All Rights Reserved. Statutory 5% GST Apparel Compliance (HSN 6203 / 6109).
+            &copy; 2026 DE VIBE. All Rights Reserved. Statutory 5% GST Included on all MRPs (HSN 6203 / 6109).
           </p>
         </div>
       </div>

@@ -22,7 +22,7 @@ ORDER DETAILS:
 Order Number : ${order.order_number}
 Order Date   : ${new Date(order.created_at).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
 Target Site  : https://bahamut.in
-Fulfillment  : De Vibe (Ambawadi, Ahmedabad, Gujarat)
+Fulfillment  : DE VIBE (Ambawadi, Ahmedabad, Gujarat - 380015)
 
 CUSTOMER SHIPPING ADDRESS:
 --------------------------------------------------------------------------------
@@ -36,8 +36,8 @@ PIN Code     : ${order.shipping_address.pincode}
 FINANCIAL & PAYMENT SUMMARY:
 --------------------------------------------------------------------------------
 Payment Type : ${order.payment_type} (${order.payment_status})
-Advance Paid : ₹${order.advance_amount} (via Razorpay)
-Balance Due  : ₹${order.cod_balance_due} (Doorstep Cash Collection)
+Advance Paid : ₹${order.advance_amount} (via Cashfree Payments)
+Balance Due  : ₹${order.cod_balance_due} (Doorstep Collection)
 Total Amount : ₹${order.total_amount}
 
 COURIER SHIPMENT TRACKING:
@@ -52,13 +52,12 @@ ${itemsList}
 
 ================================================================================
 Notification Sent To: ${sellerEmail}
-BahaMut Apparel - Marketed, billed, and fulfilled by De Vibe.
+BahaMut Apparel - Marketed, billed, and fulfilled by DE VIBE.
 ================================================================================
   `;
 
   console.log(`[EMAIL NOTIFICATION DISPATCHED TO ${sellerEmail}]:\nSubject: ${emailSubject}\n${emailBody}`);
 
-  // In production serverless mode, push to webhook or SMTP endpoint
   try {
     const resendKey = process.env.RESEND_API_KEY;
     if (resendKey) {
