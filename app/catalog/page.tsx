@@ -27,16 +27,40 @@ function CatalogContent() {
   useEffect(() => {
     if (catParam) {
       setSelectedCategory(catParam);
+      setSelectedSizeFilter('ALL');
     }
   }, [catParam]);
+
+  // Dynamically compute relevant size range based on active category
+  const activeSizeList = useMemo(() => {
+    if (selectedCategory === 'BOTTOMWEAR') {
+      return ['ALL', '28', '30', '32', '34', '36', '38'];
+    }
+    if (selectedCategory === 'SHIRT') {
+      return ['ALL', '38', '40', '42', '44', '46'];
+    }
+    if (selectedCategory === 'TEE') {
+      return ['ALL', 'S', 'M', 'L', 'XL', 'XXL'];
+    }
+    // For 'ALL' category: if bottomwear/pants are present, default to relevant waist sizes 28-38
+    return ['ALL', '28', '30', '32', '34', '36', '38'];
+  }, [selectedCategory]);
+
+  const handleCategoryChange = (catId: string) => {
+    setSelectedCategory(catId);
+    setSelectedSizeFilter('ALL');
+  };
 
   const filteredProducts = useMemo(() => {
     return products.filter((p) => {
       if (selectedCategory !== 'ALL' && p.category !== selectedCategory) {
         return false;
       }
-      if (selectedSizeFilter !== 'ALL' && p.sizes && !p.sizes.includes(selectedSizeFilter as any)) {
-        return false;
+      if (selectedSizeFilter !== 'ALL') {
+        const productAvail = p.available_sizes || p.sizes || [];
+        if (!productAvail.includes(selectedSizeFilter as any)) {
+          return false;
+        }
       }
       if (selectedColor !== 'ALL' && p.color !== selectedColor) {
         return false;
@@ -122,7 +146,7 @@ function CatalogContent() {
                 ].map((cat) => (
                   <button
                     key={cat.id}
-                    onClick={() => setSelectedCategory(cat.id)}
+                    onClick={() => handleCategoryChange(cat.id)}
                     className={`w-full text-left px-3 py-2 transition-all font-semibold text-xs ${
                       selectedCategory === cat.id
                         ? 'bg-[#111111] text-white font-bold'
@@ -135,27 +159,30 @@ function CatalogContent() {
               </div>
             </div>
 
-            {/* Size Filter */}
+            {/* Custom Category Size Filter (Strict Range Only) */}
             <div className="space-y-2">
-              <label className="text-xs font-bold text-[#111111] uppercase tracking-wider block">
-                Filter By Size
-              </label>
-              <div className="flex flex-wrap gap-1.5">
-                {['ALL', '28', '30', '32', '34', '36', '38', '40', '42', '44', '46', 'S', 'M', 'L', 'XL', 'XXL'].map(
-                  (sz) => (
-                    <button
-                      key={sz}
-                      onClick={() => setSelectedSizeFilter(sz)}
-                      className={`min-w-[32px] h-8 text-[11px] font-bold border transition-all ${
-                        selectedSizeFilter === sz
-                          ? 'border-[#111111] bg-[#111111] text-white shadow'
-                          : 'border-[#E5E5E5] bg-[#F7F7F8] text-[#111111] hover:border-[#111111]'
-                      }`}
-                    >
-                      {sz}
-                    </button>
-                  )
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-bold text-[#111111] uppercase tracking-wider block">
+                  Filter By Size
+                </label>
+                {selectedCategory === 'BOTTOMWEAR' && (
+                  <span className="text-[10px] font-bold text-blue-600">Waist (28–38)</span>
                 )}
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {activeSizeList.map((sz) => (
+                  <button
+                    key={sz}
+                    onClick={() => setSelectedSizeFilter(sz)}
+                    className={`min-w-[36px] h-9 text-xs font-bold border transition-all ${
+                      selectedSizeFilter === sz
+                        ? 'border-[#111111] bg-[#111111] text-white shadow'
+                        : 'border-[#E5E5E5] bg-[#F7F7F8] text-[#111111] hover:border-[#111111]'
+                    }`}
+                  >
+                    {sz}
+                  </button>
+                ))}
               </div>
             </div>
 
