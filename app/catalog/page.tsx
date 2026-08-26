@@ -37,12 +37,12 @@ function CatalogContent() {
       return ['ALL', '28', '30', '32', '34', '36', '38'];
     }
     if (selectedCategory === 'SHIRT') {
-      return ['ALL', '38', '40', '42', '44', '46'];
+      return ['ALL', 'S', 'M', 'L', 'XL', '2XL', '3XL'];
     }
     if (selectedCategory === 'TEE') {
-      return ['ALL', 'S', 'M', 'L', 'XL', 'XXL'];
+      return ['ALL', 'S', 'M', 'L', 'XL', '2XL', '3XL'];
     }
-    // For 'ALL' category: if bottomwear/pants are present, default to relevant waist sizes 28-38
+    // Default for ALL: show Denim waist sizes 28-38 if viewing bottomwear catalog
     return ['ALL', '28', '30', '32', '34', '36', '38'];
   }, [selectedCategory]);
 
@@ -141,8 +141,8 @@ function CatalogContent() {
                 {[
                   { id: 'ALL', label: 'All Apparel' },
                   { id: 'BOTTOMWEAR', label: '👖 Jeans — Waist 28–38' },
-                  { id: 'SHIRT', label: '👔 Shirts — Collar 38–46 cm' },
-                  { id: 'TEE', label: '👕 T-Shirts — Chest S–XXL' },
+                  { id: 'SHIRT', label: '👔 Shirts — S to 3XL' },
+                  { id: 'TEE', label: '👕 T-Shirts — S to 3XL' },
                 ].map((cat) => (
                   <button
                     key={cat.id}
@@ -159,7 +159,7 @@ function CatalogContent() {
               </div>
             </div>
 
-            {/* Custom Category Size Filter (Strict Range Only) */}
+            {/* Custom Category Size Filter (Strict Category Range Only) */}
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <label className="text-xs font-bold text-[#111111] uppercase tracking-wider block">
@@ -167,6 +167,12 @@ function CatalogContent() {
                 </label>
                 {selectedCategory === 'BOTTOMWEAR' && (
                   <span className="text-[10px] font-bold text-blue-600">Waist (28–38)</span>
+                )}
+                {selectedCategory === 'SHIRT' && (
+                  <span className="text-[10px] font-bold text-blue-600">Shirt (S–3XL)</span>
+                )}
+                {selectedCategory === 'TEE' && (
+                  <span className="text-[10px] font-bold text-blue-600">Tee (S–3XL)</span>
                 )}
               </div>
               <div className="flex flex-wrap gap-1.5">
