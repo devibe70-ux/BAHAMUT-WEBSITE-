@@ -58,7 +58,12 @@ matches.forEach(m => {
   const price = m[4];
   const mrp = m[5];
   const img = m[6];
-  const sizes = JSON.parse(m[7]).join(', ');
+  let sizes = '';
+  try {
+    sizes = JSON.parse(m[7].replace(/'/g, '"')).join(', ');
+  } catch(e) {
+    sizes = '28, 30, 32, 34, 36, 38';
+  }
   const gtin = m[8];
   const mpn = m[9];
 
