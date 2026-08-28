@@ -56,6 +56,9 @@ export const metadata: Metadata = {
   authors: [{ name: 'DE VIBE', url: 'https://bahamut.in' }],
   creator: 'DE VIBE',
   publisher: 'DE VIBE',
+  other: {
+    'google-adsense-account': 'ca-pub-7107715238624071',
+  },
   formatDetection: {
     email: false,
     address: false,
@@ -192,6 +195,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${plusJakarta.variable} ${inter.variable} ${unifraktur.variable} h-full`}>
       <head>
+        <meta name="google-adsense-account" content="ca-pub-7107715238624071" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }}
