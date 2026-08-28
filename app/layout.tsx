@@ -31,33 +31,37 @@ const unifraktur = UnifrakturMaguntia({
 export const metadata: Metadata = {
   metadataBase: new URL('https://bahamut.in'),
   title: {
-    default: 'BahaMut by DE VIBE | Selvedge Denim & Woven Cotton Apparel',
+    default: 'BahaMut by DE VIBE | Best Woven Cotton Denim Jeans in Ahmedabad, India',
     template: '%s | BahaMut by DE VIBE'
   },
   description:
-    'Buy direct-from-manufacturer 100% Woven Cotton Denim Jeans & Apparel engineered at Ahmedabad textile mills. Registered Trademark (TM No. 5018168, Class 25). Billed & fulfilled by DE VIBE (GSTIN: 24ASHPS9777R1ZE), Ambawadi, Ahmedabad. All products ₹1,499 with Partial COD.',
+    'Buy authentic 100% Breathable Woven Cotton Denim Jeans & Apparel directly from Ahmedabad mills. Trademark TM No. 5018168 (Class 25). Billed & fulfilled by DE VIBE (GSTIN: 24ASHPS9777R1ZE), Ambawadi, Ahmedabad. All Master Jeans ₹1,499 with Partial COD.',
   keywords: [
     'BahaMut',
     'DE VIBE',
+    'Denim Jeans Manufacturer Ahmedabad',
+    'Best Jeans in Ahmedabad',
+    'Ambawadi Ahmedabad Jeans Shop',
     'BahaMut Jeans',
     'BahaMut Denim',
-    'Men Denim Jeans India',
+    'Men Regular Fit Jeans India',
     '100% Woven Cotton Denim',
-    'Heavyweight Denim Jeans',
+    'Heavyweight Selvedge Jeans',
     'Ahmedabad Textile Mills',
-    'Ambawadi Ahmedabad Office',
-    'Selvedge Denim India',
     'Class 25 Garments',
     'GSTIN 24ASHPS9777R1ZE',
     'TM 5018168',
-    'Buy Jeans Online India',
-    'Partial COD Jeans'
+    'Partial COD Jeans India'
   ],
   authors: [{ name: 'DE VIBE', url: 'https://bahamut.in' }],
   creator: 'DE VIBE',
   publisher: 'DE VIBE',
   other: {
     'google-adsense-account': 'ca-pub-7107715238624071',
+    'geo.region': 'IN-GJ',
+    'geo.placename': 'Ahmedabad',
+    'geo.position': '23.0225;72.5414',
+    'ICBM': '23.0225, 72.5414',
   },
   formatDetection: {
     email: false,
@@ -68,9 +72,9 @@ export const metadata: Metadata = {
     canonical: 'https://bahamut.in',
   },
   openGraph: {
-    title: 'BahaMut by DE VIBE | Selvedge Denim & Cotton Apparel',
+    title: 'BahaMut by DE VIBE | 100% Woven Cotton Denim Jeans Ahmedabad',
     description:
-      'Direct-from-manufacturer 100% Woven Cotton Denim Jeans & Apparel from Ahmedabad textile mills. Registered TM No. 5018168 (Class 25). Billed & fulfilled by DE VIBE, Ambawadi, Ahmedabad (GSTIN: 24ASHPS9777R1ZE). ₹1,499 with Partial COD.',
+      'Direct-from-manufacturer 100% Woven Cotton Denim Jeans & Apparel from Ahmedabad textile mills. Registered TM No. 5018168 (Class 25). Billed by DE VIBE, Ambawadi, Ahmedabad (GSTIN: 24ASHPS9777R1ZE). ₹1,499 with Partial COD.',
     url: 'https://bahamut.in',
     siteName: 'BahaMut by DE VIBE',
     locale: 'en_IN',
@@ -86,9 +90,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BahaMut by DE VIBE | Selvedge Denim & Cotton Apparel',
+    title: 'BahaMut by DE VIBE | 100% Woven Cotton Denim Jeans',
     description:
-      'Direct-from-manufacturer 100% Woven Cotton Denim Jeans & Apparel from Ahmedabad. TM No. 5018168. Billed by DE VIBE (GSTIN: 24ASHPS9777R1ZE), Ambawadi, Ahmedabad.',
+      'Direct-from-manufacturer 100% Woven Cotton Denim Jeans from Ahmedabad. TM No. 5018168. Billed by DE VIBE (GSTIN: 24ASHPS9777R1ZE), Ambawadi, Ahmedabad.',
     images: ['https://bahamut.in/images/products/bm-art-21-1.jpg'],
   },
   robots: {
@@ -136,6 +140,44 @@ const jsonLdOrganization = {
   },
 };
 
+// Google My Business / Local Business Schema for Ahmedabad Local SEO
+const jsonLdLocalBusiness = {
+  '@context': 'https://schema.org',
+  '@type': 'ClothingStore',
+  name: 'DE VIBE (BahaMut Apparel)',
+  alternateName: 'BahaMut by DE VIBE',
+  image: 'https://bahamut.in/images/products/bm-art-21-1.jpg',
+  '@id': 'https://bahamut.in/#localbusiness',
+  url: 'https://bahamut.in',
+  telephone: '+91 97270 24519',
+  email: 'devibe70@gmail.com',
+  priceRange: '₹₹',
+  currenciesAccepted: 'INR',
+  paymentAccepted: 'Cash, UPI, Credit Card, Debit Card, Net Banking',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Ambawadi',
+    addressLocality: 'Ahmedabad',
+    addressRegion: 'Gujarat',
+    postalCode: '380015',
+    addressCountry: 'IN',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 23.0225,
+    longitude: 72.5414,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      opens: '09:00',
+      closes: '20:00',
+    },
+  ],
+  hasMap: 'https://maps.google.com/?q=Ambawadi,+Ahmedabad,+Gujarat+380015',
+};
+
 const jsonLdWebSite = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -154,7 +196,7 @@ const jsonLdFaq = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'What is BahaMut by DE VIBE and where is it manufactured?',
+      name: 'Where is BahaMut denim jeans manufactured and sold in Ahmedabad?',
       acceptedAnswer: {
         '@type': 'Answer',
         text: 'BahaMut is a registered Trademark (TM No. 5018168, Class 25 Readymade Garments). All apparel is crafted from 100% Breathable Woven Cotton Denim engineered at Ahmedabad textile mills, and billed, marketed & fulfilled by DE VIBE, Ambawadi, Ahmedabad, Gujarat - 380015 (GSTIN: 24ASHPS9777R1ZE).',
@@ -199,6 +241,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdLocalBusiness) }}
         />
         <script
           type="application/ld+json"
