@@ -12,6 +12,8 @@ const SIZE_CHART_30_38_ARTICLES = [
 ];
 
 export function getStandard5Sizes(product: Product): Size[] {
+  if (!product) return ['28', '30', '32', '34', '36'];
+
   if (product.category === 'SHIRT') {
     return ['38', '40', '42', '44', '46'];
   }
@@ -20,12 +22,31 @@ export function getStandard5Sizes(product: Product): Size[] {
   }
 
   // BOTTOMWEAR / Denim Articles:
-  const articleId = product.mpn || product.id;
-  if (SIZE_CHART_30_38_ARTICLES.includes(articleId)) {
+  const articleId = (product.mpn || product.id || '').toUpperCase();
+  const slug = (product.slug || '').toUpperCase();
+  const title = (product.title || '').toUpperCase();
+
+  const is30_38 =
+    SIZE_CHART_30_38_ARTICLES.some(
+      art =>
+        articleId.includes(art.toUpperCase()) ||
+        slug.includes(art.toLowerCase().replace('bm-', '')) ||
+        slug.includes(art.toLowerCase())
+    ) ||
+    title.includes('ART 21') ||
+    title.includes('ART 23') ||
+    title.includes('ART 30') ||
+    title.includes('ART 34') ||
+    title.includes('ART-21') ||
+    title.includes('ART-23') ||
+    title.includes('ART-30') ||
+    title.includes('ART-34');
+
+  if (is30_38) {
     return ['30', '32', '34', '36', '38'];
   }
 
-  // All other denim articles from Column K are 28/36
+  // All other denim articles from Column K are strictly 28/36
   return ['28', '30', '32', '34', '36'];
 }
 
@@ -651,7 +672,7 @@ export const INITIAL_PRODUCTS: Product[] = [
 
 export function getProducts(): Product[] {
   if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('bahamut_smartbiz_products_v30');
+    const saved = localStorage.getItem('bahamut_smartbiz_products_v31');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -680,7 +701,7 @@ export function saveProduct(product: Product): Product[] {
     updated = [product, ...current];
   }
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v30', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v31', JSON.stringify(updated));
   }
   return updated;
 }
@@ -689,7 +710,7 @@ export function deleteProduct(idOrSlug: string): Product[] {
   const current = getProducts();
   const updated = current.filter(p => p.id !== idOrSlug && p.slug !== idOrSlug);
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v30', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v31', JSON.stringify(updated));
   }
   return updated;
 }
@@ -709,7 +730,7 @@ export function deductStockForOrder(items: CartItem[]): Product[] {
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v30', JSON.stringify(products));
+    localStorage.setItem('bahamut_smartbiz_products_v31', JSON.stringify(products));
   }
   return products;
 }
@@ -724,7 +745,7 @@ export function updateProductStock(idOrSlug: string, newStock: number): Product[
   });
 
   if (typeof window !== 'undefined') {
-    localStorage.setItem('bahamut_smartbiz_products_v30', JSON.stringify(updated));
+    localStorage.setItem('bahamut_smartbiz_products_v31', JSON.stringify(updated));
   }
   return updated;
 }
