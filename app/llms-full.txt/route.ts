@@ -5,7 +5,9 @@ export const dynamic = 'force-dynamic';
 
 export async function GET() {
   const fullProductsMarkdown = INITIAL_PRODUCTS.map((p, idx) => {
+    const allSizes = (p.sizes || []).join(', ');
     const avail = (p.available_sizes || p.sizes || []).join(', ');
+    const soldOut = (p.sizes || []).filter(s => !(p.available_sizes || []).includes(s)).join(', ');
     const imgUrl = p.images?.[0]?.startsWith('http') ? p.images[0] : `https://bahamut.in${p.images?.[0] || ''}`;
     return `### Product ${idx + 1}: ${p.title}
 - **Master SKU / MPN**: ${p.mpn || p.id}
@@ -15,7 +17,9 @@ export async function GET() {
 - **Category**: ${p.category}
 - **Statutory HSN Code**: 62034290 (Chapter 62 Articles of Apparel - Men's 100% Woven Cotton Trousers/Jeans)
 - **Fabric Specs**: 100% Ring-Spun Woven Cotton Denim • 12 oz (380 GSM)
-- **Available Waist Sizes**: [${avail}]
+- **Standard 5-Size Matrix**: [${allSizes}]
+- **In-Stock Sizes**: [${avail}]
+- **Sold Out Sizes**: [${soldOut || 'None'}]
 - **Stock Status**: In Stock (${p.stock_quantity || 10} units available)
 - **GTIN / Barcode**: ${p.gtin || '8901234501824'}
 - **Product Image URL**: ${imgUrl}

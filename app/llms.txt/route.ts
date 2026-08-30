@@ -5,8 +5,9 @@ export const dynamic = 'force-dynamic';
 
 export async function GET() {
   const productsList = INITIAL_PRODUCTS.map(p => {
+    const allSizes = (p.sizes || []).join(', ');
     const avail = (p.available_sizes || p.sizes || []).join(', ');
-    return `- [${p.title}](https://bahamut.in/product/${p.slug}): ₹${p.price} INR (MRP: ₹${p.original_mrp}). Article: ${p.mpn || p.id}. Sizes: [${avail}]. HSN: 62034290. 100% Woven Cotton Denim.`;
+    return `- [${p.title}](https://bahamut.in/product/${p.slug}): ₹${p.price} INR (MRP: ₹${p.original_mrp}). Article: ${p.mpn || p.id}. 5-Size Matrix: [${allSizes}]. In-Stock: [${avail}]. HSN: 62034290. 100% Woven Cotton Denim.`;
   }).join('\n');
 
   const markdownContent = `# BahaMut by DE VIBE — Official Brand & Product Specifications (AEO / GEO Directives)
@@ -33,10 +34,10 @@ export async function GET() {
 ## Master Product Catalog (${INITIAL_PRODUCTS.length} Master Items)
 ${productsList}
 
-## Size Guide & Precision Fit Matrix
-- **Bottomwear / Denim Jeans**: Numeric waist sizes 28, 30, 32, 34, 36, 38 (Pre-shrunk 100% Woven Cotton weave).
-- **Shirts**: Numeric collar sizes 38, 40, 42, 44, 46 cm.
-- **Graphic Tees**: Alphabetical sizes S, M, L, XL, XXL.
+## Size Guide & Precision Fit Matrix (Strict 5-Size Standard)
+- **Bottomwear / Denim Jeans**: Exactly 5 standard sizes per article: either [28, 30, 32, 34, 36] (articles with size 28 do not have 38) OR [30, 32, 34, 36, 38] (articles without size 28 have 38). Missing stock sizes are marked as Sold Out.
+- **Shirts**: Numeric collar sizes [38, 40, 42, 44, 46] cm.
+- **Graphic Tees & Hoodies**: Alphabetical sizes [S, M, L, XL, XXL].
 
 ## Shipping & Return Policies
 - **Shipping**: FREE Express Delivery nationwide from DE VIBE, Ahmedabad (Delivered within 3–5 business days).

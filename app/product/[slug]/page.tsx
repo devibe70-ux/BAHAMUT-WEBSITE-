@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getProductBySlug, INITIAL_PRODUCTS } from '@/lib/products';
+import { getProductBySlug, INITIAL_PRODUCTS, getStandard5Sizes } from '@/lib/products';
 import { Product, Size } from '@/lib/types';
 import { useCart } from '@/lib/cartContext';
 import SizeGuideModal from '@/components/SizeGuideModal';
@@ -49,9 +49,11 @@ export default function ProductDetailPage() {
         setProduct(foundProduct);
         setSelectedImage(foundProduct.images?.[0] || '');
 
-        const avail = foundProduct.available_sizes || foundProduct.sizes || [];
-        if (avail.length > 0) {
-          setSelectedSize(avail[0]);
+        const standardSizes = getStandard5Sizes(foundProduct);
+        const avail = foundProduct.available_sizes || standardSizes;
+        const validInitial = standardSizes.find(s => avail.includes(s)) || avail[0] || '';
+        if (validInitial) {
+          setSelectedSize(validInitial);
         }
 
         trackEvent('view_product', {
@@ -85,17 +87,8 @@ export default function ProductDetailPage() {
   const discountPercent = Math.round(((originalMrp - price) / originalMrp) * 100);
   const isOutOfStock = (product.stock_quantity || 0) <= 0;
 
-  let standard5Matrix: Size[] = [];
-  const cat = (product.category || '').toUpperCase();
-  if (cat.includes('SHIRT')) {
-    standard5Matrix = ['38', '40', '42', '44', '46'];
-  } else if (cat.includes('BOTTOM') || cat.includes('PANT') || cat.includes('DENIM')) {
-    standard5Matrix = ['28', '30', '32', '34', '36', '38'];
-  } else {
-    standard5Matrix = ['S', 'M', 'L', 'XL', 'XXL'];
-  }
-
-  const availableSizes = product.available_sizes || product.sizes || [];
+  const standard5Matrix: Size[] = getStandard5Sizes(product);
+  const availableSizes = product.available_sizes || standard5Matrix;
 
   const handleAddToCart = () => {
     if (!selectedSize) return;
@@ -137,11 +130,12 @@ export default function ProductDetailPage() {
     sku: product.id,
     mpn: product.mpn || product.id,
     gtin: product.gtin || '8901234501824',
-    category: 'Apparel & Accessories > Clothing > Pants > Jeans',
+    category: product.category === 'SHIRT' ? 'Apparel & Accessories > Clothing > Shirts & Tops' : 'Apparel & Accessories > Clothing > Pants > Jeans',
     brand: {
       '@type': 'Brand',
       name: 'BahaMut by DE VIBE',
     },
+    keywords: `${product.title}, 100% cotton denim jeans, buy men regular fit jeans online, ahmedabad selvedge denim, de vibe clothing, partial cod jeans, cash on delivery denim india`,
     offers: {
       '@type': 'Offer',
       url: `https://bahamut.in/product/${encodeURIComponent(product.slug)}`,
@@ -154,6 +148,14 @@ export default function ProductDetailPage() {
         '@type': 'Organization',
         name: 'DE VIBE',
         taxID: '24ASHPS9777R1ZE',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Ambawadi',
+          addressLocality: 'Ahmedabad',
+          addressRegion: 'Gujarat',
+          postalCode: '380015',
+          addressCountry: 'IN',
+        },
       },
       hasMerchantReturnPolicy: {
         '@type': 'MerchantReturnPolicy',
@@ -171,6 +173,62 @@ export default function ProductDetailPage() {
     },
   };
 
+  const jsonLdFaq = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: `Is ${product.title} made from 100% genuine woven cotton?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `Yes, ${product.title} is crafted from 100% Ring-Spun Woven Cotton Denim (${product.fabric_details || '12 oz / 380 GSM'}) engineered at Ahmedabad textile mills, marketed, billed & fulfilled by DE VIBE (GSTIN: 24ASHPS9777R1ZE).`,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `How does Partial Cash on Delivery (COD) work for ${product.title}?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `You pay a flat ₹200 advance deposit online via Cashfree (UPI/Cards) to confirm your delivery address. The remaining balance (₹${price - 200}) is collected at your doorstep in cash or UPI upon parcel arrival. The ₹200 advance deposit is 100% refundable if cancelled prior to dispatch.`,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `What is the return and exchange policy for ${product.title}?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'We provide a 7-Day Free Easy Exchanges & Doorstep Return Guarantee if you encounter sizing issues or defect discrepancies.',
+        },
+      },
+    ],
+  };
+
+  const jsonLdBreadcrumbs = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://bahamut.in',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Catalog',
+        item: 'https://bahamut.in/catalog',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: product.title,
+        item: `https://bahamut.in/product/${encodeURIComponent(product.slug)}`,
+      },
+    ],
+  };
+
   // Filter recommended products excluding current item
   const recommendedProducts = INITIAL_PRODUCTS.filter(p => p.id !== product.id).slice(0, 4);
 
@@ -179,6 +237,14 @@ export default function ProductDetailPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdProduct) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumbs) }}
       />
 
       {/* Breadcrumb Navigation */}
@@ -360,7 +426,7 @@ export default function ProductDetailPage() {
                 </button>
               </div>
 
-              <div className="grid grid-cols-6 gap-2">
+              <div className="grid grid-cols-5 gap-2">
                 {standard5Matrix.map((size) => {
                   const isAvailable = availableSizes.includes(size) && !isOutOfStock;
                   return (

@@ -38,7 +38,8 @@ export const INITIAL_ORDERS: Order[] = [
           images: [
             '/images/products/bm-art-21-1.jpg'
           ],
-          sizes: ['28', '30', '32', '34', '36', '38'],
+          sizes: ['30', '32', '34', '36', '38'],
+          available_sizes: ['30', '32', '34', '36', '38'],
           is_active: true,
           created_at: '2026-07-01T10:00:00Z'
         },

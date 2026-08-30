@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Product, Size } from '@/lib/types';
+import { getStandard5Sizes } from '@/lib/products';
 import { useCart } from '@/lib/cartContext';
 import SizeGuideModal from '@/components/SizeGuideModal';
 import { trackEvent } from '@/lib/analytics';
@@ -18,13 +19,11 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [added, setAdded] = useState(false);
   const [isSizeModalOpen, setIsSizeModalOpen] = useState(false);
 
-  const isNumericCategory = product.category === 'SHIRT' || product.category === 'BOTTOMWEAR';
-  const defaultSizes: Size[] = isNumericCategory
-    ? (product.category === 'BOTTOMWEAR' ? ['28', '30', '32', '34', '36', '38'] : ['38', '40', '42', '44', '46'])
-    : ['S', 'M', 'L', 'XL', 'XXL'];
-
-  const safeSizes: Size[] = (product.sizes && product.sizes.length > 0) ? product.sizes : defaultSizes;
-  const [selectedSize, setSelectedSize] = useState<Size>(safeSizes[0]);
+  // Strictly enforce 5 sizes (either 28-36 or 30-38)
+  const safeSizes: Size[] = getStandard5Sizes(product);
+  const inStockSizes = product.available_sizes || safeSizes;
+  const initialSize = safeSizes.find(s => inStockSizes.includes(s)) || safeSizes[0];
+  const [selectedSize, setSelectedSize] = useState<Size>(initialSize);
 
   const mainImage = product.images?.[0] || 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80';
   const hoverImage = product.images?.[1] || mainImage;
@@ -141,7 +140,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
         </div>
 
-        {/* Minimal Size Selection */}
+        {/* Minimal 5-Size Selection */}
         <div className="space-y-2 pt-2 border-t border-[#E5E5E5]">
           <div className="flex items-center justify-between text-[10px] font-bold text-[#666666]">
             <span>SELECT FIT SIZE:</span>
@@ -154,25 +153,33 @@ export default function ProductCard({ product }: ProductCardProps) {
             </button>
           </div>
 
-          <div className="flex flex-wrap gap-1.5">
-            {safeSizes.map(size => (
-              <button
-                key={size}
-                type="button"
-                onClick={() => {
-                  setSelectedSize(size);
-                  trackEvent('select_size', { product_id: product.id, size });
-                }}
-                disabled={isOutOfStock}
-                className={`min-w-[32px] h-7 text-[11px] font-bold border transition-all ${
-                  selectedSize === size
-                    ? 'border-[#111111] bg-[#111111] text-white'
-                    : 'border-[#E5E5E5] bg-[#F7F7F8] text-[#111111] hover:border-[#111111]'
-                }`}
-              >
-                {size}
-              </button>
-            ))}
+          <div className="grid grid-cols-5 gap-1.5">
+            {safeSizes.map(size => {
+              const isAvailable = inStockSizes.includes(size) && !isOutOfStock;
+              return (
+                <button
+                  key={size}
+                  type="button"
+                  onClick={() => {
+                    if (isAvailable) {
+                      setSelectedSize(size);
+                      trackEvent('select_size', { product_id: product.id, size });
+                    }
+                  }}
+                  disabled={!isAvailable}
+                  className={`h-8 text-[11px] font-bold border rounded-[2px] transition-all flex flex-col items-center justify-center ${
+                    !isAvailable
+                      ? 'border-[#E5E5E5] bg-[#F7F7F8] text-[#AAAAAA] line-through opacity-50 cursor-not-allowed'
+                      : selectedSize === size
+                      ? 'border-[#111111] bg-[#111111] text-white shadow-sm'
+                      : 'border-[#E5E5E5] bg-[#F7F7F8] text-[#111111] hover:border-[#111111]'
+                  }`}
+                  title={!isAvailable ? `${size} (Sold Out)` : size}
+                >
+                  <span>{size}</span>
+                </button>
+              );
+            })}
           </div>
 
           {/* Minimal Add to Cart Button */}
